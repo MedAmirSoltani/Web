@@ -1,0 +1,40 @@
+.button {
+    background-color: #1c87c9;
+    box-shadow: 0 5px 0 #105cad;
+    color: white;
+   padding: 1em 1.5em;
+   position: relative;
+   text-decoration: none;
+   display: inline-block;
+}
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+p,
+label {
+    font: 15px 'Exo 2', sans-serif;
+}
+ 
+input {
+    margin: 6px;
+}
+ 
+button {
+    margin-top: 10px;
+    padding: 2 2;
+    font: 15px 'Exo 2', sans-serif;
+}
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}

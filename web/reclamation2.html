@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reclamation</title>
+        <link href="rec.css" rel="stylesheet">
+    </head>
+<body>
+
+    <h4>Reclamation: </h4>
+    <label for="Module">module:</label>
+
+<select id="Module">
+    <option value="">--Veuillez choisir--</option>
+    <option value="Projet Technologies web">Projet Technologies web</option>
+    <option value="Mathematique">Mathematique</option>
+    <option value="Base de Donnees">Base de Donnees</option>
+</select>
+
+</p>
+<label for="start">Date d'Absence:</label>
+
+<input type="date" id="start" name="trip-start"
+       value="2018-07-22"
+       min="2018-01-01" max="2018-12-31">
+       <label for="appt">Heure d'Absence:</label>
+
+<input type="time" id="appt" name="appt"
+       min="09:00" max="18:00" required>
+
+<small>heure de fonctionnement de 9am jusqu'a 6pm</small>
+<label
+    for="comment">Description:
+</label>
+<textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+</body>
+</html>
