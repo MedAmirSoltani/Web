@@ -1,104 +1,146 @@
+<?php
+require_once "../Controller/BlogC.php";
+require_once "../Model/Blog.php";
 
+if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
+    $Blog = new post(
+        $_POST['Idpost'],
+        $_POST['Title'],
+        $_POST['Picture'],
+        $_POST['Date'],
+        $_POST['Description']
+        
+        
+    );
+    $BlogC = new BlogC();
+    $BlogC->AddBlog($Blog);
+    //header('Location:ShowBlog.php');
+}
+
+?>
 
 
 <!-------------------------------------------------HTML CODE TO view add post ----------------------------------->
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-            crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
 
-        <!-- Custom Styling -->
-        <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="../assets/css/style.css">
 
-        <!-- Admin Styling -->
-        <link rel="stylesheet" href="../assets/css/admin.css">
+    <!-- Admin Styling -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
 
-        <title>Admin Section - Add Post</title>
-    </head>
+    <title>Admin Section - Add Post</title>
+</head>
 
-    <body>
-      
-
-        <!-- Admin Page Wrapper -->
-        <div class="admin-wrapper">
-
-            <!-- Left Sidebar -->
-            <div class="left-sidebar">
-                <ul>
-                    <li><a href="index.html">Manage Posts</a></li>
-                    
-                    
-                </ul>
-            </div>
-            <!-- // Left Sidebar -->
+<body>
 
 
-            <!-- Admin Content-->
-            <div class="admin-content">
+    <!-- Admin Page Wrapper -->
+    <div class="admin-wrapper">
+
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <ul>
+                <li><a href="#">Manage Posts</a></li>
+
+
+            </ul>
+        </div>
+        <!-- // Left Sidebar -->
+
+
+        <!-- Admin Content-->
+        <div class="admin-content">
             <!--    <div class="button-group">
                   <a href="create.html" class="btn btn-big">Add Post</a>
                     <a href="index.html" class="btn btn-big">Manage Posts</a>
                 </div> -->
 
 
-                <div class="content">
+            <div class="content">
 
-                    <h2 class="page-title">Manage Posts</h2>
+                <h2 class="page-title">Manage Posts</h2>
 
-                    <form action="create.html" method="post">
+                <form action="" method="POST">
+                    <table  align="center">
                         <div>
-                            <label>Title</label>
-                            <input type="text" name="title" id="title" class="text-input">
+                            <tr>
+                                <td> <label>IdPost</label></td>
+                                <tr></tr>
+                                <td><input type="text" name="Idpost" id="Idp" class="text-input"></td>
+                            </tr>
                         </div>
                         <div>
-                            <label>Description</label>
-                            <textarea name="Description" id="Description" name="Description"></textarea>
+                            <tr>
+                                <td><label>Title</label></td>
+                                <tr></tr>
+                                <td><input type="text" name="Title" id="title" class="text-input"></td>
+                            </tr>
                         </div>
                         <div>
-                            <label>Image</label>
-                            <input type="file" name="image" class="text-input">
+                            <tr>
+                                <td> <label>Image</label></td>
+                                <tr></tr>
+                                <td><input type="file" name="Picture" class="text-input"></td>
+                            </Tr>
                         </div>
                         <div>
-                            
-                            </select>
+                            <tr>
+                                <td> <label>Date</label></td>
+                                <tr></tr>
+                                <td><input type="date" name="Date" class="text-input"></td>
+                            </Tr>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-big">Add Post</button>
+                            <tr>
+                                <td><label>Description</label></td>
+                                <tr></tr>
+                                <td><textarea name="Description" id="body" ></textarea></td>
+                            </tr>
                         </div>
-                    </form>
+                       
+                        
+                        <div>
 
-                </div>
+
+                        </div>
+                        <div>
+                            <tr>
+                                
+                            <td><button type="submit" class="btn btn-big">Add Post</button></td>
+                            </tr>
+                        </div>
+                </form>
 
             </div>
-            <!-- // Admin Content -->
 
         </div>
-        <!-- // Page Wrapper -->
+        <!-- // Admin Content -->
+
+    </div>
+    <!-- // Page Wrapper -->
 
 
 
-        <!-- JQuery -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Ckeditor -->
-        <script
-            src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
-        <!-- Custom Script -->
-        <script src="../../js/scripts.js"></script>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Ckeditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+    <!-- Custom Script -->
+    <script src="../assets/js//scriptaddblog.js"></script>
 
-    </body>
+</body>
 
 </html>
