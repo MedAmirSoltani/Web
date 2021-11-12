@@ -5,7 +5,7 @@ $BlogC = new BlogC();
 if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
     echo $_POST['Idpost'];
     $blog = new post(
-        $_POST['Idpost'],
+        NULL,
         $_POST['Title'],
         $_POST['Picture'],
         $_POST['Date'],
@@ -78,7 +78,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                             <tr>
                                 <td> <label>IdPost</label></td>
                                 <tr></tr>
-                                <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost'];?>"></td>
+                                <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost'];?>" readonly></td>
                             </tr>
                         </div>
                         <div>
