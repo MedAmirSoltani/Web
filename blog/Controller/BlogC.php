@@ -90,9 +90,10 @@ class BlogC
 
     function AddBlog($Blog)
     {
+        
         $config = config::getConnexion();
         try {
-        //$this->uploadFile();
+       // $this->uploadFile();
             $querry = $config->prepare('
             INSERT INTO post 
             (Idpost,Title,Picture,Description,Date)

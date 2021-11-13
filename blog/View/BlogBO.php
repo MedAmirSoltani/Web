@@ -15,7 +15,6 @@ $Blogs = $BlogC->ShowBlog();
   <tr>
     <th>Idpost</th>
     <th>Title</th>
-    <th>Picture</th>
     <th>Date</th>
     <th>Description</th>
   </tr>
@@ -27,11 +26,13 @@ $Blogs = $BlogC->ShowBlog();
   <tr>
     <td><?php echo $blog['Idpost'] ; ?></td>
     <td><?php echo $blog['Title'] ; ?></td>
-    <td><img src="../assets/uploads/<?php echo $blog['Picture'] ?>"></td>
+    <!--<td><img src="../assets/uploads/<?php echo $blog['Picture'] ?>"></td>-->
     <td><?php echo $blog['Date'] ; ?></td>
     <td><?php echo $blog['Description'] ; ?></td>
-    <td><a href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost'] ; ?>">modifier</a></td>
+    <td><a href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost'] ; ?>">Update</a></td>
     <td><a href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost'] ; ?>">Remove</a></td>
+    <td><a href="ViewBlogPost.php?Idpost=<?php echo $blog['Idpost'] ; ?>">SHOW</a></td>
+
   </tr>
 
 

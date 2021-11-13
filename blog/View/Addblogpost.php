@@ -3,35 +3,24 @@ require_once "../Controller/BlogC.php";
 require_once "../Model/Blog.php";
 
 if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
+    
+    
+   
     $Blog = new post(
         null,
         $_POST['Title'],
         $_POST['Picture'],
         $_POST['Date'],
         $_POST['Description']
-
+        
 
     );
+    
     $BlogC = new BlogC();
     $BlogC->AddBlog($Blog);
     header('Location:ViewBlogPost.php');
 }
-// Initialize message variable
- $msg = "";
 
- // If upload button is clicked ...
- if (isset($_POST['Picture'])) {
-     // Get image name
-     $image = $_FILES['Picture']['name'];
-     // image file directory
-     $target = "../assets/uploads/uploaded".basename($image);
-
-     if (move_uploaded_file($_FILES['Picture']['tmp_name'], $target)) {
-         $msg = "Image uploaded successfully";
-     }else{
-         $msg = "Failed to upload image";
-     }
- }
 
 ?>
 
@@ -89,7 +78,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Pictur
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST">
                     <table align="center">
                         <!-- <div>
                             <tr>
@@ -109,7 +98,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Pictur
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input"></td>
+                            <td><input type="file" name="Picture" id="Picture" class="text-input"></td>
                             </Tr>
                         </div>
                         <div>
