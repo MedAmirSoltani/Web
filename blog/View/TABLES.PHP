@@ -187,29 +187,18 @@ $Blogs = $BlogC->ShowBlog();
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
-                                                    <td><a href="ViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">SHOW</a></td>
-                                                    <td><a href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>">Update</a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="ViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
 
 
-                                                    <td><a href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove</a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
                                             <?php
                                             }
                                             ?>
-                                            <!--<tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>-->
+
                                         </tbody>
                                     </table>
                                 </div>
