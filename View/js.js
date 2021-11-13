@@ -8,12 +8,17 @@ function allLetter(word) {
         return false;
     }
 }
-function verif(){
-    let titre=document.getElementById("titre").value;
-    if(document.getElementById("titre").value==false) {     
-        alert("vide");  }
-
-        if (allLetter(titre)===false) {
-            alert("check your titlee");
+function verif() {
+    let titre = document.getElementById("titre").value;
+    if (document.getElementById("titre").value == false) {
+        alert("vide");
     }
+
+    if (allLetter(titre) === false) {
+        alert("check your titlee");
+        return false;
+        preventDefault();
+    }
+    return true;
 }
+

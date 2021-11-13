@@ -171,7 +171,7 @@
 			<div class="card-content collapse show">
 				<div class="card-body">
 					<div class="table-responsive">
-						<form action="" method="POST">
+						<form action="" method="POST" onsubmit="return verif();" >
 							<table class="table" border="1" align="center">
 								<tr>
 									<td>
