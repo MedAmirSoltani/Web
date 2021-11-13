@@ -77,36 +77,36 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                         <div>
                             <tr>
                                 <td> <label>IdPost</label></td>
-                                <tr></tr>
-                                <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost'];?>" readonly></td>
+                            <tr></tr>
+                            <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost']; ?>" readonly></td>
                             </tr>
                         </div>
                         <div>
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input type="text" name="Title" id="title" value="<?php echo $a['Title'];?>"   class="text-input"></td>
+                            <td><input type="text" name="Title" id="title" value="<?php echo $a['Title']; ?>" class="text-input"></td>
                             </tr>
                         </div>
                         <div>
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input" value="<?php echo $a['Picture'];?>"></td>
+                            <td><input type="file" name="Picture" class="text-input" value="<?php echo $a['Picture']; ?>"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" class="text-input" value="<?php echo $a['Date'];?>"></td>
+                            <td><input type="date" name="Date" class="text-input" value="<?php echo $a['Date']; ?>"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td><label>Description</label></td>
                             <tr></tr>
-                            <td><textarea name="Description" id="body" value="<?php echo $a['Description'];?>"></textarea></td>
+                            <td><textarea name="Description" id="body" value="<?php echo $a['Description']; ?>"></textarea></td>
                             </tr>
                         </div>
 

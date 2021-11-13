@@ -12,8 +12,8 @@ class post
 
 
 
-function __construct($idp,$title, $picture,$date, $description){
-    $this->Idpost=$idp;
+function __construct($idpo,$title, $picture,$date, $description){
+    $this->Idpost=$idpo;
     $this->Title=$title;
     $this->Picture=$picture;
     $this->Date=$date;
