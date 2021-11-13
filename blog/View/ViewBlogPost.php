@@ -45,7 +45,7 @@ $Blogs = $BlogC->ShowBlog();
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../assetsBO/css/stylesblog.css" rel="stylesheet" />
+    <link href="../assets/ASFO/css/stylesblog.css" rel="stylesheet" />
 
 </head>
 
@@ -143,8 +143,8 @@ $Blogs = $BlogC->ShowBlog();
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../assetsBO/js/scripts.js"></script>
-    <script src="../assetsBO/js/scriptaddblog.js"></script>
+    <script src="../assets/ASFO/js/scripts.js"></script>
+    <script src="../assetsBO/ASFO/js/scriptaddblog.js"></script>
 </body>
 
 </html>
