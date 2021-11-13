@@ -92,7 +92,7 @@ $Blogs = $BlogC->ShowBlog();
                         ?>
                         <div class="card mb-4">
                             <a href="#!"><img class="card-img-top"
-                            src="../assetsBO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                            src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
                             <div class="card-body">
                                 <div class="small text-muted"><?php echo $blog['Date'] ; ?></div>
                                 <h2 class="card-title h4"><?php echo $blog['Title'] ; ?></h2>
@@ -144,7 +144,7 @@ $Blogs = $BlogC->ShowBlog();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="../assets/ASFO/js/scripts.js"></script>
-    <script src="../assetsBO/ASFO/js/scriptaddblog.js"></script>
+    <script src="../assets/ASFO/js/scriptaddblog.js"></script>
 </body>
 
 </html>
