@@ -6,7 +6,7 @@ class BlogC
 
     function uploadFile()
     {
-        $target_dir = "";
+        $target_dir = "../assets/uploads/";
         $target_file = $target_dir . basename($_FILES["Picture"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

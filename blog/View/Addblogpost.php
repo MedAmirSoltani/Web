@@ -16,6 +16,22 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Pictur
     $BlogC->AddBlog($Blog);
     header('Location:ViewBlogPost.php');
 }
+// Initialize message variable
+ $msg = "";
+
+ // If upload button is clicked ...
+ if (isset($_POST['Picture'])) {
+     // Get image name
+     $image = $_FILES['Picture']['name'];
+     // image file directory
+     $target = "../assets/uploads/uploaded".basename($image);
+
+     if (move_uploaded_file($_FILES['Picture']['tmp_name'], $target)) {
+         $msg = "Image uploaded successfully";
+     }else{
+         $msg = "Failed to upload image";
+     }
+ }
 
 ?>
 
@@ -73,7 +89,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Pictur
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <table align="center">
                         <!-- <div>
                             <tr>
