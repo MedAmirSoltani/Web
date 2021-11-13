@@ -1,6 +1,6 @@
 <?php
-require_once "../assets/utilis/Config.php";
-require_once '../Model/Blog.php';
+require_once "./assetsBO/utilis/Config.php";
+require_once './Model/Blog.php';
 class BlogC
 {
 

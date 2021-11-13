@@ -20,8 +20,6 @@ $Blogs = $BlogC->ShowBlog();
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- site icon -->
-    <link rel="icon" href="images/fevicon.png" type="image/png" />
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- FontAwesome Icons core CSS -->
@@ -47,7 +45,7 @@ $Blogs = $BlogC->ShowBlog();
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../assets/css/stylesblog.css" rel="stylesheet" />
+    <link href="../assetsBO/css/stylesblog.css" rel="stylesheet" />
 
 </head>
 
@@ -94,7 +92,7 @@ $Blogs = $BlogC->ShowBlog();
                         ?>
                         <div class="card mb-4">
                             <a href="#!"><img class="card-img-top"
-                            src="../assets/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                            src="../assetsBO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
                             <div class="card-body">
                                 <div class="small text-muted"><?php echo $blog['Date'] ; ?></div>
                                 <h2 class="card-title h4"><?php echo $blog['Title'] ; ?></h2>
@@ -145,8 +143,8 @@ $Blogs = $BlogC->ShowBlog();
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/js/scriptaddblog.js"></script>
+    <script src="../assetsBO/js/scripts.js"></script>
+    <script src="../assetsBO/js/scriptaddblog.js"></script>
 </body>
 
 </html>
