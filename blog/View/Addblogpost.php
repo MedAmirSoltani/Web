@@ -18,7 +18,8 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Pictur
     
     $BlogC = new BlogC();
     $BlogC->AddBlog($Blog);
-    header('Location:ViewBlogPost.php');
+    header('Location:GeneralViewBlogPost.php');
+    
 }
 
 

@@ -187,7 +187,7 @@ $Blogs = $BlogC->ShowBlog();
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="ViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
                                                     <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
 
 
