@@ -92,7 +92,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input" value="<?php echo $a['Picture']; ?>"></td>
+                            <td><input type="file" name="Picture" class="text-input" src="<?php echo $a['Picture']; ?>"></td>
                             </Tr>
                         </div>
                         <div>
