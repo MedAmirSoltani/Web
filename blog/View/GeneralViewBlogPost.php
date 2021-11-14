@@ -1,7 +1,7 @@
-<?php 
+<?php
 require_once "../Controller/BlogC.php";
 
-$BlogC= new BlogC();
+$BlogC = new BlogC();
 $Blogs = $BlogC->ShowBlog();
 
 
@@ -51,32 +51,32 @@ $Blogs = $BlogC->ShowBlog();
 
 <body>
     <!-- Responsive navbar-->
-   <!-- <nav class="navbar navbar-inverse navbar-toggleable-md">
+    <!-- <nav class="navbar navbar-inverse navbar-toggleable-md">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu"
             aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="float-left">Menu</span>
             <span class="float-right"><i class="fa fa-bars"></i> <i class="fa fa-close"></i></span>
         </button>-->
-        <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link color-aqua-hover" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link color-grey-hover" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link color-grey-hover" href="contact.html">Login</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                </li>
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color-aqua-hover" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color-grey-hover" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color-grey-hover" href="contact.html">Login</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            </li>
+        </ul>
+    </div>
     </nav>
     <!-- Page content-->
     <div class="container">
@@ -88,27 +88,70 @@ $Blogs = $BlogC->ShowBlog();
                     <div class="col-lg-6">
                         <!-- Blog post-->
                         <?php
-                         foreach ($Blogs as $blog) {
+                        $Npost = 1;
+                        foreach ($Blogs as $blog) {
+
+                            if ($Npost === 1) {
+
+
                         ?>
+                                <div class="card mb-4">
+                                    <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                        <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
+                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                        <a class="btn btn-primary" href="./blogpost.html">Read more →</a>
+
+
+                                    </div>
+                                </div>
+                            <?php
+                                $Npost++;
+                            } else if ($Npost == 2) { ?>
+                                <!--taskiret php-->
+                                <!-- Blog post-->
+                                <div class="card mb-4">
+                                    <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                        <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
+                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                        <a class="btn btn-primary" href="#!">Read more →</a>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Blog post-->
                         <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                            src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                            <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
                             <div class="card-body">
-                                <div class="small text-muted"><?php echo $blog['Date'] ; ?></div>
-                                <h2 class="card-title h4"><?php echo $blog['Title'] ; ?></h2>
-                                <p class="card-text"><?php echo $blog['Description'] ; ?></p>
-                                <a class="btn btn-primary" href="./blogpost.html">Read more →</a>
+                                <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
+                                <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                <a class="btn btn-primary" href="#!">Read more →</a>
                             </div>
                         </div>
-                        <?php }?>
+                        <!-- Blog post-->
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
+                                <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                <a class="btn btn-primary" href="#!">Read more →</a>
+                            </div>
+                        </div>
                     </div>
+                <?php } ?>
                 </div>
+
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0" />
                     <ul class="pagination justify-content-center my-4">
-                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
-                                aria-disabled="true">Newer</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
                         <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
                         <li class="page-item"><a class="page-link" href="#!">2</a></li>
                         <li class="page-item"><a class="page-link" href="#!">3</a></li>
@@ -125,8 +168,7 @@ $Blogs = $BlogC->ShowBlog();
                     <div class="card-header">Search</div>
                     <div class="card-body">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Enter search term..."
-                                aria-label="Enter search term..." aria-describedby="button-search" />
+                            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
                             <button class="btn btn-primary" id="button-search" type="button">Go!</button>
                         </div>
                     </div>
