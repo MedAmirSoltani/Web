@@ -35,6 +35,7 @@ class BlogC
         } catch (PDOException $th) {
             $th->getMessage();
         }
+       
     }
 
     function AddBlog($Blog)
@@ -62,6 +63,7 @@ class BlogC
         } catch (PDOException $th) {
             $th->getMessage();
         }
+        
     }
     function UpdateBlog($Blog)
     {
@@ -99,6 +101,7 @@ class BlogC
         } catch (PDOException $th) {
             $th->getMessage();
         }
+        header("Refresh:0");
     }
 
 

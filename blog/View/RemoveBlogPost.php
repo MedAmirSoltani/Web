@@ -3,5 +3,5 @@
 
     $BlogC = new BlogC();
     $BlogC->RemoveBlog($_GET['Idpost']);
-    header('Location:GeneralViewBlogHome.php');
+    header('Location:AdminViewBlogHome.php');
 ?>

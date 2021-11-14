@@ -1,23 +1,30 @@
 <?php
 require_once "../Controller/BlogC.php";
 require_once "../Model/Blog.php";
-$BlogC = new BlogC();
-if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
-    echo $_POST['Idpost'];
-    $blog = new post(
-        $_POST['Idpost'],
+
+if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
+    
+    
+   
+    $Blog = new post(
+        null,
         $_POST['Title'],
         $_POST['Picture'],
         $_POST['Date'],
         $_POST['Description']
+        
+
     );
-    $BlogC->UpdateBlog($blog);
+    
+    $BlogC = new BlogC();
+    $BlogC->AddBlog($Blog);
     header('Location:GeneralViewBlogHome.php');
-} else {
-    $a = $BlogC->GetPostbyID($_GET['Idpost']);
+    
 }
 
+
 ?>
+
 
 <!-------------------------------------------------HTML CODE TO view add post ----------------------------------->
 <!DOCTYPE html>
@@ -74,39 +81,39 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
 
                 <form action="" method="POST">
                     <table align="center">
-                        <div>
+                        <!-- <div>
                             <tr>
                                 <td> <label>IdPost</label></td>
-                            <tr></tr>
-                            <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost']; ?>" readonly></td>
+                                <tr></tr>
+                                <td><input type="text" name="Idpost" id="Idp" class="text-input"></td>
                             </tr>
-                        </div>
+                        </div>-->
                         <div>
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input type="text" name="Title" id="title" value="<?php echo $a['Title']; ?>" class="text-input"></td>
+                            <td><input type="text" name="Title" id="title" class="text-input"></td>
                             </tr>
                         </div>
                         <div>
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input" value="../assets/ASFO/uploads/<?php echo $a['Picture'] ?>"></td>
+                            <td><input type="file" name="Picture" id="Picture" class="text-input"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" class="text-input" value="<?php echo $a['Date']; ?>"></td>
+                            <td><input type="date" name="Date" class="text-input"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td><label>Description</label></td>
                             <tr></tr>
-                            <td><textarea name="Description" id="body" ><?php echo $a['Description']; ?></textarea></td>
+                            <td><textarea name="Description" id="body"></textarea></td>
                             </tr>
                         </div>
 
@@ -118,7 +125,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                         <div>
                             <tr>
 
-                                <td><button type="submit" class="btn btn-big">Update</button></td>
+                                <td><button type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>

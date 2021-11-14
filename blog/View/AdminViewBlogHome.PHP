@@ -145,7 +145,7 @@ $Blogs = $BlogC->ShowBlogHome();
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Tables
+                                <li class="breadcrumb-item active">Blog 
                                 </li>
                             </ol>
                         </div>
@@ -173,6 +173,7 @@ $Blogs = $BlogC->ShowBlogHome();
                                                 <th scope="col">Description</th>
                                                 <th scope="col">View</th>
                                                 <th scope="col">Modify</th>
+                                                <th scope="col">Comments</th>
                                                 <th scope="col">DELETE</th>
 
                                             </tr>
@@ -190,8 +191,8 @@ $Blogs = $BlogC->ShowBlogHome();
                                                     <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHome.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
                                                     <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
 
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Test<i class="ft-command"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Remove<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
