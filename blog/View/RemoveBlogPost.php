@@ -2,6 +2,6 @@
     require '../Controller/BlogC.php';
 
     $BlogC = new BlogC();
-    $BlogC->supprimerBlog($_GET['Idpost']);
-    header('Location:GeneralViewBlogPost.php');
+    $BlogC->RemoveBlog($_GET['Idpost']);
+    header('Location:GeneralViewBlogHome.php');
 ?>

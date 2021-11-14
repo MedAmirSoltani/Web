@@ -3,7 +3,7 @@
 require_once "../Controller/BlogC.php";
 
 $BlogC= new BlogC();
-$Blogs = $BlogC->ShowBlog();
+$Blogs = $BlogC->ShowBlogHome();
 
 
 ?>

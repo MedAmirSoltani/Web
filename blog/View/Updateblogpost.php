@@ -5,14 +5,14 @@ $BlogC = new BlogC();
 if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
     echo $_POST['Idpost'];
     $blog = new post(
-        NULL,
+        $_POST['Idpost'],
         $_POST['Title'],
         $_POST['Picture'],
         $_POST['Date'],
         $_POST['Description']
     );
-    $adherentC->modifierBlog($blog);
-    header('Location:ViewBlogPost.php');
+    $BlogC->UpdateBlog($blog);
+    header('Location:GeneralViewBlogHome.php');
 } else {
     $a = $BlogC->GetPostbyID($_GET['Idpost']);
 }
@@ -92,7 +92,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input" src="<?php echo $a['Picture']; ?>"></td>
+                            <td><input type="file" name="Picture" class="text-input" ></td>
                             </Tr>
                         </div>
                         <div>

@@ -2,7 +2,7 @@
 require_once "../Controller/BlogC.php";
 
 $BlogC = new BlogC();
-$Blogs = $BlogC->ShowBlog();
+$Blogs = $BlogC->ShowBlogHome();
 
 
 ?>
@@ -187,10 +187,10 @@ $Blogs = $BlogC->ShowBlog();
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHome.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
                                                     <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
 
-
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Test<i class="ft-command"></i></a></td>
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Remove<i class="ft-command"></i></a></td>
 
 
