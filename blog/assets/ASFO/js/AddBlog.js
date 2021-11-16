@@ -4,3 +4,8 @@ function NowDate() {
     document.getElementById("Date").value=DateNow;
 }
 
+
+function CheckAddBlog()
+{
+    NowDate();
+}

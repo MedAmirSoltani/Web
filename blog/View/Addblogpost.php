@@ -81,7 +81,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                 <h2 class="page-title">Manage Posts</h2>
 
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <table  align="center">
+                    <table align="center">
                         <!-- <div>
                             <tr>
                                 <td> <label>IdPost</label></td>
@@ -93,7 +93,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input  type="text" name="Title" id="title" class="text-input"></td>
+                            <td><input type="text" name="Title" id="title" class="text-input"></td>
                             </tr>
                         </div>
                         <div>
@@ -107,7 +107,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input  type="date" name="Date" id="Date" class="text-input" readonly ></td>
+                            <td><input type="date" name="Date" id="Date" class="text-input" readonly></td>
                             </Tr>
                         </div>
                         <div>
@@ -126,7 +126,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button  onclick="NowDate()" type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button onclick="CheckAddBlog()" type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
