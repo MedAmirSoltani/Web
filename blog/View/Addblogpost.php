@@ -34,7 +34,8 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <!--script il date -->
+    <script src="../assets/ASFO/js/AddBlog.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -80,7 +81,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                 <h2 class="page-title">Manage Posts</h2>
 
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <table align="center">
+                    <table  align="center">
                         <!-- <div>
                             <tr>
                                 <td> <label>IdPost</label></td>
@@ -92,7 +93,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input type="text" name="Title" id="title" class="text-input"></td>
+                            <td><input  type="text" name="Title" id="title" class="text-input"></td>
                             </tr>
                         </div>
                         <div>
@@ -106,7 +107,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" class="text-input"></td>
+                            <td><input  type="date" name="Date" id="Date" class="text-input" readonly ></td>
                             </Tr>
                         </div>
                         <div>
@@ -125,7 +126,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button  onclick="NowDate()" type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
