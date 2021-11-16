@@ -80,7 +80,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
                     <table align="center">
                         <!-- <div>
                             <tr>
@@ -89,11 +89,11 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                                 <td><input type="text" name="Idpost" id="Idp" class="text-input"></td>
                             </tr>
                         </div>-->
-                        <div>
+                        <div >
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input type="text" name="Title" id="title" class="text-input"></td>
+                            <td><input type="text" name="Title" id="Title" class="text-input"></td>
                             </tr>
                         </div>
                         <div>
@@ -110,11 +110,11 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <td><input type="date" name="Date" id="Date" class="text-input" readonly></td>
                             </Tr>
                         </div>
-                        <div>
+                        <div >
                             <tr>
-                                <td><label>Description</label></td>
-                            <tr></tr>
-                            <td><textarea name="Description" id="body"></textarea></td>
+                                <td ><label >Description</label></td>
+                            <tr ></tr>
+                            <td ><textarea name="Description" id="Description"></textarea></td>
                             </tr>
                         </div>
 
@@ -126,7 +126,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button onclick="CheckAddBlog()" type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button   type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
@@ -151,3 +151,4 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
 </body>
 
 </html>
+
