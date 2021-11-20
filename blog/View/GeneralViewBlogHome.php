@@ -89,7 +89,7 @@ $Blogs = $BlogC->ShowBlogHome();
                         <!-- Blog post-->
                         <?php
             
-                        foreach ($Blogs as $blog) {
+                        foreach ($Blogs as $blog){
 
                         ?>
                                 <div class="card mb-4">
@@ -117,6 +117,7 @@ $Blogs = $BlogC->ShowBlogHome();
                                 </div>
                             
                     </div>
+                    
                     <div class="col-lg-6">
                         <!-- Blog post-->
                         <div class="card mb-4">

@@ -34,6 +34,9 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--script il date -->
     <script src="../assets/ASFO/js/AddBlog.js"></script>
     <!-- Font Awesome -->
@@ -89,7 +92,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                                 <td><input type="text" name="Idpost" id="Idp" class="text-input"></td>
                             </tr>
                         </div>-->
-                        <div >
+                        <div>
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
@@ -110,13 +113,16 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <td><input type="date" name="Date" id="Date" class="text-input" readonly></td>
                             </Tr>
                         </div>
-                        <div >
+                        
+                            <div class="form-group">
                             <tr>
-                                <td ><label >Description</label></td>
-                            <tr ></tr>
-                            <td ><textarea name="Description" id="Description"></textarea></td>
-                            </tr>
-                        </div>
+                                <td>
+                                <label for="Description">Description:</label></td>
+                                <tr></tr>
+                              <td>  <textarea class="form-control" rows="5" id="Description" name="Description"></textarea></td>
+                                </tr>
+                            </div>
+                        
 
 
                         <div>
@@ -126,7 +132,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button   type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
@@ -151,4 +157,3 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
 </body>
 
 </html>
-
