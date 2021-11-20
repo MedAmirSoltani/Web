@@ -79,6 +79,11 @@ $Blogs = $BlogC->ShowBlogHome();
     </div>
     </nav>
     <!-- Page content-->
+    <?php
+            
+            foreach ($Blogs as $blog){
+
+            ?>
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
@@ -87,11 +92,7 @@ $Blogs = $BlogC->ShowBlogHome();
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- Blog post-->
-                        <?php
-            
-                        foreach ($Blogs as $blog){
-
-                        ?>
+                       
                                 <div class="card mb-4">
                                     <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
                                     <div class="card-body">
@@ -140,8 +141,9 @@ $Blogs = $BlogC->ShowBlogHome();
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+              
                 </div>
+                <?php } ?>
 
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
