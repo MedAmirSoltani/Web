@@ -79,112 +79,77 @@ $Blogs = $BlogC->ShowBlogHome();
     </div>
     </nav>
     <!-- Page content-->
-    <?php
-            
-            foreach ($Blogs as $blog){
 
-            ?>
+
+
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
+
                     <div class="col-lg-6">
                         <!-- Blog post-->
-                       
-                                <div class="card mb-4">
-                                    <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
-                                    <div class="card-body">
-                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                        <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
-                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                        <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
+
+                        <div class="card mb-4">
+                            <?php
+                            foreach ($Blogs as $blog) {
+
+                            ?>
+                                <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                    <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
+                                    <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                    <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
 
 
-                                    </div>
                                 </div>
-                            
-                                <!--taskiret php-->
-                                <!-- Blog post-->
-                                <div class="card mb-4">
-                                    <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
-                                    <div class="card-body">
-                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                        <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
-                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                        <a class="btn btn-primary"href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
-                                    </div>
-                                </div>
-                            
-                    </div>
+                                <?php } ?>
+                        </div>
                     
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
-                            <div class="card-body">
-                                <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
-                                <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
-                            </div>
-                        </div>
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
-                            <div class="card-body">
-                                <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
-                                <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
-                            </div>
-                        </div>
-                    </div>
-              
-                </div>
-                <?php } ?>
 
-                <!-- Pagination-->
-                <nav aria-label="Pagination">
-                    <hr class="my-0" />
-                    <ul class="pagination justify-content-center my-4">
-                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                        <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- Side widgets-->
-            <div class="col-lg-4">
-                <!-- Search widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Search</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    <!-- Pagination-->
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                        </ul>
+                    </nav>
+                    </div>
+                    <!-- Side widgets-->
+                    <div class="col-lg-4">
+                        <!-- Search widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Search</div>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                    <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Hogwarts 2021</p>
-        </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="../assets/ASFO/js/scripts.js"></script>
-    <script src="../assets/ASFO/js/scriptaddblog.js"></script>
+            <!-- Footer-->
+            <footer class="py-5 bg-dark">
+                <div class="container">
+                    <p class="m-0 text-center text-white">Copyright &copy; Hogwarts 2021</p>
+                </div>
+            </footer>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="../assets/ASFO/js/scripts.js"></script>
+            <script src="../assets/ASFO/js/scriptaddblog.js"></script>
 </body>
 
 </html>

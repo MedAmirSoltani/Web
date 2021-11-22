@@ -3,7 +3,6 @@ require_once "../Controller/BlogC.php";
 $BlogC = new BlogC();
 if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
     echo $_POST['Idpost'];
-    //header('Location:GeneralViewBlogHome.php');
 } else {
     $test = $BlogC->GetPostbyID($_GET['Idpost']);
 }
@@ -93,9 +92,9 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1"><?php echo $test["Title"];?></h1>
+                        <h1 class="fw-bolder mb-1"><?php echo $test["Title"]; ?></h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on <?php echo $test["Date"];?></div>
+                        <div class="text-muted fst-italic mb-2">Posted on <?php echo $test["Date"]; ?></div>
                         <!-- Post categories-->
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
@@ -104,10 +103,10 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']
                     <figure class="mb-4"><img class="img-fluid rounded" src="../assets/ASFO/uploads/<?php echo $test['Picture']; ?>" height="350" width="800" alt="..." /></figure>
                     <!-- Post content-->
                     <section class="mb-5">
-                        
-                        <h2 class="fw-bolder mb-4 mt-5"><?php echo $test['Description'];?></h2>
-                        <p class="fs-5 mb-4"><?php echo $test['Description'];?></p>
-                        <p class="fs-5 mb-4"><?php echo $test['Description'];?></p>
+
+                        <h2 class="fw-bolder mb-4 mt-5"><?php echo $test['Description']; ?></h2>
+                        <p class="fs-5 mb-4"><?php echo $test['Description']; ?></p>
+                        <p class="fs-5 mb-4"><?php echo $test['Description']; ?></p>
                     </section>
                 </article>
                 <!-- Comments section-->
