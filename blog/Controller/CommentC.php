@@ -42,7 +42,7 @@ class CommentC
 
         $config = config::getConnexion();
         try {
-            // $this->uploadFile();
+
             $querry = $config->prepare('
             INSERT INTO comment 
             (Idpost,Comment_text,Idcomment,Date_Comment)

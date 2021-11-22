@@ -113,16 +113,17 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <td><input type="date" name="Date" id="Date" class="text-input" readonly></td>
                             </Tr>
                         </div>
-                        
-                            <div class="form-group">
+
+                        <div class="form-group">
                             <tr>
                                 <td>
-                                <label for="Description">Description:</label></td>
-                                <tr></tr>
-                              <td>  <textarea class="form-control" rows="5" id="Description" name="Description"></textarea></td>
-                                </tr>
-                            </div>
-                        
+                                    <label for="Description">Description:</label>
+                                </td>
+                            <tr></tr>
+                            <td> <textarea class="form-control" rows="5" id="Description" name="Description"></textarea></td>
+                            </tr>
+                        </div>
+
 
 
                         <div>

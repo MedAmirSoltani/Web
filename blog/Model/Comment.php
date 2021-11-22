@@ -12,13 +12,12 @@ class Comment
 
 
 
-  function __construct($idpo, $comment_text, $idcomment, $date_Comment, $description)
+  function __construct($idpo, $comment_text, $idcomment, $date_Comment)
   {
     $this->Idpost = $idpo;
     $this->Comment_text = $comment_text;
     $this->Idcomment = $idcomment;
     $this->Date_Comment = $date_Comment;
-    $this->Description = $description;
   }
 
   function setIdpost(string $Idpost)

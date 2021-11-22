@@ -2,21 +2,16 @@
 require_once "../Controller/BlogC.php";
 require_once "../Model/Blog.php";
 $BlogC = new BlogC();
-if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date']) && isset($_POST['Description'])) {
+if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
     echo $_POST['Idpost'];
     $blog = new post(
         $_POST['Idpost'],
         $_POST['Title'],
-        $_FILES["Picture"]["name"],
+        $_POST['Picture'],
         $_POST['Date'],
         $_POST['Description']
     );
     $BlogC->UpdateBlog($blog);
-    $target_dir = "../assets/ASFO/uploads/";
-    $target_file = $target_dir . basename($_FILES["Picture"]["name"]);
-    if (move_uploaded_file($_FILES["Picture"]["tmp_name"], $target_file)) {
-        echo "KHIDMET YA RJEL";
-    }
     header('Location:GeneralViewBlogHome.php');
 } else {
     $a = $BlogC->GetPostbyID($_GET['Idpost']);
@@ -77,7 +72,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST">
                     <table align="center">
                         <div>
                             <tr>
