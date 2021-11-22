@@ -32,7 +32,8 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
+    <script src="../assets/ASFO/js/AddBlog.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -77,7 +78,7 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
                     <table align="center">
                         <div>
                             <tr>
@@ -97,21 +98,21 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"
                             <tr>
                                 <td> <label>Image</label></td>
                             <tr></tr>
-                            <td><input type="file" name="Picture" class="text-input" value="../assets/ASFO/uploads/<?php echo $a['Picture'] ?>"></td>
+                            <td><input type="file" name="Picture" id="Picture" class="text-input" value="../assets/ASFO/uploads/<?php echo $a['Picture'] ?>"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" class="text-input" value="<?php echo $a['Date']; ?>"></td>
+                            <td><input type="date" name="Date" id="Date" readonly class="text-input" value="<?php echo $a['Date']; ?>"></td>
                             </Tr>
                         </div>
                         <div>
                             <tr>
                                 <td><label>Description</label></td>
                             <tr></tr>
-                            <td><textarea name="Description" id="body" ><?php echo $a['Description']; ?></textarea></td>
+                            <td><textarea name="Description" id="body"><?php echo $a['Description']; ?></textarea></td>
                             </tr>
                         </div>
 
