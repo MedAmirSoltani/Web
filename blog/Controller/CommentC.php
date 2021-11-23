@@ -37,7 +37,7 @@ class CommentC
         }
     }
 
-    function AddComment($Comment)
+    function AddComment($Comment,$idp)
     {
 
         $config = config::getConnexion();

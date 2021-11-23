@@ -1,7 +1,6 @@
 <?php
 class post
 {
-  public $Idpost;
   private $Title;
   private $Picture;
   private $Date;
@@ -12,8 +11,8 @@ class post
 
 
 
-function __construct($idpo,$title, $picture,$date, $description){
-    $this->Idpost=$idpo;
+function __construct($title, $picture,$date, $description){
+    
     $this->Title=$title;
     $this->Picture=$picture;
     $this->Date=$date;
@@ -23,9 +22,7 @@ function __construct($idpo,$title, $picture,$date, $description){
     
 }
 
-function setIdpost(string $Idpost){
-  $this->Idpost=$Idpost;
-}
+
     function setDate(string $Date){
   $this->Date=$Date;
 }
@@ -40,9 +37,7 @@ function setIdpost(string $Idpost){
 }
    
 
-    function getIdpost(){
-  return $this->Idpost;
-}
+  
     function getDate(){
   return $this->Date;
 }

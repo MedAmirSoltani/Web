@@ -2,16 +2,15 @@
 require_once "../Controller/BlogC.php";
 require_once "../Model/Blog.php";
 $BlogC = new BlogC();
-if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date']) && isset($_POST['Description'])) {
-    echo $_POST['Idpost'];
+$idp=$_GET['Idpost'];
+if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date']) && isset($_POST['Description'])) {
     $blog = new post(
-        $_POST['Idpost'],
         $_POST['Title'],
         $_FILES["Picture"]["name"],
         $_POST['Date'],
         $_POST['Description']
     );
-    $BlogC->UpdateBlog($blog);
+    $BlogC->UpdateBlog($blog,$idp);
     $target_dir = "../assets/ASFO/uploads/";
     $target_file = $target_dir . basename($_FILES["Picture"]["name"]);
     if (move_uploaded_file($_FILES["Picture"]["tmp_name"], $target_file)) {
@@ -19,7 +18,8 @@ if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_FILES["Picture"
     }
     header('Location:GeneralViewBlogHome.php');
 } else {
-    $a = $BlogC->GetPostbyID($_GET['Idpost']);
+    $a = $BlogC->GetPostbyID($idp);
+    echo $idp;
 }
 
 ?>
