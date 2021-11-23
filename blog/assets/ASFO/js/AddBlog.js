@@ -81,7 +81,7 @@ function CheckDescription()
 
 function CheckAddBlog() {
 
-    NowDate();
+    
     if (CheckTitle() === false) { return CheckTitle(); }
     else if(CheckPicture()===false) {return CheckPicture();}
     else if(CheckDescription()===false){return CheckDescription();}

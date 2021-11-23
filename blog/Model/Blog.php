@@ -1,7 +1,7 @@
 <?php
 class post
 {
-  private $Idpost;
+  public $Idpost;
   private $Title;
   private $Picture;
   private $Date;

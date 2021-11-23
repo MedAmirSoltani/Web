@@ -28,7 +28,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
 
 <!-------------------------------------------------HTML CODE TO view add post ----------------------------------->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
@@ -54,7 +54,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
     <title>Admin Section - Add Post</title>
 </head>
 
-<body>
+<body onload="NowDate()">
 
 
     <!-- Admin Page Wrapper -->
@@ -79,11 +79,11 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                 </div> -->
 
 
-            <div class="content">
+            <div class="content" > 
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
+                <form action="" method="POST" enctype="multipart/form-data"  onsubmit="return CheckAddBlog();">
                     <table align="center">
                         <!-- <div>
                             <tr>
@@ -133,7 +133,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button  type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
