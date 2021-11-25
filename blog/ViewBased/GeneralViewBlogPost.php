@@ -2,24 +2,26 @@
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Model/Comment.php";
-$idp=$_GET["Idpost"];
+
+
 $BlogC = new BlogC();
 $CommentC = new CommentC();
-if (isset($_POST['Idpost']) && isset($_POST['Title']) && isset($_POST['Picture']) && isset($_POST['Date']) && isset($_POST['Description'])) {
-    
-} else {
-    $test = $BlogC->GetPostbyID($idp);
+session_start();
+session_unset();
+if (!isset($_SESSION['e']) && isset($_GET["Idpost"])) {
+    $_SESSION['e'] = $_GET["Idpost"];
 }
-
-
-if (isset($_POST['Comment_text']) ) {
+$test = $BlogC->GetPostbyID($_SESSION['e']);
 
 
 
-    $Comment = new Comment($idp,$_POST['Comment_text'],NULL, NULL );
+echo $_POST["Comment_text"];
+
+if (isset($_POST['Comment_text'])) {
 
 
-    $CommentC->AddComment($Comment);
+    $Comment = new Comment($_SESSION['e'], $_POST['Comment_text'], NULL);
+    $CommentC->AddComment($Comment, $_SESSION['e']);
 }
 
 
@@ -52,7 +54,7 @@ if (isset($_POST['Comment_text']) ) {
         <div class="card-body">
             <!-- Comment form-->
 
-            <form action='' method="POST " class="mb-4"><textarea name="Comment_text" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea><input type="submit" value="comment"></form>
+            <form action="" method="POST" class="mb-4"><textarea name="Comment_text" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea><input type="submit" value="comment"></form>
             <!-- Comment with nested comments-->
             <div class="d-flex mb-4">
                 <!-- Single comment-->

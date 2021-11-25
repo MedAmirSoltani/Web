@@ -45,15 +45,13 @@ class CommentC
 
             $querry = $config->prepare('
             INSERT INTO comment 
-            (Idpost,Comment_text,Idcomment,Date_Comment)
+            (Idpost,Comment_text)
             VALUES
-            (:Idpost,:Comment_text,:Idcomment,:Date_Comment)
+            (:Idpost,:Comment_text)
             ');
             $querry->execute([
-                'Idpost' => $Comment->getIdpost(),
+                'Idpost' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
-                'Idcomment' => $Comment->getIdcomment(),
-                'Date_Comment' => $Comment->getDate_Comment(),
 
 
 
@@ -63,20 +61,20 @@ class CommentC
             $th->getMessage();
         }
     }
-    function UpdateComment($Comment)
+    function UpdateComment($Comment,$idc)
     {
         $config = config::getConnexion();
         try {
             $querry = $config->prepare('
             UPDATE comment SET
-            Title=:Title, Comment_text=:Comment_text,Idcomment=:Idcomment, Date_Comment=:Date_Comment
+            Comment_text=:Comment_text,Date_Comment=:Date_Comment
 
             where Idcomment=:Idcomment
             ');
             $querry->execute([
                 'Idpost' => $Comment->getIdpost(),
+                'IdComment' => $idc,
                 'Comment_text' => $Comment->getComment_text(),
-                'Idcomment' => $Comment->getIdcomment(),
                 'Date_Comment' => $Comment->getDate_Comment(),
 
             ]);
