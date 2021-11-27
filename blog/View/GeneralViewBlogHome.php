@@ -97,7 +97,7 @@ $Blogs = $BlogC->ShowBlogHome();
                         ?>
                             <div class="card mb-4">
 
-                                <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="700" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="500" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted"><?php echo $blog['Date']; ?></div>
                                     <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>

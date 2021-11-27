@@ -110,7 +110,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" id="Date" class="text-input" ></td>
+                            <td><input type="date" name="Date" id="Date" class="text-input" HIDDEN ></td>
                             </Tr>
                         </div>
 
