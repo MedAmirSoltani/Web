@@ -3,12 +3,25 @@ require_once "../assets/ASFO/utilis/Config.php";
 require_once '../Model/Comment.php';
 class CommentC
 {
-
+ 
+    function ShowComments()
+    {
+        $requete = "select * from comment order by Idpost DESC";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 
 
     function ShowComment($idp)
     {
-        $requete = "select * from comment Where Idpost=:idp";
+        $requete = "select * from comment Where Idpost=:idp order by Idcomment DESC";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);

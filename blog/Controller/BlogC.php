@@ -8,7 +8,7 @@ class BlogC
 
     function ShowBlogHome()
     {
-        $requete = "select * from post";
+        $requete = "select * from post order by IdPost desc";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
