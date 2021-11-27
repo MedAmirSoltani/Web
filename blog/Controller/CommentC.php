@@ -37,7 +37,7 @@ class CommentC
         }
     }
 
-    function AddComment($Comment,$idp)
+    function AddComment($Comment, $idp)
     {
 
         $config = config::getConnexion();
@@ -45,13 +45,14 @@ class CommentC
 
             $querry = $config->prepare('
             INSERT INTO comment 
-            (Idpost,Comment_text)
+            (Idpost,Comment_text,Date_Comment)
             VALUES
-            (:Idpost,:Comment_text)
+            (:Idpost,:Comment_text,:Date_Comment)
             ');
             $querry->execute([
                 'Idpost' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
+                'Date_Comment' => $Comment->getDate_Comment(),
 
 
 
@@ -61,7 +62,7 @@ class CommentC
             $th->getMessage();
         }
     }
-    function UpdateComment($Comment,$idc)
+    function UpdateComment($Comment, $idc)
     {
         $config = config::getConnexion();
         try {

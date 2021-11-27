@@ -13,10 +13,10 @@ if (!isset($_SESSION['e']) && isset($_GET["Idpost"])) {
 }
 $test = $BlogC->GetPostbyID($_SESSION['e']);
 
-if (isset($_POST['Comment_text'])) {
+if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment']) ) {
 
 
-    $Comment = new Comment($_SESSION['e'], $_POST['Comment_text'], NULL);
+    $Comment = new Comment($_SESSION['e'], $_POST['Comment_text'],$_POST['Date_Comment'] );
     $CommentC->AddComment($Comment, $_SESSION['e']);
 }
 $comments = $CommentC->ShowComment($_SESSION['e']);
@@ -67,9 +67,10 @@ $comments = $CommentC->ShowComment($_SESSION['e']);
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../assets/ASFO/css/stylesblogpost.css" rel="stylesheet" />
+    <script src="../assets/ASFO/js/AddComment.js"></script>
 </head>
 
-<body>
+<body onload="NowDate()">
     <!-- Responsive navbar-->
     <nav class="navbar navbar-inverse navbar-toggleable-md">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +131,7 @@ $comments = $CommentC->ShowComment($_SESSION['e']);
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4">
                                 <textarea name="Comment_text" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-                                <input type="date" name="Date" id="Date" class="text-input" HIDDEN>
+                                <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
                                 <input type="submit" value="comment">
                             </form>
                             <!-- Single comment-->

@@ -4,11 +4,11 @@ require_once "../Model/Blog.php";
 
 $BlogC = new BlogC();
 
-if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date']) && isset($_POST['Description'])) {
+if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date']) && isset($_POST['Description'])) {
 
 
 
-    $Blog = new post(null, $_POST['Title'], $_FILES["Picture"]["name"], $_POST['Date'], $_POST['Description']);
+    $Blog = new post($_POST['Title'], $_FILES["Picture"]["name"], $_POST['Date'], $_POST['Description']);
 
 
     $BlogC->AddBlog($Blog);
@@ -28,7 +28,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
 
 <!-------------------------------------------------HTML CODE TO view add post ----------------------------------->
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -79,11 +79,11 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                 </div> -->
 
 
-            <div class="content" > 
+            <div class="content">
 
                 <h2 class="page-title">Manage Posts</h2>
 
-                <form action="" method="POST" enctype="multipart/form-data"  onsubmit="return CheckAddBlog();">
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
                     <table align="center">
                         <!-- <div>
                             <tr>
@@ -110,7 +110,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                             <tr>
                                 <td> <label>Date</label></td>
                             <tr></tr>
-                            <td><input type="date" name="Date" id="Date" class="text-input" HIDDEN ></td>
+                            <td><input type="date" name="Date" id="Date" class="text-input" readonly></td>
                             </Tr>
                         </div>
 
@@ -133,7 +133,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
                         <div>
                             <tr>
 
-                                <td><button  type="submit" class="btn btn-big">Add Post</button></td>
+                                <td><button type="submit" class="btn btn-big">Add Post</button></td>
                             </tr>
                         </div>
                 </form>
@@ -153,7 +153,7 @@ if (/*isset($_POST['Idpost']) &&*/isset($_POST['Title']) && isset($_FILES["Pictu
     <!-- Ckeditor -->
     <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
     <!-- Custom Script -->
-    <script src="../assets/js//scriptaddblog.js"></script>
+    <script src="../assets/ASFO/js/scriptaddblog.js"></script>
 
 </body>
 
