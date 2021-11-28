@@ -12,14 +12,18 @@ if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
     $_SESSION['idp'] = $_GET["Idpost"];
 }
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
+$_SESSION["idc"] = $_GET["Idcomment"];
+echo $idc;
 
-if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment']) ) {
+if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
-    $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'],$_POST['Date_Comment'] );
-    $CommentC->AddComment($Comment, $_SESSION['idp']);
+    $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
+    $CommentC->UpdateComment($Comment,$idc);
+} else {
+    $a = $CommentC->GetCommentbyID($_SESSION['idc']);
 }
-$comments = $CommentC->ShowComment($_SESSION['idp']);
+$comments = $CommentC->ShowComment($_SESSION['idc']);
 
 
 
@@ -130,7 +134,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                         <div class="card-body">
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
-                                <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                                <textarea name="Comment_text" id="Comment" class="form-control" rows="3"  placeholder="Join the discussion and leave a comment!"><?php echo $a["Comment_text"];?></textarea>
                                 <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
                                 <input type="submit" value="comment">
                             </form>

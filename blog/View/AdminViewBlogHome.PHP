@@ -156,7 +156,7 @@ $comments = $CommentC->ShowComments();
                 </div>
             </div>
             <div class="content-body">
-                <!-- Table head options start -->
+                <!-- Table BLOG POST -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -210,8 +210,8 @@ $comments = $CommentC->ShowComments();
                         </div>
                     </div>
                 </div>
-                <!-- Table head options end -->
-                <!-- Table head options start -->
+                <!-- Table BLOG POST END -->
+                <!-- Table BLOG COMMENT start -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -247,7 +247,7 @@ $comments = $CommentC->ShowComments();
                                                     <td><?php echo $comment['Date_Comment']; ?></td>
 
                                                     <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $comment['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
