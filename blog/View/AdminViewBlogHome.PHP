@@ -1,11 +1,14 @@
 <?php
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
+require_once "../Controller/ReplyC.php";
 
 $BlogC = new BlogC();
 $CommentC = new CommentC();
+$ReplyC = new ReplyC();
 $Blogs = $BlogC->ShowBlogHome();
 $comments = $CommentC->ShowComments();
+$replys = $ReplyC->ShowReplys();
 
 
 ?>
@@ -249,6 +252,60 @@ $comments = $CommentC->ShowComments();
                                                     <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
                                                     <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a></td>
+
+
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table head options end -->
+                <!-- Table BLOG COMMENT start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-dark">
+
+                                            <tr>
+
+                                                <th scope="col">Idreply</th>
+                                                <th scope="col">IdComment</th>
+                                                <th scope="col">Reply</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">View</th>
+                                                <th scope="col">Modify</th>
+                                                <th scope="col">DELETE</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($replys as $reply) {
+                                            ?>
+                                                <tr>
+
+
+                                                    <td><?php echo $reply['Idreply']; ?></td>
+                                                    <td><?php echo $reply['idcomment']; ?></td>
+                                                    <td><?php echo $reply['Reply_text']; ?></td>
+                                                    <td><?php echo $reply['Date_reply']; ?></td>
+
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>

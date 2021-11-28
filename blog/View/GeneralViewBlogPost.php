@@ -163,7 +163,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                                     <?php echo  $reply["Reply_text"] ?>
                                                 </div>
                                             </div>
-                                        <?php }?>
+                                        <?php } ?>
                                         <!-- Child comment 2-->
 
                                         <div class="d-flex mt-4">
