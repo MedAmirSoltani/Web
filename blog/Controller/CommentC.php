@@ -86,10 +86,11 @@ class CommentC
             where Idcomment=:Idcomment
             ');
             $querry->execute([
-                'Idpost' => $Comment->getIdpost(),
-                'IdComment' => $idc,
+
+                'Idcomment' => $idc,
                 'Comment_text' => $Comment->getComment_text(),
                 'Date_Comment' => $Comment->getDate_Comment(),
+
 
             ]);
         } catch (PDOException $th) {

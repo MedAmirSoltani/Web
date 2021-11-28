@@ -13,17 +13,18 @@ if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
 }
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
 $_SESSION["idc"] = $_GET["Idcomment"];
-echo $idc;
+
 
 if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
     $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
-    $CommentC->UpdateComment($Comment,$idc);
+    $CommentC->UpdateComment($Comment, $_SESSION['idc']);
 } else {
     $a = $CommentC->GetCommentbyID($_SESSION['idc']);
 }
 $comments = $CommentC->ShowComment($_SESSION['idc']);
+
 
 
 
@@ -134,9 +135,9 @@ $comments = $CommentC->ShowComment($_SESSION['idc']);
                         <div class="card-body">
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
-                                <textarea name="Comment_text" id="Comment" class="form-control" rows="3"  placeholder="Join the discussion and leave a comment!"><?php echo $a["Comment_text"];?></textarea>
-                                <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
-                                <input type="submit" value="comment">
+                                <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"><?php echo $a["Comment_text"]; ?></textarea>
+                                <input type="date" name="Date_Comment" id="Date" class="text-input" >
+                                <input type="submit" value="comment" href="GeneralViewBlogPost.php?Idpost=<?php echo $test['Idpost']; ?>">
                             </form>
                             <!-- Single comment-->
                             <?php foreach ($comments as $comment) { ?>
