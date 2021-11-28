@@ -16,6 +16,7 @@ if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
 }
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
 
+
 if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 

@@ -22,7 +22,7 @@ class ReplyC
 
     function ShowReply($idc)
     {
-        $requete = "select * from reply Where Idcomment=:idc order by Idreply DESC";
+        $requete = "select * from reply Where Idcomment=:idc order by Idreply ASC";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
