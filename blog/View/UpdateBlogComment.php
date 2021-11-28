@@ -136,7 +136,7 @@ $comments = $CommentC->ShowComment($_SESSION['idc']);
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"><?php echo $a["Comment_text"]; ?></textarea>
-                                <input type="date" name="Date_Comment" id="Date" class="text-input" >
+                                <input type="date" name="Date_Comment" id="Date" class="text-input" HIDDEN>
                                 <input type="submit" value="comment" href="GeneralViewBlogPost.php?Idpost=<?php echo $test['Idpost']; ?>">
                             </form>
                             <!-- Single comment-->
