@@ -1,11 +1,14 @@
 <?php
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
+require_once "../Controller/ReplyC.php";
 require_once "../Model/Comment.php";
+require_once "../Model/Reply.php";
 
 
 $BlogC = new BlogC();
 $CommentC = new CommentC();
+$ReplyC = new ReplyC();
 session_start();
 session_unset();
 if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
@@ -13,13 +16,20 @@ if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
 }
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
 
-if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment']) ) {
+if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
-    $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'],$_POST['Date_Comment'] );
+    $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
     $CommentC->AddComment($Comment, $_SESSION['idp']);
 }
+if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
+
+
+    $Reply = new Reply($_POST["Idcomment"], $_POST['Reply_text'], $_POST['Date_reply']);
+    $ReplyC->AddReply($Reply);
+}
 $comments = $CommentC->ShowComment($_SESSION['idp']);
+
 
 
 
@@ -133,23 +143,53 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
                                 <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
                                 <input type="submit" value="comment">
+
                             </form>
-                            <!-- Single comment-->
-                            <?php foreach ($comments as $comment) { ?>
-                                <br>
-                                <div class="d-flex">
+                            <?php foreach ($comments as $comment) {
+                                $replys = $ReplyC->ShowReply($comment["Idcomment"]); ?>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
+                                        <div class="fw-bold">Adam Rafraf</div>
                                         <?php echo $comment["Comment_text"] ?>
+                                        <!-- Child comment 1-->
+                                        <?php foreach ($replys as $reply) { ?>
+                                            <div class="d-flex mt-4">
+                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                                <div class="ms-3">
+                                                    <div class="fw-bold">foulen ben foulen</div>
+                                                    <?php echo  $reply["Reply_text"] ?>
+                                                </div>
+                                            </div>
+                                        <?php }?>
+                                        <!-- Child comment 2-->
 
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">foulena bent foulen</div>
+
+
+
+                                                <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
+                                                    <textarea name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"></textarea>
+                                                    <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
+                                                    <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
+                                                    <input type="submit" value="reply">
+
+
+                                                </form>
+
+
+
+                                            </div>
+                                        </div>
 
                                     </div>
-
                                 </div>
                             <?php } ?>
-                        </div>
-                    </div>
                 </section>
 
             </div>

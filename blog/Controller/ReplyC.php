@@ -51,7 +51,7 @@ class ReplyC
         }
     }
 
-    function AddReply($Reply, $idc)
+    function AddReply($Reply)
     {
 
         $config = config::getConnexion();
@@ -64,7 +64,7 @@ class ReplyC
             (:Idcomment,:Reply_text,:Date_Reply)
             ');
             $querry->execute([
-                'Idcomment' => $idc,
+                'Idcomment' => $Reply->getIdcomment(),
                 'Reply_text' => $Reply->getReply_text(),
                 'Date_Reply' => $Reply->getDate_Reply(),
 
