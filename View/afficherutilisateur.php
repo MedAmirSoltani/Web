@@ -395,7 +395,7 @@ if (isset($_POST['search'])) {
 
 
                         <tr>
-                          <td><img width=200 src="uploads/<?php echo $prof['profilpicture']; ?>"></td>
+                          <td><img width=200 src="uploads/<?php echo $lists['profilpicture']; ?>"></td>
                           <td><?php echo $lists['ID_utilisateur']; ?></td>
                           <td><?php echo $lists['email']; ?></td>
                           <td><?php echo $lists['password']; ?></td>
