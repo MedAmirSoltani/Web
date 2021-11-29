@@ -34,12 +34,11 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--script il date -->
-    <script src="../assets/ASFO/js/AddBlog.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -51,7 +50,8 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
     <!-- Admin Styling -->
     <link rel="stylesheet" href="../assets/css/admin.css">
-    
+    <script src="../assets/ASFO/js/AddBlog.js"></script>
+
 
     <title>Admin Section - Add Post</title>
 </head>
@@ -98,10 +98,10 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
                             <tr>
                                 <td><label>Title</label></td>
                             <tr></tr>
-                            <td><input type="text" name="Title" id="Title" class="text-input"></td>
-                            </tr>
+                            <td><input onchange="CheckTitle()" type="text" name="Title" id="Title" class="text-input"></td>
+                            <td><<div class="alert alert-warning alert-dismissible d-flex align-items-center fade show"><i class="bi-exclamation-triangle-fill"></i><strong class="mx-2">Warning!</strong> There was a problem with your network connection.<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div></td>
                         </div>
-                        <div id="wrtitle"></div>
+                        
                         <div>
                             <tr>
                                 <td> <label>Image</label></td>
@@ -157,6 +157,7 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
     <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
     <!-- Custom Script -->
     <script src="../assets/ASFO/js/scriptaddblog.js"></script>
+
 
 </body>
 
