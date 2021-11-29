@@ -12,12 +12,12 @@
     if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_POST['classe'] ) )
     {
       $picture= $_FILES["profilpicture"]["name"];
-     /* $fileExt=explode('.',$picture);
+      $fileExt=explode('.',$picture);
       $profilpicturename=uniqid('',true)."." . strtolower(end($fileExt));
       $destination='uploads/' . $profilpicturename;
       $orig_file=$FILES["profilpicture"]["tmpname"];
      move_uploaded_file($orig_file,$destination);
-      */
+      
       $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $picture);
       $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $picture, $_POST['classe'] );
       
