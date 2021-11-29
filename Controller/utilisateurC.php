@@ -32,7 +32,19 @@
     return $message;    
         }
 
-
+public function afficherbyname($namerecherche)
+{
+    try {
+            $pdo = getConnexion();
+           
+                $querry = $pdo->prepare('select name from utilisateur where name like "%'.$namerecherche.'%"');
+                $querry->execute();
+                $result = $querry->fetchAll();
+                return $result ;
+            } catch (PDOException $th) {
+                 $th->getMessage();
+            }
+}
 
 
         function phpAlert($msg) {
@@ -95,7 +107,7 @@
 
         function afficherutilisateur()
         {
-            $requete = "select * from utilisateur";
+            $requete = "select * from utilisateur ";
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare($requete);

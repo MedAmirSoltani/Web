@@ -1,12 +1,15 @@
 <?php
     require '../Controller/utilisateurC.php';
-
     $utilisateurC = new utilisateurC();
     $utilisateur = $utilisateurC->afficherutilisateur();
     $etudiantC = new etudiantC();
     $etudiant = $etudiantC->afficheretudiant();
     $profC = new profC();
     $prof = $profC->afficherprof();
+    if(isset($_POST['search']))
+    {
+      $list=$utilisateurC->afficherbyname($_POST['name']);
+    }
 ?>
 <html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -317,6 +320,74 @@
   </tr>
         <?php 
                 foreach ($prof as $prof) {
+        ?>
+
+
+  <tr>
+  <td><img width=200 src="uploads/<?php echo $prof['profilpicture'] ;?>"></td>
+    <td><?php echo $prof['ID_prof'] ; ?></td>
+    <td><?php echo $prof['email'] ; ?></td>
+    <td><?php echo $prof['password'] ; ?></td>
+    <td><?php echo $prof['name'] ; ?></td>
+    <td><?php echo $prof['first_name'] ; ?></td>
+    <td><?php echo $prof['date_of_birth'] ; ?></td>
+    <td><?php echo $prof['role'] ; ?></td>
+   
+    <td><?php echo $prof['specialite'] ; ?></td>
+
+    <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur'] ; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+    <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur'] ; ?>">modifier</a></td>
+  </tr>
+
+
+        <?php
+                }
+        ?>
+</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<input type="search" name="search" placeholder="chercher un utilisateur"/>
+<input type="submit" name="envoyer" /> 
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">utilisateurs</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="card-content collapse show">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table" border='2'>
+						<tr>
+            <th>profil picture</th>
+    <th>ID_prof</th>
+    <th>email</th>
+    <th>password</th>
+    <th>name</th>
+    <th>first_name</th>
+    <th>date_of_birth</th>
+    <th>role</th>
+    
+    <th>specialite</th>
+  </tr>
+        <?php 
+                foreach ($utilisateur as $utilisateur) {
         ?>
 
 
