@@ -47,7 +47,15 @@ include_once     '../Controller/utilisateurC.php';
     
    
 ?>
-
+<style>
+   .fa-color
+   {
+color:black;
+   }
+   #hide1{
+display:none;
+   }
+</style>
 <!DOCTYPE html>
 <html lang="en">
    <!-- Basic -->
@@ -165,7 +173,29 @@ include_once     '../Controller/utilisateurC.php';
                                      </div>
                                      
                                      <div class="field">
-                                        <input type="password" name="password" id="password" placeholder="Password">
+                                     <input type="password" name="password" id="password" placeholder="password"></td>
+                              <span class="eye" onclick="toggle()">
+                                 <i aria-hidden="true" id="hide1"  class="fa fa-eye fa-2x fa-color" style="position:absolute; margin:-45px 0px 0 690px;" ></i>
+                                 <i id="hide2" class="fa fa-eye-slash fa-2x fa-color" aria-hidden="true" style=" margin:-45px 0px 0 690px;"></i>
+                                 </span>
+                                <script>
+                                   function toggle(){
+                                    var x=document.getElementById("password");
+                                    var y=document.getElementById("hide1");
+                                    var z =document.getElementById("hide2");
+if(x.type==='password')
+{
+x.type="text";
+y.style.display="block";
+z.style.display="none";
+}
+else{
+   x.type="password";
+y.style.display="none";
+z.style.display="block";
+}
+                                   }
+                                </script>
                                      </div>
                                      <div id="lol"> </div>
                                      <script>

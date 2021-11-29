@@ -9,9 +9,9 @@ session_start();
     if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  )&& isset($_POST['classe']  )) 
     {
         echo $_POST['ID_utilisateur'] ;
-        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_POST['profilpicture']);
-        $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_POST['profilpicture'], $_POST['classe'] );
-         $utilisateurC->modifierutilisateur($utilisateur);
+        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"]);
+      $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"], $_POST['classe'] );
+       $utilisateurC->modifierutilisateur($utilisateur);
           $etudiantC->modifieretudiant($etudiant);
             header('Location:afficherutilisateur.php');
     }
@@ -19,9 +19,9 @@ session_start();
     {
       
         echo $_POST['ID_utilisateur'] ;
-            $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] , $_POST['profilpicture']);
+            $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] , $_FILES['profilpicture']);
             $utilisateurC->modifierutilisateur($utilisateur);
-          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_POST['profilpicture'], $_POST['specialite'] );
+          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_POST['profilpicture'], $_FILES['specialite'] );
             $profC->modifierprof($prof);
             header('Location:afficherutilisateur.php');
     }
@@ -204,9 +204,8 @@ session_start();
                         </label>
                     </td>
                     <td>
-                   <input type="text" name=" profilpicture" value="<?php echo $a['profilpicture'];?>" hidden> 
                    <img onclick="pictureclick()" id="profildisplay" width=200  src="uploads/<?php echo $a['profilpicture'];?>">
-                    <input type="file" accept="image/*"  onchange="displayImage(this)" id="profilpicture" style="width:50%;float:left;margin:0 10px 0 -200px; display:none; "  >
+                    <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:50%;float:left;margin:0 10px 0 -200px; display:none; "  >
                   
                    </td></tr>        
 				<tr>

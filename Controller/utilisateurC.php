@@ -8,7 +8,6 @@ class utilisateurC
 {
     function connexionUser($email, $password)
     {
-        //$sql="SELECT * FROM utilisateur WHERE (email='" . $email . "' AND password='" . $password"')";
         $sql = 'select * from utilisateur where email=:Email and password=:Password';
         $db = config::getConnexion();
         try {

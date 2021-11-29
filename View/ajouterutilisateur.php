@@ -9,7 +9,7 @@
     $etudiantC = new etudiantC();
     $profC = new profC();
 
-    if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_POST['classe'] )  && isset($_FILES["profilpicture"]))
+    if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] )  && isset($_FILES["profilpicture"]) && isset($_POST['classe'] )  )
     {
       
  
@@ -19,28 +19,28 @@
       
       $utilisateurC->ajouterutilisateur($utilisateur);
       $etudiantC->ajouteretudiant($etudiant);
+      
       $target_dir = "uploads/";
       $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
       if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
           echo "KHIDMET YA RJEL";
       }
-  
-
-      
-
-
       header('Location:afficherutilisateur.php');
     }
     
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_POST['specialite'] )) 
+    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_FILES["profilpicture"]) &&  isset($_POST['specialite'] )) 
     {
-      $picture= $_FILES["profilpicture"]["name"];
-      $utilisateur1 = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $picture );
+      $utilisateur1 = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"]);
       $utilisateur1C = new utilisateurC();
       $utilisateur1C->ajouterutilisateur($utilisateur1);
-      $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $picture, $_POST['specialite'] );
+      $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['specialite'] );
      
       $profC->ajouterprof($prof);
+      $target_dir = "uploads/";
+      $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
+      if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
+          echo "KHIDMET YA RJEL";
+      }
       header('Location:afficherutilisateur.php');
     }
   

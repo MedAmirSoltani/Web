@@ -6,7 +6,7 @@ $etudiantC = new etudiantC();
 $etudiant = $etudiantC->afficheretudiant();
 $profC = new profC();
 $prof = $profC->afficherprof();
-if (isset($_POST['search'])) {
+if (isset($_POST['search']) ) {
   $list = $utilisateurC->afficherbyname($_POST['search']);
 }
 ?>
@@ -335,7 +335,6 @@ if (isset($_POST['search'])) {
                           <td><?php echo $prof['first_name']; ?></td>
                           <td><?php echo $prof['date_of_birth']; ?></td>
                           <td><?php echo $prof['role']; ?></td>
-
                           <td><?php echo $prof['specialite']; ?></td>
 
                           <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
@@ -359,6 +358,8 @@ if (isset($_POST['search'])) {
           <input type="submit" name="envoyer" />
         </form>
 
+
+        
         <div class="row">
           <div class="col-12">
             <div class="card">

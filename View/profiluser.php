@@ -143,8 +143,8 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                                                    }
                                                 
                                                  ?>
-                                                 <img onclick="pictureclick()"  id="profildisplay" style="width:58%; height:370px; float:left;margin:0 10px 0 -200px; border-radius:50%; display:block;" src="uploads/<?php echo $x['profilpicture'] ?>"> 
-                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:0%;float:left;margin:0 10px 0 -200px; display:none; "  >
+                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:58%; height:370px; float:left;margin:0 10px 0 -200px; border-radius:50%; display:block;" src="uploads/<?php echo $x['profilpicture'] ?>"> 
+                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:0%;float:left;margin:0 10px 0 -200px; display:none; "   />
                                                  <br>
                                                  <span class="left"  style="float:left;margin:400px 10px 0 -260px; "> <p style="color:#dc1a20;font-size: 35px;" ><?php echo $x['name']?></p></span> 
                                                  <button style= "background:#dc1a20; margin:500px 580px 0 -320px;" name="update">update profile</button>
