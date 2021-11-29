@@ -1,7 +1,9 @@
 <?php
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
+require_once "../Controller/ReplyC.php";
 require_once "../Model/Comment.php";
+require_once "../Model/Reply.php";
 
 
 $BlogC = new BlogC();
@@ -23,7 +25,7 @@ if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 } else {
     $a = $CommentC->GetCommentbyID($_SESSION['idc']);
 }
-$comments = $CommentC->ShowComment($_SESSION['idc']);
+$comments = $CommentC->ShowComment($_SESSION['idp']);
 
 
 
@@ -136,23 +138,10 @@ $comments = $CommentC->ShowComment($_SESSION['idc']);
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"><?php echo $a["Comment_text"]; ?></textarea>
-                                <input type="date" name="Date_Comment" id="Date" class="text-input" HIDDEN>
-                                <input type="submit" value="comment" href="GeneralViewBlogPost.php?Idpost=<?php echo $test['Idpost']; ?>">
+                                <input type="date" name="Date_Comment" id="Date" class="text-input" HIDDEN />
+                                <input type="submit" value="comment" class="btn btn-dark btn-min-width mr-1" />
                             </form>
-                            <!-- Single comment-->
-                            <?php foreach ($comments as $comment) { ?>
-                                <br>
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        <?php echo $comment["Comment_text"] ?>
 
-
-                                    </div>
-
-                                </div>
-                            <?php } ?>
                         </div>
                     </div>
                 </section>

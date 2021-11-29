@@ -79,6 +79,21 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../assets/ASFO/css/stylesblogpost.css" rel="stylesheet" />
     <script src="../assets/ASFO/js/AddComment.js"></script>
+    <!--------Backendoffice add ------------------------------->
+    <link rel="apple-touch-icon" href="../assets/ASBO/theme-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/ASBO/theme-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/vendors.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN CHAMELEON  CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/app-lite.css">
+    <!-- END CHAMELEON  CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/colors/palette-gradient.css">
+    <!---------------------END BACKOFFICE ------------------------------------>
 </head>
 
 <body onload="NowDate()">
@@ -143,7 +158,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                             <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
                                 <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
-                                <input type="submit" value="comment">
+                                <input type="submit" value="Comment" class="btn btn-info btn-min-width mr-1 mb-1">
 
                             </form>
                             <?php foreach ($comments as $comment) {
@@ -155,6 +170,9 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                     <div class="ms-3">
                                         <div class="fw-bold">Adam Rafraf</div>
                                         <?php echo $comment["Comment_text"] ?>
+                                        <br>
+                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
+                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
                                         <!-- Child comment 1-->
                                         <?php foreach ($replys as $reply) { ?>
                                             <div class="d-flex mt-4">
@@ -162,6 +180,8 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                                 <div class="ms-3">
                                                     <div class="fw-bold">foulen ben foulen</div>
                                                     <?php echo  $reply["Reply_text"] ?>
+                                                    <br>
+                                                    <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -178,7 +198,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                                     <textarea name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"></textarea>
                                                     <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
                                                     <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
-                                                    <input type="submit" value="reply">
+                                                    <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
 
 
                                                 </form>

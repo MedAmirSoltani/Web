@@ -46,6 +46,21 @@ $Blogs = $BlogC->ShowBlogHome();
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../assets/ASFO/css/stylesblog.css" rel="stylesheet" />
+    <!--------Backendoffice add ------------------------------->
+    <link rel="apple-touch-icon" href="../assets/ASBO/theme-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/ASBO/theme-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/vendors.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN CHAMELEON  CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/app-lite.css">
+    <!-- END CHAMELEON  CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/colors/palette-gradient.css">
+    <!---------------------END BACKOFFICE ------------------------------------>
 
 </head>
 
@@ -103,6 +118,8 @@ $Blogs = $BlogC->ShowBlogHome();
                                     <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
                                     <p class="card-text"><?php echo $blog['Description']; ?></p>
                                     <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
+                                    <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+
 
 
                                 </div>

@@ -44,47 +44,45 @@ function CheckTitle() {
     else {
         if (allLetter(Title) === false) { alert("Title must be only LETTERS"); return false; } else {
             if (startsWithCapital(Title) === false) { alert("Title must start WITH CAPITAL LETTER"); return false; }
-            else { if (Title.length < 3) { alert("Title too short "); return false; } else if (Title.length > 15) { alert("Title Too long"); return false; } else{return true;}}
+            else { if (Title.length < 3) { alert("Title too short "); return false; } else if (Title.length > 15) { alert("Title Too long"); return false; } else { return true; } }
         }
 
     }
 }
-function CheckPicture()
-{
-    Picture=document.getElementById("Picture").files.length;
-    if (Picture===0) {
+function CheckPicture() {
+    Picture = document.getElementById("Picture").files.length;
+    if (Picture === 0) {
         alert("there is no picture");
-        return false ;
-        
+        return false;
+
     } else {
         return true;
-        
+
     }
 }
 
-function CheckDescription()
-{
-    pargh=document.getElementById("Description").value;
-    parlength=pargh.length;
-    if (parlength>50) {
+function CheckDescription() {
+    pargh = document.getElementById("Description").value;
+    parlength = pargh.length;
+    if (parlength > 50) {
         alert("Description is too long ");
         return false;
-        
-    } else if(parlength<10){
+
+    } else if (parlength < 10) {
         alert("Description too short");
         return false;
 
-        
+
     }
-    else {return true;}
+    else { return true; }
 }
 
 function CheckAddBlog() {
 
-    
+
     if (CheckTitle() === false) { return CheckTitle(); }
-    else if(CheckPicture()===false) {return CheckPicture();}
-    else if(CheckDescription()===false){return CheckDescription();}
+    else if (CheckPicture() === false) { return CheckPicture(); }
+    else if (CheckDescription() === false) { return CheckDescription(); }
 
 
 
