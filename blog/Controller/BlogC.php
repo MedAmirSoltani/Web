@@ -143,15 +143,15 @@ class BlogC
         }
     }
 
-    function GetPostArchivebyID($idp)
+    function GetPostArchivebyID($idpr)
     {
-        $requete = "select * from Archivepost where Idpost=:idp";
+        $requete = "select * from Archivepost where Idpostar=:idp";
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
             $querry->execute(
                 [
-                    'idp' => $idp
+                    'idp' => $idpr
                 ]
             );
             $result = $querry->fetch();
@@ -166,7 +166,7 @@ class BlogC
 
         $config = config::getConnexion();
         try {
-            
+
             $querry = $config->prepare('
             INSERT INTO Archivepost 
             (Title,Picture,Description,Date)
@@ -186,5 +186,22 @@ class BlogC
         } catch (PDOException $th) {
             $th->getMessage();
         }
+    }
+
+
+    function RemoveBlogArchive($idpr)
+    {
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare('
+            DELETE FROM Archivepost WHERE Idpostar =:idp
+            ');
+            $querry->execute([
+                'idp' => $idpr
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+        header("Refresh:0");
     }
 }
