@@ -115,7 +115,7 @@ class BlogC
         }
         header("Refresh:0");
     }
-
+    /*******************************************************************ARCHIVE POST FUNCTIONS *********************************************************** */
     function ShowBlogArchiveHome()
     {
         $requete = "select * from Archivepost ";

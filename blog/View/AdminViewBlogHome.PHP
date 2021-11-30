@@ -7,6 +7,7 @@ $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
 $Blogs = $BlogC->ShowBlogHome();
+$Blogsar = $BlogC->ShowBlogArchiveHome();
 $comments = $CommentC->ShowComments();
 $replys = $ReplyC->ShowReplys();
 
@@ -322,6 +323,61 @@ $replys = $ReplyC->ShowReplys();
                     </div>
                 </div>
                 <!-- Table head options end -->
+                <!-- Table BLOG POST -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-dark">
+
+                                            <tr>
+
+                                                <th scope="col">IdPost</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">View</th>
+                                                <th scope="col">Modify</th>
+                                                <th scope="col">Comments</th>
+                                                <th scope="col">DELETE</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($Blogsar as $blog) {
+                                            ?>
+                                                <tr>
+
+                                                    <td><?php echo $blog['Idpostar']; ?></td>
+                                                    <td><?php echo $blog['Title']; ?></td>
+                                                    <td><?php echo $blog['Date']; ?></td>
+                                                    <td><?php echo $blog['Description']; ?></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHomeArchive.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPostArchive.php?Idpostar=<?php echo $blog['Idpostar']; ?>">Remove<i class="ft-command"></i></a></td>
+
+
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table BLOG POST END -->
 
 
             </div>
