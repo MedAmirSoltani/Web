@@ -21,7 +21,7 @@ class BlogC
     }
     function ShowBlogHomeByTitle($search)
     {
-        $requete = 'select * from post where Title like "%'.$search.'%"';
+        $requete = 'select * from post where Title like "%' . $search . '%"';
         $config = config::getConnexion();
         try {
             $querry = $config->prepare($requete);
@@ -114,5 +114,77 @@ class BlogC
             $th->getMessage();
         }
         header("Refresh:0");
+    }
+
+    function ShowBlogArchiveHome()
+    {
+        $requete = "select * from Archivepost ";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+    function ShowBlogHomeArchiveByTitle($search)
+    {
+        $requete = 'select * from Archivepost where Title like "%' . $search . '%"';
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
+    function GetPostArchivebyID($idp)
+    {
+        $requete = "select * from Archivepost where Idpost=:idp";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'idp' => $idp
+                ]
+            );
+            $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
+    function AddBlogArchive($Blog)
+    {
+
+        $config = config::getConnexion();
+        try {
+            
+            $querry = $config->prepare('
+            INSERT INTO Archivepost 
+            (Title,Picture,Description,Date)
+            VALUES
+            (:Title,:Picture,:Description,:Date)
+            ');
+            $querry->execute([
+
+                'Title' => $Blog->getTitle(),
+                'Picture' => $Blog->getPicture(),
+                'Date' => $Blog->getDate(),
+                'Description' => $Blog->getDescription(),
+
+
+
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
     }
 }
