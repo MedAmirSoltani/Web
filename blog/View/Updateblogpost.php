@@ -26,125 +26,52 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
 <!-------------------------------------------------HTML CODE TO view add post ----------------------------------->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <script src="../assets/ASFO/js/AddBlog.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>Interactive Form</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
 
-    <!-- Custom Styling -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/ASFO/css/style.css">
 
-    <!-- Admin Styling -->
-    <link rel="stylesheet" href="../assets/css/admin.css">
 
-    <title>Admin Section - Add Post</title>
 </head>
 
 <body>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <input id="input-1" name="Title" type="text" value="<?php echo $a["Title"]?>" placeholder="Title post" required autofocus />
 
+    <label for="input-1">
+      <span class="label-text">Post Title</span>
+      <span class="nav-dot"></span>
+    </label>
 
-    <!-- Admin Page Wrapper -->
-    <div class="admin-wrapper">
+    <input id="input-2" type="file" name="Picture" required />
+    <label for="input-2">
+      <span class="label-text">Picture</span>
+      <span class="nav-dot"></span>
+    </label>
 
-        <!-- Left Sidebar -->
-        <div class="left-sidebar">
-            <ul>
-                <li><a href="#">Manage Posts</a></li>
+    <input id="input-3" type="date" name="Date" value="<?php echo $a["Date"]?>"readonly />
+    <label for="input-3">
+      <span class="label-text">Date</span>
+      <span class="nav-dot"></span>
+    </label>
 
+    <input type=text id="input-4" value="<?php echo $a["Description"]?>" name="Description"/>
+    <label for="input-4">
+      <span class="label-text">Description</span>
+      <span class="nav-dot"></span>
+    </label>
+    <button type="submit">Add Post</button>
+    <p class="tip">Press TAB</p>
+    <!--<div class="signup-button">kif kif mba3ed</div>-->
+  </form>
 
-            </ul>
-        </div>
-        <!-- // Left Sidebar -->
-
-
-        <!-- Admin Content-->
-        <div class="admin-content">
-            <!--    <div class="button-group">
-                  <a href="create.html" class="btn btn-big">Add Post</a>
-                    <a href="index.html" class="btn btn-big">Manage Posts</a>
-                </div> -->
-
-
-            <div class="content">
-
-                <h2 class="page-title">Manage Posts</h2>
-
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
-                    <table align="center">
-                        <div>
-                            <tr>
-                                <td> <label>IdPost</label></td>
-                            <tr></tr>
-                            <td><input type="text" name="Idpost" id="Idp" class="text-input" value="<?php echo $a['Idpost']; ?>" readonly></td>
-                            </tr>
-                        </div>
-                        <div>
-                            <tr>
-                                <td><label>Title</label></td>
-                            <tr></tr>
-                            <td><input type="text" name="Title" id="title" value="<?php echo $a['Title']; ?>" class="text-input"></td>
-                            </tr>
-                        </div>
-                        <div>
-                            <tr>
-                                <td> <label>Image</label></td>
-                            <tr></tr>
-                            <td><input type="file" name="Picture" id="Picture" class="text-input" value="../assets/ASFO/uploads/<?php echo $a['Picture'] ?>"></td>
-                            </Tr>
-                        </div>
-                        <div>
-                            <tr>
-                                <td> <label>Date</label></td>
-                            <tr></tr>
-                            <td><input type="date" name="Date" id="Date" readonly class="text-input" value="<?php echo $a['Date']; ?>"></td>
-                            </Tr>
-                        </div>
-                        <div>
-                            <tr>
-                                <td><label>Description</label></td>
-                            <tr></tr>
-                            <td><textarea name="Description" id="body"><?php echo $a['Description']; ?></textarea></td>
-                            </tr>
-                        </div>
-
-
-                        <div>
-
-
-                        </div>
-                        <div>
-                            <tr>
-
-                                <td><button type="submit" class="btn btn-big">Update</button></td>
-                            </tr>
-                        </div>
-                </form>
-
-            </div>
-
-        </div>
-        <!-- // Admin Content -->
-
-    </div>
-    <!-- // Page Wrapper -->
-
-
-
-    <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Ckeditor -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
-    <!-- Custom Script -->
-    <script src="../assets/js//scriptaddblog.js"></script>
+  <script src="../assets/ASFO/js/AddBlog.js"></script>
 
 </body>
 

@@ -1,9 +1,14 @@
 <?php
 require_once "../Controller/BlogC.php";
+session_start();
 
 $BlogC = new BlogC();
-$Blogs = $BlogC->ShowBlogHome();
-
+if (isset($_POST["search"])) {
+    //$_SESSION['search']=$_POST["search"];
+    $lists = $BlogC->ShowBlogHomeByTitle($_POST["search"]);
+} else {
+    $Blogs = $BlogC->ShowBlogHome();
+}
 
 ?>
 <!DOCTYPE html>
@@ -107,27 +112,47 @@ $Blogs = $BlogC->ShowBlogHome();
                     <div class="col-lg-6">
                         <!-- Blog post-->
                         <?php
-                        foreach ($Blogs as $blog) {
+                        if (isset($Blogs)) {
+                            foreach ($Blogs as $blog) {
 
                         ?>
-                            <div class="card mb-4">
+                                <div class="card mb-4">
 
-                                <a href="#!"><img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="350" weight="500" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                    <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
-                                    <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                    <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
-                                    <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+                                    <<img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="1200" alt="..." />
+                                    <div class="card-body">
+                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                        <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
+                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                        <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
+                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
 
 
+
+                                    </div>
+
+                                </div>
+                            <?php }
+                        } else {
+                            foreach ($lists as $list) {
+                            ?>
+                                <div class="card mb-4">
+
+                                    <<img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $list['Picture'] ?>" height="500" width="1200" alt="..." />
+                                    <div class="card-body">
+                                        <div class="small text-muted"><?php echo $list['Date']; ?></div>
+                                        <h2 class="card-title h4"><?php echo $list['Title'] ?></h2>
+                                        <p class="card-text"><?php echo $list['Description']; ?></p>
+                                        <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $list['Idpost']; ?>" target="_blank">Read more →</a>
+                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $list['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+
+
+
+                                    </div>
 
                                 </div>
 
-                            </div>
-                        <?php } ?>
-
-
+                        <?php }
+                        } ?>
 
                         <!-- Pagination-->
                         <nav aria-label="Pagination">
@@ -146,15 +171,19 @@ $Blogs = $BlogC->ShowBlogHome();
                     <!-- Side widgets-->
                     <div class="col-lg-4">
                         <!-- Search widget-->
-                        <div class="card mb-4">
-                            <div class="card-header">Search</div>
-                            <div class="card-body">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                    <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                        <form action="" method="POST">
+                            <div class="card mb-4">
+                                <div class="card-header">Search</div>
+                                <div class="card-body">
+                                    <div class="input-group">
+
+                                        <input class="form-control" name="search" type="text" placeholder="Enter Title..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                        <input type="submit" class="btn btn-primary" id="button-search" Value="Search" />
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

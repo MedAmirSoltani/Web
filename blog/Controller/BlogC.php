@@ -19,6 +19,20 @@ class BlogC
             $th->getMessage();
         }
     }
+    function ShowBlogHomeByTitle($search)
+    {
+        $requete = 'select * from post where Title like "%'.$search.'%"';
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
     function GetPostbyID($idp)
     {
         $requete = "select * from post where Idpost=:idp";
@@ -102,4 +116,3 @@ class BlogC
         header("Refresh:0");
     }
 }
-?>

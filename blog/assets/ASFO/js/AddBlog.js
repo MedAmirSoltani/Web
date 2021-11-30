@@ -33,9 +33,9 @@ function NowDate() {
 
 function CheckTitle() {
     var Title = document.getElementById("Title").value;
-    var warn = document.getElementById("wrtitle");
+
     if (Title === "") {
-        warn.innerHTML = '<div class="alert alert-warning alert-dismissible d-flex align-items-center fade show"><i class="bi-exclamation-triangle-fill"></i><strong class="mx-2">Warning!</strong> There was a problem with your network connection.<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
+        alert("Empty Title");
 
         return false;
 
@@ -79,10 +79,11 @@ function CheckDescription() {
 
 function CheckAddBlog() {
 
+    console.log("FUNCTION KHIDMET");
+    if (CheckTitle() === false) { console.log("kra function title"); return CheckTitle(); }
+    else if (CheckPicture() === false) { console.log("kra function picture"); return CheckPicture(); }
+    else if (CheckDescription() === false) { console.log("kra function description"); return CheckDescription(); }
 
-    if (CheckTitle() === false) { return CheckTitle(); }
-    else if (CheckPicture() === false) { return CheckPicture(); }
-    else if (CheckDescription() === false) { return CheckDescription(); }
 
 
 
