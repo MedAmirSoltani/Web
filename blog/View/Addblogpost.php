@@ -39,7 +39,7 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
 </head>
 
-<body onload="NowDate()">
+<body >
   <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
     <input id="Title" name="Title" type="text" placeholder="Title post" autofocus />
 

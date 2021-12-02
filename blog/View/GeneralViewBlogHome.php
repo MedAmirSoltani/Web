@@ -4,10 +4,10 @@ session_start();
 
 $BlogC = new BlogC();
 if (isset($_POST["search"])) {
-    //$_SESSION['search']=$_POST["search"];
+
     $lists = $BlogC->ShowBlogHomeByTitle($_POST["search"]);
 } else {
-    $Blogs = $BlogC->ShowBlogHome();
+    $Blogs = $BlogC->Pagination();
 }
 
 ?>
@@ -43,10 +43,6 @@ if (isset($_POST["search"])) {
    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -57,14 +53,14 @@ if (isset($_POST["search"])) {
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-   
+
     <!-- END VENDOR CSS-->
     <!-- BEGIN CHAMELEON  CSS-->
     <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/app-lite.css">
     <!-- END CHAMELEON  CSS-->
     <!-- BEGIN Page Level CSS-->
-    
-    
+
+
     <!---------------------END BACKOFFICE ------------------------------------>
 
 </head>
@@ -102,14 +98,14 @@ if (isset($_POST["search"])) {
 
 
 
-    <div class="container">
+    <div class="">
         <div class="row">
             <!-- Blog entries-->
-            <div class="col-lg-8">
+            <div class="col-lg-8" style=margin:auto;>
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style=margin:auto;>
                         <!-- Blog post-->
                         <?php
                         if (isset($Blogs)) {
@@ -118,7 +114,7 @@ if (isset($_POST["search"])) {
                         ?>
                                 <div class="card mb-4">
 
-                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="1200" alt="..." />
+                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="700" alt="..." />
                                     <div class="card-body">
                                         <div class="small text-muted"><?php echo $blog['Date']; ?></div>
                                         <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
@@ -137,7 +133,7 @@ if (isset($_POST["search"])) {
                             ?>
                                 <div class="card mb-4">
 
-                                    <<img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $list['Picture'] ?>" height="500" width="1200" alt="..." />
+                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $list['Picture'] ?>" height="500" width="700" alt="..." />
                                     <div class="card-body">
                                         <div class="small text-muted"><?php echo $list['Date']; ?></div>
                                         <h2 class="card-title h4"><?php echo $list['Title'] ?></h2>
@@ -159,12 +155,12 @@ if (isset($_POST["search"])) {
                             <hr class="my-0" />
                             <ul class="pagination justify-content-center my-4">
                                 <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                                <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                                <li class="page-item active" aria-current="page"><a class="page-link" href="?page=1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                                <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
                                 <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
                                 <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                                
                             </ul>
                         </nav>
                     </div>
@@ -172,7 +168,7 @@ if (isset($_POST["search"])) {
                     <div class="col-lg-4">
                         <!-- Search widget-->
                         <form action="" method="POST">
-                            <div class="card mb-4">
+                            <div class="card mb-4" style=margin:auto;>
                                 <div class="card-header">Search</div>
                                 <div class="card-body">
                                     <div class="input-group">

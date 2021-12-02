@@ -31,6 +31,8 @@ function NowDate() {
     document.getElementById("Date").value = DateNow;
 }
 
+window.onload=NowDate;
+
 function CheckTitle() {
     var Title = document.getElementById("Title").value;
 
