@@ -57,14 +57,14 @@ if (isset($_POST["search"])) {
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/vendors.css">
+   
     <!-- END VENDOR CSS-->
     <!-- BEGIN CHAMELEON  CSS-->
     <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/app-lite.css">
     <!-- END CHAMELEON  CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="../assets/ASBO/theme-assets/css/core/colors/palette-gradient.css">
+    
+    
     <!---------------------END BACKOFFICE ------------------------------------>
 
 </head>
@@ -118,7 +118,7 @@ if (isset($_POST["search"])) {
                         ?>
                                 <div class="card mb-4">
 
-                                    <<img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="1200" alt="..." />
+                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="1200" alt="..." />
                                     <div class="card-body">
                                         <div class="small text-muted"><?php echo $blog['Date']; ?></div>
                                         <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
