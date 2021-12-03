@@ -2,7 +2,6 @@
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
-
 $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
