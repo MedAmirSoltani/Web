@@ -2,65 +2,12 @@
 session_start();
 include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
-   
     $userC=new utilisateurC();
-    
-    if(isset($_POST["email"]) && isset($_POST["password"])  )
-    {
-      
-      if(!empty($_POST["email"]) && !empty($_POST["password"]))
-      {
-
-         $message=$userC->connexionUser($_POST["email"],$_POST["password"]);
-         if($message!='email or password uncorrect')
-         { 
-           // src="uploads/<?php echo $utilisateur['profilpicture'] ;
-            $resultat=$userC->getutilisateurbyemail($_POST["email"]);
-            $lol=$resultat["profilpicture"];
-            $_SESSION['a']=$resultat["ID_utilisateur"];
-            $x=$userC->getutilisateurbyID($_SESSION['a']);
-            if($x['admin_bool']==0)
-            {
-            if (strcmp($x['role'], "Etudiant") != 0) {
-               $resultat=$userC->getprofbyemail($_POST["email"]);
-               $_SESSION['c']=$resultat["specialite"];
-               header('Location:profilprof.php');
-           }
-           else{
-            $resultat=$userC->getetudiantbyemail($_POST["email"]);
-            $_SESSION['c']=$resultat["classe"];
-            header('Location:profiluser.php');
-           }
-         }
-         else
-         header('Location:afficherutilisateur.php');
-           
-         
-         }
-         else{
-            $message='email or password uncorrect';
-         }
-      }
-      else{
-      $message="";
-      $message="missing information"; 
-      }
-    }
-    
-    
-   
+$x=$userC->getutilisateurbyID($_SESSION['a']);
 ?>
-<style>
-   .fa-color
-   {
-color:black;
-   }
-   #hide1{
-display:none;
-   }
-</style>
 <!DOCTYPE html>
 <html lang="en">
+<script> window.history.forward(); </script>
    <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,13 +67,16 @@ display:none;
                                     <a class="nav-link" href="index.html">Home</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link color-aqua-hover" href="about.php">About</a>
+                                    <a class="nav-link color-aqua-hover" href="about.php">Emploi</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="contact1.php">Contact Us</a>
+                                    <a class="nav-link color-grey-hover" href="contact1.php">Matière</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="login.php">Login</a>
+                                    <a class="nav-link color-grey-hover" href="login.php">Forum</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link color-grey-hover" href="profilprof.php">Profil</a>
                                  </li>
                               </ul>
                               <ul class="navbar-nav">
@@ -150,7 +100,7 @@ display:none;
         <div class="container-fluid">
           <div class="row">
              <div class="full">
-               <h3>login</h3>    
+               <h3>sign in</h3>    
              </div>
           </div>
         </div>
@@ -158,6 +108,7 @@ display:none;
       <!-- end section -->
     
     <!-- section -->
+    <form action="updateprofilprof.php"  enctype="multipart/form-data">
      <section class="layout_padding section">
          <div class="container">
            <div class="row">
@@ -166,89 +117,52 @@ display:none;
                      <div class="row">
                         <div class="col-md-8 offset-md-2">
                            <div class="form_cont">
-                              
+                            <section class="layout_padding section">
+                                <div id="test" class="container-fluid">
+                                   <div class="row">
+                                      <div class="col-lg-12 text_align_center">
+                                      </div>
+                                      <div class="col-md-12 testimonial">
+                                         <div class="full text_align_center">
+                                            <div class="full margin_top_30 text_align_center">
+                                                <h2 >Your Profile </h2>
+                                                <br>
+                                                <br>
+                                                <br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
 
-                                  <fieldset>
-             <form action="" method="POST" onsubmit="return verifcnx();">
-                                     <div class="field">
-                                 
-                                        <input type="text" name="email" id="email" placeholder="email">
-                                     </div>
-                                     
-                                     <div class="field">
-                                     <input type="password" name="password" id="password" placeholder="password"></td>
-                              <span class="eye" onclick="toggle()">
-                                 <i aria-hidden="true" id="hide1"  class="fa fa-eye fa-2x fa-color" style="position:absolute; margin:-45px 0px 0 690px;" ></i>
-                                 <i id="hide2" class="fa fa-eye-slash fa-2x fa-color" aria-hidden="true" style=" margin:-45px 0px 0 690px;"></i>
-                                 </span>
-                                <script>
-                                   function toggle(){
-                                    var x=document.getElementById("password");
-                                    var y=document.getElementById("hide1");
-                                    var z =document.getElementById("hide2");
-if(x.type==='password')
-{
-x.type="text";
-y.style.display="block";
-z.style.display="none";
-}
-else{
-   x.type="password";
-y.style.display="none";
-z.style.display="block";
-}
-                                   }
-                                </script>
-                                     </div>
-                                     <div id="lol"> </div>
-                                     <script>
-                                     function verifcnx(){
-                                       var email = document.getElementById("email").value;
-                                       var password = document.getElementById("password").value;
-                                     if (password ==false || email==false) 
-                                     {
-                                       document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
-                                       document.getElementById("erreur").style.display = "none";
-                                       return false;
-                                       preventdefault();
-                                      }
-                                     }
-                                    </script>
-                                     <?php
-                                     if(isset($_POST["login"]))
-                                     {
-                                     if (strcmp($message, 'email or password uncorrect') == 0 )
-                                     {
-                                       
-                                        echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
-                                      
-                                     }
-                                    }
-                                     ?>
-                                     <div class="field center">
-                                       
-                                       <input type="submit" onmousedown="bleep.play()" name="login" style="background: #f06008;font-size: 18px;font-family: sans-serif;font-weight: 300;color: #fff;width: 185px;text-transform: uppercase;" value="login">  
-                                    </form>
-
-                               
-                                       <div class="row">
-                                       <div class="col-md-8 offset-md-2">
-                                                     
-                                    <form action="signin.php">
-                                       <div class="field center">
-                                       <script>
-                         var bleep=new Audio();
-                         bleep.src="ab.mp3";
-                      </script>
-                                         <button onmousedown="bleep.play()"> sign in</button>
+                                                 </div>
+                                                 <?php if (empty($x['profilpicture']))
+                                                  {
+                                                    echo '<img src="uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:60%;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
+                                                    
+                                                   }
+                                                
+                                                 ?>
+                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:58%; height:370px; float:left;margin:0 10px 0 -200px; border-radius:50%; display:block;" src="uploads/<?php echo $x['profilpicture'] ?>"> 
+                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:0%;float:left;margin:0 10px 0 -200px; display:none; "  >
+                                                 <br>
+                                                 <span class="left"  style="float:left;margin:400px 10px 0 -260px; "> <p style="color:#dc1a20;font-size: 35px;" ><?php echo $x['name']?></p></span> 
+                                                 <button style= "background:#dc1a20; margin:500px 580px 0 -320px;" name="update">update profile</button>
+                                                                
+      <div style="margin:-500px 10px 0 200px; ">   <p > <strong>Job:</strong> <?php echo $x['role']?>  </p> </div>
+      <div style="margin:0px 10px 0 -160px; ">  <h3>Specialite:  </h3>  <p><?php echo $_SESSION['c']?>  </p> </div>
+      <div>  <h3>ID:  </h3>  <p ><?php echo $x['ID_utilisateur']?> </p> </div>   
+                                         </div>
                                          
-                                       </form>
-                                    </div>
-                                 </div>
+                                      </div>
 
 
-                                  </div></fieldset>   
-                           
+                                      <a href="login.php"> <input type="button" color:#192d82; value="Deconnexion" style= "margin:200px 10px 0 390px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>
+                                     
+                                   </div>
+                               </div>
+                             </section>
+                             
                            </div>
                         </div>
                      </div>
@@ -256,10 +170,10 @@ z.style.display="block";
                </div>
             </div>
          </div>
+         
       </section>
-
+</form>
       <!-- end section -->
-     
       <!-- footer -->
       <footer class="footer layout_padding">
          <div class="container">
@@ -345,5 +259,6 @@ z.style.display="block";
       <script src="js/animate.js"></script>
       <script src="js/ekko-lightbox.js"></script>
       <script src="js/custom.js"></script>
+      <script src="js/click.js"></script>
    </body>
 </html>

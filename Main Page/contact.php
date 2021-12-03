@@ -54,9 +54,9 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li> <a href="index.html">Home</a> </li>
-                              <li> <a href="about.html">About us</a> </li>
-                              <li class="active"><a href="contact.html">Contact us</a></li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li> <a href="about.php">About us</a> </li>
+                              <li class="active"><a href="contact.php">Contact us</a></li>
                               <li class="mean-last"> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
                            </ul>

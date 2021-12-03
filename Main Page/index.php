@@ -1,3 +1,55 @@
+<?php
+session_start();
+include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php' ;
+   
+    $userC=new utilisateurC();
+    
+    if(isset($_POST["email"]) && isset($_POST["password"])  )
+    {
+      
+      if(!empty($_POST["email"]) && !empty($_POST["password"]))
+      {
+
+         $message=$userC->connexionUser($_POST["email"],$_POST["password"]);
+         if($message!='email or password uncorrect')
+         { 
+           // src="uploads/<?php echo $utilisateur['profilpicture'] ;
+            $resultat=$userC->getutilisateurbyemail($_POST["email"]);
+            $lol=$resultat["profilpicture"];
+            $_SESSION['a']=$resultat["ID_utilisateur"];
+            $x=$userC->getutilisateurbyID($_SESSION['a']);
+            if($x['admin_bool']==0)
+            {
+            if (strcmp($x['role'], "Etudiant") != 0) {
+               $resultat=$userC->getprofbyemail($_POST["email"]);
+               $_SESSION['c']=$resultat["specialite"];
+               header('Location:profilprof.php');
+           }
+           else{
+            $resultat=$userC->getetudiantbyemail($_POST["email"]);
+            $_SESSION['c']=$resultat["classe"];
+            header('Location:profiluser.php');
+           }
+         }
+         else
+         header('Location:afficherutilisateur.php');
+           
+         
+         }
+         else{
+            $message='email or password uncorrect';
+         }
+      }
+      else{
+      $message="";
+      $message="missing information"; 
+      }
+    }
+    
+    
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +65,10 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
+   <!--jquerry-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <!-- login css -->
+   <link rel="stylesheet" href="css/login.css">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <!-- style css -->
@@ -45,7 +101,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -54,10 +110,59 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li class="active"> <a href="index.html">Home</a> </li>
-                              <li> <a href="about.html">About us</a> </li>
-                              <li><a href="contact.html">Contact us</a></li>
-                              <li class="mean-last"> <a href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
+                              <li class="active"> <a href="index.php">Home</a> </li>
+                              <li> <a href="about.php">About us</a> </li>
+                              <li><a href="contact.php">Contact us</a></li>
+                              <li class="mean-last"> <a id="login" href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
+                           <div class="arrow-up">
+                           
+                           <div class="login-form">
+                           <form action="" method="POST" onsubmit="return verifcnx();">
+                           <div class="field">
+                                 
+                                 <input class="form-control" type="text" name="email" id="email" placeholder="email" >
+                              </div>
+                              
+                              <div class="field">
+                              <input class="form-control" type="password" name="password" id="password" placeholder="password">
+                              </div>
+                              <div id="lol"> </div>
+                              <script>
+                                     function verifcnx(){
+                                       var email = document.getElementById("email").value;
+                                       var password = document.getElementById("password").value;
+                                     if (password ==false || email==false) 
+                                     {
+                                       document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
+                                       document.getElementById("erreur").style.display = "none";
+                                       return false;
+                                       preventdefault();
+                                      }
+                                     }
+                                    </script>
+                                     <?php
+                                     if(isset($_POST["login"]))
+                                     {
+                                     if (strcmp($message, 'email or password uncorrect') == 0 )
+                                     {
+                                       
+                                        echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
+                                      
+                                     }
+                                    }
+                                     ?>
+                              <div>
+                              <input class="login-button" onmousedown="bleep.play()" type="submit" value="login">
+                              </div>
+                             <br>
+                              <a href="#">forget password</a> 
+                              <br>
+                              
+                              <div><a href="signin.php">new?</a> </div>
+                              
+                           </form>
+                           </div>
+                           </div>
                            </ul>
                         </nav>
                      </div>
@@ -143,8 +248,7 @@
             <div class="col-md-10 offset-md-1">
                <div class="aboutheading">
                   <h2>About <strong class="black">Us</strong></h2>
-                  <span>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                     minim veniam, quis nostrud exercitation ullamco laboris</span>
+                  <span>Hogwarts is a university made by dispersed wizards : a group of 6 engineers their main goal is changing the world with their new teaching strategies.</span>
                </div>
             </div>
          </div>
@@ -212,6 +316,32 @@
    <!-- sidebar -->
    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="js/custom.js"></script>
+   <script type="text/javascript">
+$(document).ready(function()
+{
+   var arrow=$(".arrow-up");
+   var form=$(".login-form");
+   var status=false;
+   $("#login").click(function(event){
+      
+      event.preventDefault();
+      if(status==false)
+      {
+         
+         arrow.fadeIn();
+         form.fadeIn();
+         status=true;
+      }
+      else{
+         
+         arrow.fadeOut();
+         form.fadeOut();
+         status=false;
+      }
+   })
+}
+)
+   </script>
 </body>
 
 </html>

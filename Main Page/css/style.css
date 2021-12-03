@@ -1621,7 +1621,14 @@ text-align: center;
     border: #fff solid 1px;
     padding: 15px 20px;
     border-radius: inherit;
-    color: #cfcece;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: start;
+}
+.form-sabr{
+    border: #fff solid 1px;
+    padding: 15px 222px;
+    border-radius: inherit;
     font-weight: 300;
     font-size: 18px;
 }
