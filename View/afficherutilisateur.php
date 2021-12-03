@@ -196,6 +196,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $utilisateur['first_name']; ?></td>
                           <td><?php echo $utilisateur['date_of_birth']; ?></td>
                           <td><?php echo $utilisateur['role']; ?></td>
+                          
 
                           <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>">modifier</a></td>
@@ -267,6 +268,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $etudiant['date_of_birth']; ?></td>
                           <td><?php echo $etudiant['role']; ?></td>
                           <td><?php echo $etudiant['classe']; ?></td>
+                          
 
                           <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $etudiant['ID']; ?>">modifier</a></td>
@@ -338,7 +340,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $prof['specialite']; ?></td>
 
                           <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>">modifier</a></td>
+                          <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $prof['ID_prof']; ?>?<?php echo $prof['specialite']; ?>">modifier</a></td>
                         </tr>
 
 
@@ -375,6 +377,7 @@ if (isset($_POST['search']) ) {
                   </ul>
                 </div>
               </div>
+              
               <div class="card-content collapse show">
                 <div class="card-body">
                   <div class="table-responsive">
@@ -389,8 +392,17 @@ if (isset($_POST['search']) ) {
                         <th>date_of_birth</th>
                         <th>role</th>
                       </tr>
-                      
                       <?php
+                      if(isset($_POST['search']))
+                      {
+                        if(empty($list))
+                        {
+                          echo '<p style="color: red; font-size: 20px; font-family: sans-serif; " id="erreur" > il n y a aucun utilisateur portant ce nom </p>';
+                                      
+                        }
+                        else{
+
+                        
                       foreach ($list as $lists) {
                       ?>
 
@@ -411,6 +423,8 @@ if (isset($_POST['search']) ) {
 
                       <?php
                       }
+                    }
+                    }
                       ?>
                     </table>
                   </div>

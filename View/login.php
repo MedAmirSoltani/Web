@@ -5,7 +5,7 @@ include_once     '../Controller/utilisateurC.php';
    
     $userC=new utilisateurC();
     
-    if(isset($_POST["email"]) && isset($_POST["password"]))
+    if(isset($_POST["email"]) && isset($_POST["password"])  )
     {
       
       if(!empty($_POST["email"]) && !empty($_POST["password"]))
@@ -204,7 +204,6 @@ z.style.display="block";
                                        var password = document.getElementById("password").value;
                                      if (password ==false || email==false) 
                                      {
-                                       
                                        document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
                                        document.getElementById("erreur").style.display = "none";
                                        return false;
@@ -213,16 +212,19 @@ z.style.display="block";
                                      }
                                     </script>
                                      <?php
-                                     if (strcmp($message, 'email or password uncorrect') == 0)
+                                     if(isset($_POST["login"]))
+                                     {
+                                     if (strcmp($message, 'email or password uncorrect') == 0 )
                                      {
                                        
                                         echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
                                       
                                      }
+                                    }
                                      ?>
                                      <div class="field center">
                                        
-                                       <input type="submit"  style="background: #f06008;font-size: 18px;font-family: sans-serif;font-weight: 300;color: #fff;width: 185px;text-transform: uppercase;" value="login">  
+                                       <input type="submit" onmousedown="bleep.play()" name="login" style="background: #f06008;font-size: 18px;font-family: sans-serif;font-weight: 300;color: #fff;width: 185px;text-transform: uppercase;" value="login">  
                                     </form>
 
                                
@@ -231,7 +233,11 @@ z.style.display="block";
                                                      
                                     <form action="signin.php">
                                        <div class="field center">
-                                         <button> sign in</button>
+                                       <script>
+                         var bleep=new Audio();
+                         bleep.src="ab.mp3";
+                      </script>
+                                         <button onmousedown="bleep.play()"> sign in</button>
                                          
                                        </form>
                                     </div>

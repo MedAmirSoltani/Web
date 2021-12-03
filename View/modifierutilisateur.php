@@ -19,9 +19,9 @@ session_start();
     {
       
         echo $_POST['ID_utilisateur'] ;
-            $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] , $_FILES['profilpicture']);
+            $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] ,$_FILES["profilpicture"]["name"]);
             $utilisateurC->modifierutilisateur($utilisateur);
-          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_POST['profilpicture'], $_FILES['specialite'] );
+          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_FILES["profilpicture"]["name"],$_POST['specialite'] );
             $profC->modifierprof($prof);
             header('Location:afficherutilisateur.php');
     }
@@ -206,7 +206,8 @@ session_start();
                     <td>
                    <img onclick="pictureclick()" id="profildisplay" width=200  src="uploads/<?php echo $a['profilpicture'];?>">
                     <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:50%;float:left;margin:0 10px 0 -200px; display:none; "  >
-                  
+                                                 <img  onclick="pictureclick()" id="profildisplay" style="width:10%;margin:0 90px 0 0px; border-radius:10%; display:block;"/>
+                   
                    </td></tr>        
 				<tr>
                     <td>
