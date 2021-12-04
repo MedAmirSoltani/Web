@@ -56,6 +56,8 @@ class BlogC
                 $stmt = $config->prepare('SELECT * FROM post order by Title ASC ');
             } else if ($affich == "Oldest") {
                 $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
+            } else if ($affich == "Admin") {
+                $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
             }
             if (isset($search) && $search != "") {
                 $stmt = $config->prepare('SELECT * FROM post where Title like "%' . $search . '%" order by Idpost DESC LIMIT :limit OFFSET :offset');
@@ -198,8 +200,8 @@ class BlogC
             // Calculate the offset for the query
             $offset = ($page - 1)  * $limit;
 
-            // Some information to display to the user
-            /* $start = $offset + 1;
+          /*  // Some information to display to the user
+            $start = $offset + 1;
             $end = min(($offset + $limit), $total);
 
             // The "back" link
