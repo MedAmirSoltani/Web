@@ -3,37 +3,10 @@ require_once "../assets/ASFO/utilis/Config.php";
 require_once '../Model/Blog.php';
 class BlogC
 {
-    function ShowBlogHomeZ()
-    {
-        $requete = "select * from post order by Title Desc ";
-        $config = config::getConnexion();
-        try {
-            $querry = $config->prepare($requete);
-            $querry->execute();
-            $result = $querry->fetchAll();
-            return $result;
-        } catch (PDOException $th) {
-            $th->getMessage();
-        }
-    }
-    
-    function ShowBlogHomeA()
-    {
-        $requete = "select * from post order by Title ASC ";
-        $config = config::getConnexion();
-        try {
-            $querry = $config->prepare($requete);
-            $querry->execute();
-            $result = $querry->fetchAll();
-            return $result;
-        } catch (PDOException $th) {
-            $th->getMessage();
-        }
-    }
 
-
-    function ShowBlogHome()
+    function ShowBlogHome($affich, $search)
     {
+
         $config = config::getConnexion();
         try {
 
@@ -76,24 +49,17 @@ class BlogC
             echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
 */
             // Prepare the paged query
-            $stmt = $config->prepare('
-                SELECT
-                    *
-                FROM
-                    post
-
-                    order
-                    by
-                    IdPost
-                 DESC
-                      
-                LIMIT
-                    :limit
-                OFFSET
-                    :offset
-
-                
-            ');
+            $stmt = $config->prepare('SELECT * FROM post order by Idpost DESC LIMIT :limit OFFSET :offset');
+            if ($affich == "ZA") {
+                $stmt = $config->prepare('SELECT * FROM post order by Title DESC ');
+            } else if ($affich == "AZ") {
+                $stmt = $config->prepare('SELECT * FROM post order by Title ASC ');
+            } else if ($affich == "Oldest") {
+                $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
+            }
+            if (isset($search) && $search != "") {
+                $stmt = $config->prepare('SELECT * FROM post where Title like "%' . $search . '%" order by Idpost DESC LIMIT :limit OFFSET :offset');
+            }
 
             // Bind the query params
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -116,21 +82,6 @@ class BlogC
             }
         } catch (Exception $e) {
             echo '<p>', $e->getMessage(), '</p>';
-        }
-    }
-
-
-    function ShowBlogHomeByTitle($search)
-    {
-        $requete = 'select * from post where Title like "%' . $search . '%"';
-        $config = config::getConnexion();
-        try {
-            $querry = $config->prepare($requete);
-            $querry->execute();
-            $result = $querry->fetchAll();
-            return $result;
-        } catch (PDOException $th) {
-            $th->getMessage();
         }
     }
 
@@ -217,7 +168,7 @@ class BlogC
         header("Refresh:0");
     }
     /*******************************************************************ARCHIVE POST FUNCTIONS *********************************************************** */
-    function ShowBlogArchiveHome()
+    function ShowBlogArchiveHome($affich, $search)
     {
         $config = config::getConnexion();
         try {
@@ -227,7 +178,7 @@ class BlogC
                 SELECT
                     COUNT(*)
                 FROM
-                    Archivepost
+                    post
             ')->fetchColumn();
 
             // How many items to list per page
@@ -261,18 +212,17 @@ class BlogC
             echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
 */
             // Prepare the paged query
-            $stmt = $config->prepare('
-                SELECT
-                    *
-                FROM
-                    Archivepost
-                LIMIT
-                    :limit
-                OFFSET
-                    :offset
-
-                
-            ');
+            $stmt = $config->prepare('SELECT * FROM archivepost order by Idpostar DESC LIMIT :limit OFFSET :offset');
+            if ($affich == "ZA") {
+                $stmt = $config->prepare('SELECT * FROM archivepost order by Title DESC ');
+            } else if ($affich == "AZ") {
+                $stmt = $config->prepare('SELECT * FROM archivepost order by Title ASC ');
+            } else if ($affich == "Oldest") {
+                $stmt = $config->prepare('SELECT * FROM archivepost order by Idpostar ASC ');
+            }
+            if (isset($search) && $search != "") {
+                $stmt = $config->prepare('SELECT * FROM archivepost where Title like "%' . $search . '%" order by Idpostar DESC LIMIT :limit OFFSET :offset');
+            }
 
             // Bind the query params
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);

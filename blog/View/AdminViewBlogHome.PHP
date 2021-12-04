@@ -2,11 +2,21 @@
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
+if (isset($_GET["affich"])) {
+    $affich = $_GET["affich"];
+} else {
+    $affich = "";
+}
+if (isset($_POST["search"])) {
+    $search = $_POST["search"];
+} else {
+    $search = "";
+}
 $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
-$Blogs = $BlogC->ShowBlogHome();
-$Blogsar = $BlogC->ShowBlogArchiveHome();
+$Blogs = $BlogC->ShowBlogHome($affich,$search);
+$Blogsar = $BlogC->ShowBlogArchiveHome($affich,$search);
 $comments = $CommentC->ShowComments();
 $replys = $ReplyC->ShowReplys();
 
@@ -158,6 +168,20 @@ $replys = $ReplyC->ShowReplys();
                     </div>
                 </div>
             </div>
+            <!-- Search widget-->
+            <form action="" method="POST">
+                <div class="card mb-4" style=margin:auto;>
+                    <div class="card-header">Search</div>
+                    <div class="card-body">
+                        <div class="input-group">
+
+                            <input class="form-control" name="search" type="text" placeholder="Enter Title..." aria-label="Enter search term..." aria-describedby="button-search" />
+                            <input type="submit" class="btn btn-primary" id="button-search" Value="Search" />
+
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="content-body">
                 <!-- Table BLOG POST -->
                 <div class="row">

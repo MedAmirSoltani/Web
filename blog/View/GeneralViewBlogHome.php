@@ -1,35 +1,21 @@
 <?php
 require_once "../Controller/BlogC.php";
-session_start();
+
 
 $BlogC = new BlogC();
-
-if(isset($_GET["affich"]))
+if (isset($_GET["affich"])) {
+    $affich = $_GET["affich"];
+} else {
+    $affich = "";
+}
+if(isset($_POST["search"]))
 {
-    $affich=$_GET["affich"];
-    if($affich=="ZA")
-    {
-       
-        echo $affich;
-        $Blogs=$BlogC->ShowBlogHomeZ();
-    }
-    else if($affich=="AZ")
-    {
-        
-        
-        $Blogs=$BlogC->ShowBlogHomeA();
-    }
+    $search=$_POST["search"];
 }
 else{
-if (isset($_POST["search"])) {
-
-    $Blogs = $BlogC->ShowBlogHomeByTitle($_POST["search"]);
-} else {
-    $Blogs = $BlogC->ShowBlogHome();
+    $search="";
 }
-}
-
-
+$Blogs = $BlogC->ShowBlogHome($affich,$search);
 
 ?>
 <!DOCTYPE html>
@@ -218,9 +204,9 @@ if (isset($_POST["search"])) {
                                     </div>
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
-                                            <li><a href="#!">JavaScript</a></li>
-                                            <li><a href="#!">CSS</a></li>
-                                            <li><a href="#!">Tutorials</a></li>
+                                            <li><a href="?affich=Oldest">Oldest</a></li>
+                                            <li><a href="#!">Most Active</a></li>
+                                            <li><a href="#!">Less Active</a></li>
                                         </ul>
                                     </div>
                                 </div>
