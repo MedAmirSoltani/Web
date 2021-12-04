@@ -39,7 +39,7 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
 </head>
 
-<body >
+<body>
   <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
     <input id="Title" name="Title" type="text" placeholder="Title post" autofocus />
 
@@ -54,7 +54,7 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
       <span class="nav-dot"></span>
     </label>
 
-    <input id="Date" type="date" name="Date" readonly />
+    <input id="date" type="date" name="Date" readonly />
     <label for="input-3">
       <span class="label-text">Date</span>
       <span class="nav-dot"></span>
@@ -65,13 +65,14 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
       <span class="label-text">Description</span>
       <span class="nav-dot"></span>
     </label>
-    <button onclick="CheckAddBlog()" type="submit">Add Post</button>
+    <button type="submit">Add Post</button>
     <p class="tip">Press TAB</p>
     <!--<div class="signup-button">kif kif mba3ed</div>-->
   </form>
 
-  <script src="../assets/ASFO/js/AddBlog.js"></script>
+
 
 </body>
+<script src="../assets/ASFO/js/AddBlog1.js"></script>
 
 </html>

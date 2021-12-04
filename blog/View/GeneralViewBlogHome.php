@@ -3,12 +3,33 @@ require_once "../Controller/BlogC.php";
 session_start();
 
 $BlogC = new BlogC();
+
+if(isset($_GET["affich"]))
+{
+    $affich=$_GET["affich"];
+    if($affich=="ZA")
+    {
+       
+        echo $affich;
+        $Blogs=$BlogC->ShowBlogHomeZ();
+    }
+    else if($affich=="AZ")
+    {
+        
+        
+        $Blogs=$BlogC->ShowBlogHomeA();
+    }
+}
+else{
 if (isset($_POST["search"])) {
 
-    $lists = $BlogC->ShowBlogHomeByTitle($_POST["search"]);
+    $Blogs = $BlogC->ShowBlogHomeByTitle($_POST["search"]);
 } else {
-    $Blogs = $BlogC->Pagination();
+    $Blogs = $BlogC->ShowBlogHome();
 }
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -108,47 +129,27 @@ if (isset($_POST["search"])) {
                     <div class="col-lg-6" style=margin:auto;>
                         <!-- Blog post-->
                         <?php
-                        if (isset($Blogs)) {
-                            foreach ($Blogs as $blog) {
+
+                        foreach ($Blogs as $blog) {
 
                         ?>
-                                <div class="card mb-4">
+                            <div class="card mb-4">
 
-                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="700" alt="..." />
-                                    <div class="card-body">
-                                        <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                        <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
-                                        <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                        <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
-                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
-
-
-
-                                    </div>
-
-                                </div>
-                            <?php }
-                        } else {
-                            foreach ($lists as $list) {
-                            ?>
-                                <div class="card mb-4">
-
-                                    <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $list['Picture'] ?>" height="500" width="700" alt="..." />
-                                    <div class="card-body">
-                                        <div class="small text-muted"><?php echo $list['Date']; ?></div>
-                                        <h2 class="card-title h4"><?php echo $list['Title'] ?></h2>
-                                        <p class="card-text"><?php echo $list['Description']; ?></p>
-                                        <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $list['Idpost']; ?>" target="_blank">Read more →</a>
-                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $list['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+                                <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="700" alt="..." />
+                                <div class="card-body">
+                                    <div class="small text-muted"><?php echo $blog['Date']; ?></div>
+                                    <h2 class="card-title h4"><?php echo $blog['Title'] ?></h2>
+                                    <p class="card-text"><?php echo $blog['Description']; ?></p>
+                                    <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
+                                    <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
 
 
-
-                                    </div>
 
                                 </div>
 
-                        <?php }
-                        } ?>
+                            </div>
+                        <?php } ?>
+
 
                         <!-- Pagination-->
                         <nav aria-label="Pagination">
@@ -160,7 +161,7 @@ if (isset($_POST["search"])) {
                                 <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
                                 <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
                                 <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                                
+
                             </ul>
                         </nav>
                     </div>
@@ -180,9 +181,56 @@ if (isset($_POST["search"])) {
                                 </div>
                             </div>
                         </form>
+                        <!-- Categories widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Categories</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">Web Design</a></li>
+                                            <li><a href="#!">HTML</a></li>
+                                            <li><a href="#!">Freebies</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">JavaScript</a></li>
+                                            <li><a href="#!">CSS</a></li>
+                                            <li><a href="#!">Tutorials</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side widget-->
+                        <!-- Categories widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Categories</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="?affich=AZ">A-Z</a></li>
+                                            <li><a href="?affich=ZA">Z-A</a></li>
+                                            <li><a href="GeneralViewBlogHome.php">Latest</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">JavaScript</a></li>
+                                            <li><a href="#!">CSS</a></li>
+                                            <li><a href="#!">Tutorials</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side widget-->
                     </div>
                 </div>
             </div>
+
             <!-- Footer-->
             <footer class="py-5 bg-dark">
                 <div class="container">

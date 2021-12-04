@@ -1,12 +1,14 @@
-function submitForm() {
-    if (confirm("Sure you wanna Submit the form?")) {
-        return true;
+function DateNow() {
+    var today = new Date();
+    if (today.getDate() < 10) {
+        var DateNow = today.getFullYear() + '-' + (today.getMonth() + 1) + '-0' + today.getDate();
     }
     else {
-        return false;
+        var DateNow = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     }
-}
 
+    document.getElementById("date").value = DateNow;
+}
 function startsWithCapital(word) {
     if (word.charAt(0) === word.charAt(0).toUpperCase()) {
         return true;
@@ -25,13 +27,11 @@ function allLetter(word) {
     }
 }
 
-function NowDate() {
-    var today = new Date();
-    var DateNow = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    document.getElementById("Date").value = DateNow;
-}
 
-window.onload=NowDate;
+
+
+
+window.onload = DateNow;
 
 function CheckTitle() {
     var Title = document.getElementById("Title").value;
@@ -86,10 +86,5 @@ function CheckAddBlog() {
     else if (CheckPicture() === false) { console.log("kra function picture"); return CheckPicture(); }
     else if (CheckDescription() === false) { console.log("kra function description"); return CheckDescription(); }
 
-
-
-
-
-
-
 }
+document.onload = DateNow;
