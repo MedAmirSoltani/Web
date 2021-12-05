@@ -9,27 +9,12 @@ require_once "../Model/Reply.php";
 $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
-session_start();
-session_unset();
-if (!isset($_SESSION['idpar']) && isset($_GET["Idpostar"])) {
-    $_SESSION['idpar'] = $_GET["Idpostar"];
-}
-$test = $BlogC->GetPostArchivebyID($_SESSION['idpar']);
 
+$idp = $_GET["Idpostar"];
+////////////////////////////////////////////////////////////////////////////////::
+$test = $BlogC->GetPostArchivebyID($idp);
+$comments = $CommentC->ShowCommentArchive($idp);
 
-/*if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
-
-
-    $Comment = new Comment($_SESSION['idpar'], $_POST['Comment_text'], $_POST['Date_Comment']);
-    $CommentC->AddComment($Comment, $_SESSION['idp']);
-}
-if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
-
-
-    $Reply = new Reply($_POST["Idcomment"], $_POST['Reply_text'], $_POST['Date_reply']);
-    $ReplyC->AddReply($Reply);
-}
-$comments = $CommentC->ShowComment($_SESSION['idp']);*/
 
 
 
@@ -154,15 +139,10 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);*/
                 <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
-                            <!-- Comment form-->
-                            <form action="" method="POST" class="mb-4" onsubmit="prevent()">
-                                <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-                                <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
-                                <input type="submit" value="Comment" class="btn btn-info btn-min-width mr-1 mb-1">
 
-                            </form>
                             <?php foreach ($comments as $comment) {
-                                $replys = $ReplyC->ShowReply($comment["Idcomment"]); ?>
+                                $replys = $ReplyC->ShowReplyArchive($comment["Idcommantar"]);
+                            ?>
                                 <!-- Comment with nested comments-->
                                 <div class="d-flex mb-4">
                                     <!-- Parent comment-->
@@ -171,7 +151,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);*/
                                         <div class="fw-bold">Adam Rafraf</div>
                                         <?php echo $comment["Comment_text"] ?>
                                         <br>
-                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
+
                                         <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
                                         <!-- Child comment 1-->
                                         <?php foreach ($replys as $reply) { ?>
@@ -185,32 +165,11 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);*/
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <!-- Child comment 2-->
-
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold">foulena bent foulen</div>
 
 
-
-                                                <form action="" method="POST" class="mb-4" onsubmit="Verify()">
-                                                    <textarea name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"></textarea>
-                                                    <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
-                                                    <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
-                                                    <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
-
-
-                                                </form>
-
-
-
-                                            </div>
                                         </div>
-
                                     </div>
-                                </div>
-                            <?php } ?>
+                                <?php } ?>
                 </section>
 
             </div>
@@ -268,7 +227,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);*/
     <!-- Core theme JS-->
     <script src="../assets/ASFO/js/scriptblogpost.js"></script>
     <script src="../assets/ASFO/js/AddComment.js"></script>
-    
+
 </body>
 
 </html>

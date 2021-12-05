@@ -114,5 +114,42 @@ class ReplyC
         }
         header("Refresh:0");
     }
+
+    function AddReplyArchive($Reply, $idcr, $idr)
+    {
+
+        $config = config::getConnexion();
+        try {
+
+            $querry = $config->prepare('
+            INSERT INTO archivereply 
+            (Idcommentar,Reply_text,Date_Reply,Idreply)
+            VALUES
+            (:Idcommentar,:Reply_text,:Date_Reply,:Idreply)
+            ');
+            $querry->execute([
+                'Idreply' => $idr,
+                'Idcommentar' => $idcr,
+                'Reply_text' => $Reply->getReply_text(),
+                'Date_Reply' => $Reply->getDate_Reply(),
+
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+    function ShowReplyArchive($idc)
+    {
+        $requete = "select * from archivereply Where Idcommentar=:idc order by Idreply ASC";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(['idc' => $idc]);
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }
 ?>

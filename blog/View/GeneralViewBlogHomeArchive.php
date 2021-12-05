@@ -8,14 +8,12 @@ if (isset($_GET["affich"])) {
 } else {
     $affich = "";
 }
-if(isset($_POST["search"]))
-{
-    $search=$_POST["search"];
+if (isset($_POST["search"])) {
+    $search = $_POST["search"];
+} else {
+    $search = "";
 }
-else{
-    $search="";
-}
-$Blogs = $BlogC->ShowBlogArchiveHome($affich,$search);
+$Blogs = $BlogC->ShowBlogArchiveHome($affich, $search);
 
 
 ?>

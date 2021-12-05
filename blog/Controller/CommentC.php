@@ -3,7 +3,7 @@ require_once "../assets/ASFO/utilis/Config.php";
 require_once '../Model/Comment.php';
 class CommentC
 {
- 
+
     function ShowComments()
     {
         $requete = "select * from comment order by Idpost DESC";
@@ -113,32 +113,39 @@ class CommentC
         }
         header("Refresh:0");
     }
-}
-
-function AddComment($Comment, $idp)
+    function AddCommentArchive($Comment, $idp, $idcr)
     {
 
         $config = config::getConnexion();
         try {
 
             $querry = $config->prepare('
-            INSERT INTO comment 
-            (Idpost,Comment_text,Date_Comment)
+            INSERT INTO archivecomment 
+            (Idpostar,Comment_text,Date_Comment,Idcommantar)
             VALUES
-            (:Idpost,:Comment_text,:Date_Comment)
+            (:Idpostar,:Comment_text,:Date_Comment,:Idcommantar)
             ');
             $querry->execute([
-                'Idpost' => $idp,
+                'Idcommantar' => $idcr,
+                'Idpostar' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
                 'Date_Comment' => $Comment->getDate_Comment(),
-
-
-
-
             ]);
         } catch (PDOException $th) {
             $th->getMessage();
         }
     }
-
-?>
+    function ShowCommentArchive($idp)
+    {
+        $requete = "select * from archivecomment Where Idpostar=:idp order by Idcommantar DESC";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(['idp' => $idp]);
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+}

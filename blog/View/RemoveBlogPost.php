@@ -14,18 +14,19 @@ $ReplyC = new ReplyC();
 $idp = $_GET["Idpost"];
 $blog = $BlogC->GetPostbyID($idp);
 $Blog = new post($blog['Title'], $blog['Picture'], $blog['Date'], $blog['Description']);
-/*$comments = $CommentC->ShowComment($blog["Idpost"]);
-foreach ($comments as $comments) {
-    $Comment = new Comment($comments["Idpost"], $comments['Comment_text'], $comments['Date_Comment']);
-    $Replys = $ReplyC->ShowReply($comments["Idcomment"]);
-    foreach ($Replys as $Replys) {
-        $Reply = new Reply($Replys["Idcomment"], $Replys['Reply_text'], $Replys['Date_reply']);
+$comments = $CommentC->ShowComment($blog["Idpost"]);
+foreach ($comments as $comment) {
+    $Comment = new Comment($comment["Idpost"],$comment['Comment_text'],$comment['Date_Comment']);
+    $CommentC->AddCommentArchive($Comment, $comment["Idpost"], $comment["Idcomment"]);
+    $replys = $ReplyC->ShowReply($comment["Idcomment"]);
+    foreach ($replys as $reply) {
+        $Reply = new Reply($reply["idcomment"], $reply['Reply_text'],$reply['Date_reply']);
+        $ReplyC->AddReplyArchive($Reply,$reply["idcomment"],$reply["Idreply"]);
     }
-}*/
+}
 ////////////////////////////////////////:////////////////////////////////////////:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$BlogC->AddBlogArchive($Blog,$idp);
+$BlogC->AddBlogArchive($Blog, $idp);
 $BlogC->RemoveBlog($idp);
 header('Location:AdminViewBlogHome.php');
-?>

@@ -134,9 +134,9 @@ $replys = $ReplyC->ShowReplys();
                 </li>
                 <li onclick="affich()" class="active"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Forum<i class="la la-plus"></i></span></a>
 
-                <li class=" nav-item" id="forum" ><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
+                <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
                 </li>
-                <li class=" nav-item" id="forumar" ><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
+                <li class=" nav-item" id="forumar"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
                 </li>
 
                 </li>
