@@ -11,16 +11,16 @@ $CommentC = new CommentC();
 $ReplyC = new ReplyC();
 session_start();
 session_unset();
-if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
-    $_SESSION['idp'] = $_GET["Idpost"];
+if (!isset($_SESSION['idpar']) && isset($_GET["Idpostar"])) {
+    $_SESSION['idpar'] = $_GET["Idpostar"];
 }
-$test = $BlogC->GetPostbyID($_SESSION['idp']);
+$test = $BlogC->GetPostArchivebyID($_SESSION['idpar']);
 
 
-if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
+/*if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
-    $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
+    $Comment = new Comment($_SESSION['idpar'], $_POST['Comment_text'], $_POST['Date_Comment']);
     $CommentC->AddComment($Comment, $_SESSION['idp']);
 }
 if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
@@ -29,7 +29,7 @@ if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
     $Reply = new Reply($_POST["Idcomment"], $_POST['Reply_text'], $_POST['Date_reply']);
     $ReplyC->AddReply($Reply);
 }
-$comments = $CommentC->ShowComment($_SESSION['idp']);
+$comments = $CommentC->ShowComment($_SESSION['idp']);*/
 
 
 

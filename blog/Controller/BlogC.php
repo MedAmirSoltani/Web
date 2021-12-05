@@ -200,7 +200,7 @@ class BlogC
             // Calculate the offset for the query
             $offset = ($page - 1)  * $limit;
 
-          /*  // Some information to display to the user
+            /*  // Some information to display to the user
             $start = $offset + 1;
             $end = min(($offset + $limit), $total);
 
@@ -249,20 +249,6 @@ class BlogC
             echo '<p>', $e->getMessage(), '</p>';
         }
     }
-    function ShowBlogHomeArchiveByTitle($search)
-    {
-        $requete = 'select * from Archivepost where Title like "%' . $search . '%"';
-        $config = config::getConnexion();
-        try {
-            $querry = $config->prepare($requete);
-            $querry->execute();
-            $result = $querry->fetchAll();
-            return $result;
-        } catch (PDOException $th) {
-            $th->getMessage();
-        }
-    }
-
     function GetPostArchivebyID($idpr)
     {
         $requete = "select * from Archivepost where Idpostar=:idp";
@@ -281,7 +267,7 @@ class BlogC
         }
     }
 
-    function AddBlogArchive($Blog)
+    function AddBlogArchive($Blog, $idp)
     {
 
         $config = config::getConnexion();
@@ -289,12 +275,12 @@ class BlogC
 
             $querry = $config->prepare('
             INSERT INTO Archivepost 
-            (Title,Picture,Description,Date)
+            (Idpostar,Title,Picture,Description,Date)
             VALUES
-            (:Title,:Picture,:Description,:Date)
+            (:Idpostar,:Title,:Picture,:Description,:Date)
             ');
             $querry->execute([
-
+                'Idpostar' => $idp,
                 'Title' => $Blog->getTitle(),
                 'Picture' => $Blog->getPicture(),
                 'Date' => $Blog->getDate(),

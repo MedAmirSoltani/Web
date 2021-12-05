@@ -1,8 +1,5 @@
 
-alert("WAAAAAAAAAAAAAA");
-
-function prevent() 
-{
+function prevent() {
     preventDefault();
     console.log("ahla");
 }

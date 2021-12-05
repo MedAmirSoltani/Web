@@ -114,4 +114,31 @@ class CommentC
         header("Refresh:0");
     }
 }
+
+function AddComment($Comment, $idp)
+    {
+
+        $config = config::getConnexion();
+        try {
+
+            $querry = $config->prepare('
+            INSERT INTO comment 
+            (Idpost,Comment_text,Date_Comment)
+            VALUES
+            (:Idpost,:Comment_text,:Date_Comment)
+            ');
+            $querry->execute([
+                'Idpost' => $idp,
+                'Comment_text' => $Comment->getComment_text(),
+                'Date_Comment' => $Comment->getDate_Comment(),
+
+
+
+
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
 ?>
