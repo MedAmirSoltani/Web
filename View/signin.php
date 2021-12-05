@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 require_once     '../Controller/utilisateurC.php';
 require_once '../Model/utilisateur.php';
 $utilisateurC = new utilisateurC();
 $etudiantC = new etudiantC();
-if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && $_FILES["profilpicture"]["name"] && isset($_POST['classe'] ) )
+if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] )  && isset($_POST['classe'] ) && isset($_POST["captcha"]) && $_POST["captcha"]!="" && $_SESSION["codes"]==$_POST["captcha"] )
     {
       $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"]);
       $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"] ,$_POST['classe'] ); 
@@ -17,7 +17,7 @@ if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST[
       }
     }
 
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && $_FILES["profilpicture"]["name"] && isset($_POST['specialite'] )) 
+    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_POST['specialite'] )) 
     {
       $utilisateur1 = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"] );
       $utilisateur1C = new utilisateurC();
@@ -227,7 +227,9 @@ z.style.display="block";
                                  <label for="specialite">
                                  </label>
                                  <input type="text" name="specialite" id="specialite" placeholder="specialite" hidden></td>
-
+                                 <br> <br>
+                                 <img src="captcha.php"/>
+                                                <input type="text" name="captcha" placeholder="write the code"/>
                                     <div id="badelha"></div>
                                   
 

@@ -1,64 +1,48 @@
 <?php
-session_start();
-include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php' ;
-   
-    $userC=new utilisateurC();
-    
-    if(isset($_POST["email"]) && isset($_POST["password"])  )
-    {
-      
-      if(!empty($_POST["email"]) && !empty($_POST["password"]))
-      {
 
-         $message=$userC->connexionUser($_POST["email"],$_POST["password"]);
-         if($message!='email or password uncorrect')
-         { 
-           // src="uploads/<?php echo $utilisateur['profilpicture'] ;
-            $resultat=$userC->getutilisateurbyemail($_POST["email"]);
-            $lol=$resultat["profilpicture"];
-            $_SESSION['a']=$resultat["ID_utilisateur"];
-            $x=$userC->getutilisateurbyID($_SESSION['a']);
-            if($x['admin_bool']==0)
-            {
-            if (strcmp($x['role'], "Etudiant") != 0) {
-               $resultat=$userC->getprofbyemail($_POST["email"]);
-               $_SESSION['c']=$resultat["specialite"];
-               header('Location:profilprof.php');
-           }
-           else{
-            $resultat=$userC->getetudiantbyemail($_POST["email"]);
-            $_SESSION['c']=$resultat["classe"];
-            header('Location:profiluser.php');
-           }
-         }
-         else
-         header('Location:afficherutilisateur.php');
-           
-         
-         }
-         else{
-            $message='email or password uncorrect';
-         }
-      }
-      else{
-      $message="";
-      $message="missing information"; 
-      }
-    }
-    
-    
-   
+    include_once '../Model/utilisateur.php';
+    require_once '../Assets/Utils/config.php';
+    session_start();
+
+        if (isset($_POST['reset-request-submit'])){
+            $email=$_POST['email'];
+            $sql="SELECT * FROM utilisateur WHERE email='" . $email . "'";
+			$db = config::getConnexion();
+			try{
+				$query=$db->prepare($sql);
+				$query->execute();
+                $count=$query->rowCount();
+                if($count==1){
+                    $x=$query->fetch();
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $x['name'];
+                    $name=$x['name'];
+                    $code=mt_rand(1000,9999);
+                    $sql="UPDATE utilisateur SET code= '" . $code . "' WHERE email='" . $email . "'";
+                    $db = config::getConnexion();
+                    $query1=$db->prepare($sql);
+                    $query1->execute();
+                    $email1="TheUniversity@hogwarts.tn";    
+                    $dest = $email;
+                    $sujet = "Réinitialisation du mot de passe";
+                    $corp =" Bonjour $name voici votre code de verification $code " ;
+                    $headers = 'From: ' .$email1 . "\r\n".'Reply-To: ' . $email1. "\r\n".'X-Mailer: PHP/' . phpversion();
+                    
+                    if (mail($dest, $sujet, $corp, $headers)) {
+                        echo "Email envoyé avec succès à $dest ...";
+                        header("Location: verifpassword.php");
+                    } 
+                    else {
+                         echo "Échec de l'envoi de l'email...";
+                    }
+                    
+                }
+		    }
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+            }
+        } 
 ?>
-<style>
-   .fa-color
-   {
-color:black;
-   }
-   #hide1{
-display:none;
-   }
-</style>
 <!DOCTYPE html>
 <html lang="en">
    <!-- Basic -->
@@ -150,7 +134,8 @@ display:none;
         <div class="container-fluid">
           <div class="row">
              <div class="full">
-               <h3>login</h3>    
+               <h3>reset your password</h3> 
+                
              </div>
           </div>
         </div>
@@ -167,80 +152,19 @@ display:none;
                         <div class="col-md-8 offset-md-2">
                            <div class="form_cont">
                               
-
+                           <p style="text-align: center;">An email will be sent to you with the instruction on how to reset your password.</p> 
                                   <fieldset>
-             <form action="" method="POST" onsubmit="return verifcnx();">
-                                     <div class="field">
+             <form action="" method="POST" >
+             <div class="field">
                                  
-                                        <input type="text" name="email" id="email" placeholder="email">
-                                     </div>
+                                 <input type="text" name="email" id="email" placeholder="Enter your email here">
+                              </div>
+                              <button type="submit" style="margin:40px 50px 0 300px;"name="reset-request-submit">receive it</button>
+                                    
                                      
-                                     <div class="field">
-                                     <input type="password" name="password" id="password" placeholder="password"></td>
-                              <span class="eye" onclick="toggle()">
-                                 <i aria-hidden="true" id="hide1"  class="fa fa-eye fa-2x fa-color" style="position:absolute; margin:-45px 0px 0 690px;" ></i>
-                                 <i id="hide2" class="fa fa-eye-slash fa-2x fa-color" aria-hidden="true" style=" margin:-45px 0px 0 690px;"></i>
-                                 </span>
-                                <script>
-                                   function toggle(){
-                                    var x=document.getElementById("password");
-                                    var y=document.getElementById("hide1");
-                                    var z =document.getElementById("hide2");
-if(x.type==='password')
-{
-x.type="text";
-y.style.display="block";
-z.style.display="none";
-}
-else{
-   x.type="password";
-y.style.display="none";
-z.style.display="block";
-}
-                                   }
-                                </script>
-                                     </div>
-                                     <div id="lol"> </div>
-                                     <script>
-                                     function verifcnx(){
-                                       var email = document.getElementById("email").value;
-                                       var password = document.getElementById("password").value;
-                                     if (password ==false || email==false) 
-                                     {
-                                       document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
-                                       document.getElementById("erreur").style.display = "none";
-                                       return false;
-                                       preventdefault();
-                                      }
-                                     }
-                                    </script>
-                                     <?php
-                                     if(isset($_POST["login"]))
-                                     {
-                                     if (strcmp($message, 'email or password uncorrect') == 0 )
-                                     {
-                                       
-                                        echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
-                                      
-                                     }
-                                    }
-                                     ?>
-                                     <div class="field center">
-                                       
-                                       <input type="submit" onmousedown="bleep.play()" name="login" style="background: #f06008;font-size: 18px;font-family: sans-serif;font-weight: 300;color: #fff;width: 185px;text-transform: uppercase;" value="login">  
-                                    </form>
-
-                               
-                                       <div class="row">
-                                       <div class="col-md-8 offset-md-2">
-                                                     
-                                    <form action="signin.php">
-                                       <div class="field center">
-                                       <script>
-                         var bleep=new Audio();
-                         bleep.src="ab.mp3";
-                      </script>
-                                         <button onmousedown="bleep.play()"> sign in</button>
+                                     
+                                    
+                                    
                                         
                                        </form>
                                     </div>
@@ -250,7 +174,7 @@ z.style.display="block";
                                   </div></fieldset>   
                            
                            </div>
-                           <a href="reset-password.php" style="margin:90px 50px 0 300px;">Forgot your password?</a>
+                           
                         </div>
                         
                      </div>
