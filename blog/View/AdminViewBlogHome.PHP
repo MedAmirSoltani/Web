@@ -118,7 +118,7 @@ $replys = $ReplyC->ShowReplys();
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
             </ul>
         </div>
-        <div class="main-menu-content">
+        <div class="main-menu-content" >
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
                 </li>
@@ -132,7 +132,12 @@ $replys = $ReplyC->ShowReplys();
                 </li>
                 <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
                 </li>
-                <li class="active"><a href="tables.html"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Tables</span></a>
+                <li onclick="affich()" class="active"><a><i class="ft-credit-card" ></i><span class="menu-title" data-i18n="">Tables<i class="la la-plus"></i></span></a>
+                <div id="Tables" >
+                    
+                <nav class="active" >TEST1</nav>
+                <nav class="active" >TEST1</nav>
+                </div>
                 </li>
                 <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
                 </li>
@@ -372,6 +377,8 @@ $replys = $ReplyC->ShowReplys();
     <!-- END CHAMELEON  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <!-- END PAGE LEVEL JS-->
+    <script defer src="../assets/ASFO/js/test.js"></script>
+    
 </body>
 
 </html>

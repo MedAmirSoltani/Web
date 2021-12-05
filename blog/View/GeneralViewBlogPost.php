@@ -155,7 +155,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                     <div class="card bg-light">
                         <div class="card-body">
                             <!-- Comment form-->
-                            <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
+                            <form action="" method="POST" class="mb-4" onsubmit="prevent()">
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
                                 <input type="date" name="Date_Comment" id="Date" class="text-input" hidden>
                                 <input type="submit" value="Comment" class="btn btn-info btn-min-width mr-1 mb-1">
@@ -194,7 +194,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
 
 
 
-                                                <form action="" method="POST" class="mb-4" onsubmit="return Verify()">
+                                                <form action="" method="POST" class="mb-4" onsubmit="Verify()">
                                                     <textarea name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"></textarea>
                                                     <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
                                                     <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
@@ -267,6 +267,8 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="../assets/ASFO/js/scriptblogpost.js"></script>
+    <script src="../assets/ASFO/js/AddComment.js"></script>
+    <script defer src="../assets/ASFO/js/prevent.js"></script>
 </body>
 
 </html>
