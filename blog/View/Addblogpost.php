@@ -12,6 +12,7 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
 
   $BlogC->AddBlog($Blog);
+  
   $target_dir = "../assets/ASFO/uploads/";
   $target_file = $target_dir . basename($_FILES["Picture"]["name"]);
   if (move_uploaded_file($_FILES["Picture"]["tmp_name"], $target_file)) {
@@ -43,25 +44,25 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
   <form action="" method="POST" enctype="multipart/form-data" onsubmit="return CheckAddBlog();">
     <input id="Title" name="Title" type="text" placeholder="Title post" autofocus />
 
-    <label for="input-1">
+    <label for="Title">
       <span class="label-text">Post Title</span>
       <span class="nav-dot"></span>
     </label>
 
     <input id="Picture" type="file" name="Picture" />
-    <label for="input-2">
+    <label for="Picture">
       <span class="label-text">Picture</span>
       <span class="nav-dot"></span>
     </label>
 
     <input id="date" type="date" name="Date" readonly />
-    <label for="input-3">
+    <label for="Date">
       <span class="label-text">Date</span>
       <span class="nav-dot"></span>
     </label>
 
-    <input id="Description" type=text id="input-4" name="Description" />
-    <label for="input-4">
+    <input id="Description" type="text"  name="Description" />
+    <label for="Description">
       <span class="label-text">Description</span>
       <span class="nav-dot"></span>
     </label>

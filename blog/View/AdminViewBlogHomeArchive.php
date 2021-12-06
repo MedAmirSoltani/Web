@@ -11,9 +11,9 @@ if (isset($_POST["search"])) {
 $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
-$Blogs = $BlogC->ShowBlogHome($affich, $search);
-$comments = $CommentC->ShowComments();
-$replys = $ReplyC->ShowReplys();
+$Blogs = $BlogC->ShowBlogArchiveHome($affich, $search);
+$comments = $CommentC->ShowCommentsArchive();
+$replys = $ReplyC->ShowReplysArchive();
 
 
 ?>
@@ -134,9 +134,9 @@ $replys = $ReplyC->ShowReplys();
                 </li>
                 <li onclick="affich()" class="active"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Forum<i class="la la-plus"></i></span></a>
 
-                <li class=" nav-item" id="forum" ><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
+                <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
                 </li>
-                <li class=" nav-item" id="forumar" ><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
+                <li class=" nav-item" id="forumar"><a href="AdminViewBlogHomeArchive.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
                 </li>
 
                 </li>
@@ -216,7 +216,7 @@ $replys = $ReplyC->ShowReplys();
                                             ?>
                                                 <tr>
 
-                                                    <td><?php echo $blog['Idpost']; ?></td>
+                                                    <td><?php echo $blog['Idpostar']; ?></td>
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
@@ -270,14 +270,14 @@ $replys = $ReplyC->ShowReplys();
                                             ?>
                                                 <tr>
 
-                                                    <td><?php echo $comment['Idpost']; ?></td>
-                                                    <td><?php echo $comment['Idcomment']; ?></td>
+                                                    <td><?php echo $comment['Idpostar']; ?></td>
+                                                    <td><?php echo $comment['Idcommantar']; ?></td>
                                                     <td><?php echo $comment['Comment_text']; ?></td>
                                                     <td><?php echo $comment['Date_Comment']; ?></td>
 
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpostar']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcommantar']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
@@ -320,13 +320,13 @@ $replys = $ReplyC->ShowReplys();
                                         <tbody>
                                             <?php
                                             foreach ($replys as $reply) {
-                                                $idc = $CommentC->GetCommentbyID($reply["idcomment"]);
+                                                $idc = $CommentC->GetCommentArchivebyID($reply["idcommentar"]);
                                             ?>
                                                 <tr>
 
 
                                                     <td><?php echo $reply['Idreply']; ?></td>
-                                                    <td><?php echo $reply['idcomment']; ?></td>
+                                                    <td><?php echo $reply['idcommentar']; ?></td>
                                                     <td><?php echo $reply['Reply_text']; ?></td>
                                                     <td><?php echo $reply['Date_reply']; ?></td>
 

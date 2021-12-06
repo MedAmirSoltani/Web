@@ -151,5 +151,18 @@ class ReplyC
             $th->getMessage();
         }
     }
+    function ShowReplysArchive()
+    {
+        $requete = "select * from archivereply order by Idreply ASC";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }
 ?>

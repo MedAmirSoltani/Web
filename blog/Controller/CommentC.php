@@ -148,4 +148,34 @@ class CommentC
             $th->getMessage();
         }
     }
+    function ShowCommentsArchive()
+    {
+        $requete = "select * from archivecomment order by Idcommantar DESC";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+    function GetCommentArchivebyID($idc)
+    {
+        $requete = "select * from archivecomment where Idcommentar=:idc";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'idc' => $idc
+                ]
+            );
+            $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }

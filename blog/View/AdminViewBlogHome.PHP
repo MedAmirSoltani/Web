@@ -136,7 +136,7 @@ $replys = $ReplyC->ShowReplys();
 
                 <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
                 </li>
-                <li class=" nav-item" id="forumar"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
+                <li class=" nav-item" id="forumar"><a href="AdminViewBlogHomeArchive.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
                 </li>
 
                 </li>

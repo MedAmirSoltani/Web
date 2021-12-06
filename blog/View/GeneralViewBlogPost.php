@@ -195,7 +195,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
 
 
                                                 <form action="" method="POST" class="mb-4" onsubmit="Verify()">
-                                                    <textarea name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"></textarea>
+                                                    <input type="text" name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"/>
                                                     <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
                                                     <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
                                                     <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
