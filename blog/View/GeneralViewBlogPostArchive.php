@@ -152,7 +152,7 @@ $comments = $CommentC->ShowCommentArchive($idp);
                                         <?php echo $comment["Comment_text"] ?>
                                         <br>
 
-                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
+                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcommantar']; ?>">Remove<i class="ft-command"></i></a>
                                         <!-- Child comment 1-->
                                         <?php foreach ($replys as $reply) { ?>
                                             <div class="d-flex mt-4">

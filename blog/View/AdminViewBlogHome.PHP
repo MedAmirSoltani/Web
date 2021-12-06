@@ -15,6 +15,8 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 $comments = $CommentC->ShowComments();
 $replys = $ReplyC->ShowReplys();
 
+header("Refresh:10");
+
 
 ?>
 

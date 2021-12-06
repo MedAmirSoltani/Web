@@ -178,4 +178,19 @@ class CommentC
             $th->getMessage();
         }
     }
+    function RemoveCommentArchive($idc)
+    {
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare('
+            DELETE FROM archivecomment WHERE Idcommantar =:idc
+            ');
+            $querry->execute([
+                'idc' => $idc
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+        header("Refresh:0");
+    }
 }

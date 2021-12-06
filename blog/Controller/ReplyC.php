@@ -164,5 +164,21 @@ class ReplyC
             $th->getMessage();
         }
     }
+
+    function RemoveReplyArchive($idr)
+    {
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare('
+            DELETE FROM archivereply WHERE Idreply =:idr
+            ');
+            $querry->execute([
+                'idr' => $idr
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+        header("Refresh:0");
+    }
 }
 ?>

@@ -330,8 +330,7 @@ $replys = $ReplyC->ShowReplysArchive();
                                                     <td><?php echo $reply['Reply_text']; ?></td>
                                                     <td><?php echo $reply['Date_reply']; ?></td>
 
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $idc['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPostArchive.php?Idpost=<?php echo $idc['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
