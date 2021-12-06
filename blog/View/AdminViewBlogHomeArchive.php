@@ -220,11 +220,11 @@ $replys = $ReplyC->ShowReplysArchive();
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHome.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHomeArchive.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
+                                                    
 
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">SHOWPOST<i class="ft-command"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPostArchive.php?Idpostar=<?php echo $blog['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPostArchive.php?Idpostar=<?php echo $blog['Idpostar']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
@@ -275,9 +275,9 @@ $replys = $ReplyC->ShowReplysArchive();
                                                     <td><?php echo $comment['Comment_text']; ?></td>
                                                     <td><?php echo $comment['Date_Comment']; ?></td>
 
-                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPost.php?Idpost=<?php echo $comment['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpostar']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcommantar']; ?>">Remove<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPostArchive.php?Idpost=<?php echo $comment['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
+
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogCommentArchive.php?Idcomment=<?php echo $comment['Idcommantar']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
@@ -331,7 +331,7 @@ $replys = $ReplyC->ShowReplysArchive();
                                                     <td><?php echo $reply['Date_reply']; ?></td>
 
                                                     <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogPostArchive.php?Idpost=<?php echo $idc['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-link-2"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Remove<i class="ft-command"></i></a></td>
+                                                    <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReplyArchive.php?Idreply=<?php echo $reply['Idreply']; ?>">Remove<i class="ft-command"></i></a></td>
 
 
                                                 </tr>
