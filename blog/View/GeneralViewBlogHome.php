@@ -118,14 +118,14 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                         <?php
 
                         foreach ($Blogs as $blog) {
-                            
+
                         ?>
                             <div class="card mb-4">
 
                                 <img class="card-img-top" src="../assets/ASFO/uploads/<?php echo $blog['Picture'] ?>" height="500" width="700" alt="..." />
                                 <div class="card-body">
                                     <div class="small text-muted"><?php echo $blog['Date']; ?></div>
-                                    <h2 class="card-title h4"><?php echo $blog['Title'];?></h2>
+                                    <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
                                     <p class="card-text"><?php echo $blog['Description']; ?></p>
                                     <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
                                     <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
@@ -206,8 +206,8 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
                                             <li><a href="?affich=Oldest">Oldest</a></li>
-                                            <li><a href="#!">Most Active</a></li>
-                                            <li><a href="#!">Less Active</a></li>
+                                            <li><a href="?affich=Active">Most Active</a></li>
+                                            <li><a href="?affich=Nactive">Less Active</a></li>
                                         </ul>
                                     </div>
                                 </div>

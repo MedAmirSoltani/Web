@@ -59,6 +59,12 @@ class BlogC
             } else if ($affich == "Admin") {
                 $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
             }
+            else if ($affich == "Active") {
+                $stmt = $config->prepare('SELECT * FROM post order by Ncomments DESC ');
+            }
+            else if ($affich == "Nactive") {
+                $stmt = $config->prepare('SELECT * FROM post order by Ncomments ASC ');
+            }
             if (isset($search) && $search != "") {
                 $stmt = $config->prepare('SELECT * FROM post where Title like "%' . $search . '%" order by Idpost DESC LIMIT :limit OFFSET :offset');
             }
