@@ -215,4 +215,31 @@ class CommentC
             $th->getMessage();
         }
     }
+    function NumberComment($idp)
+    {
+
+        $connection = mysqli_connect(
+            "localhost",
+            "root",
+            "",
+            "hogwarts"
+        );
+
+        // Check connection
+        if (mysqli_connect_errno()) {
+            echo "Database connection failed.";
+        }
+
+        // query to fetch Username and Password from
+        // the table geek
+        $query = 'select * from comment Where Idpost=' . $idp . ' order by Idpost';
+
+        // Execute the query and store the result set
+        $result = mysqli_query($connection, $query);
+
+
+        // it return number of rows in the table.
+        $row = mysqli_num_rows($result);
+        return $row;
+    }
 }
