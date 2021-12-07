@@ -127,7 +127,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                     <div class="small text-muted"><?php echo $blog['Date']; ?></div>
                                     <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
                                     <p class="card-text"><?php echo $blog['Description']; ?></p>
-                                    <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Read more →</a>
+                                    <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>#test" target="_blank">Read more →</a>
                                     <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
 
 

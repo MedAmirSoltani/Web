@@ -171,7 +171,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                 <!-- Comments section-->
                 <section class="mb-5">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body" id="test">
                             <!-- Comment form-->
                             <form action="" method="POST" class="mb-4" onsubmit="prevent()">
                                 <textarea name="Comment_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
