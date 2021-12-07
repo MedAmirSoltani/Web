@@ -138,7 +138,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
         <button type="submit" id="downvote"></button>
         </form>
     </div>
-    <script defer src="../assets/ASFO/js/pls.js"></script>
+    <script defer src="../assets/ASFO/js/seh.js"></script>
     <div class="container mt-5">
 
         <div class="row">

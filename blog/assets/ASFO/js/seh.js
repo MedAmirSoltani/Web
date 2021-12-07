@@ -9,7 +9,8 @@ var icons = {
     elements: {
         upvote: document.getElementById("upvote"),
         downvote: document.getElementById("downvote"),
-        nbvotes: document.getElementById("nbvote"),
+        nbvote: document.getElementById("nbvote"),
+        nbvotes: parseInt(document.getElementById("nbvote").value),
     },
     static: {
 
@@ -21,7 +22,7 @@ var icons = {
 
 };
 
-
+console.log(icons.elements.nbvotes);
 icons.elements.upvote.innerHTML = icons.image.upvoteg;
 icons.elements.downvote.innerHTML = icons.image.downvoteg;
 
@@ -31,17 +32,17 @@ icons.elements.upvote.addEventListener("click", function () {
 
     if ((icons.static.upvoted == false) && (icons.static.downvoted == false)) {
         icons.static.upvoted = true;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value + 1;
-        
+        icons.elements.nbvote.value = icons.elements.nbvotes + 1;
+
     } else if ((icons.static.upvoted == false) && (icons.static.downvoted == true)) {
         icons.static.upvoted = true;
         icons.static.downvoted = false;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value + 1;
-       
+        icons.elements.nbvote.value = icons.elements.nbvotes + 1;
+
     } else if ((icons.static.upvoted == true)) {
         icons.static.upvoted = false;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value;
-       
+        icons.elements.nbvote.value = icons.elements.nbvotes;
+
 
     }
     if (icons.static.upvoted == true) {
@@ -60,17 +61,17 @@ icons.elements.downvote.addEventListener("click", function () {
 
     if ((icons.static.upvoted == false) && (icons.static.downvoted == false)) {
         icons.static.downvoted = true;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value - 1;
-        
+        icons.elements.nbvote.value = icons.elements.nbvotes - 1;
+
     } else if ((icons.static.downvoted == false) && (icons.static.upvoted == true)) {
         icons.static.downvoted = true;
         icons.static.upvoted = false;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value - 1;
-        
+        icons.elements.nbvote.value = icons.elements.nbvotes - 1;
+
     } else if ((icons.static.downvoted == true)) {
         icons.static.downvoted = false;
-        icons.elements.nbvotes.value = icons.elements.nbvotes.value;
-        
+        icons.elements.nbvote.value = icons.elements.nbvotes;
+
     }
     if (icons.static.downvoted == true) {
         icons.elements.downvote.innerHTML = icons.image.downvotef;
