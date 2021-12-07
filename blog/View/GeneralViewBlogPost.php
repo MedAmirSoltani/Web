@@ -15,15 +15,17 @@ if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
     $_SESSION['idp'] = $_GET["Idpost"];
 }
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
-
+if (isset($_POST["Nvote"])) {
+    $BlogC->AddNvotes($_POST["Nvote"], $_SESSION['idp']);
+}
 
 if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
     $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
     $CommentC->AddComment($Comment, $_SESSION['idp']);
-    $nombre=$CommentC->NumberComment($_SESSION['idp']);
-    $BlogC->AddNcomments($nombre,$_SESSION['idp']);
+    $nombre = $CommentC->NumberComment($_SESSION['idp']);
+    $BlogC->AddNcomments($nombre, $_SESSION['idp']);
 }
 if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
 
@@ -127,7 +129,18 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
         </div>
     </nav>
     <!-- Page content-->
+    <div id="buttons" style="position : absolute; left :200 px;">
+<form action="" method="post">
+        <button type="submit" id="upvote"></button>
+        <br>
+        <input value="<?php echo $test["Nvotes"]; ?>" name="Nvote" id="nbvote" hidden>
+        <br>
+        <button type="submit" id="downvote"></button>
+        </form>
+    </div>
+    <script defer src="../assets/ASFO/js/pls.js"></script>
     <div class="container mt-5">
+
         <div class="row">
             <div class="col-lg-8">
                 <!-- Post content-->
@@ -135,14 +148,17 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
+
                         <h1 class="fw-bolder mb-1"><?php echo $test["Title"]; ?></h1>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Posted on <?php echo $test["Date"]; ?></div>
                         <!-- Post categories-->
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+
                     </header>
                     <!-- Preview image figure-->
+
                     <figure class="mb-4"><img class="img-fluid rounded" src="../assets/ASFO/uploads/<?php echo $test['Picture']; ?>" height="350" width="700" alt="..." /></figure>
                     <!-- Post content-->
                     <section class="mb-5">
@@ -197,7 +213,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
 
 
                                                 <form action="" method="POST" class="mb-4" onsubmit="Verify()">
-                                                    <input type="text" name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!"/>
+                                                    <input type="text" name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!" />
                                                     <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
                                                     <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
                                                     <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
@@ -270,7 +286,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
     <!-- Core theme JS-->
     <script src="../assets/ASFO/js/scriptblogpost.js"></script>
     <script src="../assets/ASFO/js/AddComment.js"></script>
-    
+
 </body>
 
 </html>

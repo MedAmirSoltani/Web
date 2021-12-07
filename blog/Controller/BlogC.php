@@ -361,4 +361,22 @@ class BlogC
             $th->getMessage();
         }
     }
+    function AddNvotes($nombre,$idp)
+    {
+
+        $config = config::getConnexion();
+        try {
+            // $this->uploadFile();
+            $querry = $config->prepare('
+            Update post Set 
+            Nvotes =:Nvotes where Idpost =:idp
+            ');
+            $querry->execute([
+                'Nvotes' => $nombre,
+                'idp' => $idp,
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }
