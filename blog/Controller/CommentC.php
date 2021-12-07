@@ -193,4 +193,26 @@ class CommentC
         }
         header("Refresh:0");
     }
+    function RestoreComment($Comment, $idp, $idcr)
+    {
+
+        $config = config::getConnexion();
+        try {
+
+            $querry = $config->prepare('
+            INSERT INTO comment 
+            (Idpost,Comment_text,Date_Comment,Idcomment)
+            VALUES
+            (:Idpost,:Comment_text,:Date_Comment,:Idcomment)
+            ');
+            $querry->execute([
+                'Idcomment' => $idcr,
+                'Idpost' => $idp,
+                'Comment_text' => $Comment->getComment_text(),
+                'Date_Comment' => $Comment->getDate_Comment(),
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }

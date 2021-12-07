@@ -204,7 +204,7 @@ $replys = $ReplyC->ShowReplysArchive();
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Description</th>
                                                 <th scope="col">View</th>
-                                                <th scope="col">Modify</th>
+                                                <th scope="col">Restore</th>
                                                 <th scope="col">Comments</th>
                                                 <th scope="col">DELETE</th>
 
@@ -221,7 +221,7 @@ $replys = $ReplyC->ShowReplysArchive();
                                                     <td><?php echo $blog['Date']; ?></td>
                                                     <td><?php echo $blog['Description']; ?></td>
                                                     <td><a class="btn btn-primary btn-min-width mr-1 mb-1" href="GeneralViewBlogHomeArchive.php" target="_blank">SHOW<i class="ft-link-2"></i></a></td>
-                                                    
+                                                    <td><a class="btn btn-info btn-min-width mr-1 mb-1" href="RestorePost.php?Idpost=<?php echo $blog['Idpostar']; ?>" target="_blank">Restore<i class="ft-bookmark"></i></a></td>
 
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="GeneralViewBlogPostArchive.php?Idpostar=<?php echo $blog['Idpostar']; ?>" target="_blank">SHOWPOST<i class="ft-command"></i></a></td>
                                                     <td><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPostArchive.php?Idpostar=<?php echo $blog['Idpostar']; ?>">Remove<i class="ft-command"></i></a></td>

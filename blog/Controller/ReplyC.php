@@ -180,5 +180,27 @@ class ReplyC
         }
         header("Refresh:0");
     }
+    function RestoreReply($Reply, $idcr, $idr)
+    {
+
+        $config = config::getConnexion();
+        try {
+
+            $querry = $config->prepare('
+            INSERT INTO reply 
+            (idcomment,Reply_text,Date_Reply,Idreply)
+            VALUES
+            (:idcomment,:Reply_text,:Date_Reply,:Idreply)
+            ');
+            $querry->execute([
+                'Idreply' => $idr,
+                'Idcomment' => $idcr,
+                'Reply_text' => $Reply->getReply_text(),
+                'Date_Reply' => $Reply->getDate_Reply(),
+
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }
-?>

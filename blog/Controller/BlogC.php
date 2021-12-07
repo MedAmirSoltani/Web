@@ -310,4 +310,32 @@ class BlogC
         }
         header("Refresh:0");
     }
+
+    function RestoreBlog($Blog, $idp)
+    {
+
+        $config = config::getConnexion();
+        try {
+
+            $querry = $config->prepare('
+            INSERT INTO post 
+            (Idpost,Title,Picture,Description,Date)
+            VALUES
+            (:Idpost,:Title,:Picture,:Description,:Date)
+            ');
+            $querry->execute([
+                'Idpost' => $idp,
+                'Title' => $Blog->getTitle(),
+                'Picture' => $Blog->getPicture(),
+                'Date' => $Blog->getDate(),
+                'Description' => $Blog->getDescription(),
+
+
+
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
 }
