@@ -22,6 +22,8 @@ if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
     $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
     $CommentC->AddComment($Comment, $_SESSION['idp']);
+    $nombre=$CommentC->NumberComment($_SESSION['idp']);
+    $BlogC->AddNcomments($nombre,$_SESSION['idp']);
 }
 if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
 

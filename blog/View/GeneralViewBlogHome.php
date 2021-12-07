@@ -118,9 +118,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                         <?php
 
                         foreach ($Blogs as $blog) {
-                            $nombre=$CommentC->NumberComment($blog["Idpost"]);
-
-
+                            
                         ?>
                             <div class="card mb-4">
 

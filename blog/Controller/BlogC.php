@@ -337,5 +337,22 @@ class BlogC
             $th->getMessage();
         }
     }
+    function AddNcomments($nombre,$idp)
+    {
 
+        $config = config::getConnexion();
+        try {
+            // $this->uploadFile();
+            $querry = $config->prepare('
+            Update post Set 
+            Ncomments =:Ncomments where Idpost =:idp
+            ');
+            $querry->execute([
+                'Ncomments' => $nombre,
+                'idp' => $idp,
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 }
