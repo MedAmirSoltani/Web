@@ -38,6 +38,31 @@ $salles=$sallec->afficherSalles();
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+      <style>
+         #tab {
+            font-family: Arial, Helvetica, sans-serif;
+             border-collapse: collapse;
+             width: 100%;
+         }
+
+         #tab td, #tab th {
+         border: 1px solid #ddd;
+           padding: 8px;
+         }
+
+         #tab tr:nth-child(even){background-color: #f2f2f2;}
+
+         #tab tr:hover {background-color: #ddd;}   
+
+         #tab th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+             text-align: left;
+             background-color: #04AA6D;
+             color: white;
+}
+         </style>
 </head>
 <!-- body -->
 
@@ -102,12 +127,17 @@ $salles=$sallec->afficherSalles();
                   <span>  
                 
                                   <h2>Les Blocks</h2>
+                                  
                                     <?php
+
                                         foreach($listeBlockss as $block){ ?> 
-                    
-                                   <p> <h3> Nom : <?php echo $block['Nom']; ?> </h3></p>
-                                   <p> Nombre de salles:    <?php echo $block['Nbrsalles']; ?></p>
-                                  <p>   Types de salle:   <?php echo $block['Typesalles']; ?></p>
+                                 <table id="tab">
+                                 <tr>
+                                   <td> <h3> Nom : <?php echo $block['Nom']; ?> </h3></td>
+                                   <td> Nombre de salles:    <?php echo $block['Nbrsalles']; ?></td>
+                                   <td>   Types de salle:   <?php echo $block['Typesalles']; ?></td>
+                                 </tr>
+                              </table>
  <?php }
 
                                              ?> 
@@ -122,12 +152,15 @@ $salles=$sallec->afficherSalles();
                        <?php
                                         foreach($salles as $res){
                                              ?>
-                                              <p> <h3>id salle ;<?php echo $res['Id']; ?></h3></p>
-                                             <p><h3>nom<?php echo $res['nom']; ?> </h3></p>
-                                        <p> <h3>Nombre de projecteurs<?php echo $res['Nbrprojecteurs']; ?> </h3></p>
-                                        <p><h3>nombre de tables <?php echo $res['Nbrtables']; ?> </h3></p>
-                                        <p><h3>NOmbre de chaisse <?php echo $res['Nbrchaises']; ?> </h3></p>
-                                                 <p><?php echo $res['id_block']; ?></p>
+                                            <table id="tab">
+                                             <tr>
+                                              <td> <h3>id salle ;<?php echo $res['Id']; ?></h3></td>
+                                             <td><h3>nom<?php echo $res['nom']; ?> </h3></td>
+                                        <td> <h3>Nombre de projecteurs<?php echo $res['Nbrprojecteurs']; ?> </h3></td>
+                                        <td><h3>nombre de tables <?php echo $res['Nbrtables']; ?> </h3></td>
+                                        <td><h3>NOmbre de chaisse <?php echo $res['Nbrchaises']; ?> </h3></td>
+                                                 <td><?php echo $res['id_block']; ?></td>
+                                        </tr>
 
 <?php } ?>
 
