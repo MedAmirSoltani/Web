@@ -7,7 +7,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<script> window.history.forward(); </script>
 <head>
    <!-- basic -->
    <meta charset="utf-8">
@@ -23,19 +23,19 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    <!--jquerry-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- background css -->
-<link rel="stylesheet" href="css/background.css">
+<link rel="stylesheet" href="../Assets/CSS/background.css">
    <!-- login css -->
-   <link rel="stylesheet" href="css/login.css">
+   <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
    <!-- Responsive-->
-   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
    <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -46,7 +46,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 <body class="main-layout home_page">
    <!-- loader  -->
    <div class="loader_bg">
-      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
    <!-- header -->
@@ -58,7 +58,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -71,7 +71,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                               <li> <a href="about.php">Forum</a> </li>
                               <li><a href="front3.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
-                              <li class="mean-last"> <a id="login" href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            <div class="arrow-up">
                            
                            <div class="login-form">
@@ -94,7 +94,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
       <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
          <div class="carousel-inner">
             <div class="carousel-item active">
-               <img  src="images/fond.png" alt="First slide">
+               <img  src="../Assets/Images/fond.png" alt="First slide">
                <div class="container">
                   <div class="carousel-caption relative">
                      <h1 class="titre">Your Profil</h1>
@@ -106,7 +106,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                                                    }
                                                 
                                                  ?>
-                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="uploads/<?php echo $x['profilpicture'] ?>"> 
+                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>"> 
                                                  <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:20%;float:left;margin:190 10px 0 0px; display:none; "   />
                                                  <br>
                                                  <span class="left"  style="float:left;margin:280px 10px 0 -170px; "> <p style="color:white;font-family: inherit;font-size: 35px;" ><?php echo $x['name']?></p></span> 
@@ -126,15 +126,15 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    </section>
    </form>
    <!-- Javascript files-->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
-   <script src="js/plugin.js"></script>
-   <script src="js/click.js"></script>
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
+   <script src="../Assets/js/click.js"></script>
    <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
   
 </body>
 

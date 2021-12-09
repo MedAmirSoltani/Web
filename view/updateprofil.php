@@ -49,15 +49,15 @@ display:none;
    <meta name="description" content="">
    <meta name="author" content="">
    <!-- bootstrap css -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
    <!-- Responsive-->
-   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
    <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -68,7 +68,7 @@ display:none;
 <body class="main-layout contact-page">
    <!-- loader  -->
    <div class="loader_bg">
-      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
    <!-- header -->
@@ -80,7 +80,7 @@ display:none;
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -93,8 +93,8 @@ display:none;
                               <li> <a href="about.php">Forum</a> </li>
                               <li><a href="contact.php">matiere</a></li>
                               <li><a href="contact.php">classe</a></li>
-                              <li class="mean-last"> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
-                              <li class="mean-last"> <a href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -182,7 +182,7 @@ z.style.display="block";
                                     </div> 
                                     <script>
                          var bleep=new Audio();
-                         bleep.src="ab.mp3";
+                         bleep.src="../Assets/music/amir.mp3";
                       </script>
                   </div>
             </div>
@@ -202,10 +202,10 @@ z.style.display="block";
                      <h3>Follow Us</h3>
                   </div>
                   <ul class="location_icon">
-                     <li> <a href="#"><img src="icon/facebook.png"></a></li>
-                     <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                     <li> <a href="#"><img src="icon/linkedin.png"></a></li>
-                     <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                   </ul>
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
@@ -226,16 +226,16 @@ z.style.display="block";
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
-   <script src="js/plugin.js"></script>
-   <script src="js/click.js"></script>
-   <script src="js/lol.js"></script>
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
+   <script src="../Assets/js/click.js"></script>
+   <script src="../Assets/js/lol.js"></script>
    <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
 </body>
 
 </html>

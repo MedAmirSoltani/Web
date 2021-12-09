@@ -68,17 +68,17 @@ include_once     '../Controller/utilisateurC.php';
    <!--jquerry-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <!-- login css -->
-   <link rel="stylesheet" href="css/login.css">
+   <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
    <!-- Responsive-->
-   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
    <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -89,7 +89,7 @@ include_once     '../Controller/utilisateurC.php';
 <body class="main-layout home_page">
    <!-- loader  -->
    <div class="loader_bg">
-      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
    <!-- header -->
@@ -101,7 +101,7 @@ include_once     '../Controller/utilisateurC.php';
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -113,7 +113,7 @@ include_once     '../Controller/utilisateurC.php';
                               <li class="active"> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">About us</a> </li>
                               <li><a href="contact.php">Contact us</a></li>
-                              <li class="mean-last"> <a id="login" href="#"><img src="images/top-icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            <div class="arrow-up">
                            
                            <div class="login-form">
@@ -179,7 +179,7 @@ include_once     '../Controller/utilisateurC.php';
       <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
          <div class="carousel-inner">
             <div class="carousel-item active">
-               <img class="first-slide" src="images/banner.png" alt="First slide">
+               <img class="first-slide" src="../Assets/Images/banner.png" alt="First slide">
                <div class="container">
                   <div class="carousel-caption relative">
                      <h1>The Best University<br>That Every Students<br>Need to Learn in!</h1>
@@ -189,14 +189,14 @@ include_once     '../Controller/utilisateurC.php';
                      <ul class="locat_icon">
                         <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img
                                  src="icon/facebook.png"></a></li>
-                        <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                        <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                        <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                        <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                      </ul>
                   </div>
                </div>
             </div>
             <div class="carousel-item">
-               <img class="second-slide" src="images/banner2.png" alt="Second slide">
+               <img class="second-slide" src="../Assets/Images/banner2.png" alt="Second slide">
                <div class="container">
                   <div class="carousel-caption relative">
                      <h1>The Best University<br>That Every Students<br>Need to Learn in!</h1>
@@ -204,15 +204,15 @@ include_once     '../Controller/utilisateurC.php';
                         is changing<br>the world with their new teaching strategies.</p>
                      <div class="button_section"> <a class="main_bt" href="#">Read More</a> </div>
                      <ul class="locat_icon">
-                        <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="icon/facebook.png"></a></li>
-                        <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                        <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                        <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="../Assets/icon/facebook.png"></a></li>
+                        <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                        <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                      </ul>
                   </div>
                </div>
             </div>
             <div class="carousel-item">
-               <img class="third-slide" src="images/banner3.png" alt="Third slide">
+               <img class="third-slide" src="../Assets/Images/banner3.png" alt="Third slide">
                <div class="container">
                   <div class="carousel-caption relative">
                      <div class="carousel-caption relative">
@@ -222,10 +222,10 @@ include_once     '../Controller/utilisateurC.php';
                            is changing<br>the world with their new teaching strategies.</p>
                         <div class="button_section"> <a class="main_bt" href="#">Read More</a> </div>
                         <ul class="locat_icon">
-                           <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="icon/facebook.png"></a></li>
-                           <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                           <li> <a href="#"><img src="icon/linkedin.png"></a></li>
-                           <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                           <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="../Assets/icon/facebook.png"></a></li>
+                           <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                           <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                           <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                         </ul>
                      </div>
                   </div>
@@ -264,7 +264,7 @@ include_once     '../Controller/utilisateurC.php';
             </div>
             <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                <div class="about-box">
-                  <figure><img src="images/about.png" alt="img" /></figure>
+                  <figure><img src="../Assets/Images/about.png" alt="img" /></figure>
                </div>
             </div>
          </div>
@@ -285,9 +285,9 @@ include_once     '../Controller/utilisateurC.php';
                      <h3>Follow Us</h3>
                   </div>
                   <ul class="location_icon">
-                     <li> <a href="#"><img src="icon/facebook.png"></a></li>
-                     <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                     <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                   </ul>
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
@@ -308,14 +308,14 @@ include_once     '../Controller/utilisateurC.php';
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
-   <script src="js/plugin.js"></script>
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
    <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
    <script type="text/javascript">
 $(document).ready(function()
 {
