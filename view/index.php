@@ -4,7 +4,11 @@ include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
    
     $userC=new utilisateurC();
-    
+    $userC1=new utilisateurC();
+$conn=$userC1->getutilisateurbyID($_SESSION['a']);
+
+           
+      
     if(isset($_POST["email"]) && isset($_POST["password"])  )
     {
       
@@ -113,20 +117,47 @@ include_once     '../Controller/utilisateurC.php';
                               <li class="active"> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">About us</a> </li>
                               <li><a href="contact.php">Contact us</a></li>
-                              <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
-                           <div class="arrow-up">
-                           
-                           <div class="login-form">
-                           <form action="" method="POST" onsubmit="return verifcnx();">
-                           <div class="field">
-                                 
+                              
+                              <li class="dropdown dropdown-user nav-item"><a  href="#" data-toggle="dropdown">
+                               
+                                 <?php if(!empty($conn['name'])): ?>
+                                    <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John
+                                                Doe</span></span></a>
+                                    <div class="dropdown-divider"></div>
+                                    <?php if(strcmp($conn['role'], "Prof") == 0){ ?>
+                                       <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
+                                      
+<?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
+   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+                                         
+<?php }  else {?>
+   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+                                         
+<?php } ?>
+                                  
+                                    <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                                    <?php else: ?>
+     <!-- HTML here -->
+     <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                            <form action="" method="POST" onsubmit="return verifcnx();">
+                                    <div class="dropdown-divider"></div>
+                                    <div class="field">
+                                    
                                  <input class="form-control" type="text" name="email" id="email" placeholder="email" >
                               </div>
-                              
                               <div class="field">
                               <input class="form-control" type="password" name="password" id="password" placeholder="password">
                               </div>
-                              <div id="lol"> </div>
+                              <a class="dropdown-item" style="font-size: 13px;" href="#"><i class="ft-user"></i> forget password</a>
+                              <a class="dropdown-item" style="font-size: 15px;" href="#"><i class="ft-user"></i> new?</a>
+                               <div id="lol"> </div>
                               <script>
                                      function verifcnx(){
                                        var email = document.getElementById("email").value;
@@ -140,27 +171,11 @@ include_once     '../Controller/utilisateurC.php';
                                       }
                                      }
                                     </script>
-                                     <?php
-                                     if(isset($_POST["login"]))
-                                     {
-                                     if (strcmp($message, 'email or password uncorrect') == 0 )
-                                     {
-                                       
-                                        echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
-                                      
-                                     }
-                                    }
-                                     ?>
-                              <div>
-                              <input class="login-button" onmousedown="bleep.play()" type="submit" value="login">
-                              </div>
-                             <br>
-                              <a href="#">forget password</a> 
-                              <br>
-                              
-                              <div><a href="signin.php">new?</a> </div>
-                              
-                           </form>
+                              <div class="dropdown-divider"></div>
+                             
+                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
+                              </form>    
+                              <?php endif; ?>
                            </div>
                            </div>
                            </ul>

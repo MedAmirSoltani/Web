@@ -7,7 +7,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<script> window.history.forward(); </script>
+
 <head>
    <!-- basic -->
    <meta charset="utf-8">
