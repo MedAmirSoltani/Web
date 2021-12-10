@@ -47,20 +47,21 @@ $salles=$sallec->afficherSalles();
          }
 
          #tab td, #tab th {
-         border: 1px solid #ddd;
+         border: 1px solid #000000;
            padding: 8px;
          }
 
-         #tab tr:nth-child(even){background-color: #f2f2f2;}
+         #tab tr:nth-child(even){background-color: #ddd‚;}
 
          #tab tr:hover {background-color: #ddd;}   
 
          #tab th {
             padding-top: 12px;
             padding-bottom: 12px;
-             text-align: left;
-             background-color: #04AA6D;
+             text-align: center;
+             background-color: #808080;
              color: white;
+
 }
          </style>
 </head>
@@ -128,16 +129,21 @@ $salles=$sallec->afficherSalles();
                 
                                   <h2>Les Blocks</h2>
                                   
+                                  <table id="tab">
+                      <tr>
+                        <th>Nom</th>
+                        <th>Nombre de salle</th>
+                        <th>Type de salle</th>
+                    </tr>
                                     <?php
 
                                         foreach($listeBlockss as $block){ ?> 
-                                 <table id="tab">
-                                 <tr>
-                                   <td> <h3> Nom : <?php echo $block['Nom']; ?> </h3></td>
-                                   <td> Nombre de salles:    <?php echo $block['Nbrsalles']; ?></td>
-                                   <td>   Types de salle:   <?php echo $block['Typesalles']; ?></td>
-                                 </tr>
-                              </table>
+                                  <tr>
+                                       <td><?php echo $block['Nom']; ?></td>
+                                        <td><?php echo $block['Nbrsalles']; ?></td>
+                                        <td><?php echo $block['Typesalles']; ?></td>
+                                  </tr>
+     
  <?php }
 
                                              ?> 
@@ -145,30 +151,39 @@ $salles=$sallec->afficherSalles();
                </div>
             </div>
          </div>
-         <div class="row border">
             <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
                <div class="about-box">
+                 
+
+                  <table id="tab">
                   <p>      <h2>Les Salles</h2>
+                      <tr>
+                        <th>Id</th>
+                       <th>Nom</th>
+                        <th>Nbrprojecteurs</th>
+                        <th>Nbrtables</th>
+                        <th>Nbrchaises</th>
+
+                    </tr>
+
                        <?php
                                         foreach($salles as $res){
                                              ?>
-                                            <table id="tab">
+                                             
                                              <tr>
-                                              <td> <h3>id salle ;<?php echo $res['Id']; ?></h3></td>
-                                             <td><h3>nom<?php echo $res['nom']; ?> </h3></td>
-                                        <td> <h3>Nombre de projecteurs<?php echo $res['Nbrprojecteurs']; ?> </h3></td>
-                                        <td><h3>nombre de tables <?php echo $res['Nbrtables']; ?> </h3></td>
-                                        <td><h3>NOmbre de chaisse <?php echo $res['Nbrchaises']; ?> </h3></td>
-                                                 <td><?php echo $res['id_block']; ?></td>
-                                        </tr>
+                                            <td><?php echo $res['Id'];?></td>
+                                            <td><?php echo $res['nom'];?></td>
+                                            <td><?php echo $res['Nbrprojecteurs'];?></td>
+                                            <td><?php echo $res['Nbrtables'];?></td>
+                                            <td><?php echo $res['Nbrchaises'];?></td>
+                                           </tr>
 
-<?php } ?>
+                                    <?php } ?>
+                  </table>
 
-
-                   </p>
+                   
                   
                </div>
-            </div>
             <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                <div class="about-box">
                   <figure><img src="images/about.png" alt="img" /></figure>
