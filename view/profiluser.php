@@ -101,7 +101,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                      <br><br>
                      <?php if (empty($x['profilpicture']))
                                                   {
-                                                    echo '<img src="uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:60%;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
+                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:20%; height:290px;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
                                                     
                                                    }
                                                 

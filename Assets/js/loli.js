@@ -84,13 +84,13 @@ if(email==false) {
     document.getElementById("badelha").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">write an email</p>';
     return false;
     preventdefault(); }
-if(email.includes('@hogwarts.tn'))
+if(email.includes('@esprit.tn'))
 {
 
 } 
 else
 {
-    document.getElementById("badelha").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">your email should contain @hogwarts.tn</p>';
+    document.getElementById("badelha").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">your email should contain @esprit.tn</p>';
 return false;
 preventdefault(); 
 }

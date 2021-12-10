@@ -1,36 +1,44 @@
 <?php
+session_start();
 
-require_once     '../Controller/utilisateurC.php';
-require_once '../Model/utilisateur.php';
-$utilisateurC = new utilisateurC();
-$etudiantC = new etudiantC();
-if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_POST['classe'] ) )
+if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] )  &&  isset($_POST["captcha"]) && $_POST["captcha"]!="" && $_SESSION["codes"]==$_POST["captcha"] )
     {
-      $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"]);
-      $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"] ,$_POST['classe'] ); 
-      $utilisateurC->ajouterutilisateur($utilisateur);
-      $etudiantC->ajouteretudiant($etudiant);
-      $target_dir = "../Assets/uploads/";
-      $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
-      if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
-          
-      }
+       $_SESSION['ID_utilisateur1']=$_POST['ID_utilisateur'];
+       $_SESSION['email1']=$_POST['email'];
+       $_SESSION['password1']=$_POST['password'];
+       $_SESSION['name1']=$_POST['name'];
+       $_SESSION['first_name1']=$_POST['first_name'];
+       $_SESSION['date_of_birth1']=$_POST['date_of_birth'];
+       $_SESSION['role1']=$_POST['role'];
+       $_SESSION['classe1']=$_POST['classe'];
+       $_SESSION['specialite1']=$_POST['specialite'];
+       $_SESSION['profilpicture1']=$_FILES['profilpicture'];
     }
-
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && $_FILES["profilpicture"]["name"] && isset($_POST['specialite'] )) 
-    {
-      $utilisateur1 = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"] );
-      $utilisateur1C = new utilisateurC();
-      $utilisateur1C->ajouterutilisateur($utilisateur1);
-      $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['specialite'] );
-      $profC = new profC();
-      $profC->ajouterprof($prof);
-      $target_dir = "../Assets/uploads/";
-      $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
-      if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
-         
-      }
+    if (isset($_POST['signin']) &&  $_SESSION["codes"]!=$_POST["captcha"] ){
+    echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:500px 50px 0 250px;" id="erreur" > code uncorrect </p>';
+    }                                
+    if (isset($_POST['signin']) &&  $_SESSION["codes"]==$_POST["captcha"] ){
+      
+     
+              $_SESSION['email'] = $_POST['email'] ;
+              
+              $code=mt_rand(1000,9999);
+              $_SESSION['code'] =$code;
+              $email1="TheUniversity@hogwarts.tn";    
+              $dest = $_SESSION['email'];
+              $sujet = "Vérification du mot de passe";
+              $corp =" Bonjour, voici votre code de verification $code " ;
+              $headers = 'From: ' .$email1 . "\r\n".'Reply-To: ' . $email1. "\r\n".'X-Mailer: PHP/' . phpversion();
+              
+              if (mail($dest, $sujet, $corp, $headers)) {
+                  echo "Email envoyé avec succès à $dest ...";
+                  header("Location: verifemail.php");
+              } 
+              else {
+                   echo "Échec de l'envoi de l'email...";
+              }  
     }
+  
 ?>
 <style>
    .fa-color
@@ -129,7 +137,7 @@ display:none;
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form id="formulaire" action="" method="POST"  enctype="multipart/form-data">
+               <form id="formulaire" action="" method="POST" onsubmit="return getselectedvalue();" enctype="multipart/form-data">
                   <div class="row">
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <input class="form-control" type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:40%;height:200px;border-radius:50%;float:left;margin:0 10px 0 -200px; display:none; "  > </td>
@@ -170,6 +178,7 @@ z.style.display="block";
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <input class="form-control" type="text" name="name" id="name" placeholder="name">
                      </div>
+                     <div id="frogot-name"></div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <input class="form-control" type="text" name="first_name" id="first_name" placeholder="first_name">
                      </div>
@@ -189,10 +198,7 @@ z.style.display="block";
                                        <option  value="Prof">Prof</option>
                                     </select>
                                     </div>
-                                  
-                                  
-                                 
-                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <input class="form-control" type="text" name="classe" id="classe" placeholder="classe" hidden>
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -202,6 +208,15 @@ z.style.display="block";
                                  
                                 
                                     <div id="badelha"></div>
+                                    
+                                 <img style="margin:0 10px 0 450px;" src="captcha.php"/>
+                                 <br> <br>  
+                                                <input style="margin:0 10px 0 1px;" type="text" name="captcha" id="captcha" placeholder="write the code"/>
+                                    <div id="frogot-captcha"></div>
+                                 
+                                  
+                                 
+                                
                                     <script>
                          var bleep=new Audio();
                          bleep.src="ab.mp3";
@@ -212,7 +227,7 @@ z.style.display="block";
                   </div>
                
             </div>
-            <button type="submit" onclick="return getselectedvalue();" onmousedown="bleep.play()" class="send-btn">Send</button>
+            <button type="submit" onmousedown="bleep.play()" class="send-btn">Signin</button>
         </form> 
         </div>
       </div>
@@ -258,7 +273,7 @@ z.style.display="block";
    <script src="../Assets/js/jquery-3.0.0.min.js"></script>
    <script src="../Assets/js/plugin.js"></script>
    <script src="../Assets/js/click.js"></script>
-   <script src="../Assets/js/lol.js"></script>
+   <script src="../Assets/js/loli.js"></script>
    <!-- sidebar -->
    <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="../Assets/js/custom.js"></script>

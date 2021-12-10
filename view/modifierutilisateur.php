@@ -288,6 +288,6 @@ session_start();
             </table>
         </form>
   </body>
-  <script src="js/load.js"></script>
-  <script src="js/click.js"></script>
+  <script src="../Assets/js/load.js"></script>
+  <script src="../Assets/js/click.js"></script>
 </html>

@@ -275,7 +275,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $etudiant['classe']; ?></td>
                           <?php $_SESSION['special1']=$etudiant['classe']; ?>
 
-                          <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+                          <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $etudiant['ID']; ?>">modifier</a></td>
                         </tr>
 
@@ -344,7 +344,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $prof['role']; ?></td>
                           <td><?php echo $prof['specialite']; ?></td>
                           <?php $_SESSION['special2']=$prof['specialite']; ?>
-                          <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+                          <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $prof['ID_prof']; ?>?<?php echo $prof['specialite']; ?>">modifier</a></td>
                         </tr>
 
