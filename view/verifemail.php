@@ -36,7 +36,7 @@ require_once '../Assets/Utils/config.php';
             
          }
         }
-        header("Location: login.php");
+        header("Location: index.php");
         }
         else{
          header("Location: verifemail.php");
@@ -133,15 +133,16 @@ require_once '../Assets/Utils/config.php';
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <p style="text-align: center;">Write the code that was sent to your email here</p>    
+            <p style="text-align: center;font-size: 21px; color:#878585;">Write the code that was sent to your email here</p>   
+            <br><br><br> 
             <form id="formulaire" action="" method="POST" >
-                  <div class="row">
+                  <div  class="row">
                      
                                     
                                   
-                                                <input type="int" name="code" id="code" placeholder="enter the code"/>
+                                                <input  class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="int" name="code" id="code" placeholder="enter the code"/>
                                    
-                                 
+                                 <br><br><br>
                                   
                                  
                                 

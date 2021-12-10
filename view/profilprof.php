@@ -8,257 +8,134 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 <!DOCTYPE html>
 <html lang="en">
 <script> window.history.forward(); </script>
-   <!-- Basic -->
+<head>
+   <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Mobile Metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <!-- Site Metas -->
-   <title>Hogwarts</title>
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>memorial books</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   <!-- site icon -->
-   <link rel="icon" href="../Assets/mages/fevicon.png" type="image/png" />
-   <!-- Bootstrap core CSS -->
-   <link href="../Assets/CSS/bootstrap.css" rel="stylesheet">
-   <!-- FontAwesome Icons core CSS -->
-   <link href="../Assets/CSS/font-awesome.min.css" rel="stylesheet">
-   <!-- Custom animate styles for this template -->
-   <link href="../Assets/CSS/animate.css" rel="stylesheet">
-   <!-- Custom styles for this template -->
-   <link href="../Assets/CSS/style.css" rel="stylesheet">
-   <!-- Responsive styles for this template -->
-   <link href="../Assets/CSS/responsive.css" rel="stylesheet">
-   <!-- Colors for this template -->
-   <link href="../Assets/CSS/colors.css" rel="stylesheet">
-   <!-- light box gallery -->
-   <link href="../Assets/CSS/ekko-lightbox.css" rel="stylesheet">
+   <!--jquerry-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- background css -->
+<link rel="stylesheet" href="../Assets/CSS/background.css">
+   <!-- login css -->
+   <link rel="stylesheet" href="../Assets/CSS/login.css">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
-   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-   <![endif]-->
-   </head>
-   <body id="inner_page">
-      <!-- header -->
-      <header class="header">
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
 
-        <div class="header_top_section">
-           <div class="container">
-              <div class="row">
-               <div class="col-lg-3">
+<body class="main-layout home_page">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
+   </div>
+   <!-- end loader -->
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
-                     <div class="logo">
-                        <a href="index.php"><img src="../Assets/Images/logo.png" alt="#" /></a>
+                     <div class="center-desk">
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
-               <div class="col-lg-9 site_information">
-                  <div class="full">
-                     <div class="main_menu">
-                        <nav class="navbar navbar-inverse navbar-toggleable-md">
-                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-                           <span class="float-left">Menu</span>
-                           <span class="float-right"><i class="fa fa-bars"></i> <i class="fa fa-close"></i></span>
-                           </button>
-                           <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
-                              <ul class="navbar-nav">
-                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">Home</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-aqua-hover" href="about.php">Emploi</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="front.php">Matière</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="login.php">Forum</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="profilprof.php">Profil</a>
-                                 </li>
-                              </ul>
-                              <ul class="navbar-nav">
-                                 <li class="nav-item">
-                                 </li>
-                              </ul>
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <div class="menu-area">
+                     <div class="limit-box">
+                        <nav class="main-menu">
+                           <ul class="menu-area-main">
+                              <li > <a href="index.php">Home</a> </li>
+                              <li> <a href="about.php">Forum</a> </li>
+                              <li><a href="front3.php">Subject</a></li>
+                              <li><a href="contact.php">classe</a></li>
+                              <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                           <div class="arrow-up">
+                           
+                           <div class="login-form">
                            </div>
+                           </div>
+                           </ul>
                         </nav>
                      </div>
                   </div>
                </div>
             </div>
-           </div>
-        </div>
+         </div>
+      </div>
 
-      </header>
-      <!-- end header -->
-      
-      <!-- section -->
-      <section class="main_full inner_page">
-        <div class="container-fluid">
-          <div class="row">
-             <div class="full">
-               <h3>sign in</h3>    
-             </div>
-          </div>
-        </div>
-      </section>
-      <!-- end section -->
-    
-    <!-- section -->
-    <form action="updateprofilprof.php"  enctype="multipart/form-data">
-     <section class="layout_padding section">
-         <div class="container">
-           <div class="row">
-               <div class="col-md-12">
-                  <div class="contact_section margin_top_30">
-                     <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                           <div class="form_cont">
-                            <section class="layout_padding section">
-                                <div id="test" class="container-fluid">
-                                   <div class="row">
-                                      <div class="col-lg-12 text_align_center">
-                                      </div>
-                                      <div class="col-md-12 testimonial">
-                                         <div class="full text_align_center">
-                                            <div class="full margin_top_30 text_align_center">
-                                                <h2 >Your Profile </h2>
-                                                <br>
-                                                <br>
-                                                <br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-
-                                                 </div>
-                                                 <?php if (empty($x['profilpicture']))
+      <!-- end header inner -->
+   </header>
+   <!-- end header -->
+   <form action="updateprofilprof.php" enctype="multipart/form-data">
+   <section class="slider_section">
+      <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img  src="../Assets/Images/fond.png" alt="First slide">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <h1 class="titre">Your Profil</h1>
+                     <br><br>
+                     <?php if (empty($x['profilpicture']))
                                                   {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:60%;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
+                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:20%; height:290px;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
                                                     
                                                    }
                                                 
                                                  ?>
-                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:58%; height:370px; float:left;margin:0 10px 0 -200px; border-radius:50%; display:block;" src="uploads/<?php echo $x['profilpicture'] ?>"> 
-                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:0%;float:left;margin:0 10px 0 -200px; display:none; "  >
+                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>"> 
+                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:20%;float:left;margin:190 10px 0 0px; display:none; "   />
                                                  <br>
-                                                 <span class="left"  style="float:left;margin:400px 10px 0 -260px; "> <p style="color:#dc1a20;font-size: 35px;" ><?php echo $x['name']?></p></span> 
-                                                 <button style= "background:#dc1a20; margin:500px 580px 0 -320px;" name="update">update profile</button>
-                                                                
-      <div style="margin:-500px 10px 0 200px; ">   <p > <strong>Job:</strong> <?php echo $x['role']?>  </p> </div>
-      <div style="margin:0px 10px 0 -160px; ">  <h3>Specialite:  </h3>  <p><?php echo $_SESSION['c']?>  </p> </div>
-      <div>  <h3>ID:  </h3>  <p ><?php echo $x['ID_utilisateur']?> </p> </div>   
-                                         </div>
-                                         
-                                      </div>
-
-
-                                      <a href="login.php"> <input type="button" value="Deconnexion" style= "margin:200px 10px 0 390px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>
-                                     
-                                   </div>
-                               </div>
-                             </section>
-                             
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                                                 <span class="left"  style="float:left;margin:280px 10px 0 -170px; "> <p style="color:white;font-family: inherit;font-size: 35px;" ><?php echo $x['name']?></p></span> 
+                                                 <button class="send-btn" style= "margin:350px 580px 0 -300px;" name="update">update profile</button>
+                                                 <div style="margin:-400px 10px 0 800px;color:white;">   <h2 style="color:white;"> <strong>Job:</strong> <?php echo $x['role']?>  </h2> </div>
+     <br>
+                                                 <div style="margin:0px 10px 0 825px; ">  <h2 style="color:white;"> <strong>Classe: </strong> </h2>  <h2 style="margin:0px 10px 0 23px;color:white; "><?php echo $_SESSION['c']?>  </h2> </div>
+     <br>
+                                                 <div style="margin:0px 10px 0 850px; ">  <h2 style="color:white;"><strong>ID: </strong> </h2>  <h2  style="margin:0px 10px 0 -32px; color:white;"><?php echo $x['ID_utilisateur']?> </h2> </div> 
+      <a href="deconnexion.php"> <input type="button" color:#192d82; value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
+   </div>
                </div>
             </div>
+    
+            
          </div>
-         
-      </section>
-</form>
-      <!-- end section -->
-      <!-- footer -->
-      <footer class="footer layout_padding">
-         <div class="container">
-            <div class="row">
+   </section>
+   </form>
+   <!-- Javascript files-->
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
+   <script src="../Assets/js/click.js"></script>
+   <!-- sidebar -->
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
+  
+</body>
 
-               <div class="col-md-4 col-sm-12">
-                  <a href="index.php"><img class="img-responsive" src="../Assets/Images/logo.png" alt="#" /></a>
-                  <div class="footer_link_heading">
-                     <div class="footer_menu margin_top_30">
-                     <ul>
-                        <li><a href="tel:98238240">(+216)98238240</a></li>
-                        <li><a href="#">Hogwarts@gmail.com</a></li>
-                        <li><a href="#">22 rue taher ben achour afh</a></li>
-                     </ul>
-                  </div>
-                  </div>
-               </div>
-               
-               <div class="col-md-8">
-                 <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>FEATURED COURSES</h3>
-                  </div>
-                  <div class="footer_menu">
-                     <ul>
-                        <li>AI courses</li>
-                        <li>Data Science</li>
-                        <li>Web Development</li>
-                        <li>Gamix</li>
-                     </ul>
-                  </div>
-               </div>
-
-               <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>CATEGORIES</h3>
-                  </div>
-                  <div class="footer_menu">
-                    <ul>
-                       <li>Arts & Design</li>
-                       <li>Business</li>
-                       <li>Computer </li>
-                       <li>Data entery</li>
-                    </ul>
-                  </div>
-               </div>
-               
-               <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>USEFUL LINKS</h3>
-                  </div>
-                  <div class="footer_menu">
-                    <ul>
-                       <li><a href="about.php">FAQs</a></li>
-                       <li><a href="contact.php">Contact search</a></li>
-                       
-                    </ul>
-                  </div>
-               </div>
-                 </div>
-               </div>
-               
-            </div>
-         </div>
-      </footer>
-      <div class="cpy">
-        <div class="container">
-           <div class="row">
-             <div class="col-md-12">
-               <p>Copyright 2021. All Rights Reserved. HogWarts University</a></p>
-             </div>
-           </div>
-        </div>
-      </div>
-      <!-- end footer -->
-      <!-- Core JavaScript
-         ================================================== -->
-      <script src="../Assets/js/jquery.min.js"></script>
-      <script src="../Assets/js/tether.min.js"></script>
-      <script src="../Assets/js/bootstrap.min.js"></script>
-      <script src="../Assets/js/parallax.js"></script>
-      <script src="../Assets/js/animate.js"></script>
-      <script src="../Assets/js/ekko-lightbox.js"></script>
-      <script src="../Assets/js/custom.js"></script>
-      <script src="../Assets/js/click.js"></script>
-   </body>
 </html>

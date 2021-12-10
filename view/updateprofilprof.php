@@ -4,26 +4,25 @@ require_once     '../Controller/utilisateurC.php';
 require_once '../Model/utilisateur.php';
 
     $utilisateurC = new utilisateurC();
-    $etudiantC = new etudiantC();
-    //$profC = new profC();
+   
+    $profC = new profC();
     
-    if (  isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  )) 
+    if (  isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  )  ) 
     {
-      $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
+       $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
+      
         echo $_POST['ID_utilisateur'] ;
-        
-      echo "<script> alert('hamadi3ala9el'); </script>";
-        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"]);
-        $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"], $_POST['classe']);
+        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $x['profilpicture']);
+        $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $x['profilpicture'], $_SESSION['c']);
          $utilisateurC->modifierutilisateur($utilisateur);
-          $etudiantC->modifieretudiant($etudiant);
-           header('Location:profiluser.php');
+          $profC->modifierprof($prof);
+           header('Location:profilprof.php');
     }
     
     else
     {
-      $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
-   }
+       $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
+         }
 ?>
 <style>
    .fa-color

@@ -111,11 +111,11 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                                                  <br>
                                                  <span class="left"  style="float:left;margin:280px 10px 0 -170px; "> <p style="color:white;font-family: inherit;font-size: 35px;" ><?php echo $x['name']?></p></span> 
                                                  <button class="send-btn" style= "margin:350px 580px 0 -300px;" name="update">update profile</button>
-                                                 <div style="margin:-400px 10px 0 800px; ">   <h2 > <strong>Job:</strong> <?php echo $x['role']?>  </h2> </div>
+                                                 <div style="margin:-400px 10px 0 800px;color:white;">   <h2 style="color:white;"> <strong>Job:</strong> <?php echo $x['role']?>  </h2> </div>
      <br>
-                                                 <div style="margin:0px 10px 0 825px; ">  <h2>Classe:  </h2>  <h2 style="margin:0px 10px 0 20px; "><?php echo $_SESSION['c']?>  </h2> </div>
+                                                 <div style="margin:0px 10px 0 825px; ">  <h2 style="color:white;"> <strong>Classe: </strong> </h2>  <h2 style="margin:0px 10px 0 23px;color:white; "><?php echo $_SESSION['c']?>  </h2> </div>
      <br>
-                                                 <div style="margin:0px 10px 0 850px; ">  <h3>ID:  </h3>  <p  style="margin:0px 10px 0 -25px; "><?php echo $x['ID_utilisateur']?> </p> </div> 
+                                                 <div style="margin:0px 10px 0 850px; ">  <h2 style="color:white;"><strong>ID: </strong> </h2>  <h2  style="margin:0px 10px 0 -32px; color:white;"><?php echo $x['ID_utilisateur']?> </h2> </div> 
       <a href="deconnexion.php"> <input type="button" color:#192d82; value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
    </div>
                </div>

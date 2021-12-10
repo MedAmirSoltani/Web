@@ -13,6 +13,7 @@ if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST[
        $_SESSION['classe1']=$_POST['classe'];
        $_SESSION['specialite1']=$_POST['specialite'];
        $_SESSION['profilpicture1']=$_FILES['profilpicture'];
+       echo '<p style="color: red; font-size: 20px; font-family: sans-serif;" id="erreur" > cbon </p>';
     }
     if (isset($_POST['signin']) &&  $_SESSION["codes"]!=$_POST["captcha"] ){
     echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:500px 50px 0 250px;" id="erreur" > code uncorrect </p>';
@@ -24,6 +25,7 @@ if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST[
               
               $code=mt_rand(1000,9999);
               $_SESSION['code'] =$code;
+              
               $email1="TheUniversity@hogwarts.tn";    
               $dest = $_SESSION['email'];
               $sujet = "Vérification du mot de passe";
@@ -227,7 +229,7 @@ z.style.display="block";
                   </div>
                
             </div>
-            <button type="submit" onmousedown="bleep.play()" class="send-btn">Signin</button>
+            <button name="signin" type="submit" onmousedown="bleep.play()" class="send-btn">Signin</button>
         </form> 
         </div>
       </div>
