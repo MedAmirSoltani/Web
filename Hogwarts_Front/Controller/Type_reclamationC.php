@@ -34,7 +34,7 @@ Class Type_reclamationC {
             }
         }
 
-        function ajouterType_reclamation($type_reclamation)
+       function ajouterType_reclamation($type_reclamation)
         {
             $config = config::getConnexion();
             try {

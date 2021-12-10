@@ -10,12 +10,7 @@
     require_once '../Model/Rec_autre.php' ;
 
 
-    if (isset($_POST['Id_reclamation'] ) &&isset($_POST['Type_reclamation'] )) 
-    {
-            $type_reclamation = new Type_reclamation($_POST['Id_reclamation'] ,$_POST['Type_reclamation']);
-            $type_reclamationC = new Type_reclamationC();
-            $type_reclamationC->ajouterType_reclamation($type_reclamation);
-    }
+    
     if (isset($_POST['Id_note'] ) &&isset($_POST['Module'] ) && isset($_POST['Description'] )) 
     {
             $rec_note = new Rec_note($_POST['Id_note'] ,$_POST['Module'] ,$_POST['Description']);
@@ -177,7 +172,7 @@ if (isset($_POST['Type_reclamation'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['Type_reclamation']) {
     case 'Note':
-      include 'ajouterRec_note.php';
+      include 'ajouterRec_note.php?Id_reclamation=' . $type_reclamation["Id_reclamation"] . '';
         break;
     case 'Absence':
         include 'ajouterAbsence.php';
