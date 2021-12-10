@@ -12,8 +12,8 @@ require_once '../Model/utilisateur.php';
        $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
       
         echo $_POST['ID_utilisateur'] ;
-        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $x['profilpicture']);
-        $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $x['profilpicture'], $_SESSION['c']);
+        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"]);
+        $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"], $_POST['specialite']);
          $utilisateurC->modifierutilisateur($utilisateur);
           $profC->modifierprof($prof);
            header('Location:profilprof.php');
@@ -124,7 +124,7 @@ display:none;
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <form id="formulaire" action="" method="POST" onsubmit="return getselectedvalue();" enctype="multipart/form-data" >
                   <div class="row">
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                      <img style="width:40%;height:200px;border-radius:50%;float:center;margin:0 10px 0 450px;  " onclick="pictureclick()" id="profildisplay" width=200  src="../Assets/uploads/<?php echo $x['profilpicture'];?>">
                      <br> <br> <br>
                      <input class="form-control" type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:40%;height:200px;border-radius:50%;float:left;margin:0 10px 0 -200px; display:none; "  > </td>
