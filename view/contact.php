@@ -49,7 +49,7 @@
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -58,7 +58,7 @@
                               <li> <a href="about.php">About us</a> </li>
                               <li class="active"><a href="contact.php">Contact us</a></li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
                         </nav>
                      </div>

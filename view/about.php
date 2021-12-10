@@ -1,3 +1,55 @@
+<?php
+session_start();
+include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php' ;
+   
+    $userC=new utilisateurC();
+    
+    if(isset($_POST["email"]) && isset($_POST["password"])  )
+    {
+      
+      if(!empty($_POST["email"]) && !empty($_POST["password"]))
+      {
+
+         $message=$userC->connexionUser($_POST["email"],$_POST["password"]);
+         if($message!='email or password uncorrect')
+         { 
+           // src="uploads/<?php echo $utilisateur['profilpicture'] ;
+            $resultat=$userC->getutilisateurbyemail($_POST["email"]);
+            $lol=$resultat["profilpicture"];
+            $_SESSION['a']=$resultat["ID_utilisateur"];
+            $x=$userC->getutilisateurbyID($_SESSION['a']);
+            if($x['admin_bool']==0)
+            {
+            if (strcmp($x['role'], "Etudiant") != 0) {
+               $resultat=$userC->getprofbyemail($_POST["email"]);
+               $_SESSION['c']=$resultat["specialite"];
+               header('Location:profilprof.php');
+           }
+           else{
+            $resultat=$userC->getetudiantbyemail($_POST["email"]);
+            $_SESSION['c']=$resultat["classe"];
+            header('Location:profiluser.php');
+           }
+         }
+         else
+         header('Location:afficherutilisateur.php');
+           
+         
+         }
+         else{
+            $message='email or password uncorrect';
+         }
+      }
+      else{
+      $message="";
+      $message="missing information"; 
+      }
+    }
+    
+    
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +65,8 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
+      <!-- login css -->
+      <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
@@ -58,8 +112,57 @@
                               <li class="active"> <a href="about.php">About us</a> </li>
                               <li><a href="contact.php">Contact us</a></li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
-                           </ul>
+                              <li class="mean-last"> <a id="login" ><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                           <div class="arrow-up">
+                           
+                           <div class="login-form">
+                           <form action="" method="POST" onsubmit="return verifcnx();">
+                           <div class="field">
+                                 
+                                 <input class="form-control" type="text" name="email" id="email" placeholder="email" >
+                              </div>
+                              
+                              <div class="field">
+                              <input class="form-control" type="password" name="password" id="password" placeholder="password">
+                              </div>
+                              <div id="lol"> </div>
+                              <script>
+                                     function verifcnx(){
+                                       var email = document.getElementById("email").value;
+                                       var password = document.getElementById("password").value;
+                                     if (password ==false || email==false) 
+                                     {
+                                       document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
+                                       document.getElementById("erreur").style.display = "none";
+                                       return false;
+                                       preventdefault();
+                                      }
+                                     }
+                                    </script>
+                                     <?php
+                                     if(isset($_POST["login"]))
+                                     {
+                                     if (strcmp($message, 'email or password uncorrect') == 0 )
+                                     {
+                                       
+                                        echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur" > email or password uncorrect </p>';
+                                      
+                                     }
+                                    }
+                                     ?>
+                              <div>
+                              <input class="login-button" onmousedown="bleep.play()" type="submit" value="login">
+                              </div>
+                             <br>
+                              <a href="#">forget password</a> 
+                              <br>
+                              
+                              <div><a href="signin.php">new?</a> </div>
+                              
+                           </form>
+                           </div>
+                           </div>
+                        </ul>
                         </nav>
                      </div>
                   </div>

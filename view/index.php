@@ -33,7 +33,7 @@ include_once     '../Controller/utilisateurC.php';
            }
          }
          else
-         header('Location:afficherutilisateur.php');
+         header('Location:profiladmin.php');
            
          
          }
