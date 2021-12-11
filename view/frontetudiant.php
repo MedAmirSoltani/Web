@@ -1,4 +1,5 @@
 <?php
+session_start();
     require '../Controller/matiereC.php';
 
     $matiereC = new matiereC();

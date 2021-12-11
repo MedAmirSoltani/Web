@@ -6,16 +6,17 @@ include_once     '../Controller/utilisateurC.php';
   
     $userC=new utilisateurC();
     $userC1=new utilisateurC();
-$conn=$userC1->getutilisateurbyID($_SESSION['a']);
+   
 $matiere=new matiereC();
 if(isset($_POST["reset-request-submit"]))
 {
    header('Location:reset-password.php');
 }
-      
+      if(empty($_SESSION['a']))
+      {
     if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"]) )
     {
-      
+    
       if(!empty($_POST["email"]) && !empty($_POST["password"]))
       {
 
@@ -58,7 +59,10 @@ if(isset($_POST["reset-request-submit"]))
       }
     }
     
-    
+   }
+   else{
+$conn=$userC1->getutilisateurbyID($_SESSION['a']);
+   }
    
 ?>
 <!DOCTYPE html>

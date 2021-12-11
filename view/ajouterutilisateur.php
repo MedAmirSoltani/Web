@@ -8,7 +8,8 @@ session_start();
     $utilisateurC = new utilisateurC();
     $etudiantC = new etudiantC();
     $profC = new profC();
-
+    $userC = new utilisateurC();
+    $matiereC= new matiereC();
     if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] )  && isset($_FILES["profilpicture"]) && isset($_POST['classe'] )  )
     {
       
@@ -39,10 +40,18 @@ session_start();
       if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
           echo "KHIDMET YA RJEL";
       }
+
+
+      $resultat=$userC->getprofbyemail($_POST["email"]);
+               
+      $r=$matiereC->getmatierebyID($resultat['idmatiere']);
+      $_SESSION['mat']=$r;
+
+
       header('Location:afficherutilisateur.php');
     }
     else {
-      $matiereC = new matiereC();
+      
       $resultats = $matiereC -> affichermatiere();
     }
 

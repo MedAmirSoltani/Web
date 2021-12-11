@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+session_start();
+    require '../Controller/clubC.php';
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php' ;
+    $userC=new utilisateurC();
+$x=$userC->getutilisateurbyID($_SESSION['a']);
+
+    $clubC = new clubC();
+    $club = $clubC->afficherclub();
+?>
 <html lang="en">
 
 <head>
@@ -17,6 +27,7 @@
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -36,9 +47,7 @@
       <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
-   <!-- header -->
-
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -60,7 +69,6 @@
                               <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
@@ -79,7 +87,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>SUBJECTs</h2>
                </div>
             </div>
          </div>
@@ -87,21 +95,62 @@
    </div>
    <!-- Contact -->
    <div class="Contact">
-      <div class="container">
+      
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <form>
                   <div class="row">
+                  
+                          
+							
+								
 
+                
+
+							 
+									<?php 
+                         
+                         if(strcmp($x['statut'],"pas membre")==0)
+                         {
+							foreach ($club as $club) {
+									?>
+    
+<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
+<div class="card-header bg-gradient-x-purple-red text-white">
+<div class="row">
+<div class="col">
+<img src="../Assets/Images/amir.PNG">
+</div>
+<div class="col">
+<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $club['nomclub'] ; ?></h2>  
+                     <a href="event.php?idclub=<?php echo $club['idclub'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="show events" /> </a><br>
+                    <!-- rejoindre--> <input type="button" value="rejoindre" >
+             </div>
+</div>
+</div>
+</div>  
+
+				
+                       
+                
+  
+							
+						<br> <br>	 
+							
+							
+									<?php
+											}}
+                              
+									?>
+                                   <?php if(strcmp($x['statut'],"pas membre")!=0) {?>
+
+                                   <?php }?>
+						</table>
+                    
                   </div>
                </form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="frontetudiant.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>

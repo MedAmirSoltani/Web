@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
 require_once "../assets/ASFO/utilis/Config.php";
     require_once '../Model/club.php';
 

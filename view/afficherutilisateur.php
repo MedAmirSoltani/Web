@@ -9,7 +9,11 @@ $archive = $archiveC->afficherarchive();
 $etudiantC = new etudiantC();
 $etudiant = $etudiantC->afficheretudiant();
 $profC = new profC();
+
+
+//$x=$utilisateurC->getutilisateurbyID($_SESSION['a']);
 $prof = $profC->afficherprof();
+
 if (isset($_POST['search']) ) {
   $list = $utilisateurC->afficherbyname($_POST['search']);
 }
@@ -345,8 +349,8 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $prof['idmatiere']; ?></td>
                           <?php $_SESSION['special2']=$prof['idmatiere']; ?>
                           <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $prof['ID_prof']; ?>?<?php echo $prof['idmatiere']; ?>">modifier</a></td>
-                        </tr>
+                          <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $prof['ID']; ?>">modifier</a></td>
+                         </tr>
 
 
                       <?php

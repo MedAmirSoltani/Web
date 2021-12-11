@@ -4,6 +4,8 @@ include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
     $userC=new utilisateurC();
 $x=$userC->getutilisateurbyID($_SESSION['a']);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,6 +73,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                               <li> <a href="about.php">Forum</a> </li>
                               <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
+                              <li><a href="club.php">club</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            <div class="arrow-up">
                            
