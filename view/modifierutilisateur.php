@@ -47,8 +47,8 @@ session_start();
         
         
        
-        /*$id=$c['idmatiere'];
-        $d=$matiereC->getmatierebyID ($id);*/
+        $id=$c['idmatiere'];
+        $d=$matiereC->getmatierebyID ($id);
         
         
     }
@@ -289,17 +289,9 @@ session_start();
                 </label>
           
               
-              <td><select name="idmatiere" id="idmatiere" required>
-                  <option value="">--Please choose an option--</option>
-                    <?php foreach ($resultats as $value) {
-                      ?>
-    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
-
-  <?php 
-  }
-   ?>
+              <td><input type="text" name="idmatiere" id="idmatiere" maxlength="20" value="<?php echo $d['titre'];?>" readonly>
 </td>
-</select>
+
 
 </tr>
       <div id="badelha"></div>
