@@ -22,6 +22,13 @@
                     $db = config::getConnexion();
                     $query1=$db->prepare($sql);
                     $query1->execute();
+                   /* $sub = "Your subject";
+//the message
+$msg = "Your message";
+//recipient email here
+$rec = "example@gmail.com";
+//send email
+mail($rec,$sub,$msg);*/
                     $email1="TheUniversity@hogwarts.tn";    
                     $dest = $email;
                     $sujet = "Réinitialisation du mot de passe";
