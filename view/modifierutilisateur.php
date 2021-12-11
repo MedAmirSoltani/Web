@@ -2,6 +2,7 @@
 session_start();
     require_once     '../Controller/utilisateurC.php';
     require_once '../Model/utilisateur.php' ;
+    require_once '../Controller/matiereC.php';
     $utilisateurC = new utilisateurC();
     $etudiantC = new etudiantC();
     $profC = new profC();
@@ -22,12 +23,13 @@ session_start();
     }
     else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  ) && isset($_POST['idmatiere']  )) 
     {
-      
+     
         echo $_POST['ID_utilisateur'] ;
             $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] ,$_FILES["profilpicture"]["name"]);
             $utilisateurC->modifierutilisateur($utilisateur);
           $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_FILES["profilpicture"]["name"],$_POST['idmatiere'] );
             $profC->modifierprof($prof);
+            
             $target_dir = "../Assets/uploads/";
       $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
       if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
@@ -37,9 +39,18 @@ session_start();
     }
     else
     {
+      $matiereC= new matiereC();
+      $resultats = $matiereC -> affichermatiere();
         $a = $utilisateurC->getutilisateurbyID($_GET['ID_utilisateur']) ;
         $b=$etudiantC->getetudiantbyID($_GET['ID_utilisateur']) ;
         $c=$profC->getprofbyID($_GET['ID_utilisateur']) ;
+        
+        
+       
+        /*$id=$c['idmatiere'];
+        $d=$matiereC->getmatierebyID ($id);*/
+        
+        
     }
 
 
@@ -268,15 +279,34 @@ session_start();
                     </td>
                     <td><input type="text" value="<?php echo $b['classe'];?>" name="classe" id="classe" maxlength="20" hidden></td>
                 </tr>
-                <tr>
-                    <td>
-                        <label for="idmatiere">specialite:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $c['idmatiere'];?>" name="idmatiere" id="idmatiere" maxlength="20" hidden ></td>
-                </tr>
+               
                
 
+
+                <tr>
+									<td>
+                <label for="idmatiere">idmatiere:
+                </label>
+          
+              
+              <td><select name="idmatiere" id="idmatiere" required>
+                  <option value="">--Please choose an option--</option>
+                    <?php foreach ($resultats as $value) {
+                      ?>
+    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+
+  <?php 
+  }
+   ?>
+</td>
+</select>
+
+</tr>
+      <div id="badelha"></div>
+    </td>
+    
+                </tr>
+                
                 <tr>
                     <td>
                         <input type="submit" value="Modifier"> 
@@ -288,6 +318,6 @@ session_start();
             </table>
         </form>
   </body>
-  <script src="../Assets/js/load.js"></script>
+  <script src="../Assets/js/loadi.js"></script>
   <script src="../Assets/js/click.js"></script>
 </html>

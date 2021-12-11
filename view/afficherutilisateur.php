@@ -9,7 +9,11 @@ $archive = $archiveC->afficherarchive();
 $etudiantC = new etudiantC();
 $etudiant = $etudiantC->afficheretudiant();
 $profC = new profC();
+
+
+//$x=$utilisateurC->getutilisateurbyID($_SESSION['a']);
 $prof = $profC->afficherprof();
+
 if (isset($_POST['search']) ) {
   $list = $utilisateurC->afficherbyname($_POST['search']);
 }
