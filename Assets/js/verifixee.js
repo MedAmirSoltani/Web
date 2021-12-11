@@ -18,14 +18,14 @@ window.onload =function () {
       }
 
 function xx() {
-                                     
+            alert("ooo");                         
     var selectedvalue = document.getElementById("role").value;
     if (selectedvalue == "Etudiant") {
         document.getElementById("classe").removeAttribute("hidden");
-        document.getElementById("specialite").removeAttribute("name");
+        document.getElementById("idmatiere").removeAttribute("name");
         }
     if (selectedvalue == "Prof") {
-        document.getElementById("specialite").removeAttribute("hidden");
+        document.getElementById("idmatiere").removeAttribute("hidden");
         document.getElementById("classe").removeAttribute("name");
        }
  }
@@ -191,12 +191,12 @@ if (selected == "----") {
     }
         }
     if (selected == "Prof") {
-        var specialite = document.getElementById("specialite").value;
-           if (specialite ==false) {
-            document.getElementById("frogot-specialite").style.display = "block";
-            document.getElementById("frogot-specialite").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">write a speciality</p>';
+        var idmatiere = document.getElementById("idmatiere").value;
+           if (idmatiere ==false) {
+            document.getElementById("frogot-idmatiere").style.display = "block";
+            document.getElementById("frogot-idmatiere").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">write a speciality</p>';
               test=false; }else{
-                document.getElementById("frogot-specialite").style.display = "none";  
+                document.getElementById("frogot-idmatiere").style.display = "none";  
         }
        }
 

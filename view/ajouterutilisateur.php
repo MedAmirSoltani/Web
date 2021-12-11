@@ -3,7 +3,7 @@
 session_start();
     require_once     '../Controller/utilisateurC.php';
     require_once '../Model/utilisateur.php' ;
-
+    require_once '../Controller/matiereC.php';
     
     $utilisateurC = new utilisateurC();
     $etudiantC = new etudiantC();
@@ -26,12 +26,12 @@ session_start();
       header('Location:afficherutilisateur.php');
     }
     
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_FILES["profilpicture"]) &&  isset($_POST['specialite'] )) 
+    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] ) && isset($_FILES["profilpicture"]) &&  isset($_POST['idmatiere'] )) 
     {
       $utilisateur1 = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"]);
       $utilisateur1C = new utilisateurC();
       $utilisateur1C->ajouterutilisateur($utilisateur1);
-      $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['specialite'] );
+      $prof = new prof( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['idmatiere'] );
      
       $profC->ajouterprof($prof);
       $target_dir = "../Assets/uploads/";
@@ -41,7 +41,10 @@ session_start();
       }
       header('Location:afficherutilisateur.php');
     }
-  
+    else {
+      $matiereC = new matiereC();
+      $resultats = $matiereC -> affichermatiere();
+    }
 
 
 ?>
@@ -273,10 +276,18 @@ session_start();
 
                 <tr>
                     <td>
-                        <label for="specialite">specialite:
+                        <label for="idmatiere">specialite:
                         </label>
                     </td>
-                    <td><input type="text" name="specialite" id="specialite" hidden></td>
+                    <td><select style=" padding: 12px 131px;" class="form-sabr" name="idmatiere" id="idmatiere" hidden>
+                  <option value="">--Please choose an option--</option>
+                    <?php foreach ($resultats as $value) {
+                      ?>
+    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+
+  <?php }?>
+</td>
+</select> </td>
                 </tr>
       <div id="badelha"></div>
     </td>
@@ -309,6 +320,6 @@ session_start();
   </div>
   
   </body>
-  <script src="js/verifixe.js"></script>
-  <script src="js/click.js"></script>
+  <script src="../Assets/js/verifixee.js"></script>
+  <script src="../Assets/js/click.js"></script>
 </html>

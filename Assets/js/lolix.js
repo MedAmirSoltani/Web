@@ -22,10 +22,10 @@ function xx() {
     var selectedvalue = document.getElementById("role").value;
     if (selectedvalue == "Etudiant") {
         document.getElementById("classe").removeAttribute("hidden");
-        document.getElementById("specialite").removeAttribute("name");
+        document.getElementById("idmatiere").removeAttribute("name");
         }
     if (selectedvalue == "Prof") {
-        document.getElementById("specialite").removeAttribute("hidden");
+        document.getElementById("idmatiere").removeAttribute("hidden");
         document.getElementById("classe").removeAttribute("name");
        }
  }
@@ -140,8 +140,8 @@ if (selected == "----") {
            preventdefault(); }
         }
     if (selected == "Prof") {
-        var specialite = document.getElementById("specialite").value;
-           if (specialite ==false) {
+        var idmatiere = document.getElementById("idmatiere").value;
+           if (idmatiere ==false) {
               document.getElementById("badelha").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">write a speciality</p>';
               return false;
               preventdefault(); }

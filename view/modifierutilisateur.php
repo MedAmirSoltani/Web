@@ -20,13 +20,13 @@ session_start();
       }
             header('Location:afficherutilisateur.php');
     }
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  ) && isset($_POST['specialite']  )) 
+    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  ) && isset($_POST['idmatiere']  )) 
     {
       
         echo $_POST['ID_utilisateur'] ;
             $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] ,$_FILES["profilpicture"]["name"]);
             $utilisateurC->modifierutilisateur($utilisateur);
-          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_FILES["profilpicture"]["name"],$_POST['specialite'] );
+          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_FILES["profilpicture"]["name"],$_POST['idmatiere'] );
             $profC->modifierprof($prof);
             $target_dir = "../Assets/uploads/";
       $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
@@ -270,10 +270,10 @@ session_start();
                 </tr>
                 <tr>
                     <td>
-                        <label for="specialite">specialite:
+                        <label for="idmatiere">specialite:
                         </label>
                     </td>
-                    <td><input type="text" value="<?php echo $c['specialite'];?>" name="specialite" id="specialite" maxlength="20" hidden ></td>
+                    <td><input type="text" value="<?php echo $c['idmatiere'];?>" name="idmatiere" id="idmatiere" maxlength="20" hidden ></td>
                 </tr>
                
 

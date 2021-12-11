@@ -1,12 +1,19 @@
 <?php
 session_start();
+require_once '../Controller/matiereC.php';
 include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
-   
+  
     $userC=new utilisateurC();
     $userC1=new utilisateurC();
-    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
-    if(isset($_POST["email"]) && isset($_POST["password"])  )
+$conn=$userC1->getutilisateurbyID($_SESSION['a']);
+$matiere=new matiereC();
+if(isset($_POST["reset-request-submit"]))
+{
+   header('Location:reset-password.php');
+}
+      
+    if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"]) )
     {
       
       if(!empty($_POST["email"]) && !empty($_POST["password"]))
@@ -24,7 +31,8 @@ include_once     '../Controller/utilisateurC.php';
             {
             if (strcmp($x['role'], "Etudiant") != 0) {
                $resultat=$userC->getprofbyemail($_POST["email"]);
-               $_SESSION['c']=$resultat["specialite"];
+               $r=$matiere->getmatierebyID($resultat['idmatiere']);
+               $_SESSION['c']=$r["titre"];
                header('Location:profilprof.php');
            }
            else{
@@ -34,7 +42,7 @@ include_once     '../Controller/utilisateurC.php';
            }
          }
          else
-         header('Location:afficherutilisateur.php');
+         header('Location:profiladmin.php');
            
          
          }

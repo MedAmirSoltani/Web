@@ -1,6 +1,6 @@
 <?php
 
-    require_once '../Assets/Utils/config.php';
+require_once "../assets/ASFO/utilis/Config.php";
     require_once '../Model/matiere.php';
 
 

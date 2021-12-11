@@ -48,7 +48,8 @@ mail($rec,$sub,$msg);*/
 			catch (Exception $e){
 				die('Erreur: '.$e->getMessage());
             }
-        } 
+        }
+         
 ?>
 <html lang="en">
 
@@ -161,7 +162,7 @@ mail($rec,$sub,$msg);*/
                   </div>
                
             </div>
-            <button type="submit" onmousedown="bleep.play()" class="send-btn">Send</button>
+            <button type="submit" name="reset-request-submit" onmousedown="bleep.play()" class="send-btn">Send</button>
         </form> 
         </div>
       </div>

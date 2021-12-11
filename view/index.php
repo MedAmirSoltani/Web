@@ -1,15 +1,19 @@
 <?php
 session_start();
+require_once '../Controller/matiereC.php';
 include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
-   
+  
     $userC=new utilisateurC();
     $userC1=new utilisateurC();
 $conn=$userC1->getutilisateurbyID($_SESSION['a']);
-
-           
+$matiere=new matiereC();
+if(isset($_POST["reset-request-submit"]))
+{
+   header('Location:reset-password.php');
+}
       
-    if(isset($_POST["email"]) && isset($_POST["password"])  )
+    if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"]) )
     {
       
       if(!empty($_POST["email"]) && !empty($_POST["password"]))
@@ -27,7 +31,8 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
             {
             if (strcmp($x['role'], "Etudiant") != 0) {
                $resultat=$userC->getprofbyemail($_POST["email"]);
-               $_SESSION['c']=$resultat["specialite"];
+               $r=$matiere->getmatierebyID($resultat['idmatiere']);
+               $_SESSION['c']=$r["titre"];
                header('Location:profilprof.php');
            }
            else{
@@ -178,8 +183,9 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
                               <div class="field">
                               <input class="form-control" type="password" name="password" id="password" placeholder="password">
                               </div>
-                              <a class="dropdown-item" style="font-size: 13px;" href="reset-password.php"><i class="ft-user"></i> forget password</a>
-                              <a class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
+                              
+                              <a  style="text-align:center;" class="dropdown-item" href="reset-password.php"> <input type="submit" name="reset-request-submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="forgot password"></a>
+                             <a  style="text-align:center;" class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
                                <div id="lol"> </div>
                               <script>
                                      function verifcnx(){
@@ -196,7 +202,7 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
                                     </script>
                               <div class="dropdown-divider"></div>
                              
-                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
+                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" name="login" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
                               </form>    
                               <?php endif; ?>
                            </div>

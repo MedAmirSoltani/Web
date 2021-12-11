@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Assets/Utils/config.php';
+require_once "../assets/ASFO/utilis/Config.php";
     session_start();
 
     if (isset($_POST['code'])){
@@ -24,233 +24,167 @@ require_once '../Assets/Utils/config.php';
     } 
 
 ?>
-<!DOCTYPE html>
 <html lang="en">
-   <!-- Basic -->
+
+<head>
+   <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Mobile Metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <!-- Site Metas -->
-   <title>Hogwarts</title>
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>memorial books</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   <!-- site icon -->
-   <link rel="icon" href="images/fevicon.png" type="image/png" />
-   <!-- Bootstrap core CSS -->
-   <link href="css/bootstrap.css" rel="stylesheet">
-   <!-- FontAwesome Icons core CSS -->
-   <link href="css/font-awesome.min.css" rel="stylesheet">
-   <!-- Custom animate styles for this template -->
-   <link href="css/animate.css" rel="stylesheet">
-   <!-- Custom styles for this template -->
-   <link href="style.css" rel="stylesheet">
-   <!-- Responsive styles for this template -->
-   <link href="css/responsive.css" rel="stylesheet">
-   <!-- Colors for this template -->
-   <link href="css/colors.css" rel="stylesheet">
-   <!-- light box gallery -->
-   <link href="css/ekko-lightbox.css" rel="stylesheet">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
-   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-   <![endif]-->
-   </head>
-   <body id="inner_page">
-      <!-- header -->
-      <header class="header">
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
 
-        <div class="header_top_section">
-           <div class="container">
-              <div class="row">
-               <div class="col-lg-3">
+<body class="main-layout contact-page">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
+   </div>
+   <!-- end loader -->
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
-                     <div class="logo">
-                        <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                     <div class="center-desk">
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
-               <div class="col-lg-9 site_information">
-                  <div class="full">
-                     <div class="main_menu">
-                        <nav class="navbar navbar-inverse navbar-toggleable-md">
-                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-                           <span class="float-left">Menu</span>
-                           <span class="float-right"><i class="fa fa-bars"></i> <i class="fa fa-close"></i></span>
-                           </button>
-                           <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
-                              <ul class="navbar-nav">
-                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-aqua-hover" href="about.php">About</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="contact1.php">Contact Us</a>
-                                 </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link color-grey-hover" href="login.php">Login</a>
-                                 </li>
-                              </ul>
-                              <ul class="navbar-nav">
-                                 <li class="nav-item">
-                                 </li>
-                              </ul>
-                           </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <div class="menu-area">
+                     <div class="limit-box">
+                        <nav class="main-menu">
+                           <ul class="menu-area-main">
+                              <li> <a href="index.php">Home</a> </li>
+                              <li> <a href="about.php">About us</a> </li>
+                              <li><a href="contact.php">Contact us</a></li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                           </ul>
                         </nav>
                      </div>
                   </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+      <!-- end header inner -->
+   </header>
+   <!-- end header -->
+   <div class="about-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="abouttitle">
+                  <h2>Code de verification</h2>
                </div>
             </div>
-           </div>
-        </div>
-
-      </header>
-      <!-- end header -->
-      
-      <!-- section -->
-      <section class="main_full inner_page">
-        <div class="container-fluid">
-          <div class="row">
-             <div class="full">
-               <h3>Code de verification</h3> 
-                
-             </div>
-          </div>
-        </div>
-      </section>
-      <!-- end section -->
-    
-    <!-- section -->
-     <section class="layout_padding section">
-         <div class="container">
-           <div class="row">
-               <div class="col-md-12">
-                  <div class="contact_section margin_top_30">
-                     <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                           <div class="form_cont">
-                              
-                           <p style="text-align: center;">Write the code that was sent to your email here</p> 
-                                  <fieldset>
-             <form action="" method="POST" >
-             <div class="field">
+         </div>
+      </div>
+   </div>
+   <!-- Contact -->
+   <div class="Contact">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <p style="text-align: center;font-size: 21px; color:#878585;">Write the code that was sent to your email here</p>   
+            <br><br><br> 
+            <form id="formulaire" action="" method="POST" >
+                  <div  class="row">
+                     
+                                    
+                                  
+                                                <input  class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="int" name="code" id="code" placeholder="Enter the code">
+                                   
+                                 <br><br><br>
+                                  
                                  
-                                 <input type="int" name="code" id="code" placeholder="Enter the code">
-                              </div>
-                              <button type="submit" style="margin:40px 50px 0 300px;">send</button>
-                                    
-                                     
-                                     
-                                    
-                                    
-                                        
-                                       </form>
-                                    </div>
-                                 </div>
+                                
+                                    <script>
+                         var bleep=new Audio();
+                         bleep.src="ab.mp3";
+                      </script>
 
 
-                                  </div></fieldset>   
-                           
-                           </div>
-                           
-                        </div>
-                        
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
 
-      <!-- end section -->
-     
-      <!-- footer -->
-      <footer class="footer layout_padding">
-         <div class="container">
-            <div class="row">
-
-               <div class="col-md-4 col-sm-12">
-                  <a href="index.html"><img class="img-responsive" src="images/logo.png" alt="#" /></a>
-                  <div class="footer_link_heading">
-                     <div class="footer_menu margin_top_30">
-                     <ul>
-                        <li><a href="tel:98238240">(+216)98238240</a></li>
-                        <li><a href="#">Hogwarts@gmail.com</a></li>
-                        <li><a href="#">22 rue taher ben achour afh</a></li>
-                     </ul>
                   </div>
-                  </div>
-               </div>
-               
-               <div class="col-md-8">
-                 <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>FEATURED COURSES</h3>
-                  </div>
-                  <div class="footer_menu">
-                     <ul>
-                        <li>AI courses</li>
-                        <li>Data Science</li>
-                        <li>Web Development</li>
-                        <li>Gamix</li>
-                     </ul>
-                  </div>
-               </div>
-
-               <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>CATEGORIES</h3>
-                  </div>
-                  <div class="footer_menu">
-                    <ul>
-                       <li>Arts & Design</li>
-                       <li>Business</li>
-                       <li>Computer </li>
-                       <li>Data entery</li>
-                    </ul>
-                  </div>
-               </div>
-               
-               <div class="col-md-4 col-sm-12">
-                  <div class="footer_link_heading">
-                     <h3>USEFUL LINKS</h3>
-                  </div>
-                  <div class="footer_menu">
-                    <ul>
-                       <li><a href="about.php">FAQs</a></li>
-                       <li><a href="contact1.php">Contact search</a></li>
-                       
-                    </ul>
-                  </div>
-               </div>
-                 </div>
-               </div>
                
             </div>
-         </div>
-      </footer>
-      <div class="cpy">
-        <div class="container">
-           <div class="row">
-             <div class="col-md-12">
-               <p>Copyright 2021. All Rights Reserved. HogWarts University</a></p>
-             </div>
-           </div>
+            <button type="submit" name="reset-request-submit" onmousedown="bleep.play()" class="send-btn">Send</button>
+        </form> 
         </div>
       </div>
-      <!-- end footer -->
-      <!-- Core JavaScript
-         ================================================== -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/tether.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/parallax.js"></script>
-      <script src="js/animate.js"></script>
-      <script src="js/ekko-lightbox.js"></script>
-      <script src="js/custom.js"></script>
-   </body>
+   </div>
+   <!-- end Contact -->
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row pdn-top-30">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Follow">
+                     <h3>Follow Us</h3>
+                  </div>
+                  <ul class="location_icon">
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
+                  </ul>
+               </div>
+               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                  <div class="Follow">
+                     <h3>Newsletter</h3>
+                  </div>
+                  <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
+                  <button class="Subscribe">Subscribe</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
+         <div class="container">
+            <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
+   <script src="../Assets/js/click.js"></script>
+   <script src="../Assets/js/verifier.js"></script>
+   <!-- sidebar -->
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
+</body>
+
 </html>

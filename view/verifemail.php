@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Assets/Utils/config.php';
+require_once "../assets/ASFO/utilis/Config.php";
     session_start();
     require_once     '../Controller/utilisateurC.php';
     require_once '../Model/utilisateur.php';
@@ -28,7 +28,7 @@ require_once '../Assets/Utils/config.php';
         else{
          $utilisateur1 = new utilisateur($_SESSION['ID_utilisateur1'], $_SESSION['email1'], $_SESSION['password1'], $_SESSION['name1'], $_SESSION['first_name1'], $_SESSION['date_of_birth1'], $_SESSION['role1'],$_SESSION["profilpicture1"]["name"]);  
          $utilisateur1C->ajouterutilisateur($utilisateur1);
-         $prof = new prof( $_SESSION['ID_utilisateur1'], $_SESSION['email1'], $_SESSION['password1'], $_SESSION['name1'], $_SESSION['first_name1'], $_SESSION['date_of_birth1'], $_SESSION['role1'],$_SESSION["profilpicture1"]["name"], $_SESSION['specialite1'] );
+         $prof = new prof( $_SESSION['ID_utilisateur1'], $_SESSION['email1'], $_SESSION['password1'], $_SESSION['name1'], $_SESSION['first_name1'], $_SESSION['date_of_birth1'], $_SESSION['role1'],$_SESSION["profilpicture1"]["name"], $_SESSION['idmatiere1'] );
          $profC->ajouterprof($prof);
          $target_dir = "../Assets/uploads/";
          $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);

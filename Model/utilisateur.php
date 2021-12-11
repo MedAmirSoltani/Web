@@ -177,8 +177,8 @@
 		private $date_of_birth;
         private $role;
 		private $profilpicture;
-        private $specialite;
-        function __construct($ID_prof,$email,$password,$name,$first_name,$date_of_birth,$role,$profilpicture,$specialite){
+        private $idmatiere;
+        function __construct($ID_prof,$email,$password,$name,$first_name,$date_of_birth,$role,$profilpicture,$idmatiere){
             $this->ID_prof=$ID_prof;
             $this->email=$email;
 			$this->password=$password;
@@ -187,7 +187,7 @@
             $this->date_of_birth=$date_of_birth;
             $this->role=$role;
 			$this->profilpicture=$profilpicture;
-            $this->specialite=$specialite;
+            $this->idmatiere=$idmatiere;
         }
 
         function setID_prof(string $ID_prof){
@@ -215,8 +215,8 @@
 			$this->profilpicture=$profilpicture;
 		}
 		
-        function setspecialite(string $specialite){
-			$this->specialite=$specialite;
+        function setidmatiere(string $idmatiere){
+			$this->idmatiere=$idmatiere;
 		}
 
         function getID_prof(){
@@ -244,8 +244,8 @@
 			return $this->profilpicture;
 		}
 		
-        function getspecialite(){
-			return $this->specialite;
+        function getidmatiere(){
+			return $this->idmatiere;
 		}
       
 

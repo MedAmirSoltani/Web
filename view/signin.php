@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once '../Controller/matiereC.php';
 if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST['password'] ) && isset($_POST['name'] ) && isset($_POST['first_name'] ) && isset($_POST['date_of_birth'] ) && isset($_POST['role'] )  &&  isset($_POST["captcha"]) && $_POST["captcha"]!="" && $_SESSION["codes"]==$_POST["captcha"] )
     {
        $_SESSION['ID_utilisateur1']=$_POST['ID_utilisateur'];
@@ -11,13 +11,17 @@ if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST[
        $_SESSION['date_of_birth1']=$_POST['date_of_birth'];
        $_SESSION['role1']=$_POST['role'];
        $_SESSION['classe1']=$_POST['classe'];
-       $_SESSION['specialite1']=$_POST['specialite'];
+       $_SESSION['idmatiere1']=$_POST['idmatiere'];
        $_SESSION['profilpicture1']=$_FILES['profilpicture'];
        echo '<p style="color: red; font-size: 20px; font-family: sans-serif;" id="erreur" > cbon </p>';
     }
-    if (isset($_POST['signin']) &&  $_SESSION["codes"]!=$_POST["captcha"] ){
+    else {
+      $matiereC = new matiereC();
+      $resultats = $matiereC -> affichermatiere();
+    }
+    /*if (isset($_POST['signin']) &&  $_SESSION["codes"]!=$_POST["captcha"] ){
     echo '<p style="color: red; font-size: 20px; font-family: sans-serif; margin:500px 50px 0 250px;" id="erreur" > code uncorrect </p>';
-    }                                
+    } */                               
     if (isset($_POST['signin']) &&  $_SESSION["codes"]==$_POST["captcha"] ){
       
      
@@ -28,7 +32,7 @@ if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email'] ) && isset($_POST[
               
               $email1="TheUniversity@hogwarts.tn";    
               $dest = $_SESSION['email'];
-              $sujet = "Vérification du mot de passe";
+              $sujet = "Vérification du compte";
               $corp =" Bonjour, voici votre code de verification $code " ;
               $headers = 'From: ' .$email1 . "\r\n".'Reply-To: ' . $email1. "\r\n".'X-Mailer: PHP/' . phpversion();
               
@@ -101,7 +105,7 @@ display:none;
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -204,13 +208,22 @@ z.style.display="block";
                      <input class="form-control" type="text" name="classe" id="classe" placeholder="classe" hidden>
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <input class="form-control" type="text" name="specialite" id="specialite" placeholder="specialite" hidden>
-                     </div>
-                                 
+                    
+                     
+                     <select style=" padding: 12px 131px;" class="form-sabr" name="idmatiere" id="idmatiere" hidden>
+                  <option value="">--Please choose an option--</option>
+                    <?php foreach ($resultats as $value) {
+                      ?>
+    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+
+  <?php }?>
+</td>
+</select> 
+</div>
                                  
                                 
                                     <div id="badelha"></div>
-                                    
+                                    <br><br><br>
                                  <img style="margin:0 10px 0 450px;" src="captcha.php"/>
                                  <br> <br>  
                                                 <input style="margin:0 10px 0 1px;" type="text" name="captcha" id="captcha" placeholder="write the code"/>
@@ -275,7 +288,7 @@ z.style.display="block";
    <script src="../Assets/js/jquery-3.0.0.min.js"></script>
    <script src="../Assets/js/plugin.js"></script>
    <script src="../Assets/js/click.js"></script>
-   <script src="../Assets/js/loli.js"></script>
+   <script src="../Assets/js/lolix.js"></script>
    <!-- sidebar -->
    <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="../Assets/js/custom.js"></script>

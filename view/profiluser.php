@@ -116,7 +116,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                                                  <div style="margin:0px 10px 0 825px; ">  <h2 style="color:white;"> <strong>Classe: </strong> </h2>  <h2 style="margin:0px 10px 0 23px;color:white; "><?php echo $_SESSION['c']?>  </h2> </div>
      <br>
                                                  <div style="margin:0px 10px 0 850px; ">  <h2 style="color:white;"><strong>ID: </strong> </h2>  <h2  style="margin:0px 10px 0 -32px; color:white;"><?php echo $x['ID_utilisateur']?> </h2> </div> 
-      <a href="deconnexion.php"> <input type="button" color:#192d82; value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
+      <a href="deconnexion.php"> <input type="button"  value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
    </div>
                </div>
             </div>

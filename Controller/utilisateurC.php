@@ -353,9 +353,9 @@ class profC extends utilisateurC
         try {
             $querry = $config->prepare('
                     INSERT INTO prof 
-                    (ID_prof,email,password,name,first_name,date_of_birth,role,profilpicture,specialite)
+                    (ID_prof,email,password,name,first_name,date_of_birth,role,profilpicture,idmatiere)
                     VALUES
-                    (:ID_prof,:email,:password,:name,:first_name,:date_of_birth,:role,:profilpicture,:specialite)
+                    (:ID_prof,:email,:password,:name,:first_name,:date_of_birth,:role,:profilpicture,:idmatiere)
                     ');
             $querry->execute([
                 'ID_prof' => $prof->getID_prof(),
@@ -366,7 +366,7 @@ class profC extends utilisateurC
                 'date_of_birth' => $prof->getdate_of_birth(),
                 'role' => $prof->getrole(),
                 'profilpicture' => $prof->getprofilpicture(),
-                'specialite' => $prof->getspecialite(),
+                'idmatiere' => $prof->getidmatiere(),
             ]);
         } catch (PDOException $th) {
             $th->getMessage();
@@ -378,7 +378,7 @@ class profC extends utilisateurC
         try {
             $querry = $config->prepare('
                     UPDATE prof SET
-                    email=:email,password=:password,name=:name,first_name=:first_name,date_of_birth=:date_of_birth,role=:role,profilpicture=:profilpicture,specialite=:specialite 
+                    email=:email,password=:password,name=:name,first_name=:first_name,date_of_birth=:date_of_birth,role=:role,profilpicture=:profilpicture,idmatiere=:idmatiere 
                     where ID_prof=:ID_prof
                     ');
             $querry->execute([
@@ -390,7 +390,7 @@ class profC extends utilisateurC
                 'date_of_birth' => $prof->getdate_of_birth(),
                 'role' => $prof->getrole(),
                 'profilpicture' => $prof->getprofilpicture(),
-                'specialite' => $prof->getspecialite(),
+                'idmatiere' => $prof->getidmatiere(),
             ]);
         } catch (PDOException $th) {
             $th->getMessage();
