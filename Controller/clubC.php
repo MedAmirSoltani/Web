@@ -1,14 +1,13 @@
 <?php
+require_once "../assets/ASFO/utilis/Config.php";
+    require_once '../Model/club.php';
 
-require_once "../assets/ASFO/utilis/Config.php"; 
-   require_once '../Model/matiere.php';
 
+    Class clubC {
 
-    Class matiereC {
-
-        function affichermatiere()
+        function afficherclub()
         {
-            $requete = "select * from matiere order by titre";
+            $requete = "select * from club";
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare($requete);
@@ -19,15 +18,15 @@ require_once "../assets/ASFO/utilis/Config.php";
                  $th->getMessage();
             }
         }
-        function getmatierebyID($idmatiere)
+        function getclubbyID($idclub)
         {
-            $requete = "select * from matiere where idmatiere=:idmatiere";
+            $requete = "select * from club where idclub=:idclub";
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare($requete);
                 $querry->execute(
                     [
-                        'idmatiere'=>$idmatiere
+                        'idclub'=>$idclub
                     ]
                 );
                 $result = $querry->fetch();
@@ -37,42 +36,42 @@ require_once "../assets/ASFO/utilis/Config.php";
             }
         }
 
-        function ajoutermatiere($matiere)
+        function ajouterclub($club)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
-                INSERT INTO matiere 
-                (idmatiere,titre,coff,hour)
+                INSERT INTO club
+                (idclub,nomclub,logo)
                 VALUES
-                (:idmatiere,:titre,:coff,:hour)
+                (:idclub,:nomclub,:logo)
                 ');
                 $querry->execute([
-                    'idmatiere'=>$matiere->getidmatiere(),
-                    'titre'=>$matiere->gettitre(),
-                    'coff'=>$matiere->getcoff(),
-                    'hour'=>$matiere->gethour(),
+                    'idclub'=>$club->getidclub(),
+                    'nomclub'=>$club->getnomclub(),
+                    'logo'=>$club->getlogo(),
+                
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();
             }
         }
-        function modifiermatiere($matiere)
+        function modifierclub($club)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
-                UPDATE matiere SET
-                titre=:titre ,
-                coff=:coff ,
-                hour=:hour
-                where idmatiere=:idmatiere
+                UPDATE club SET
+                nomclub=:nomclub,
+               logo=:logo
+              
+                where idclub=:idclub
                 ');
                 $querry->execute([
-                    'idmatiere'=>$matiere->getidmatiere(),
-                    'titre'=>$matiere->gettitre(),
-                    'coff'=>$matiere->getcoff(),
-                    'hour'=>$matiere->gethour(),
+                    'idclub'=>$club->getidclub(),
+                    'nomclub'=>$club->getnomclub(),
+                    'logo'=>$club->getlogo(),
+              
 
                 ]);
             } catch (PDOException $th) {
@@ -80,15 +79,15 @@ require_once "../assets/ASFO/utilis/Config.php";
             }
         }
 
-        function supprimermatiere($idmatiere)
+        function supprimerclub($idclub)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
-                DELETE FROM matiere WHERE idmatiere =:idmatiere
+                DELETE FROM club WHERE idclub =:idclub
                 ');
                 $querry->execute([
-                    'idmatiere'=>$idmatiere
+                    'idclub'=>$idclub
                 ]);
                 
             } catch (PDOException $th) {

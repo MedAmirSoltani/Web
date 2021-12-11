@@ -1,24 +1,22 @@
 <?php
 
-    require_once     '../Controller/noteC.php';
-    require_once '../Model/note.php' ;
-    require_once     '../Controller/matiereC.php';
-    $noteC = new noteC();
+    require_once     '../Controller/eventC.php';
+    require_once '../Model/event.php' ;
+    $eventC = new eventC();
     
 
-    if (isset($_POST['idnote'])  && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['notes'] )&& isset($_POST['idmatiere']  ))
+    if (isset($_POST['idevent'] ) && isset($_POST['nomevent'])&& isset($_POST['date'])&& isset($_POST['idclub'])   ) 
     {
-        echo $_POST['idnote'] ;
-            $note = new note($_POST['idnote'] , $_POST['nom'] , $_POST['prenom'] , $_POST['notes'], $_POST['idmatiere'] );
-            $noteC->modifiernote($note);
-            $id=$_POST['idmatiere'];
-            header("Location:affichernote.php?idmatiere=$id");
+        echo $_POST['idevent'] ;
+            $event = new event($_POST['idevent'] , $_POST['nomevent'], $_POST['date'], $_POST['idclub'] );
+            $eventC->modifierevent($event);
+            header('Location:afficherevent.php');
     }else
     {
-      $matiereC = new matiereC();
-      $resultats = $matiereC -> affichermatiere();
-        $a = $noteC->getnotebyID($_GET['idnote']) ;
+        $a = $eventC->geteventbyID($_GET['idevent']) ;
     }
+
+
 
 ?>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -31,7 +29,7 @@
     <meta name="author" content="ThemeSelect">
     <title>Hogwarts</title>
     <link rel="apple-touch-icon" href="../Assets/theme-assets/images/ico/apple-icon-120.png">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
@@ -43,7 +41,7 @@
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/colors/palette-gradient.css">
-    <!-- END Page Level CSS-->
+    <!-- END Page Level CSS-->  
     <!-- BEGIN Custom CSS-->
     <!-- END Custom CSS-->
   </head>
@@ -55,6 +53,9 @@
         <div class="navbar-container content">
           <div class="collapse navbar-collapse show" id="navbar-mobile">
             <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
+              <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
                 <ul class="dropdown-menu">
                   <li class="arrow_box">
                     <form>
@@ -70,21 +71,25 @@
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">         
-              
+              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language"></span></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-                 
+                  <div class="arrow_box"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> Russian</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a></div>
                 </div>
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">
-
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-mail">             </i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><i class="ft-book"></i> Read Mail</a><a class="dropdown-item" href="#"><i class="ft-bookmark"></i> Read Later</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Mark all Read       </a></div>
                 </div>
               </li>
-              
+              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> dateut</a>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -98,18 +103,18 @@
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG"/>
+          <<li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG"/>
               <h3 class="brand-text">Hogwarts</h3></a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class=" nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
+        <li class=" nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
           </li>
-          <li class="active"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
+          <li class=" nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
           </li>
-          <li class="nav-item"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
+          <li class="active"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
           </li>
           <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
           </li>
@@ -133,7 +138,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-          
+
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -153,7 +158,7 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="card-title">update</h4>
+			
 				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
 				<div class="heading-elements">
 					<ul class="list-inline mb-0">
@@ -166,57 +171,42 @@
 			</div>
 			<div class="card-content collapse show">
 				<div class="card-body">
-				
+			
 					<div class="table-responsive">
 						<form action="" method="POST">
 							<table class="table" border="1" align="center">
 								<tr>
 									<td>
-										<label for="idnote">idnote:
+										<label for="idevent">idevent:
 										</label>
 									</td>
-									<td><input type="number" name="idnote" id="idnotee" maxlength="20" value="<?php echo $a['idnote'];?>"  readonly></td>
+									<td><input type="number" name="idevent" id="idevent" maxlength="20" value="<?php echo $a['idevent'];?>"  readonly></td>
 								</tr>
 								<tr>
 									<td>
-										<label for="nom">nom:
+										<label for="nomevent">nom event
 										</label>
 									</td>
-									<td><input type="text" value="<?php echo $a['nom'];?>" name="nom" id="nom" maxlength="20"></td>
-								</tr>
-
-                <td>
-										<label for="prenom">prenom:
-										</label>
-									</td>
-									<td><input type="text" value="<?php echo $a['prenom'];?>" name="prenom" id="prenom" maxlength="20"></td>
-								</tr>
-
-                <td>
-										<label for="notes">note:
-										</label>
-									</td>
-									<td><input type="text" value="<?php echo $a['notes'];?>" name="notes" id="notes" maxlength="20"></td>
+									<td><input type="text" value="<?php echo $a['nomevent'];?>" name="nomevent" id="nomevent" maxlength="20"></td>
 								</tr>
 							   
                 <tr>
 									<td>
+										<label for="date">date
+										</label>
+									</td>
+									<td><input type="date" value="<?php echo $a['date'];?>" name="date" id="date" maxlength="20"></td>
+								</tr>
 
-                  <label for="idmatiere">idmatiere:
-                </label>
-              </td>
-              <td><select name="idmatiere" id="idmatiere" >
-                  <option value="">--Please choose an option--</option>
-                    <?php foreach ($resultats as $value) {
-                      ?>
-    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
-
-  <?php }?>
-</td>
-</select>
-            </tr>
-
-
+            
+               
+                <tr>
+									<td>
+										<label for="idclub">id club:
+										</label>
+									</td>
+									<td><input type="text" value="<?php echo $a['idclub'];?>" name="idclub" id="idclub" maxlength="20"></td>
+								</tr>
 
 
 								<tr>
