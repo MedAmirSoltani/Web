@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+    require '../Controller/noteC.php';
+
+    $noteC = new noteC();
+    $note = $noteC->getnotebymatiere($_GET['idmatiere']);
+?>
 <html lang="en">
 
 <head>
@@ -17,6 +22,7 @@
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir1.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -37,8 +43,7 @@
    </div>
    <!-- end loader -->
    <!-- header -->
-
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -77,7 +82,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>Students list</h2>
                </div>
             </div>
          </div>
@@ -88,18 +93,81 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
+            <a href="frontadmin.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
+   
+                  <table class="content-table" style="width:100%; height:30%">  <div class="row">
 
-                  </div>
-               </form>
+							<tr>
+							
+								<th>nom</th>
+                <th>prenom</th>
+                <th>note</th>
+                <th>update/add grade</th>
+                <th>delete</th>
+							  </tr>
+									<?php 
+                           $i=0;
+											foreach ($note as $key) {
+                                   $i++;
+                                    {
+									?>
+							
+							
+							  <tr>
+								
+								<td><?php echo $key['nom'] ; ?></td>
+                <td><?php echo $key['prenom'] ; ?></td>
+                <td><?php echo $key['notes'] ; ?></td>
+             
+							
+								<td><a href="front5admin.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
+                        <td><a href="supprimernote1.php?idnote=<?php echo $key['idnote'] ; ?>&idmatiere=<?php echo $key['idmatiere'] ; ?>">delete</a></td>
+							  </tr>
+							
+							<div style="color:white;text-align:center; ">
+
+									<?php
+											}} echo ("<a><strong>students number</strong> = $i  </a>" ); 
+									?></div>
+						</table>
+                  <table class="content-table"  style="width:100%; height:30%" >
+                  <h2 style="color:white; text-align:center;">students with no grades</h2>
+							<tr>
+							
+								<th>nom</th>
+                <th>prenom</th>
+                <th>note</th>
+                <th>update/add grade</th>
+                <th>delete</th>
+							  </tr>
+									<?php 
+                        
+											foreach ($note as $key) {
+                                    if($key['notes']==NULL)
+                                    {
+									?>
+							
+							
+							  <tr>
+								
+								<td><?php echo $key['nom'] ; ?></td>
+                <td><?php echo $key['prenom'] ; ?></td>
+                <td><?php echo $key['notes'] ; ?></td>
+             
+							
+                <td><a href="front5admin.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
+                        <td><a href="supprimernote1.php?idnote=<?php echo $key['idnote'] ; ?>&idmatiere=<?php echo $key['idmatiere'] ; ?>">delete</a></td>
+							  </tr>
+							
+							
+									<?php
+											}}
+									?>
+						</table></div>
+          
+						</form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>

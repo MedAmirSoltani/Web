@@ -1,4 +1,26 @@
-<!DOCTYPE html>
+<?php
+
+    require_once     '../Controller/noteC.php';
+    require_once '../Model/note.php' ;
+    require_once     '../Controller/matiereC.php';
+    $noteC = new noteC();
+    
+
+    if (isset($_POST['idnote'])  && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['notes'] )&& isset($_POST['idmatiere']  ))
+    {
+        echo $_POST['idnote'] ;
+            $note = new note($_POST['idnote'] , $_POST['nom'] , $_POST['prenom'] , $_POST['notes'], $_POST['idmatiere'] );
+            $noteC->modifiernote($note);
+            $id=$_POST['idmatiere'];
+            header("Location:front4admin.php?idmatiere=$id");
+    }else
+    {
+      $matiereC = new matiereC();
+      $resultats = $matiereC -> affichermatiere();
+        $a = $noteC->getnotebyID($_GET['idnote']) ;
+    }
+
+?>
 <html lang="en">
 
 <head>
@@ -16,7 +38,7 @@
    <!-- bootstrap css -->
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/style2.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -37,8 +59,7 @@
    </div>
    <!-- end loader -->
    <!-- header -->
-
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -77,7 +98,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>upgrade grade</h2>
                </div>
             </div>
          </div>
@@ -86,20 +107,74 @@
    <!-- Contact -->
    <div class="Contact">
       <div class="container">
-         <div class="row">
+      
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
+             
+                  <form action="" method="POST">     <div class="row">
+                          <table class="table" border="1" align="center">
+								<tr>
+									<td>
+										<label for="idnote">idnote:
+										</label>
+									</td>
+									<td><input type="number" name="idnote" id="idnotee" maxlength="20" value="<?php echo $a['idnote'];?>"  readonly></td>
+								</tr>
+								<tr>
+									<td>
+										<label for="nom">nom:
+										</label>
+									</td>
+									<td><input type="text" value="<?php echo $a['nom'];?>" name="nom" id="nom" maxlength="20"readonly ></td>
+								</tr>
 
-                  </div>
-               </form>
+                <td>
+										<label for="prenom">prenom:
+										</label>
+									</td>
+									<td><input type="text" value="<?php echo $a['prenom'];?>" name="prenom" id="prenom" maxlength="20"readonly></td>
+								</tr>
+
+                <td>
+										<label for="notes">note:
+										</label>
+									</td>
+									<td><input type="text" value="<?php echo $a['notes'];?>" name="notes" id="notes" maxlength="20" ></td>
+								</tr>
+							   
+                        <tr>
+									<td>
+
+                  <label for="idmatiere">idmatiere:
+                </label>
+              </td>
+              <td><select name="idmatiere" id="idmatiere" >
+                  <option value="">--Please choose an option--</option>
+                    <?php foreach ($resultats as $value) {
+                      ?>
+    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+
+  <?php }?>
+</td>
+</select>
+            </tr>
+
+
+
+
+
+								<tr>
+									<td>
+										<input type="submit" value="Modifier"> 
+									</td>
+									<td>
+										<input type="reset" value="Annuler" >
+									</td>
+								</tr>
+							</table> 
+                </div>
+						</form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>
@@ -122,10 +197,10 @@
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>contact us</h3>
+                  <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Send</button>
+                  <button class="Subscribe">send</button>
                </div>
             </div>
          </div>

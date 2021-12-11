@@ -98,7 +98,7 @@
                          var bleep=new Audio();
                          bleep.src="amir.mp3";
                       </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
+                     <a  class="send-btn"href="frontetudiant.php"  onmousedown="bleep.play()">Open Your Classroom</a>
                      <br>
          </div>
       </div>

@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+    require '../Controller/courC.php';
+
+    $courC = new courC();
+   $cour = $courC->getcourbymatiere($_GET['idmatiere']);//nafficher les cours eli appartient lel matiere hadhika
+   if (isset($_POST['search']) ) {
+    $list = $courC->afficherbyname($_POST['search']);
+  }
+?>
 <html lang="en">
 
 <head>
@@ -17,6 +25,7 @@
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" href="../Assets/CSS/style3.css">
+      <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -37,8 +46,7 @@
    </div>
    <!-- end loader -->
    <!-- header -->
-
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -50,7 +58,7 @@
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -77,29 +85,59 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>COURSES</h2>
                </div>
             </div>
          </div>
       </div>
    </div>
    <!-- Contact -->
+   
    <div class="Contact">
-      <div class="container">
+
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
+ 
 
+            <a href="frontetudiant.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
+  
+               <form>
+            
+               <div class="row">
+      
+									<?php 
+             
+											foreach ($cour as $key) {
+                                
+									?>
+							
+							
+							  <tr>
+                       <div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
+<div class="card-header bg-gradient-x-purple-red text-white">
+<div class="row">
+<div class="col">
+<img src="../Assets/Images/amir.PNG">
+</div>
+<div class="col">
+<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $key['ncour'] ; ?></h2>  
+<h4 style="color:white;"><strong> cour :</strong>  <?php echo   $key['ncour'] ; ?>  </h4> 
+                     <a href="<?php echo $key['file'] ; ?> "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
+</div>
+</div>
+</div>
+</div>  
+							
+							
+									<?php
+											}
+                                 
+									?>
+						</table>
                   </div>
                </form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>
@@ -125,7 +163,7 @@
                      <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Send</button>
+                  <button class="Subscribe">send</button>
                </div>
             </div>
          </div>

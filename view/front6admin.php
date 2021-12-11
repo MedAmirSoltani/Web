@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+
+<?php
+
+require_once     '../Controller/courC.php';
+require_once '../Model/cour.php' ;
+
+require_once     '../Controller/matiereC.php';
+
+
+if ( isset($_POST['ncour']) && isset($_POST['file'] )&& isset($_POST['idmatiere'] )) 
+{
+        $cour = new cour(NULL, $_POST['ncour'], $_POST['file'], $_POST['idmatiere'] );
+        $courC = new courC();
+        $courC->ajoutercour($cour);
+      $id=$_POST['idmatiere'];
+        header("Location:front2admin.php?idmatiere=$id");
+      }
+else {
+$matiereC = new matiereC();
+$resultats = $matiereC -> affichermatiere();
+}
+
+
+?>
 <html lang="en">
 
 <head>
@@ -77,7 +100,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>COURSES</h2>
                </div>
             </div>
          </div>
@@ -88,18 +111,64 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
+           
+               
+                  <form action="" method="POST" onsubmit="return verif();">  
+                   <div class="row">
+							<table class="table" border="1" align="center" >
+							
+								<tr>
+									<td>
+										<label for="ncour">cour:
+										</label>
+									</td>
+									<td><input type="text" name="ncour" id="ncour" maxlength="20" required></td>
+								</tr>
+                
+                <td>
+                
+										<label for="file">file:
+										</label>
+									</td>
+									<td><input type="file" name="file" id="file" maxlength="20"></td>
+								</tr>
+								<tr>
+									<td>
 
+
+           
+                
+                <label for="idmatiere">idmatiere:
+                </label>
+              </td>
+              <td><select name="idmatiere" id="idmatiere" required>
+                  <option value="">--Please choose an option--</option>
+                    <?php foreach ($resultats as $value) {
+                      ?>
+    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+
+  <?php }?>
+</td>
+</select>
+            </tr>
+            <tr>
+              <td>
+                    
+										<input type="submit" value="Envoyer"> 
+									
+									<td>
+										<input type="reset" value="Annuler" >
+									</td>
+								</tr>
+                <div id="badelha">
+                  
+                  </div>
+							</table>
+					
                   </div>
                </form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>
@@ -122,10 +191,10 @@
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>contact us</h3>
+                  <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Send</button>
+                  <button class="Subscribe">send</button>
                </div>
             </div>
          </div>

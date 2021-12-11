@@ -19,15 +19,16 @@
    <meta name="description" content="">
    <meta name="author" content="">
    <!-- bootstrap css -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="css/style2.css">
+   <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
-   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
    <!-- Tweaks for older IEs-->
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +39,7 @@
 <body class="main-layout contact-page">
    <!-- loader  -->
    <div class="loader_bg">
-      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
    <!-- header -->
@@ -50,7 +51,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="images/logo.png" alt="#"></a> </div>
+                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -62,8 +63,8 @@
                            <li> <a href="index.php">Home</a> </li>
                               <li> <a href="#">FORUM</a> </li>
                               <li ><a href="#">Class</a></li>
-                              <li class="mean-last"> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
-                              <li class="mean-last"> <a href="profiluser.php"><img src="images/top-icon.png" alt="profiluser.php" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -92,8 +93,9 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <a href="front.php">Return </a>
-                  <table class="table" border='2'>  <div class="row">
+            <a href="front.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
+   
+                  <table class="content-table" style="width:100%; height:30%">  <div class="row">
 
 							<tr>
 							
@@ -103,8 +105,9 @@
                 <th>update/add grade</th>
 							  </tr>
 									<?php 
+                           $i=0;
 											foreach ($note as $key) {
-                                   
+                                   $i++;
                                     {
 									?>
 							
@@ -119,14 +122,14 @@
 								<td><a href="front5.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
 							  </tr>
 							
-							
+							<div style="color:white;text-align:center; ">
+
 									<?php
-											}}
-									?>
+											}} echo ("<a><strong>students number</strong> = $i  </a>" ); 
+									?></div>
 						</table>
-              
-                  <table class="table" border='2'>
-                  <a>students with no grades</a>
+                  <table class="content-table"  style="width:100%; height:30%" >
+                  <h2 style="color:white; text-align:center;">students with no grades</h2>
 							<tr>
 							
 								<th>nom</th>
@@ -149,15 +152,15 @@
                 <td><?php echo $key['notes'] ; ?></td>
              
 							
-								<td><a href="front5.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
+                <td><a href="front5.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
 							  </tr>
 							
 							
 									<?php
 											}}
 									?>
-						</table>
-                </div>
+						</table></div>
+          
 						</form>
             </div>
         
@@ -175,38 +178,38 @@
                      <h3>Follow Us</h3>
                   </div>
                   <ul class="location_icon">
-                     <li> <a href="#"><img src="icon/facebook.png"></a></li>
-                     <li> <a href="#"><img src="icon/Twitter.png"></a></li>
-                     <li> <a href="#"><img src="icon/linkedin.png"></a></li>
-                     <li> <a href="#"><img src="icon/instagram.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                   </ul>
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>Newsletter</h3>
+                     <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Subscribe</button>
+                  <button class="Subscribe">Send</button>
                </div>
             </div>
          </div>
       </div>
       <div class="copyright">
          <div class="container">
-            <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
-   <script src="js/plugin.js"></script>
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
    <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
 </body>
 
 </html>

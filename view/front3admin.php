@@ -98,7 +98,7 @@
                          var bleep=new Audio();
                          bleep.src="amir.mp3";
                       </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
+                     <a  class="send-btn"href="frontadmin.php"  onmousedown="bleep.play()">Open Your Classroom</a>
                      <br>
          </div>
       </div>
@@ -122,10 +122,10 @@
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>contact us</h3>
+                  <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Send</button>
+                  <button class="Subscribe">send</button>
                </div>
             </div>
          </div>
