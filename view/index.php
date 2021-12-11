@@ -125,24 +125,47 @@ if(isset($_POST["reset-request-submit"]))
                               
                               <li class="dropdown dropdown-user nav-item"><a  href="#" data-toggle="dropdown">
                                
-                                 <?php if(!empty($conn['name'])): ?>
+                              <?php if(!empty($conn['name'])): ?>
                                     <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John
-                                                Doe</span></span></a>
+                                <div class="arrow_box_right">
+                                   <a class="dropdown-item" >
+                                      <span class="avatar avatar-online">
+                                      <?php if (empty($conn['profilpicture']))
+                                                  {
+                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:25%; height:35px;float:left;margin:0 10px 0 0px; border-radius:10%; display:block;"/>';
+                                                    
+                                                   }
+                                                
+                                                 ?>
+                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
+                                                 <span class="user-name text-bold-700 ml-1"><?php echo $conn['name']?></span>
+                                       </span>
+                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <?php if(strcmp($conn['role'], "Prof") == 0){ ?>
                                        <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
-                                      
+                                       <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
 <?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
    <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
                                          
 <?php }  else {?>
    <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
                                          
 <?php } ?>
+
+
                                   
-                                    <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                                   
+                                    
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
                                 </div>
                             </div>
@@ -160,14 +183,9 @@ if(isset($_POST["reset-request-submit"]))
                               <div class="field">
                               <input class="form-control" type="password" name="password" id="password" placeholder="password">
                               </div>
-<<<<<<< HEAD
                               
                               <a  style="text-align:center;" class="dropdown-item" href="reset-password.php"> <input type="submit" name="reset-request-submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="forgot password"></a>
                              <a  style="text-align:center;" class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
-=======
-                              <a class="dropdown-item" style="font-size: 13px;" href="#"><i class="ft-user"></i> forget password</a>
-                              <a class="dropdown-item" style="font-size: 15px;" href="#"><i class="ft-user"></i> new?</a>
->>>>>>> 6c473a8e563ee9c4ab5b01538765f0a2d0c76a95
                                <div id="lol"> </div>
                               <script>
                                      function verifcnx(){

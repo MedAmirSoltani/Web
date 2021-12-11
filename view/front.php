@@ -1,8 +1,20 @@
 <?php
     require '../Controller/matiereC.php';
+    include_once     '../Controller/utilisateurC.php';
+        include_once '../Model/utilisateur.php' ;
+        //$userC=new utilisateurC();
+        $userC1=new utilisateurC();
+    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
+    $matiere=new matiereC();
 
-    $matiereC = new matiereC();
-    $matiere = $matiereC->affichermatiere();
+
+
+       
+    //$resultat=$userC->getutilisateurbyID($_POST["ID_utilisateur"]);   
+         /*   $_SESSION['a']=$resultat["ID_utilisateur"];
+            $x=$userC->getutilisateurbyID($_SESSION['a']);*/
+    $r=$matiereC->getmatierebyID($conn['idmatiere']);   
+    $matiere = $r->affichermatiere();
 ?>
 <html lang="en">
 
@@ -54,7 +66,7 @@
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -103,11 +115,11 @@
 
 							 
 									<?php 
-                           $i=0;
+                           
                      
-											foreach ($matiere as $matiere) {
+											foreach ($r as $matiere) {
                                                 
-                                    $i++;  
+                                     
 									?>
     
 <div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">

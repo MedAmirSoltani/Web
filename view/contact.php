@@ -5,7 +5,6 @@ include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
   
     $userC=new utilisateurC();
-<<<<<<< HEAD
     $userC1=new utilisateurC();
 $conn=$userC1->getutilisateurbyID($_SESSION['a']);
 $matiere=new matiereC();
@@ -15,10 +14,6 @@ if(isset($_POST["reset-request-submit"]))
 }
       
     if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"]) )
-=======
-    
-    if(isset($_POST["email"]) && isset($_POST["password"])  )
->>>>>>> 6c473a8e563ee9c4ab5b01538765f0a2d0c76a95
     {
       
       if(!empty($_POST["email"]) && !empty($_POST["password"]))
@@ -127,7 +122,54 @@ if(isset($_POST["reset-request-submit"]))
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               
                               <li class="dropdown dropdown-user nav-item"><a  href="#" data-toggle="dropdown">
-                                <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                              <?php if(!empty($conn['name'])): ?>
+                                    <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="arrow_box_right">
+                                   <a class="dropdown-item" >
+                                      <span class="avatar avatar-online">
+                                      <?php if (empty($conn['profilpicture']))
+                                                  {
+                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:25%; height:35px;float:left;margin:0 10px 0 0px; border-radius:10%; display:block;"/>';
+                                                    
+                                                   }
+                                                
+                                                 ?>
+                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
+                                                 <span class="user-name text-bold-700 ml-1"><?php echo $conn['name']?></span>
+                                       </span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <?php if(strcmp($conn['role'], "Prof") == 0){ ?>
+                                       <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
+                                       <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+<?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
+   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                         
+<?php }  else {?>
+   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                         
+<?php } ?>
+
+
+                                  
+                                   
+                                    
+                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                                    <?php else: ?>
+     <!-- HTML here -->
+     <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                             <form action="" method="POST" onsubmit="return verifcnx();">
                                     <div class="dropdown-divider"></div>
@@ -138,8 +180,9 @@ if(isset($_POST["reset-request-submit"]))
                               <div class="field">
                               <input class="form-control" type="password" name="password" id="password" placeholder="password">
                               </div>
-                              <a class="dropdown-item" style="font-size: 13px;" href="#"><i class="ft-user"></i> forget password</a>
-                              <a class="dropdown-item" style="font-size: 15px;" href="#"><i class="ft-user"></i> new?</a>
+                              
+                              <a  style="text-align:center;" class="dropdown-item" href="reset-password.php"> <input type="submit" name="reset-request-submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="forgot password"></a>
+                             <a  style="text-align:center;" class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
                                <div id="lol"> </div>
                               <script>
                                      function verifcnx(){
@@ -156,8 +199,9 @@ if(isset($_POST["reset-request-submit"]))
                                     </script>
                               <div class="dropdown-divider"></div>
                              
-                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
+                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" name="login" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
                               </form>    
+                              <?php endif; ?>
                            </div>
                             </div>
                         </li>
