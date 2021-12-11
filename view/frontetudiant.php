@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+    require '../Controller/matiereC.php';
+
+    $matiereC = new matiereC();
+    $matiere = $matiereC->affichermatiere();
+?>
 <html lang="en">
 
 <head>
@@ -17,6 +22,7 @@
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -36,9 +42,7 @@
       <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
-   <!-- header -->
-
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -77,7 +81,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>SUBJECTs</h2>
                </div>
             </div>
          </div>
@@ -85,21 +89,62 @@
    </div>
    <!-- Contact -->
    <div class="Contact">
-      <div class="container">
+      
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <form>
                   <div class="row">
+                  
+                          
+							
+								
 
+                
+
+							 
+									<?php 
+                           $i=0;
+                     
+											foreach ($matiere as $matiere) {
+                                                
+                                    $i++;  
+									?>
+    
+<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
+<div class="card-header bg-gradient-x-purple-red text-white">
+<div class="row">
+<div class="col">
+<img src="../Assets/Images/amir.PNG">
+</div>
+<div class="col">
+<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre'] ; ?></h2>  
+                     <a href="front2etudiant.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
+                     
+              <h4 style="color:white;"><strong> coef:</strong>  <?php echo   $matiere['coff'] ; ?>  </h4> 
+              <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong>   <?php echo $matiere['hour'] ; ?>  </h4> 
+</div>
+</div>
+</div>
+</div>  
+
+				
+                       
+                
+  
+							
+						<br> <br>	 
+							
+							
+									<?php
+											}
+                              
+									?>
+						</table>
+                    
                   </div>
                </form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>

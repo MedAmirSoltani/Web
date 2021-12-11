@@ -16,7 +16,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>memorial books</title>
+   <title>hogwarts</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -69,7 +69,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                            <ul class="menu-area-main">
                               <li > <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">Forum</a> </li>
-                              <li><a href="front3.php">Subject</a></li>
+                              <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            <div class="arrow-up">

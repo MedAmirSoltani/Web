@@ -4,8 +4,7 @@ include_once     '../Controller/utilisateurC.php';
     include_once '../Model/utilisateur.php' ;
    
     $userC=new utilisateurC();
-    $userC1=new utilisateurC();
-    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
+    
     if(isset($_POST["email"]) && isset($_POST["password"])  )
     {
       
@@ -91,8 +90,8 @@ include_once     '../Controller/utilisateurC.php';
    <!-- end loader -->
    <!-- header -->
    <header>
-       <!-- header inner -->
-       <div class="header">
+      <!-- header inner -->
+      <div class="header">
          <div class="container">
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
@@ -102,65 +101,19 @@ include_once     '../Controller/utilisateurC.php';
                      </div>
                   </div>
                </div>
-               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li > <a href="index.php">Home</a> </li>
+                              
+                              <li> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">About us</a> </li>
                               <li class="active"><a href="contact.php">Contact us</a></li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               
                               <li class="dropdown dropdown-user nav-item"><a  href="#" data-toggle="dropdown">
-                               
-                                 <?php if(!empty($conn['name'])): ?>
-                                    <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right">
-                                   <a class="dropdown-item" >
-                                      <span class="avatar avatar-online">
-                                      <?php if (empty($conn['profilpicture']))
-                                                  {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:25%; height:35px;float:left;margin:0 10px 0 0px; border-radius:10%; display:block;"/>';
-                                                    
-                                                   }
-                                                
-                                                 ?>
-                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
-                                                 <span class="user-name text-bold-700 ml-1"><?php echo $conn['name']?></span>
-                                       </span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <?php if(strcmp($conn['role'], "Prof") == 0){ ?>
-                                       <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
-                                       <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-<?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
-   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
-   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-                                         
-<?php }  else {?>
-   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
-   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-                                         
-<?php } ?>
-
-
-                                  
-                                   
-                                    
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
-                                </div>
-                            </div>
-                        </li>
-                                    <?php else: ?>
-     <!-- HTML here -->
-     <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                                <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                             <form action="" method="POST" onsubmit="return verifcnx();">
                                     <div class="dropdown-divider"></div>
@@ -191,19 +144,18 @@ include_once     '../Controller/utilisateurC.php';
                              
                               <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
                               </form>    
-                              <?php endif; ?>
                            </div>
-                           </div>
-                           </ul>
+                            </div>
+                        </li>
+                     </ul>
                         </nav>
                      </div>
                   </div>
-               </div>
             </div>
          </div>
       </div>
-
-      <!-- end header inner -->
+      </div>
+      </div>
       <!-- end header inner -->
    </header>
    <!-- end header -->

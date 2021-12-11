@@ -91,7 +91,7 @@ display:none;
                            <ul class="menu-area-main">
                            <li > <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">Forum</a> </li>
-                              <li><a href="contact.php">matiere</a></li>
+                              <li><a href="front3.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>

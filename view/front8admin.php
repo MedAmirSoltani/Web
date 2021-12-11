@@ -1,4 +1,24 @@
-<!DOCTYPE html>
+<?php
+
+    require_once     '../Controller/matiereC.php';
+    require_once '../Model/matiere.php' ;
+    $matiereC = new matiereC();
+    
+
+    if (isset($_POST['idmatiere'] ) && isset($_POST['titre']  ) && isset($_POST['hour']  ) && isset($_POST['coff']  )) 
+    {
+        echo $_POST['idmatiere'] ;
+            $matiere = new matiere($_POST['idmatiere'] , $_POST['titre'] , $_POST['hour'] , $_POST['coff'] );
+            $matiereC->modifiermatiere($matiere);
+            header('Location:frontadmin.php');
+    }else
+    {
+        $a = $matiereC->getmatierebyID($_GET['idmatiere']) ;
+    }
+
+
+
+?>
 <html lang="en">
 
 <head>
@@ -77,7 +97,7 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>Welcome!!</h2>
+                  <h2>COURSES</h2>
                </div>
             </div>
          </div>
@@ -88,18 +108,53 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
-
+           
+               
+                  <form action="" method="POST" onsubmit="return verif();">  
+                   <div class="row">
+							<table class="table" border="1" align="center" >
+                     <tr>
+									<td>
+										<label for="idmatiere">idmatiere:
+										</label>
+									</td>
+									<td><input type="number" name="idmatiere" id="idmatiere" maxlength="20" value="<?php echo $a['idmatiere'];?>"  readonly></td>
+								</tr>
+								<tr>
+									<td>
+										<label for="titre">titre:
+										</label>
+									</td>
+									<td><input type="text" value="<?php echo $a['titre'];?>" name="titre" id="titre" maxlength="20"></td>
+								</tr>
+                <tr>
+									<td>
+										<label for="coff">coff:
+										</label>
+									</td>
+									<td><input type="number" value="<?php echo $a['coff'];?>" name="coff" id="coff" max="10"></td>
+								</tr>
+                <tr>
+									<td>
+										<label for="hour">hour:
+										</label>
+									</td>
+									<td><input type="number" value="<?php echo $a['hour'];?>" name="hour" id="hour" max="200"></td>
+								</tr>
+							   
+								<tr>
+									<td>
+										<input type="submit" value="Modifier"> 
+									</td>
+									<td>
+										<input type="reset" value="Annuler" >
+									</td>
+								</tr>
+							</table>
                   </div>
                </form>
             </div>
-            <script>
-                         var bleep=new Audio();
-                         bleep.src="amir.mp3";
-                      </script>
-                     <a  class="send-btn"href="front.php"  onmousedown="bleep.play()">Open Your Classroom</a>
-                     <br>
+        
          </div>
       </div>
    </div>
