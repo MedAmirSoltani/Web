@@ -27,18 +27,12 @@
     <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
     <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-<<<<<<< HEAD
     <title>Hogwarts</title>
     <link rel="apple-touch-icon" href="../Assets/theme-assets/images/ico/apple-icon-120.png">
-=======
-    <title>hogwarts</title>
-    <link rel="apple-touch-icon" href="theme-assets/images/ico/apple-icon-120.png">
->>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/vendors.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN CHAMELEON  CSS-->
@@ -48,17 +42,6 @@
     <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/colors/palette-gradient.css">
     <!-- END Page Level CSS-->  
-=======
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/vendors.css">
-    <!-- END VENDOR CSS-->
-    <!-- BEGIN CHAMELEON  CSS-->
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/app-lite.css">
-    <!-- END CHAMELEON  CSS-->
-    <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/core/colors/palette-gradient.css">
-    <!-- END Page Level CSS-->
->>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
     <!-- BEGIN Custom CSS-->
     <!-- END Custom CSS-->
   </head>
@@ -120,31 +103,18 @@
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-<<<<<<< HEAD
           <<li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG"/>
               <h3 class="brand-text">Hogwarts</h3></a></li>
-=======
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-date" alt="Chameleon admin date" src="theme-assets/images/date/date.png"/>
-              <h3 class="brand-text">Chameleon</h3></a></li>
->>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-<<<<<<< HEAD
         <li class=" nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
           </li>
           <li class=" nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
           </li>
           <li class="active"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
-=======
-          <li class=" nav-item"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
-          </li>
-          <li class=" nav-item"><a href="charts.html"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Charts</span></a>
-          </li>
-          <li class=" nav-item"><a href="icons.html"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Icons</span></a>
->>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
           </li>
           <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
           </li>
@@ -152,11 +122,7 @@
           </li>
           <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
           </li>
-<<<<<<< HEAD
           <li class="nav-item"><a href="tables.html"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Tables</span></a>
-=======
-          <li class="active"><a href="tables.html"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Tables</span></a>
->>>>>>> 360b998b3d65e39da85d7f2cb2dc2de456c4aa51
           </li>
           <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
           </li>
