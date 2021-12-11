@@ -178,7 +178,7 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
                               <div class="field">
                               <input class="form-control" type="password" name="password" id="password" placeholder="password">
                               </div>
-                              <a class="dropdown-item" style="font-size: 13px;" href="#"><i class="ft-user"></i> forget password</a>
+                              <a class="dropdown-item" style="font-size: 13px;" href="reset-password.php"><i class="ft-user"></i> forget password</a>
                               <a class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
                                <div id="lol"> </div>
                               <script>
