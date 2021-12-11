@@ -1,20 +1,23 @@
 <?php
+session_start();
     require '../Controller/matiereC.php';
     include_once     '../Controller/utilisateurC.php';
         include_once '../Model/utilisateur.php' ;
-        //$userC=new utilisateurC();
-        $userC1=new utilisateurC();
-    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
-    $matiere=new matiereC();
+      
+    $matiereC=new matiereC();
+    
 
-
-
-       
+      // $_POST['idmatiere']
     //$resultat=$userC->getutilisateurbyID($_POST["ID_utilisateur"]);   
          /*   $_SESSION['a']=$resultat["ID_utilisateur"];
             $x=$userC->getutilisateurbyID($_SESSION['a']);*/
-    $r=$matiereC->getmatierebyID($conn['idmatiere']);   
-    $matiere = $r->affichermatiere();
+            $conn=$_SESSION['mat'];
+            $id=$conn['idmatiere'];
+            $matiere = $matiereC->affichermatiere();
+
+
+            
+  
 ?>
 <html lang="en">
 
@@ -117,8 +120,8 @@
 									<?php 
                            
                      
-											foreach ($r as $matiere) {
-                                                
+											foreach ($matiere as $matiere) {
+                                    if($matiere['idmatiere']==$id){
                                      
 									?>
     
@@ -149,7 +152,7 @@
 							
 							
 									<?php
-											}
+                                 	}	}
                               
 									?>
 						</table>

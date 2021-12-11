@@ -31,7 +31,9 @@ if(isset($_POST["reset-request-submit"]))
             {
             if (strcmp($x['role'], "Etudiant") != 0) {
                $resultat=$userC->getprofbyemail($_POST["email"]);
+               
                $r=$matiere->getmatierebyID($resultat['idmatiere']);
+               $_SESSION['mat']=$r;
                $_SESSION['c']=$r["titre"];
                header('Location:profilprof.php');
            }
