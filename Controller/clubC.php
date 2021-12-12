@@ -4,7 +4,19 @@ require_once "../assets/ASFO/utilis/Config.php";
 
 
     Class clubC {
+        public function afficherbyname($namerecherche)
+        {
+            try {
+                $db = config::getConnexion();
 
+                $querry = $db->prepare('select * from club where nomclub like "%'.$namerecherche.'%"');
+                $querry->execute();
+                $result = $querry->fetchAll();
+                return $result;
+            } catch (PDOException $th) {
+                $th->getMessage();
+            }
+        }
         function afficherclub()
         {
             $requete = "select * from club";

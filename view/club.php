@@ -87,7 +87,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>SUBJECTs</h2>
+                  <h2>clubs</h2>
                </div>
             </div>
          </div>
@@ -110,8 +110,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 							 
 									<?php 
                          
-                         if(strcmp($x['statut'],"pas membre")==0)
-                         {
+                         
 							foreach ($club as $club) {
 									?>
     
@@ -119,12 +118,12 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 <div class="card-header bg-gradient-x-purple-red text-white">
 <div class="row">
 <div class="col">
-<img src="../Assets/Images/amir.PNG">
+<td><img style="border-radius:70%; "  width=210 src="../Assets/uploads/<?php echo $club['logo']; ?>"></td>
 </div>
 <div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $club['nomclub'] ; ?></h2>  
-                     <a href="event.php?idclub=<?php echo $club['idclub'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="show events" /> </a><br>
-                    <!-- rejoindre--> <input type="button" value="rejoindre" >
+<h2 style="  margin-top: 8%; text-align:center; font-size: 80px; color:white;"><?php echo $club['nomclub'] ; ?></h2>  
+                     <a href="event.php?idclub=<?php echo $club['idclub'] ; ?>  "onmousedown="bleep.play()"><input style="width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button"  value="show events" /> </a><br>
+            
              </div>
 </div>
 </div>
@@ -139,12 +138,10 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
 							
 							
 									<?php
-											}}
+											}
                               
 									?>
-                                   <?php if(strcmp($x['statut'],"pas membre")!=0) {?>
-
-                                   <?php }?>
+                                   
 						</table>
                     
                   </div>

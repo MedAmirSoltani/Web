@@ -154,6 +154,7 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
 <?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
    <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
    <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+   <a class="dropdown-item" href="club.php"><i class="ft-mail"></i> Clubs</a>
                                        <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
                                        <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
                                          

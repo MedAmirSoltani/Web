@@ -103,7 +103,6 @@ var today = new Date();
 var dateac2 = today.getFullYear()-18+'-'+(today.getMonth()+1)+'-'+today.getDate();
 if(date>dateac2)
 { 
-    alert("oo");
     document.getElementById("frogot-date").style.display = "block";
     document.getElementById("frogot-date").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin: 30px 10 0 20;" id="erreur">youre too old choose another date of birth</p>';
     

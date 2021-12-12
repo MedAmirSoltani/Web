@@ -17,8 +17,7 @@ window.onload =function () {
             
       }
 
-function xx() {
-            alert("ooo");                         
+function xx() {                        
     var selectedvalue = document.getElementById("role").value;
     if (selectedvalue == "Etudiant") {
         document.getElementById("classe").removeAttribute("hidden");

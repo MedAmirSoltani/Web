@@ -4,9 +4,9 @@
     require_once     '../Controller/noteC.php';
     require_once '../Model/note.php' ;
     require_once     '../Controller/matiereC.php';
-   
-  
-
+    include_once     '../Controller/utilisateurC.php';
+    $userC1=new utilisateurC();
+    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
     if (isset($_POST['nom'] ) && isset($_POST['prenom'] ) && isset($_POST['notes'] )&& isset($_POST['idmatiere'] ) ) 
     {
             $note = new note(NULL, $_POST['nom'] , $_POST['prenom'] , $_POST['notes'], $_POST['idmatiere'] );
@@ -54,47 +54,55 @@ else {
 
     <!-- fixed-top-->
     <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
-      <div class="navbar-wrapper">
-        <div class="navbar-container content">
-          <div class="collapse navbar-collapse show" id="navbar-mobile">
-            <ul class="nav navbar-nav mr-auto float-left">
-
-                <ul class="dropdown-menu">
-                  <li class="arrow_box">
-                    <form>
-                      <div class="input-group search-box">
-                        <div class="position-relative has-icon-right full-width">
-                          <input class="form-control" id="search" type="text" placeholder="Search here...">
-                          <div class="form-control-position navbar-search-close"><i class="ft-x">   </i></div>
-                        </div>
+    <div class="navbar-wrapper">
+      <div class="navbar-container content">
+        <div class="collapse navbar-collapse show" id="navbar-mobile">
+          <ul class="nav navbar-nav mr-auto float-left">
+            <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+            <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
+            <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
+              <ul class="dropdown-menu">
+                <li class="arrow_box">
+                  <form>
+                    <div class="input-group search-box">
+                      <div class="position-relative has-icon-right full-width">
+                        <input class="form-control" id="search" type="text" placeholder="Search here...">
+                        <div class="form-control-position navbar-search-close"><i class="ft-x"> </i></div>
                       </div>
-                    </form>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav float-right">         
-             
-                <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-              
-              </li>
-            </ul>
-            <ul class="nav navbar-nav float-right">
-              
-                <div class="dropdown-menu dropdown-menu-right">
-               
-              </li>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+         
+          <ul class="nav navbar-nav float-right">
+          
+          <?php if (empty($conn['profilpicture']))
+                                                  {
+                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
+                                                   }
+                                                
+                                                 ?>
+                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
+                                                 
+                                      
+          </ul>
+          <ul class="nav navbar-nav float-right">
            
-                <div class="dropdown-menu dropdown-menu-right">
-                
-                  </div>
+           
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
+                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
                 </div>
-              </li>
-            </ul>
-          </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 

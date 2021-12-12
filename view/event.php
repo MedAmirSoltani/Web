@@ -1,10 +1,13 @@
 <?php
-session_start();
-    require '../Controller/matiereC.php';
+    require '../Controller/eventC.php';
 
-    $matiereC = new matiereC();
-    $matiere = $matiereC->affichermatiere();
+    $eventC = new eventC();
+    $event = $eventC->geteventbyclub($_GET['idclub']);
+
+   
+    
 ?>
+
 <html lang="en">
 
 <head>
@@ -55,7 +58,7 @@ session_start();
                      </div>
                   </div>
                </div>
-               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -65,8 +68,8 @@ session_start();
                               <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
-                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>   
-                        </ul>
+                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
+                           </ul>
                         </nav>
                      </div>
                   </div>
@@ -83,7 +86,7 @@ session_start();
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>SUBJECTs</h2>
+                  <h2>events</h2>
                </div>
             </div>
          </div>
@@ -105,11 +108,9 @@ session_start();
 
 							 
 									<?php 
-                           $i=0;
-                     
-											foreach ($matiere as $matiere) {
-                                                
-                                    $i++;  
+                         
+                         
+							foreach ($event as $event) {
 									?>
     
 <div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
@@ -119,12 +120,11 @@ session_start();
 <img src="../Assets/Images/amir.PNG">
 </div>
 <div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre'] ; ?></h2>  
-                     <a href="front2etudiant.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
-                     
-              <h4 style="color:white;"><strong> coef:</strong>  <?php echo   $matiere['coff'] ; ?>  </h4> 
-              <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong>   <?php echo $matiere['hour'] ; ?>  </h4> 
-</div>
+<h2 style="  margin-top: 8%; text-align:center; font-size: 80px; color:white;"><?php echo $event['nomevent'] ; ?></h2> 
+<h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:#741523;"><?php echo $event['date'] ; ?></h2>  
+                    
+            
+             </div>
 </div>
 </div>
 </div>  
@@ -141,6 +141,7 @@ session_start();
 											}
                               
 									?>
+                                   
 						</table>
                     
                   </div>
