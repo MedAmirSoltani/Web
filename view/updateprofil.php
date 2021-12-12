@@ -3,35 +3,31 @@ session_start();
 require_once     '../Controller/utilisateurC.php';
 require_once '../Model/utilisateur.php';
 
-    $utilisateurC = new utilisateurC();
-    $etudiantC = new etudiantC();
-    //$profC = new profC();
-    
-    if (  isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  )) 
-    {
-      $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
-        echo $_POST['ID_utilisateur'] ;
-        
-      echo "<script> alert('hamadi3ala9el'); </script>";
-        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"]);
-        $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"], $_POST['classe']);
-         $utilisateurC->modifierutilisateur($utilisateur);
-          $etudiantC->modifieretudiant($etudiant);
-           header('Location:profiluser.php');
-    }
-    
-    else
-    {
-      $x = $utilisateurC->getutilisateurbyID($_SESSION['a']) ;
-   }
+$utilisateurC = new utilisateurC();
+$etudiantC = new etudiantC();
+//$profC = new profC();
+
+if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['first_name']) && isset($_POST['date_of_birth']) && isset($_POST['role'])) {
+   $x = $utilisateurC->getutilisateurbyID($_SESSION['a']);
+   echo $_POST['ID_utilisateur'];
+
+   echo "<script> alert('hamadi3ala9el'); </script>";
+   $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"]);
+   $etudiant = new etudiant($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES['profilpicture']["name"], $_POST['classe']);
+   $utilisateurC->modifierutilisateur($utilisateur);
+   $etudiantC->modifieretudiant($etudiant);
+   header('Location:profiluser.php');
+} else {
+   $x = $utilisateurC->getutilisateurbyID($_SESSION['a']);
+}
 ?>
 <style>
-   .fa-color
-   {
-color:black;
+   .fa-color {
+      color: black;
    }
-   #hide1{
-display:none;
+
+   #hide1 {
+      display: none;
    }
 </style>
 <html lang="en">
@@ -84,12 +80,12 @@ display:none;
                      </div>
                   </div>
                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li > <a href="index.php">Home</a> </li>
+                              <li> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">Forum</a> </li>
                               <li><a href="front3.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
@@ -99,9 +95,9 @@ display:none;
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -123,72 +119,70 @@ display:none;
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form id="formulaire" action="" method="POST" onsubmit="return getselectedvalue();" enctype="multipart/form-data" >
+               <form id="formulaire" action="" method="POST" onsubmit="return getselectedvalue();" enctype="multipart/form-data">
                   <div class="row">
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <img style="width:40%;height:200px;border-radius:50%;float:center;margin:0 10px 0 450px;  " onclick="pictureclick()" id="profildisplay" width=200  src="../Assets/uploads/<?php echo $x['profilpicture'];?>">
-                     <br> <br> <br>
-                     <input class="form-control" type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:40%;height:200px;border-radius:50%;float:left;margin:0 10px 0 -200px; display:none; "  > </td>
-                     <img  onclick="pictureclick()" id="profildisplay" style="width:10%;margin:0 90px 0 0px; border-radius:10%; display:block;"/>                     
+                        <img style="width:40%;height:200px;border-radius:50%;float:center;margin:0 10px 0 450px;  " onclick="pictureclick()" id="profildisplay" width=200 src="../Assets/uploads/<?php echo $x['profilpicture']; ?>">
+                        <br> <br> <br>
+                        <input class="form-control" type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:40%;height:200px;border-radius:50%;float:left;margin:0 10px 0 -200px; display:none; "> </td>
+                        <img onclick="pictureclick()" id="profildisplay" style="width:10%;margin:0 90px 0 0px; border-radius:10%; display:block;" />
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <input class="form-control" type="number" name="ID_utilisateur" value="<?php echo $x['ID_utilisateur'];?>" id="ID_utilisateur" id="ID_utilisateur" hidden >
+                        <input class="form-control" type="number" name="ID_utilisateur" value="<?php echo $x['ID_utilisateur']; ?>" id="ID_utilisateur" id="ID_utilisateur" hidden>
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <input class="form-control" type="email" name="email" id="email" value="<?php echo $x['email'];?>" placeholder="email">
+                        <input class="form-control" type="email" name="email" id="email" value="<?php echo $x['email']; ?>" placeholder="email">
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <input class="form-control" type="password" name="password" value="<?php echo $x['password'];?>" id="password" placeholder="password">
+                        <input class="form-control" type="password" name="password" value="<?php echo $x['password']; ?>" id="password" placeholder="password">
                         <span class="eye" onclick="toggle()">
-                                 <i aria-hidden="true" id="hide1"  class="fa fa-eye fa-2x fa-color" style="position:absolute; margin:-65px 0px 0 490px;" ></i>
-                                 <i id="hide2" class="fa fa-eye-slash fa-2x fa-color" aria-hidden="true" style="position:absolute; margin:-65px 0px 0 490px;"></i>
-                                 </span>
-                                <script>
-                                   function toggle(){
-                                    var x=document.getElementById("password");
-                                    var y=document.getElementById("hide1");
-                                    var z =document.getElementById("hide2");
-if(x.type==='password')
-{
-x.type="text";
-y.style.display="block";
-z.style.display="none";
-}
-else{
-   x.type="password";
-y.style.display="none";
-z.style.display="block";
-}
-                                   }
-                                </script>
-                    </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <input class="form-control" type="text" name="name" value="<?php echo $x['name'];?>" id="name" placeholder="name">
+                           <i aria-hidden="true" id="hide1" class="fa fa-eye fa-2x fa-color" style="position:absolute; margin:-65px 0px 0 490px;"></i>
+                           <i id="hide2" class="fa fa-eye-slash fa-2x fa-color" aria-hidden="true" style="position:absolute; margin:-65px 0px 0 490px;"></i>
+                        </span>
+                        <script>
+                           function toggle() {
+                              var x = document.getElementById("password");
+                              var y = document.getElementById("hide1");
+                              var z = document.getElementById("hide2");
+                              if (x.type === 'password') {
+                                 x.type = "text";
+                                 y.style.display = "block";
+                                 z.style.display = "none";
+                              } else {
+                                 x.type = "password";
+                                 y.style.display = "none";
+                                 z.style.display = "block";
+                              }
+                           }
+                        </script>
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <input class="form-control" type="text" name="first_name" value="<?php echo $x['first_name'];?>" id="first_name" placeholder="first_name">
+                        <input class="form-control" type="text" name="name" value="<?php echo $x['name']; ?>" id="name" placeholder="name">
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <input class="form-control" type="date" name="date_of_birth" value="<?php echo $x['date_of_birth'];?>" id="date_of_birth" placeholder="date of birth">
+                        <input class="form-control" type="text" name="first_name" value="<?php echo $x['first_name']; ?>" id="first_name" placeholder="first_name">
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <input class="form-control" type="date" name="date_of_birth" value="<?php echo $x['date_of_birth']; ?>" id="date_of_birth" placeholder="date of birth">
                      </div>
 
 
 
 
-                              
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" >
-                                    
-                                    <input type="text" name="role" id="role" value="<?php echo $x['role'];?>"  placeholder="role" hidden></td>      
-                                    </div> 
-                                    <script>
-                         var bleep=new Audio();
-                         bleep.src="../Assets/music/amir.mp3";
-                      </script>
+
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+                        <input type="text" name="role" id="role" value="<?php echo $x['role']; ?>" placeholder="role" hidden></td>
+                     </div>
+                     <script>
+                        var bleep = new Audio();
+                        bleep.src = "../Assets/music/amir.mp3";
+                     </script>
                   </div>
             </div>
             <button type="submit" value="update" onmousedown="bleep.play()" class="send-btn">Update</button>
-        </form> 
-        </div>
+            </form>
+         </div>
       </div>
    </div>
    <!-- end Contact -->
