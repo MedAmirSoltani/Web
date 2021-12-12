@@ -204,8 +204,13 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                         <div class="fw-bold"><?php echo $commenter["name"]; ?></div>
                                         <?php echo $comment["Comment_text"] ?>
                                         <br>
-                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
-                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
+                                        <?php if ($x["ID_utilisateur"] == $comment["ID_utilisateur"]) { ?>
+
+                                            <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
+                                        <?php  }
+                                        if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] == $comment["ID_utilisateur"]) { ?>
+                                            <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
+                                        <?php } ?>
                                         <!-- Child comment 1-->
                                         <?php foreach ($replys as $reply) {
                                             $replyer = $userC->getutilisateurbyID($reply["ID_utilisateur"]);
