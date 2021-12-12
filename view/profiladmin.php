@@ -68,7 +68,22 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="about.php">Forum</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li><a href="afficherutilisateur.php">Admin Pannel</a></li>

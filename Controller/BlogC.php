@@ -58,11 +58,9 @@ class BlogC
                 $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
             } else if ($affich == "Admin") {
                 $stmt = $config->prepare('SELECT * FROM post order by Idpost ASC ');
-            }
-            else if ($affich == "Active") {
+            } else if ($affich == "Active") {
                 $stmt = $config->prepare('SELECT * FROM post order by Ncomments DESC ');
-            }
-            else if ($affich == "Nactive") {
+            } else if ($affich == "Nactive") {
                 $stmt = $config->prepare('SELECT * FROM post order by Ncomments ASC ');
             }
             if (isset($search) && $search != "") {
@@ -111,7 +109,7 @@ class BlogC
         }
     }
 
-    function AddBlog($Blog)
+    function AddBlog($Blog,$idu)
     {
 
         $config = config::getConnexion();
@@ -119,9 +117,9 @@ class BlogC
             // $this->uploadFile();
             $querry = $config->prepare('
             INSERT INTO post 
-            (Title,Picture,Description,Date)
+            (Title,Picture,Description,Date,ID_utilisateur)
             VALUES
-            (:Title,:Picture,:Description,:Date)
+            (:Title,:Picture,:Description,:Date,:ID_utilisateur)
             ');
             $querry->execute([
 
@@ -129,6 +127,7 @@ class BlogC
                 'Picture' => $Blog->getPicture(),
                 'Date' => $Blog->getDate(),
                 'Description' => $Blog->getDescription(),
+                'ID_utilisateur' =>$idu
 
 
 
@@ -206,20 +205,6 @@ class BlogC
             // Calculate the offset for the query
             $offset = ($page - 1)  * $limit;
 
-            /*  // Some information to display to the user
-            $start = $offset + 1;
-            $end = min(($offset + $limit), $total);
-
-            // The "back" link
-            $prevlink = ($page > 1) ? '<a href="?page=1" title="First page">&laquo;</a> <a href="?page=' . ($page - 1) . '" title="Previous page">&lsaquo;</a>' : '<span class="disabled">&laquo;</span> <span class="disabled">&lsaquo;</span>';
-
-            // The "forward" link
-            $nextlink = ($page < $pages) ? '<a href="?page=' . ($page + 1) . '" title="Next page">&rsaquo;</a> <a href="?page=' . $pages . '" title="Last page">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> <span class="disabled">&raquo;</span>';
-
-            // Display the paging information
-            echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
-*/
-            // Prepare the paged query
             $stmt = $config->prepare('SELECT * FROM archivepost order by Idpostar DESC LIMIT :limit OFFSET :offset');
             if ($affich == "ZA") {
                 $stmt = $config->prepare('SELECT * FROM archivepost order by Title DESC ');
@@ -243,13 +228,6 @@ class BlogC
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $iterator = new IteratorIterator($stmt);
                 return $iterator;
-
-                // Display the results
-                /*foreach ($iterator as $row) {
-                    echo '<p>', $row['Title'], '</p>';
-                }
-            } else {
-                echo '<p>No results could be displayed.</p>';*/
             }
         } catch (Exception $e) {
             echo '<p>', $e->getMessage(), '</p>';
@@ -343,7 +321,7 @@ class BlogC
             $th->getMessage();
         }
     }
-    function AddNcomments($nombre,$idp)
+    function AddNcomments($nombre, $idp)
     {
 
         $config = config::getConnexion();
@@ -361,7 +339,7 @@ class BlogC
             $th->getMessage();
         }
     }
-    function AddNvotes($nombre,$idp)
+    function AddNvotes($nombre, $idp)
     {
 
         $config = config::getConnexion();
