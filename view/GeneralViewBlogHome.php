@@ -90,7 +90,17 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 
 
     <!---------------------END BACKOFFICE ------------------------------------>
-    <header>
+   
+
+</head>
+
+<body>
+
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-inverse navbar-toggleable-md">
+        <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu"
+            aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+            <header>
         <!-- header inner -->
         <div class="header">
             <div class="container">
@@ -140,19 +150,8 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 
         <!-- end header inner -->
     </header>
-
-</head>
-
-<body>
-
-    <!-- Responsive navbar-->
-    <!-- <nav class="navbar navbar-inverse navbar-toggleable-md">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu"
-            aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="float-left">Menu</span>
-            <span class="float-right"><i class="fa fa-bars"></i> <i class="fa fa-close"></i></span>
-        </button>-->
-    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+</div>
+    <div  id="cloapediamenu">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home</a>
@@ -161,10 +160,10 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                 <a class="nav-link color-aqua-hover" href="about.html">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link color-grey-hover" href="contact.html">Contact Us</a>
+                <a class="nav-link color-grey-hover" href="contact.html"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link color-grey-hover" href="contact.html">Login</a>
+                <a class="nav-link color-grey-hover" href="contact.html"></a>
             </li>
         </ul>
         <ul class="navbar-nav">
