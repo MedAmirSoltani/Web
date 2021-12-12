@@ -221,10 +221,11 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                                     <div class="fw-bold"><?php echo $replyer["name"]; ?></div>
                                                     <?php echo  $reply["Reply_text"] ?>
                                                     <br>
+                                                    <?php  if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] == $reply["ID_utilisateur"]) { ?>
                                                     <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
                                                 </div>
                                             </div>
-                                        <?php } ?>
+                                        <?php }} ?>
                                         <!-- Child comment 2-->
 
                                         <div class="d-flex mt-4">
