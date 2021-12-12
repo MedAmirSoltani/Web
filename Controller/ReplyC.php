@@ -51,7 +51,7 @@ class ReplyC
         }
     }
 
-    function AddReply($Reply)
+    function AddReply($Reply, $idu)
     {
 
         $config = config::getConnexion();
@@ -59,14 +59,15 @@ class ReplyC
 
             $querry = $config->prepare('
             INSERT INTO reply 
-            (Idcomment,Reply_text,Date_Reply)
+            (Idcomment,Reply_text,Date_Reply,ID_utilisateur)
             VALUES
-            (:Idcomment,:Reply_text,:Date_Reply)
+            (:Idcomment,:Reply_text,:Date_Reply,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idcomment' => $Reply->getIdcomment(),
                 'Reply_text' => $Reply->getReply_text(),
                 'Date_Reply' => $Reply->getDate_Reply(),
+                'ID_utilisateur' => $idu
 
 
 

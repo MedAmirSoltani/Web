@@ -1,19 +1,31 @@
 <?php
+
+
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
 require_once "../Model/Comment.php";
 require_once "../Model/Reply.php";
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+
+session_start();
+session_unset($_SESSION['idp']);
+
+if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
+    $_SESSION['idp'] = $_GET["Idpost"];
+}
+
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 
 
 $BlogC = new BlogC();
 $CommentC = new CommentC();
 $ReplyC = new ReplyC();
-session_start();
-session_unset();
-if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
-    $_SESSION['idp'] = $_GET["Idpost"];
-}
+
+
+
 $test = $BlogC->GetPostbyID($_SESSION['idp']);
 if (isset($_POST["Nvote"])) {
     $BlogC->AddNvotes($_POST["Nvote"], $_SESSION['idp']);
@@ -23,7 +35,7 @@ if (isset($_POST['Comment_text']) && isset($_POST['Date_Comment'])) {
 
 
     $Comment = new Comment($_SESSION['idp'], $_POST['Comment_text'], $_POST['Date_Comment']);
-    $CommentC->AddComment($Comment, $_SESSION['idp']);
+    $CommentC->AddComment($Comment, $_SESSION['idp'], $x['ID_utilisateur']);
     $nombre = $CommentC->NumberComment($_SESSION['idp']);
     $BlogC->AddNcomments($nombre, $_SESSION['idp']);
 }
@@ -31,7 +43,7 @@ if (isset($_POST['Reply_text']) && isset($_POST['Date_reply'])) {
 
 
     $Reply = new Reply($_POST["Idcomment"], $_POST['Reply_text'], $_POST['Date_reply']);
-    $ReplyC->AddReply($Reply);
+    $ReplyC->AddReply($Reply, $x['ID_utilisateur']);
 }
 $comments = $CommentC->ShowComment($_SESSION['idp']);
 
@@ -130,12 +142,12 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
     </nav>
     <!-- Page content-->
     <div id="buttons" style="position : absolute; left :200 px;">
-<form action="" method="post">
-        <button type="submit" id="upvote"></button>
-        <br>
-        <input value="<?php echo $test["Nvotes"]; ?>" name="Nvote" id="nbvote" hidden>
-        <br>
-        <button type="submit" id="downvote"></button>
+        <form action="" method="post">
+            <button type="submit" id="upvote"></button>
+            <br>
+            <input value="<?php echo $test["Nvotes"]; ?>" name="Nvote" id="nbvote" hidden>
+            <br>
+            <button type="submit" id="downvote"></button>
         </form>
     </div>
     <script defer src="../assets/ASFO/js/seh.js"></script>

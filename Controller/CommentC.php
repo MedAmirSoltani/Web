@@ -50,7 +50,7 @@ class CommentC
         }
     }
 
-    function AddComment($Comment, $idp)
+    function AddComment($Comment, $idp,$idu)
     {
 
         $config = config::getConnexion();
@@ -58,14 +58,15 @@ class CommentC
 
             $querry = $config->prepare('
             INSERT INTO comment 
-            (Idpost,Comment_text,Date_Comment)
+            (Idpost,Comment_text,Date_Comment,ID_utilisateur)
             VALUES
-            (:Idpost,:Comment_text,:Date_Comment)
+            (:Idpost,:Comment_text,:Date_Comment,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idpost' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
                 'Date_Comment' => $Comment->getDate_Comment(),
+                'ID_utilisateur' =>$idu
 
 
 
@@ -222,7 +223,7 @@ class CommentC
             "localhost",
             "root",
             "",
-            "hogwarts"
+            "hogwarts_3"
         );
 
         // Check connection
