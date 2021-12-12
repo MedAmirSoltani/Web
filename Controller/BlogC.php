@@ -136,6 +136,7 @@ class BlogC
             $th->getMessage();
         }
     }
+    
     function UpdateBlog($Blog, $idp)
     {
         $config = config::getConnexion();
