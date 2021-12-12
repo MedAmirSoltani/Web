@@ -90,7 +90,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
       <!-- end header inner -->
    </header>
    <!-- end header -->
-   <form action="updateprofil.php" enctype="multipart/form-data">
+   <form action="updateprofiladmin.php" enctype="multipart/form-data">
    <section class="slider_section">
       <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
          <div class="carousel-inner">
@@ -116,7 +116,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
      <br>
                                                    <br>
                                                  <div style="margin:0px 10px 0 850px; ">  <h2 style="color:white;"><strong>ID: </strong> <?php echo $x['ID_utilisateur']?> </h2></div> 
-      <a href="deconnexion.php"> <input type="button" color:#192d82; value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
+      <a href="deconnexion.php"> <input type="button"  value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
    </div>
                </div>
             </div>
