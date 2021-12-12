@@ -1,7 +1,14 @@
 <?php
+
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
+
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+session_start();
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 
 
 $CommentC = new CommentC();
@@ -90,7 +97,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 
 
     <!---------------------END BACKOFFICE ------------------------------------>
-   
+
 
 </head>
 
@@ -98,79 +105,80 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 
     <!-- Responsive navbar-->
     <nav class="navbar navbar-inverse navbar-toggleable-md">
-        <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu"
-            aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
             <header>
-        <!-- header inner -->
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                <!-- header inner -->
+                <div class="header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                                <div class="full">
+                                    <div class="center-desk">
+                                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        <li> <a href="index.php">Home</a> </li>
-                                        <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <div class="arrow_box_right">
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <div class="menu-area">
+                                    <div class="limit-box">
+                                        <nav class="main-menu">
+                                            <ul class="menu-area-main">
+                                                <li> <a href="index.php">Home</a> </li>
+                                                <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <div class="arrow_box_right">
 
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
-                                                    <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
-                                                    <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                                            <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                                            <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                                        </div>
+                                                    </div>
+
+                                                </li>
+                                                <li><a href="front3admin.php">Subject</a></li>
+                                                <li><a href="contact.php">classe</a></li>
+                                                <?php if (($x["admin_bool"]) == 1) { ?>
+                                                    <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
+                                                <?php } ?>
+                                                <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                                                <div class="arrow-up">
+
+                                                    <div class="login-form">
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                        </li>
-                                        <li><a href="front3admin.php">Subject</a></li>
-                                        <li><a href="contact.php">classe</a></li>
-                                        <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
-                                        <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
-                                        <div class="arrow-up">
-
-                                            <div class="login-form">
-                                            </div>
-                                        </div>
-                                    </ul>
-                                </nav>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- end header inner -->
-    </header>
-</div>
-    <div  id="cloapediamenu">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link color-aqua-hover" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link color-grey-hover" href="contact.html"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link color-grey-hover" href="contact.html"></a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-            </li>
-        </ul>
-    </div>
+                <!-- end header inner -->
+            </header>
+        </div>
+        <div id="cloapediamenu">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link color-aqua-hover" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link color-grey-hover" href="contact.html"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link color-grey-hover" href="contact.html"></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                </li>
+            </ul>
+        </div>
     </nav>
     <!-- Page content-->
 
@@ -198,7 +206,14 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                     <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
                                     <p class="card-text"><?php echo $blog['Description']; ?></p>
                                     <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>#test" target="_blank">Read more →</a>
-                                    <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a><a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+                                    <?php if ($x["ID_utilisateur"] = $blog["ID_utilisateur"]) { ?>
+                                        <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
+                                    <?php }
+                                    if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] = $blog["ID_utilisateur"]) { ?>
+
+
+                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
+                                    <?php } ?>
 
 
 
