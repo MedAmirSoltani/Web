@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 11 déc. 2021 à 22:24
+-- Généré le : dim. 12 déc. 2021 à 04:01
 -- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 7.4.24
+-- Version de PHP : 7.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,6 +63,14 @@ CREATE TABLE `club` (
   `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `club`
+--
+
+INSERT INTO `club` (`idclub`, `nomclub`, `logo`) VALUES
+(16, 'libertad', '258882158_682842689308739_2917223630733778342_n.jpg'),
+(17, 'geeks', 'aa.png');
+
 -- --------------------------------------------------------
 
 --
@@ -104,7 +112,7 @@ CREATE TABLE `etudiant` (
   `first_name` varchar(255) NOT NULL,
   `date_of_birth` date NOT NULL,
   `role` varchar(255) NOT NULL,
-  `profilpicture` varchar(255) DEFAULT NULL,
+  `profilpicture` varchar(255) NOT NULL,
   `classe` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -113,12 +121,7 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`ID`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `classe`) VALUES
-(13942201, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'jhk', 'hjk', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', '50'),
-(21353821, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'klaaaaaa', 'kjl', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', '60'),
-(34757280, 'soltaniamir010@hogwarts.tn', 'Aezakmi10', 'amir', 'soltani', '2001-09-21', 'Etudiant', 'image.jpeg', '2A11'),
-(35630983, 'lazherzahrouni@hogwarts.tn', 'Hesoyam10', 'lazu', 'zahrouni', '2000-01-09', 'Etudiant', 'logo geeks blanc.png', '2A11'),
-(45192613, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'dsf', 'df', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', '50'),
-(79664752, 'test@hogwarts.tn', 'Djapa18072001', 'dsf', 'jkl', '2001-01-01', 'Etudiant', '', '100');
+(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', '50');
 
 -- --------------------------------------------------------
 
@@ -132,6 +135,14 @@ CREATE TABLE `event` (
   `date` varchar(255) NOT NULL,
   `idclub` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `event`
+--
+
+INSERT INTO `event` (`idevent`, `nomevent`, `date`, `idclub`) VALUES
+(18, 'geek land', '2021-12-14', 17),
+(19, 'sdf', '2001-01-01', 16);
 
 -- --------------------------------------------------------
 
@@ -201,14 +212,6 @@ CREATE TABLE `prof` (
   `idmatiere` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `prof`
---
-
-INSERT INTO `prof` (`ID_prof`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `idmatiere`) VALUES
-(66217746, 'soltaniamir010@esprit.tn', 'Aezakmi10', 'eza', 'eza', '2001-05-05', 'Prof', '', 44),
-(67375895, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'zae', 'jk', '2001-01-01', 'Prof', '', 25);
-
 -- --------------------------------------------------------
 
 --
@@ -233,15 +236,8 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`ID_utilisateur`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `admin_bool`, `code`) VALUES
-(0, 'yesmine.guesmi@esprit.tn', 'djapa', 'djapa', 'guesmi', '2001-12-21', 'Prof', NULL, 0, 9700),
-(13942201, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'jhk', 'hjk', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', 0, 0),
-(21353821, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'klaaaaaa', 'kjl', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', 0, 7033),
-(27687336, 'soltaniamir010@esprit.tn', 'Aezakmi10', 'amir', 'soltani', '2001-05-11', 'Prof', '', 0, 0),
-(34757280, 'soltaniamir010@hogwarts.tn', 'Aezakmi10', 'amir', 'soltani', '2001-09-21', 'Etudiant', 'image.jpeg', 0, 0),
-(35630983, 'lazherzahrouni@hogwarts.tn', 'Hesoyam10', 'lazu', 'zahrouni', '2000-01-09', 'Etudiant', 'logo geeks blanc.png', 0, 0),
-(45192613, 'yesmine.guesmi@hogwarts.tn', 'Djapa18072001', 'dsf', 'df', '2001-01-01', 'Etudiant', '179992563_2061987063944450_2369188766024851440_n.jpg.png', 0, 0),
-(66217746, 'soltaniamir010@esprit.tn', 'Aezakmi10', 'eza', 'eza', '2001-05-05', 'Prof', '', 0, 0),
-(79664752, 'test@hogwarts.tn', 'Djapa18072001', 'dsf', 'jkl', '2001-01-01', 'Etudiant', '', 0, 0);
+(0, 'admin@esprit.tn', 'djapa', '', '', '0000-00-00', 'Admin', '258958268_611490930294254_8004531003194094641_n.jpg', 1, 0),
+(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', 0, 0);
 
 --
 -- Index pour les tables déchargées
@@ -315,31 +311,31 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `archivematiere`
 --
 ALTER TABLE `archivematiere`
-  MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT pour la table `club`
 --
 ALTER TABLE `club`
-  MODIFY `idclub` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idclub` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `cour`
 --
 ALTER TABLE `cour`
-  MODIFY `idcour` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `idcour` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `idevent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idevent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT pour la table `note`
@@ -374,6 +370,13 @@ ALTER TABLE `event`
 --
 ALTER TABLE `note`
   ADD CONSTRAINT `matiere_note` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `prof`
+--
+ALTER TABLE `prof`
+  ADD CONSTRAINT `matiere_prof` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`),
+  ADD CONSTRAINT `utilisateur_prof` FOREIGN KEY (`ID_prof`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

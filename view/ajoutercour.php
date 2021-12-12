@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
     require_once     '../Controller/courC.php';
     require_once '../Model/cour.php' ;
     include_once     '../Controller/utilisateurC.php';
@@ -150,9 +150,9 @@ else {
             <div class="breadcrumbs-top float-md-right">
               <div class="breadcrumb-wrapper mr-1">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a>
+                <li class="breadcrumb-item"><a href="profiladmin.php">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">Tables
+               
                   </li>
                 </ol>
               </div>
