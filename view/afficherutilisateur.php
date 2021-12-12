@@ -2,7 +2,7 @@
 session_start();
 require '../Controller/utilisateurC.php';
 require '../Controller/archiveC.php';
-$userC1=new utilisateurC();
+$userC1 = new utilisateurC();
 $utilisateurC = new utilisateurC();
 $utilisateur = $utilisateurC->afficherutilisateur();
 $archiveC = new archiveC();
@@ -10,13 +10,13 @@ $archive = $archiveC->afficherarchive();
 $etudiantC = new etudiantC();
 $etudiant = $etudiantC->afficheretudiant();
 $profC = new profC();
-$conn=$userC1->getutilisateurbyID($_SESSION['a']);
+$conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
 
 //$x=$utilisateurC->getutilisateurbyID($_SESSION['a']);
 $prof = $profC->afficherprof();
 
-if (isset($_POST['search']) ) {
+if (isset($_POST['search'])) {
   $list = $utilisateurC->afficherbyname($_POST['search']);
 }
 ?>
@@ -74,28 +74,29 @@ if (isset($_POST['search']) ) {
               </ul>
             </li>
           </ul>
-         
+
           <ul class="nav navbar-nav float-right">
-          
-          <?php if (empty($conn['profilpicture']))
-                                                  {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
-                                                   }
-                                                
-                                                 ?>
-                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
-                                                 
-                                      
+
+            <?php if (empty($conn['profilpicture'])) {
+              echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
+            }
+
+            ?>
+            <img <?php if (empty($conn['profilpicture'])) {
+                    echo 'style="display:none;"';
+                  } ?> id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">
+
+
           </ul>
           <ul class="nav navbar-nav float-right">
-           
-           
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
-                </div>
+
+
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
               </div>
+            </div>
             </li>
           </ul>
         </div>
@@ -109,9 +110,10 @@ if (isset($_POST['search']) ) {
   <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="../Assets/theme-assets/images/backgrounds/02.jpg">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
-      <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG"/>
-              <h3 class="brand-text">Hogwarts</h3></a></li>
+        <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG" />
+            <h3 class="brand-text">Hogwarts</h3>
           </a></li>
+        </a></li>
         <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
       </ul>
     </div>
@@ -123,8 +125,15 @@ if (isset($_POST['search']) ) {
         </li>
         <li class="nav-item"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
         </li>
-        <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
+        <li onclick="affich()" class="nav-item"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Forum<i class="la la-plus"></i></span></a>
+
+        <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
         </li>
+        <li class=" nav-item" id="forumar"><a href="AdminViewBlogHomeArchive.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
+        </li>
+
+        </li>
+      
         <li class=" nav-item"><a href="buttons.html"><i class="ft-box"></i><span class="menu-title" data-i18n="">Buttons</span></a>
         </li>
         <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
@@ -133,8 +142,7 @@ if (isset($_POST['search']) ) {
         </li>
         <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
         </li>
-        <li class=" nav-item"><a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>
-        </li>
+        
       </ul>
     </div>
     <div class="navigation-background"></div>
@@ -151,9 +159,9 @@ if (isset($_POST['search']) ) {
           <div class="breadcrumbs-top float-md-right">
             <div class="breadcrumb-wrapper mr-1">
               <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="profiladmin.php">Home</a>
+                <li class="breadcrumb-item"><a href="profiladmin.php">Home</a>
                 </li>
-             
+
                 </li>
               </ol>
             </div>
@@ -162,7 +170,7 @@ if (isset($_POST['search']) ) {
       </div>
       <div class="content-body">
         <!-- Basic Tables start -->
-        
+
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -209,7 +217,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $utilisateur['first_name']; ?></td>
                           <td><?php echo $utilisateur['date_of_birth']; ?></td>
                           <td><?php echo $utilisateur['role']; ?></td>
-                          
+
 
                           <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>">modifier</a></td>
@@ -281,7 +289,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $etudiant['date_of_birth']; ?></td>
                           <td><?php echo $etudiant['role']; ?></td>
                           <td><?php echo $etudiant['classe']; ?></td>
-                          <?php $_SESSION['special1']=$etudiant['classe']; ?>
+                          <?php $_SESSION['special1'] = $etudiant['classe']; ?>
 
                           <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $etudiant['ID']; ?>">modifier</a></td>
@@ -351,10 +359,10 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $prof['date_of_birth']; ?></td>
                           <td><?php echo $prof['role']; ?></td>
                           <td><?php echo $prof['idmatiere']; ?></td>
-                          <?php $_SESSION['special2']=$prof['idmatiere']; ?>
+                          <?php $_SESSION['special2'] = $prof['idmatiere']; ?>
                           <td><a href="ajouterarchive.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $prof['ID']; ?>">modifier</a></td>
-                         </tr>
+                        </tr>
 
 
                       <?php
@@ -367,10 +375,10 @@ if (isset($_POST['search']) ) {
             </div>
           </div>
         </div>
-        
 
 
-        
+
+
 
 
 
@@ -417,7 +425,7 @@ if (isset($_POST['search']) ) {
                           <td><?php echo $archive['first_name']; ?></td>
                           <td><?php echo $archive['date_of_birth']; ?></td>
                           <td><?php echo $archive['role']; ?></td>
-                          
+
 
                           <td><a href="supprimerarchive.php?ID_utilisateur=<?php echo $archive['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="restore.php?ID_utilisateur=<?php echo $archive['ID_utilisateur']; ?> ">restore</a></td>
@@ -440,9 +448,9 @@ if (isset($_POST['search']) ) {
 
         <form action="" method="post">
 
-<input type="search" name="search" placeholder="chercher un utilisateur" />
-<input type="submit" name="envoyer" />
-</form>
+          <input type="search" name="search" placeholder="chercher un utilisateur" />
+          <input type="submit" name="envoyer" />
+        </form>
 
         <div class="row">
           <div class="col-12">
@@ -459,7 +467,7 @@ if (isset($_POST['search']) ) {
                   </ul>
                 </div>
               </div>
-              
+
               <div class="card-content collapse show">
                 <div class="card-body">
                   <div class="table-responsive">
@@ -475,38 +483,34 @@ if (isset($_POST['search']) ) {
                         <th>role</th>
                       </tr>
                       <?php
-                      if(isset($_POST['search']))
-                      {
-                        if(empty($list))
-                        {
+                      if (isset($_POST['search'])) {
+                        if (empty($list)) {
                           echo '<p style="color: red; font-size: 20px; font-family: sans-serif; " id="erreur" > il n y a aucun utilisateur portant ce nom </p>';
-                                      
-                        }
-                        else{
+                        } else {
 
-                        
-                      foreach ($list as $lists) {
+
+                          foreach ($list as $lists) {
                       ?>
 
 
-                        <tr>
-                          <td><img width=200 src="../Assets/uploads/<?php echo $lists['profilpicture']; ?>"></td>
-                          <td><?php echo $lists['ID_utilisateur']; ?></td>
-                          <td><?php echo $lists['email']; ?></td>
-                          <td><?php echo $lists['password']; ?></td>
-                          <td><?php echo $lists['name']; ?></td>
-                          <td><?php echo $lists['first_name']; ?></td>
-                          <td><?php echo $lists['date_of_birth']; ?></td>
-                          <td><?php echo $lists['role']; ?></td>
-                          <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>">modifier</a></td>
-                        </tr>
+                            <tr>
+                              <td><img width=200 src="../Assets/uploads/<?php echo $lists['profilpicture']; ?>"></td>
+                              <td><?php echo $lists['ID_utilisateur']; ?></td>
+                              <td><?php echo $lists['email']; ?></td>
+                              <td><?php echo $lists['password']; ?></td>
+                              <td><?php echo $lists['name']; ?></td>
+                              <td><?php echo $lists['first_name']; ?></td>
+                              <td><?php echo $lists['date_of_birth']; ?></td>
+                              <td><?php echo $lists['role']; ?></td>
+                              <td><a href="supprimerutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+                              <td><a href="modifierutilisateur.php?ID_utilisateur=<?php echo $utilisateur['ID_utilisateur']; ?>">modifier</a></td>
+                            </tr>
 
 
                       <?php
+                          }
+                        }
                       }
-                    }
-                    }
                       ?>
                     </table>
                   </div>
@@ -515,6 +519,7 @@ if (isset($_POST['search']) ) {
             </div>
           </div>
         </div>
+        <script defer src="../assets/ASFO/js/admin.js"></script>
 </body>
 
 </html>
