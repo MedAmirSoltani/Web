@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 02:49 PM
+-- Generation Time: Dec 12, 2021 at 07:10 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -51,13 +51,6 @@ CREATE TABLE `archivecomment` (
   `Idpostar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `archivecomment`
---
-
-INSERT INTO `archivecomment` (`Idcommantar`, `Comment_text`, `Date_Comment`, `Idpostar`) VALUES
-(132, 'COMENT', '0000-00-00', 191);
-
 -- --------------------------------------------------------
 
 --
@@ -85,13 +78,6 @@ CREATE TABLE `archivepost` (
   `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `archivepost`
---
-
-INSERT INTO `archivepost` (`Idpostar`, `Title`, `Picture`, `Date`, `Description`) VALUES
-(191, 'TITRE', 'image (1).png', '2021-12-07', 'GOIRGRGRHGRHGORG');
-
 -- --------------------------------------------------------
 
 --
@@ -105,12 +91,29 @@ CREATE TABLE `archivereply` (
   `idcommentar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `archivereply`
+-- Table structure for table `blocks`
 --
 
-INSERT INTO `archivereply` (`Idreply`, `Reply_text`, `Date_reply`, `idcommentar`) VALUES
-(72, 'reply', '0000-00-00', 132);
+CREATE TABLE `blocks` (
+  `Id` int(11) NOT NULL,
+  `Nom` varchar(255) NOT NULL,
+  `Nbrsalles` int(11) NOT NULL,
+  `Typesalles` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blocks`
+--
+
+INSERT INTO `blocks` (`Id`, `Nom`, `Nbrsalles`, `Typesalles`) VALUES
+(12338, 'opar', 25, '6'),
+(12339, 'rima dhkeya', 24, '22'),
+(12340, 'aa', 3, '4'),
+(12341, 'malek', 22, '22'),
+(12342, 'Kll', 20, '10');
 
 -- --------------------------------------------------------
 
@@ -142,20 +145,19 @@ CREATE TABLE `comment` (
   `Idcomment` int(11) NOT NULL,
   `Comment_text` varchar(255) NOT NULL,
   `Date_Comment` date NOT NULL,
-  `Idpost` int(11) NOT NULL
+  `Idpost` int(11) NOT NULL,
+  `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`Idcomment`, `Comment_text`, `Date_Comment`, `Idpost`) VALUES
-(134, 'COMMENT', '0000-00-00', 192),
-(135, 'COMMENT', '0000-00-00', 192),
-(136, 'COMMENT', '0000-00-00', 192),
-(137, 'wa', '0000-00-00', 206),
-(138, 'commentaire', '0000-00-00', 206),
-(139, 'commentaire', '0000-00-00', 206);
+INSERT INTO `comment` (`Idcomment`, `Comment_text`, `Date_Comment`, `Idpost`, `ID_utilisateur`) VALUES
+(4, 'well well', '2021-12-12', 2, 123456),
+(5, 'MALA JAW WOW MAN', '2021-12-12', 2, 64280570),
+(6, 'etudiant ya3mel fi commenaire LESSSS GOOOOO', '2021-12-12', 4, 64280570),
+(7, 'COMMENT PROF', '2021-12-12', 5, 751805);
 
 -- --------------------------------------------------------
 
@@ -293,23 +295,19 @@ CREATE TABLE `post` (
   `Date` date NOT NULL,
   `Description` text NOT NULL,
   `Ncomments` int(11) NOT NULL,
-  `Nvotes` int(11) NOT NULL
+  `Nvotes` int(11) NOT NULL,
+  `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`Idpost`, `Title`, `Picture`, `Date`, `Description`, `Ncomments`, `Nvotes`) VALUES
-(192, 'IDKWOMAN', 'logo.png', '2021-12-07', 'DESCRIPTIONUPD', 3, 0),
-(193, 'IDKMAN', '1631202780973.jpg', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(194, 'WEBHH', '248017401_262365422493030_6822324499029606033_n.jpg', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(195, 'OMGGG', '1632654314244.jpg', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(196, 'MADS', '257364623_114788084344677_68660323700210313_n.jpg', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(197, 'TITRE', '1631009885735.jpg', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(198, 'WEbman', '1631804923136.gif', '2021-12-07', 'GOIRGRGRHGRHGORG', 0, 0),
-(205, 'RESTORE', '1631018381631.jpg', '2021-12-07', 'RESTORE1RESTOR', 0, 10),
-(206, 'RESTOREE', '1630855968641.jpg', '2021-12-07', 'RESTORE2RESTOR2', 3, 2);
+INSERT INTO `post` (`Idpost`, `Title`, `Picture`, `Date`, `Description`, `Ncomments`, `Nvotes`, `ID_utilisateur`) VALUES
+(2, 'TEST', '1638139567708.png', '2021-12-12', 'WELLISITWORKINGLADS', 3, 0, 123456),
+(3, 'POST', '248017401_262365422493030_6822324499029606033_n.jpg', '2021-12-12', 'GOIRGRGRHGRHGORG', 0, 0, 123456),
+(4, 'ETUDIANT', '1631804923136.gif', '2021-12-12', 'WOWETUDIANMAMAMIA', 1, 0, 64280570),
+(5, 'PROF', '1635194283208.png', '2021-12-12', 'PROFPROFPROF', 1, 1, 751805);
 
 -- --------------------------------------------------------
 
@@ -329,6 +327,13 @@ CREATE TABLE `prof` (
   `idmatiere` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prof`
+--
+
+INSERT INTO `prof` (`ID_prof`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `idmatiere`) VALUES
+(751805, 'Prof@esprit.tn', 'Prof123456', 'PROF', 'PROF', '2000-01-01', 'Prof', '', 42);
+
 -- --------------------------------------------------------
 
 --
@@ -339,15 +344,43 @@ CREATE TABLE `reply` (
   `Idreply` int(11) NOT NULL,
   `Reply_text` varchar(255) NOT NULL,
   `Date_reply` date NOT NULL,
-  `idcomment` int(11) NOT NULL
+  `idcomment` int(11) NOT NULL,
+  `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reply`
 --
 
-INSERT INTO `reply` (`Idreply`, `Reply_text`, `Date_reply`, `idcomment`) VALUES
-(74, 'wawawaaw', '2021-12-10', 139);
+INSERT INTO `reply` (`Idreply`, `Reply_text`, `Date_reply`, `idcomment`, `ID_utilisateur`) VALUES
+(76, 'WOW MOCH NORMAL', '2021-12-12', 4, 64280570),
+(78, 'for real ?', '2021-12-12', 6, 64280570),
+(79, 'WOW', '2021-12-12', 7, 751805);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salles`
+--
+
+CREATE TABLE `salles` (
+  `Id` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `Nbrprojecteurs` int(11) NOT NULL,
+  `Nbrtables` int(11) NOT NULL,
+  `Nbrchaises` int(11) NOT NULL,
+  `id_block` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `salles`
+--
+
+INSERT INTO `salles` (`Id`, `nom`, `Nbrprojecteurs`, `Nbrtables`, `Nbrchaises`, `id_block`) VALUES
+(11, 'az', 3, 2, 2, 12338),
+(14, 'rima', 2, 1, 2, 12338),
+(16, 'Rima', 12, 13, 36, 12339),
+(20, 'Bifhgfd', 2, 2, 2, 12338);
 
 -- --------------------------------------------------------
 
@@ -373,7 +406,8 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`ID_utilisateur`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `admin_bool`, `code`) VALUES
-(0, 'admin@esprit.tn', 'djapa', '', '', '0000-00-00', 'Admin', '258958268_611490930294254_8004531003194094641_n.jpg', 1, 0),
+(123456, 'Admin@hogwarts.tn', 'Admoun', 'Admoun', 'Admoun', '2000-09-09', 'Admin', '1638014122102.jpg', 1, 0),
+(751805, 'Prof@esprit.tn', 'Prof123456', 'PROF', 'PROF', '2000-01-01', 'Prof', 'Guilty-Gear-Strive-I-No-710x400.jpg', 0, 0),
 (64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', 0, 0);
 
 --
@@ -407,6 +441,12 @@ ALTER TABLE `archivereply`
   ADD KEY `Idcommentarfk` (`idcommentar`);
 
 --
+-- Indexes for table `blocks`
+--
+ALTER TABLE `blocks`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `club`
 --
 ALTER TABLE `club`
@@ -417,7 +457,8 @@ ALTER TABLE `club`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`Idcomment`),
-  ADD KEY `PostComment` (`Idpost`);
+  ADD KEY `PostComment` (`Idpost`),
+  ADD KEY `uticomment` (`ID_utilisateur`);
 
 --
 -- Indexes for table `cour`
@@ -457,7 +498,8 @@ ALTER TABLE `note`
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`Idpost`);
+  ADD PRIMARY KEY (`Idpost`),
+  ADD KEY `idpost` (`ID_utilisateur`);
 
 --
 -- Indexes for table `prof`
@@ -472,7 +514,15 @@ ALTER TABLE `prof`
 --
 ALTER TABLE `reply`
   ADD PRIMARY KEY (`Idreply`),
-  ADD KEY `reply-comment` (`idcomment`);
+  ADD KEY `reply-comment` (`idcomment`),
+  ADD KEY `utireply` (`ID_utilisateur`);
+
+--
+-- Indexes for table `salles`
+--
+ALTER TABLE `salles`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `id_block` (`id_block`);
 
 --
 -- Indexes for table `utilisateur`
@@ -488,7 +538,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `archivecomment`
 --
 ALTER TABLE `archivecomment`
-  MODIFY `Idcommantar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `Idcommantar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `archivematiere`
@@ -500,13 +550,19 @@ ALTER TABLE `archivematiere`
 -- AUTO_INCREMENT for table `archivepost`
 --
 ALTER TABLE `archivepost`
-  MODIFY `Idpostar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `Idpostar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `archivereply`
 --
 ALTER TABLE `archivereply`
   MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT for table `blocks`
+--
+ALTER TABLE `blocks`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12343;
 
 --
 -- AUTO_INCREMENT for table `club`
@@ -518,7 +574,7 @@ ALTER TABLE `club`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cour`
@@ -548,13 +604,19 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `salles`
+--
+ALTER TABLE `salles`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -576,7 +638,8 @@ ALTER TABLE `archivereply`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `PostComment` FOREIGN KEY (`Idpost`) REFERENCES `post` (`Idpost`) ON DELETE CASCADE;
+  ADD CONSTRAINT `PostComment` FOREIGN KEY (`Idpost`) REFERENCES `post` (`Idpost`) ON DELETE CASCADE,
+  ADD CONSTRAINT `uticomment` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `cour`
@@ -603,6 +666,12 @@ ALTER TABLE `note`
   ADD CONSTRAINT `matiere_note` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `idpost` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `prof`
 --
 ALTER TABLE `prof`
@@ -613,7 +682,14 @@ ALTER TABLE `prof`
 -- Constraints for table `reply`
 --
 ALTER TABLE `reply`
-  ADD CONSTRAINT `reply-comment` FOREIGN KEY (`idcomment`) REFERENCES `comment` (`Idcomment`) ON DELETE CASCADE;
+  ADD CONSTRAINT `reply-comment` FOREIGN KEY (`idcomment`) REFERENCES `comment` (`Idcomment`) ON DELETE CASCADE,
+  ADD CONSTRAINT `utireply` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `salles`
+--
+ALTER TABLE `salles`
+  ADD CONSTRAINT `salles_ibfk_1` FOREIGN KEY (`id_block`) REFERENCES `blocks` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
