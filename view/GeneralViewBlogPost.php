@@ -192,23 +192,26 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
 
                             </form>
                             <?php foreach ($comments as $comment) {
+                                $commenter= $userC->getutilisateurbyID($comment["ID_utilisateur"]);
                                 $replys = $ReplyC->ShowReply($comment["Idcomment"]); ?>
                                 <!-- Comment with nested comments-->
                                 <div class="d-flex mb-4">
                                     <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="flex-shrink-0"><img class="rounded-circle"  style="width:50; height:50px;" src="../Assets/uploads/<?php echo $commenter['profilpicture'] ?>" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">Adam Rafraf</div>
+                                        <div class="fw-bold"><?php echo $commenter["name"];?></div>
                                         <?php echo $comment["Comment_text"] ?>
                                         <br>
                                         <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
                                         <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
                                         <!-- Child comment 1-->
-                                        <?php foreach ($replys as $reply) { ?>
+                                        <?php foreach ($replys as $reply) {
+                                            $replyer= $userC->getutilisateurbyID($reply["ID_utilisateur"]);
+                                            ?>
                                             <div class="d-flex mt-4">
-                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                                <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $replyer['profilpicture'] ?>" alt="..." /></div>
                                                 <div class="ms-3">
-                                                    <div class="fw-bold">foulen ben foulen</div>
+                                                    <div class="fw-bold"><?php echo $replyer["name"];?></div>
                                                     <?php echo  $reply["Reply_text"] ?>
                                                     <br>
                                                     <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
@@ -218,9 +221,9 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                         <!-- Child comment 2-->
 
                                         <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold">foulena bent foulen</div>
+                                                <div class="fw-bold"><?php echo $x["name"];?></div>
 
 
 
