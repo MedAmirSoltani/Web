@@ -1,15 +1,14 @@
 <?php
 session_start();
-require '../Controller/matiereC.php';
-require '../Controller/archivematiereC.php';
+include_once '../Assets/ASFO/utilis/Config.php';
+include_once '../Controller/BlockC.php';
 include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 
 $userC1 = new utilisateurC();
-$matiereC = new matiereC();
-$archiveC = new archiveC();
-$matiere = $matiereC->affichermatiere();
-$archive = $archiveC->afficherarchivematiere();
+
+$blockC = new BlockC();
+$listeBlockss = $blockC->afficherblocks();
 $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
 ?>
@@ -114,7 +113,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
         </li>
-        <li class=" active"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
+        <li class="nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
         </li>
         <li class="nav-item"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
         </li>
@@ -127,7 +126,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
         </li>
 
-        <li class="nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
+        <li class=" nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
         </li>
         <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
         </li>
@@ -135,7 +134,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
         </li>
         <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
         </li>
-        
+
       </ul>
     </div>
     <div class="navigation-background"></div>
@@ -184,32 +183,31 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
               <div class="card-content collapse show">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <a href="ajoutermatiere.php">Ajouter matiere </a>
+                    <a href="ajoutermatiere.php">Ajouter Block</a>
                     <br>
                     <table class="table" border='2'>
                       <tr>
-                        <th>idmatiere</th>
-                        <th>titre</th>
-                        <th>cour</th>
-                        <th>student list</th>
-                        <th>coff</th>
+                        <th>idblock</th>
+                        <th>Nom</th>
+                        <th>Salles</th>
+                        <th>Nombre Salles</th>
+                        <th>typesalles</th>
                         <th>hour</th>
 
                       </tr>
                       <?php
                       $i = 0;
-                      foreach ($matiere as $matiere) {
+                      foreach ($listeBlockss as $block) {
                         $i++;
                       ?>
 
 
                         <tr>
-                          <td><?php echo $matiere['idmatiere']; ?></td>
-                          <td><?php echo $matiere['titre']; ?></td>
-                          <td><a href="affichercour.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">afficher cour</a></td>
-                          <td><a href="affichernote.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">students list</a></td>
-                          <td><?php echo $matiere['coff']; ?></td>
-                          <td><?php echo $matiere['hour']; ?></td>
+                          <td><?php echo $block['Id']; ?></td>
+                          <td><?php echo $block['Nom']; ?></td>
+                          <td><a href="affichsallesAd.php?idb=<?php echo $block['Id']; ?>">afficher Salles</a></td>
+                          <td><?php echo $block['Nbrsalles']; ?></td>
+                          <td><?php echo $block['Typesalles']; ?></td>
 
                           <td><a href="ajouterarchivematiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
                           <td><a href="modifiermatiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">modifier</a></td>
@@ -218,7 +216,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
                       <?php
                       }
-                      echo (" You have $i Subjects");
+                      echo (" You have $i Blocks");
                       ?>
                     </table>
                   </div>
@@ -230,65 +228,10 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
         <!-- Basic Tables end -->
 
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">ARCHIVE</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                  <ul class="list-inline mb-0">
-                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                    <li><a data-action="close"><i class="ft-x"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="card-content collapse show">
-                <div class="card-body">
-                  <div class="table-responsive">
 
-                    <table class="table" border='2'>
-                      <tr>
-                        <th>idmatiere</th>
-                        <th>titre</th>
-                        <th>cour</th>
-                        <th>student list</th>
-                        <th>coff</th>
-                        <th>hour</th>
-
-                      </tr>
-                      <?php
-                      foreach ($archive as $matiere) {
-                      ?>
-
-
-                        <tr>
-                          <td><?php echo $matiere['idmatiere']; ?></td>
-                          <td><?php echo $matiere['titre']; ?></td>
-                          <td><a href="affichercour.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">afficher cour</a></td>
-                          <td><a href="affichernote.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">students list</a></td>
-                          <td><?php echo $matiere['coff']; ?></td>
-                          <td><?php echo $matiere['hour']; ?></td>
-
-                          <td><a href="supprimerarchivematiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="restorematiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">restore</a></td>
-                        </tr>
-
-
-                      <?php
-                      }
-                      ?>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Basic Tables end -->
-        <script defer src="../assets/ASFO/js/admin.js"></script>
+      </div>
+      <!-- Basic Tables end -->
+      <script defer src="../assets/ASFO/js/admin.js"></script>
 
 </body>
 

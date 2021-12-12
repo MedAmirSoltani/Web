@@ -1,8 +1,8 @@
 <?php
-    require '../Controller/matiereC.php';
+require '../Controller/matiereC.php';
 
-    $matiereC = new matiereC();
-    $matiere = $matiereC->affichermatiere();
+$matiereC = new matiereC();
+$matiere = $matiereC->affichermatiere();
 ?>
 <html lang="en">
 
@@ -50,7 +50,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -59,9 +59,9 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li> <a href="index.php">Home</a> </li>
+                              <li> <a href="index.php">Home</a> </li>
                               <li> <a href="#">FORUM</a> </li>
-                              <li ><a href="#">Class</a></li>
+                              <li><a href="#">Class</a></li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
@@ -89,67 +89,67 @@
    </div>
    <!-- Contact -->
    <div class="Contact">
-   <a href="front9admin.php"> <img src="../Assets/Images/plus.PNG" style="height:2%; width:2%; margin-left:2%; "> </a>
-         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
-                  
-                          
-							
-								
+      <a href="front9admin.php"> <img src="../Assets/Images/plus.PNG" style="height:2%; width:2%; margin-left:2%; "> </a>
+      <div class="row">
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <form>
+               <div class="row">
 
-                
 
-							 
-									<?php 
-                           $i=0;
-                     
-											foreach ($matiere as $matiere) {
-                                                
-                                    $i++;  
-									?>
-    
-<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
-<div class="card-header bg-gradient-x-purple-red text-white">
-<div class="row">
-<div class="col">
-<img src="../Assets/Images/amir.PNG">
-</div>
-<div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre'] ; ?></h2>  
-                     <a href="front2admin.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
-                     <a href="front4admin.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>"onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button"  value="students list" /></a> <br>
-                     
-              <h4 style="color:white;"><strong> coef:</strong>  <?php echo   $matiere['coff'] ; ?>  </h4> 
-              <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong>   <?php echo $matiere['hour'] ; ?>  </h4> 
-      <a href="ajouterarchivematiere1.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>"><input style="background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button"  value="delete" /></a>
-      <a href="front8admin.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>"><input style="background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button"  value="update" /></a>
-</div>
-</div>
-</div>
-</div>  
 
-				
-                       
-                
-  
-							
-						<br> <br>	 
-							
-							
-									<?php
-											}
-                              
-									?>
-						</table>
-                    
-                  </div>
-               </form>
-            </div>
-        
+
+
+
+
+
+                  <?php
+                  $i = 0;
+
+                  foreach ($matiere as $matiere) {
+
+                     $i++;
+                  ?>
+
+                     <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
+                        <div class="card-header bg-gradient-x-purple-red text-white">
+                           <div class="row">
+                              <div class="col">
+                                 <img src="../Assets/Images/amir.PNG">
+                              </div>
+                              <div class="col">
+                                 <h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre']; ?></h2>
+                                 <a href="front2admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>  " onmousedown="bleep.play()"><input style="cursor:pointer; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button" value="courses" /> </a><br>
+                                 <a href="front4admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; background: #1b2f83;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="students list" /></a> <br>
+
+                                 <h4 style="color:white;"><strong> coef:</strong> <?php echo   $matiere['coff']; ?> </h4>
+                                 <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong> <?php echo $matiere['hour']; ?> </h4>
+                                 <a href="ajouterarchivematiere1.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                 <a href="front8admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+
+
+
+
+                     <br> <br>
+
+
+                  <?php
+                  }
+
+                  ?>
+                  </table>
+
+               </div>
+            </form>
          </div>
+
       </div>
+   </div>
    </div>
    <!-- end Contact -->
    <!-- footer -->
@@ -180,7 +180,7 @@
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>

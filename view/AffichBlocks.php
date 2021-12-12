@@ -121,7 +121,9 @@ $listeBlockss = $blockC->afficherblocks();
                               <div class="col">
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;"><?php echo $block['Nom']; ?></h2>
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Classrooms :<?php echo $block['Nbrsalles']; ?></h2>
-                                 <a href="affichSalles.php?idb=<?php echo $block['Id']; ?>" onmousedown="bleep.play()"><input style="width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Show classrooms" /> </a><br>
+                                 <a href="affichSalles.php?idb=<?php echo $block['Id']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Show classrooms" /> </a><br>
+                                 <a href="SupprimerBlock.php?idb=<?php echo $block['Id']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                 <a href="front8admin.php?idb=<?php echo $block['Id']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
 
                               </div>
                            </div>

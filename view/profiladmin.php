@@ -85,7 +85,7 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
 
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
-                              <li><a href="contact.php">classe</a></li>
+                              <li><a href="affichBlocks.php">classe</a></li>
                               <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">
