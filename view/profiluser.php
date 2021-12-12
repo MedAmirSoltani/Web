@@ -1,15 +1,18 @@
 <?php
 session_start();
 include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php' ;
-    $userC=new utilisateurC();
-$x=$userC->getutilisateurbyID($_SESSION['a']);
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<script> window.history.forward(); </script>
+<script>
+   window.history.forward();
+</script>
+
 <head>
    <!-- basic -->
    <meta charset="utf-8">
@@ -24,8 +27,8 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    <meta name="author" content="">
    <!--jquerry-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- background css -->
-<link rel="stylesheet" href="../Assets/CSS/background.css">
+   <!-- background css -->
+   <link rel="stylesheet" href="../Assets/CSS/background.css">
    <!-- login css -->
    <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
@@ -69,17 +72,26 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li > <a href="index.php">Home</a> </li>
-                              <li> <a href="about.php">Forum</a> </li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                    </div>
+                                 </div>
+
+                              </li>
                               <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
-                           <div class="arrow-up">
-                           
-                           <div class="login-form">
-                           </div>
-                           </div>
+                              <div class="arrow-up">
+
+                                 <div class="login-form">
+                                 </div>
+                              </div>
                            </ul>
                         </nav>
                      </div>
@@ -93,40 +105,50 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    </header>
    <!-- end header -->
    <form action="updateprofil.php" enctype="multipart/form-data">
-   <section class="slider_section">
-      <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
-         <div class="carousel-inner">
-            <div class="carousel-item active">
-               <img  src="../Assets/Images/fond.png" alt="First slide">
-               <div class="container">
-                  <div class="carousel-caption relative">
-                     <h1 class="titre">Your Profil</h1>
-                     <br><br>
-                     <?php if (empty($x['profilpicture']))
-                                                  {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:20%; height:290px;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
-                                                    
-                                                   }
-                                                
-                                                 ?>
-                                                 <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>"> 
-                                                 <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:20%;float:left;margin:190 10px 0 0px; display:none; "   />
-                                                 <br>
-                                                 <span class="left"  style="float:left;margin:280px 10px 0 -170px; "> <p style="color:white;font-family: inherit;font-size: 35px;" ><?php echo $x['name']?></p></span> 
-                                                 <button class="send-btn" style= "margin:350px 580px 0 -300px;" name="update">update profile</button>
-                                                 <div style="margin:-400px 10px 0 800px;color:white;">   <h2 style="color:white;"> <strong>Job:</strong> <?php echo $x['role']?>  </h2> </div>
-     <br>
-                                                 <div style="margin:0px 10px 0 825px; ">  <h2 style="color:white;"> <strong>Classe: </strong> </h2>  <h2 style="margin:0px 10px 0 23px;color:white; "><?php echo $_SESSION['c']?>  </h2> </div>
-     <br>
-                                                 <div style="margin:0px 10px 0 850px; ">  <h2 style="color:white;"><strong>ID: </strong> </h2>  <h2  style="margin:0px 10px 0 -32px; color:white;"><?php echo $x['ID_utilisateur']?> </h2> </div> 
-      <a href="deconnexion.php"> <input type="button"  value="Deconnexion" style= "margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion"/>   </a>               
-   </div>
+      <section class="slider_section">
+         <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <img src="../Assets/Images/fond.png" alt="First slide">
+                  <div class="container">
+                     <div class="carousel-caption relative">
+                        <h1 class="titre">Your Profil</h1>
+                        <br><br>
+                        <?php if (empty($x['profilpicture'])) {
+                           echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:20%; height:290px;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
+                        }
+
+                        ?>
+                        <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])) {
+                                                         echo 'style="display:none;"';
+                                                      } ?> id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>">
+                        <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:20%;float:left;margin:190 10px 0 0px; display:none; " />
+                        <br>
+                        <span class="left" style="float:left;margin:280px 10px 0 -170px; ">
+                           <p style="color:white;font-family: inherit;font-size: 35px;"><?php echo $x['name'] ?></p>
+                        </span>
+                        <button class="send-btn" style="margin:350px 580px 0 -300px;" name="update">update profile</button>
+                        <div style="margin:-400px 10px 0 800px;color:white;">
+                           <h2 style="color:white;"> <strong>Job:</strong> <?php echo $x['role'] ?> </h2>
+                        </div>
+                        <br>
+                        <div style="margin:0px 10px 0 825px; ">
+                           <h2 style="color:white;"> <strong>Classe: </strong> </h2>
+                           <h2 style="margin:0px 10px 0 23px;color:white; "><?php echo $_SESSION['c'] ?> </h2>
+                        </div>
+                        <br>
+                        <div style="margin:0px 10px 0 850px; ">
+                           <h2 style="color:white;"><strong>ID: </strong> </h2>
+                           <h2 style="margin:0px 10px 0 -32px; color:white;"><?php echo $x['ID_utilisateur'] ?> </h2>
+                        </div>
+                        <a href="deconnexion.php"> <input type="button" value="Deconnexion" style="margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion" /> </a>
+                     </div>
+                  </div>
                </div>
+
+
             </div>
-    
-            
-         </div>
-   </section>
+      </section>
    </form>
    <!-- Javascript files-->
    <script src="../Assets/js/jquery.min.js"></script>
@@ -138,7 +160,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    <!-- sidebar -->
    <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="../Assets/js/custom.js"></script>
-  
+
 </body>
 
 </html>

@@ -9,8 +9,10 @@ require_once "../Model/Reply.php";
 include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 
+
 session_start();
-session_unset($_SESSION['idp']);
+
+unset($_SESSION['idp']);
 
 if (!isset($_SESSION['idp']) && isset($_GET["Idpost"])) {
     $_SESSION['idp'] = $_GET["Idpost"];
@@ -116,7 +118,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
     <!-- Responsive navbar-->
     <nav class="navbar navbar-inverse navbar-toggleable-md">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="float-left">Menu</span>
+            <span class="float-left"> <a href="GeneralViewBlogHome.php">Menu</a> </span>
             <span class="float-right"><i class="fa fa-bars"></i> <i class="fa fa-close"></i></span>
         </button>
         <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
@@ -192,26 +194,26 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
 
                             </form>
                             <?php foreach ($comments as $comment) {
-                                $commenter= $userC->getutilisateurbyID($comment["ID_utilisateur"]);
+                                $commenter = $userC->getutilisateurbyID($comment["ID_utilisateur"]);
                                 $replys = $ReplyC->ShowReply($comment["Idcomment"]); ?>
                                 <!-- Comment with nested comments-->
                                 <div class="d-flex mb-4">
                                     <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle"  style="width:50; height:50px;" src="../Assets/uploads/<?php echo $commenter['profilpicture'] ?>" alt="..." /></div>
+                                    <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $commenter['profilpicture'] ?>" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold"><?php echo $commenter["name"];?></div>
+                                        <div class="fw-bold"><?php echo $commenter["name"]; ?></div>
                                         <?php echo $comment["Comment_text"] ?>
                                         <br>
                                         <a class="btn btn-info btn-min-width mr-1 mb-1" href="UpdateBlogComment.php?Idpost=<?php echo $comment['Idpost']; ?>&Idcomment=<?php echo $comment['Idcomment']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
                                         <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogComment.php?Idcomment=<?php echo $comment['Idcomment']; ?>">Remove<i class="ft-command"></i></a>
                                         <!-- Child comment 1-->
                                         <?php foreach ($replys as $reply) {
-                                            $replyer= $userC->getutilisateurbyID($reply["ID_utilisateur"]);
-                                            ?>
+                                            $replyer = $userC->getutilisateurbyID($reply["ID_utilisateur"]);
+                                        ?>
                                             <div class="d-flex mt-4">
                                                 <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $replyer['profilpicture'] ?>" alt="..." /></div>
                                                 <div class="ms-3">
-                                                    <div class="fw-bold"><?php echo $replyer["name"];?></div>
+                                                    <div class="fw-bold"><?php echo $replyer["name"]; ?></div>
                                                     <?php echo  $reply["Reply_text"] ?>
                                                     <br>
                                                     <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
@@ -223,7 +225,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                         <div class="d-flex mt-4">
                                             <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold"><?php echo $x["name"];?></div>
+                                                <div class="fw-bold"><?php echo $x["name"]; ?></div>
 
 
 
