@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 02:50 AM
+-- Generation Time: Dec 13, 2021 at 04:27 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -43,8 +43,7 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`Id_absence`, `Id_etudiant`, `Module`, `Date_absence`, `Heure_absence`, `Description`, `type_reclamation`) VALUES
-(121, 201, 'Base de Donnees', '2021-12-07', '09:38:00', 'Rayen', 2),
-(122, 201, 'Projet Technologies web', '2021-11-29', '11:39:00', 'Amir', 2);
+(123, 64280570, 'Projet Technologies web', '2021-12-13', '10:28:00', 'mgbermiubreubgerunher', 2);
 
 -- --------------------------------------------------------
 
@@ -378,7 +377,7 @@ CREATE TABLE `rec_autre` (
 --
 
 INSERT INTO `rec_autre` (`Id_autre`, `Id_etudiant`, `Description`, `type_reclamation`) VALUES
-(2, 201, 'Rayen', 3);
+(3, 64280570, 'LOKHOR HHHHHHHH', 3);
 
 -- --------------------------------------------------------
 
@@ -399,16 +398,7 @@ CREATE TABLE `rec_note` (
 --
 
 INSERT INTO `rec_note` (`Id_note`, `Id_etudiant`, `Module`, `Description`, `type_reclamation`) VALUES
-(11, 201, 'Projet Technologies web', 'Rayen', 1),
-(12, 201, 'Mathematique', 'Amir', 1),
-(13, 201, 'Mathematique', 'Djapa', 1),
-(14, 201, 'Base de Donnees', 'ADAM', 1),
-(15, 201, 'Projet Technologies web', 'SEL3A', 1),
-(16, 201, 'Mathematique', 'RAYEN2', 1),
-(121, 0, '', '', 1),
-(122, 0, '', '', 1),
-(123, 0, '', '', 1),
-(124, 0, '', '', 1);
+(1, 64280570, 'Mathematique', 'OHHHHLESGOOOOO', 1);
 
 -- --------------------------------------------------------
 
@@ -431,11 +421,8 @@ CREATE TABLE `registre_appel` (
 --
 
 INSERT INTO `registre_appel` (`IdRegistre`, `Id_etudiant`, `Etudiant`, `Module`, `Date`, `Heure`, `Etat`) VALUES
-(1, 201, 'Mohamed Rayen Dhraief', 'Projet Technologies web', '2021-11-28', '15:13:00', 'présent'),
-(3, 201, 'Yesmine Guesmi', 'Mathematique', '2021-11-12', '14:21:00', 'absent'),
-(4, 201, 'Amir Soltani', 'Mathematique', '2021-11-04', '15:54:00', 'présent'),
-(5, 201, 'Adam Rafraf', 'Mathematique', '2021-12-06', '13:42:32', 'absent'),
-(6, 201, 'Ala Mazouz', 'Base de Donnees', '2021-12-03', '09:42:32', 'absent');
+(123, 64280570, 'fsd', 'Projet Technologies web', '2021-12-13', '10:20:00', 'absent'),
+(545454, 64280570, 'fsd', 'Base de Donnees', '2021-12-13', '10:25:00', 'present');
 
 -- --------------------------------------------------------
 
@@ -696,7 +683,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `archivecomment`
@@ -774,19 +761,19 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `rec_autre`
 --
 ALTER TABLE `rec_autre`
-  MODIFY `Id_autre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_autre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rec_note`
 --
 ALTER TABLE `rec_note`
-  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `registre_appel`
 --
 ALTER TABLE `registre_appel`
-  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545455;
 
 --
 -- AUTO_INCREMENT for table `reply`
