@@ -1,7 +1,12 @@
 <?php
+
 require_once "../Controller/BlogC.php";
 require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+
 $affich = "Admin";
 if (isset($_POST["search"])) {
     $search = $_POST["search"];
@@ -200,7 +205,7 @@ header("Refresh:10");
                                         <thead class="thead-dark">
 
                                             <tr>
-
+                                                <th scope="col">User</th>
                                                 <th scope="col">IdPost</th>
                                                 <th scope="col">Title</th>
                                                 <th scope="col">Date</th>
@@ -215,9 +220,10 @@ header("Refresh:10");
                                         <tbody>
                                             <?php
                                             foreach ($Blogs as $blog) {
+                                                $x = $userC->getutilisateurbyID($blog['ID_utilisateur']);
                                             ?>
                                                 <tr>
-
+                                                    <td><?php echo $x['name']; ?></td>
                                                     <td><?php echo $blog['Idpost']; ?></td>
                                                     <td><?php echo $blog['Title']; ?></td>
                                                     <td><?php echo $blog['Date']; ?></td>
@@ -255,7 +261,7 @@ header("Refresh:10");
                                         <thead class="thead-dark">
 
                                             <tr>
-
+                                                <th scope="col">User</th>
                                                 <th scope="col">IdPost</th>
                                                 <th scope="col">IdComment</th>
                                                 <th scope="col">Comment</th>
@@ -269,9 +275,10 @@ header("Refresh:10");
                                         <tbody>
                                             <?php
                                             foreach ($comments as $comment) {
+                                                $x = $userC->getutilisateurbyID($comment['ID_utilisateur']);
                                             ?>
                                                 <tr>
-
+                                                    <td><?php echo $x['name']; ?></td>
                                                     <td><?php echo $comment['Idpost']; ?></td>
                                                     <td><?php echo $comment['Idcomment']; ?></td>
                                                     <td><?php echo $comment['Comment_text']; ?></td>
@@ -308,7 +315,7 @@ header("Refresh:10");
                                         <thead class="thead-dark">
 
                                             <tr>
-
+                                                <th scope="col">User</th>
                                                 <th scope="col">Idreply</th>
                                                 <th scope="col">IdComment</th>
                                                 <th scope="col">Reply</th>
@@ -323,9 +330,10 @@ header("Refresh:10");
                                             <?php
                                             foreach ($replys as $reply) {
                                                 $idc = $CommentC->GetCommentbyID($reply["idcomment"]);
+                                                $x = $userC->getutilisateurbyID($reply['ID_utilisateur']);
                                             ?>
                                                 <tr>
-
+                                                    <td><?php echo $x['name']; ?></td>
 
                                                     <td><?php echo $reply['Idreply']; ?></td>
                                                     <td><?php echo $reply['idcomment']; ?></td>

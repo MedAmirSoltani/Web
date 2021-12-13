@@ -17,7 +17,7 @@ $Blog = new post($blog['Title'], $blog['Picture'], $blog['Date'], $blog['Descrip
 $comments = $CommentC->ShowCommentArchive($blog["Idpostar"]);
 foreach ($comments as $comment) {
     $Comment = new Comment($idp, $comment['Comment_text'], $comment['Date_Comment']);
-    $CommentC->RestoreComment($Comment,$idp,$comment["Idcommantar"]);
+    $CommentC->RestoreComment($Comment,$idp,$comment["Idcommantar"],$comment["ID_utilisateur"]);
    /* $replys = $ReplyC->ShowReplyArchive($comment["Idcommantar"]);
     foreach ($replys as $reply) {
         $Reply = new Reply($reply["idcommentar"], $reply['Reply_text'], $reply['Date_reply']);
@@ -27,6 +27,6 @@ foreach ($comments as $comment) {
 ////////////////////////////////////////:////////////////////////////////////////:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$BlogC->RestoreBlog($Blog, $idp);
+$BlogC->RestoreBlog($Blog, $idp,$blog["ID_utilisateur"]);
 $BlogC->RemoveBlogArchive($idp);
 header('Location:AdminViewBlogHomeArchive.php');
