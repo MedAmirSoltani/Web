@@ -147,7 +147,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
 
 
 
-                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                    <div class="dropdown-menu dropdown-menu-right" style="margin-right: 70%;">
                                                         <div class="arrow_box_right">
 
                                                             <div class="dropdown-divider"></div>

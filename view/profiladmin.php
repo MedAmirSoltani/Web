@@ -79,7 +79,7 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
                                        <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
-                                       <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
                                     </div>
                                  </div>
 
