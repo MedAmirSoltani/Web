@@ -1,15 +1,15 @@
 <?php
 session_start();
-    require '../Controller/Rec_noteC.php';
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php';
-   $userC = new utilisateurC();
-    $x = $userC->getutilisateurbyID($_SESSION['a']);
-    $etudiantC = new etudiantC();
+require '../Controller/Rec_noteC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+$etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
-    $rec_noteC = new Rec_noteC();
-    $et=$etudiantC->getetudiantbyID($_POST["Id_etudiant"]);
-    $rec_notes = $rec_noteC->afficherRec_note($et["name"]);
+$rec_noteC = new Rec_noteC();
+$rec_notes = $rec_noteC->afficherRec_note();
+
 ?>
 
 <html lang="en">
@@ -128,6 +128,9 @@ $etudiants = $etudiantC->afficheretudiant();
 
                   <?php
                   foreach ($rec_notes as $rec_note) {
+                     $idu = $rec_note["Id_etudiant"];
+                     $et = $etudiantC->getetudiantbyID($idu);
+
                   ?>
 
                      <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
@@ -137,15 +140,15 @@ $etudiants = $etudiantC->afficheretudiant();
                                  <td><img style="border-radius:70%; " width=210 src="https://bloc-digital.com/wp-content/uploads/2020/07/Enterprise-Centre-Bloc-Digital-and-UoD.jpg"></td>
                               </div>
                               <div class="col">
-                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;"><?php foreach ($etudiants as $etudiant) { ?>
-                                     <?php echo $etudiant["name"]; ?>
-                                    <?php } ?></h2>
-                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $rec_note['Id_etudiant']; ?></h2>
-                                 <a href="afficherRec_noteAD2.php?idb=<?php echo $rec_note['Id']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
-                                 <?php if ($x["admin_bool"] == 1) { ?>
-                                    <a href="supprimerRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                    <a href="modifierRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
-                                 <?php } ?>
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">
+                                    <?php echo $et["name"]; ?>
+
+                                    <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $rec_note['Id_etudiant']; ?></h2>
+                                    <a href="afficherRec_noteAD2.php?idb=<?php echo $rec_note['Id']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
+                                    <?php if ($x["admin_bool"] == 1) { ?>
+                                       <a href="supprimerRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                       <a href="modifierRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                    <?php } ?>
                               </div>
                            </div>
                         </div>

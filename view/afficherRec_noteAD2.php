@@ -1,15 +1,15 @@
 <?php
 session_start();
-    require '../Controller/Rec_noteC.php';
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php';
-   $userC = new utilisateurC();
-    $x = $userC->getutilisateurbyID($_SESSION['a']);
-    $etudiantC = new etudiantC();
+require '../Controller/Rec_noteC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+$etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
-    $rec_noteC = new Rec_noteC();
-    $et=$etudiantC->getetudiantbyID($_POST["Id_etudiant"]);
-    $rec_notes = $rec_noteC->afficherRec_note($et["name"]);
+$rec_noteC = new Rec_noteC();
+$et = $etudiantC->getetudiantbyID($_POST["Id_etudiant"]);
+$rec_notes = $rec_noteC->afficherRec_note($et["name"]);
 ?>
 
 <html lang="en">

@@ -34,7 +34,7 @@ class utilisateurC
         try {
             $db = config::getConnexion();
 
-            $querry = $db->prepare('select * from utilisateur where name like "%'.$namerecherche.'%"');
+            $querry = $db->prepare('select * from utilisateur where name like "%' . $namerecherche . '%"');
             $querry->execute();
             $result = $querry->fetchAll();
             return $result;
