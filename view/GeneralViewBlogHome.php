@@ -125,7 +125,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                             <ul class="menu-area-main">
                                                 <li> <a href="index.php">Home</a> </li>
                                                 <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                    <div class="dropdown-menu dropdown-menu-center">
                                                         <div class="arrow_box_right">
 
                                                             <div class="dropdown-divider"></div>
@@ -206,10 +206,10 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                     <h2 class="card-title h4"><?php echo $blog['Title']; ?></h2>
                                     <p class="card-text"><?php echo $blog['Description']; ?></p>
                                     <a class="btn btn-primary" href="GeneralViewBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>#test" target="_blank">Read more →</a>
-                                    <?php if ($x["ID_utilisateur"] ==$blog["ID_utilisateur"]) { ?>
+                                    <?php if ($x["ID_utilisateur"] == $blog["ID_utilisateur"]) { ?>
                                         <a class="btn btn-info btn-min-width mr-1 mb-1" href="Updateblogpost.php?Idpost=<?php echo $blog['Idpost']; ?>" target="_blank">Update<i class="ft-bookmark"></i></a>
                                     <?php }
-                                    if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] ==$blog["ID_utilisateur"]) { ?>
+                                    if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] == $blog["ID_utilisateur"]) { ?>
 
 
                                         <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogPost.php?Idpost=<?php echo $blog['Idpost']; ?>">Remove<i class="ft-command"></i></a>
@@ -314,6 +314,16 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
             <!-- Core theme JS-->
             <script src="../assets/ASFO/js/scripts.js"></script>
             <script src="../assets/ASFO/js/scriptaddblog.js"></script>
+            <script src="../Assets/js/jquery.min.js"></script>
+            <script src="../Assets/js/popper.min.js"></script>
+            <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+            <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+            <script src="../Assets/js/plugin.js"></script>
+            <script src="../Assets/js/click.js"></script>
+            <!-- sidebar -->
+            <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../Assets/js/custom.js"></script>
+
 </body>
 
 </html>
