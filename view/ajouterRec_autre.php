@@ -73,18 +73,28 @@ if (isset($_POST['Description'])) {
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="about.php">About us</a> </li>
-                              <li class="active">
-                                 <div class="card-body">
-                                    <div class="btn-group mr-1 mb-1">
-                                       <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
-                                       <div class="dropdown-menu">
-                                          <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
-                                          <div class="dropdown-divider"></div>
-                                          <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
-                                       </div>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
                                     </div>
                                  </div>
+
+                              </li>
+                              <li><a href="front3etudiant.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">classe</a></li>
+                              <li><a href="club.php">club</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="ajouterType_reclamation.php"><i class="ft-user"></i>Faire une Reclamation</a>
+                                       <a class="dropdown-item" href="chercherReclamation.php"><i class="ft-user"></i>Consulter une Reclamation</a>
+                                    </div>
+                                 </div>
+
                               </li>
                               <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
