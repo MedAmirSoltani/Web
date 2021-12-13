@@ -3,13 +3,15 @@
     {
         private $IdRegistre;
 		private $Etudiant;
+		private $Module;
 		private $Date;
 		private $Heure;
         private $Etat;
 
-        function __construct($idRegistre,$etudiant,$date,$heure,$etat){
+        function __construct($idRegistre,$etudiant,$module,$date,$heure,$etat){
 			$this->IdRegistre=$idRegistre;
-			$this->Etudiant=$eudiant;
+			$this->Etudiant=$etudiant;
+			$this->Module=$module;
 			$this->Date=$date;
 			$this->Heure=$heure;
 			$this->Etat=$etat;
@@ -30,7 +32,13 @@
         function setEtat(string $Etat){
 			$this->Etat=$Etat;
 		}
+		 function setModule(string $Module){
+			$this->Module=$Module;
+		}
         
+		function getModule(){
+			return $this->Module;
+		}
         function getIdRegistre(){
 			return $this->IdRegistre;
 		}

@@ -133,7 +133,7 @@ if (isset($_POST['search'])) {
         </li>
 
         </li>
-      
+
         <li class="nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
         </li>
         <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
@@ -142,7 +142,7 @@ if (isset($_POST['search'])) {
         </li>
         <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
         </li>
-        
+
       </ul>
     </div>
     <div class="navigation-background"></div>

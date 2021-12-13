@@ -1,18 +1,18 @@
 <?php
- session_start();
-    require '../Controller/Registre_appelC.php';
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php';
-   $userC = new utilisateurC();
-    $x = $userC->getutilisateurbyID($_SESSION['a']);
-    $registre_appelC = new Registre_appelC();
+session_start();
+require '../Controller/Registre_appelC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+$registre_appelC = new Registre_appelC();
 
-    $registre_appels = $registre_appelC->afficherRegistre_appel();
+$registre_appels = $registre_appelC->afficherRegistre_appel();
 
-    if(isset($_POST['search'])){
-        $list1 = $registre_appelC->afficherPresences($_POST['Id1']);
-    }
-    ?>
+if (isset($_POST['search'])) {
+   $list1 = $registre_appelC->afficherPresences($x["ID_utilisateur"]);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
 
 <body class="main-layout contact-page">
    <!-- loader  -->
-   
+
    <!-- end loader -->
    <!-- header -->
    <header>
@@ -70,17 +70,19 @@
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">About us</a> </li>
-                              <li class="active"><div class="card-body">
-                                 <div class="btn-group mr-1 mb-1">
-                <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
-             <div class="dropdown-menu">
-                    <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
-                </div>
-               </div>
-          </div></li>
-          <li> <a href="cherhcerPresences.php">Absence</a> </li>
+                              <li class="active">
+                                 <div class="card-body">
+                                    <div class="btn-group mr-1 mb-1">
+                                       <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
+                                       <div class="dropdown-menu">
+                                          <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
@@ -100,8 +102,8 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-               <br>
-                   <br>
+                  <br>
+                  <br>
                   <h2>RECLAMATION</h2>
                </div>
             </div>
@@ -113,85 +115,91 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <form action='' method="POST">
-               <div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">choisir une Type reclamation : </h4>
-				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-			</div>
-			<div class="card-content collapse show">
-				<div class="table-responsive">
-					<table class="table">
-						
-						<tbody>
-							<tr>
-                            <div class="col-75">
-                            <label for="Id1">Entrez votre identifinat :</label>
+               <form action='' method="POST">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="card">
+                           <div class="card-header">
+                              <h4 class="card-title">choisir une Type reclamation : </h4>
+                              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                           </div>
+                           <div class="card-content collapse show">
+                              <div class="table-responsive">
+                                 <table class="table">
 
-                            <input type="text" id="Id1" name="Id1" >
-                           
-                </div>
-                  <section id="sizes-2">
-                <div class="card-content collapse show">
-                    <div class="card-body">
-                        <!-- simple sizes -->
-                        <div class="form-group">
-                            <button type="submit" name="search" class="btn mr-1 mb-1 btn-success btn-lg" value="search">Envoyer</button>
-                            <button type="reset" name="search" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                                    <tbody>
+                                       <tr>
+
+                                          <section id="sizes-2">
+                                             <div class="card-content collapse show">
+                                                <div class="card-body">
+                                                   <!-- simple sizes -->
+                                                   <div class="form-group">
+                                                      <button type="submit" name="search" class="btn mr-1 mb-1 btn-success btn-lg" value="search">Envoyer</button>
+                                                      <button type="reset" name="search" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                                                   </div>
+
+                                                </div>
+                                             </div>
+                                          </section>
+                                          </td>
+
+                                       </tr>
+
+                                    </tbody>
+                                    <?php if (isset($_POST['search'])) { ?>
+
+                                       <?php
+                                       foreach ($list1 as $registre_appel) {
+                                       ?>
+                                          <tr>
+                                             <thead class="thead-dark">
+                                                <tr>
+                                                   <th scope="col"><label for="Id_etudiant">
+                                                         <font color="white">Votre identifiant</font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Etudiant">
+                                                         <font color="white">Etudiant : </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Module">
+                                                         <font color="white">Module : </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Date">
+                                                         <font color="white">Date : </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Heure">
+                                                         <font color="white">Heure : </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Etat">
+                                                         <font color="white">Etat : </font>
+                                                      </label></th>
+                                                </tr>
+                                             </thead>
+                                          </tr>
+                                          <tr>
+                                             <td><?php echo $registre_appel['Id_etudiant']; ?></td>
+                                             <td><?php echo $registre_appel['Etudiant']; ?></td>
+                                             <td><?php echo $registre_appel['Module']; ?></td>
+                                             <td><?php echo $registre_appel['Date']; ?></td>
+                                             <td><?php echo $registre_appel['Heure']; ?></td>
+                                             <td><?php echo $registre_appel['Etat']; ?></td>
+                                          </tr>
+
+                                       <?php
+                                       }
+                                       ?>
+
+                                    <?php
+                                    }
+                                    ?>
+
+                                 </table>
+                              </div>
+                           </div>
                         </div>
-                       
-                    </div>
-                </div>
-</section>
-						</td>
-									
-							</tr>
-							
-						</tbody>
-                        <?php if (isset($_POST['search'])){?>
-  
-                             <?php
-                              foreach($list1 as $registre_appel) {
-                                  ?>
-                                  <tr>
-                                  <thead class="thead-dark">
-							<tr>
-                            <th scope="col"><label for="Id_etudiant"> <font color="white">Votre identifiant</font>
-								</label></th>
-								<th scope="col"><label for="Etudiant"><font color="white">Etudiant : </font></label></th>
-                        <th scope="col"><label for="Module"><font color="white">Module : </font></label></th>
-                        <th scope="col"><label for="Date"><font color="white">Date : </font></label></th>
-                        <th scope="col"><label for="Heure"><font color="white">Heure : </font></label></th>
-                        <th scope="col"><label for="Etat"><font color="white">Etat : </font></label></th>
-							</tr>
-						</thead>
-  </tr>
-                                  <tr>
-                                  <td><?php echo $registre_appel['Id_etudiant'] ; ?></td>
-    <td><?php echo $registre_appel['Etudiant'] ; ?></td>
-    <td><?php echo $registre_appel['Module'] ; ?></td>
-    <td><?php echo $registre_appel['Date'] ; ?></td>
-    <td><?php echo $registre_appel['Heure'] ; ?></td>
-    <td><?php echo $registre_appel['Etat'] ; ?></td>
-  </tr>
-     
-                              <?php
-                              }
-                              ?>
-                              
-                            <?php
-                }
-    ?>    
-					
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-        </form>
+                     </div>
+                  </div>
+               </form>
             </div>
          </div>
       </div>

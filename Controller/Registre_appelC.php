@@ -50,6 +50,7 @@
                 $querry->execute([
                     'IdRegistre'=>$registre_appel->getIdRegistre(),
                     'Etudiant'=>$registre_appel->getEtudiant(),
+                    'Module'=>$registre_appel->getModule(),
                     'Date'=>$registre_appel->getDate(),
                     'Heure'=>$registre_appel->getHeure(),
                     'Etat'=>$registre_appel->getEtat(),

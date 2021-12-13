@@ -7,6 +7,9 @@ include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
+$etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
+
 
 if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']) && isset($_POST['Heure']) && isset($_POST['Etat'])) {
   $registre_appel = new Registre_appel($_POST['IdRegistre'], $_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
@@ -225,10 +228,9 @@ if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Mo
 
                                 <td><select type="text" name="Etudiant" id="Etudiant">
                                     <option value="">--Veuillez choisir--</option>
-                                    <option value="Mohamed Rayen Dhraief">Mohamed Rayen Dhraief</option>
-                                    <option value="Amir Soltani">Amir Soltani</option>
-                                    <option value="Yesmine Guesmi">Yesmine Guesmi</option>
-                                    <option value="Adam Rafraf">Adam Rafraf</option>
+                                    <?php foreach ($etudiants as $etudiant) { ?>
+                                      <option value="<?php echo $etudiant["name"]; ?>"><?php echo $etudiant["name"]; ?></option>
+                                    <?php } ?>
                                   </select></td>
 
                                 <td><input type="date" name="Date" id="userdate" onchange="TDate()" required min="2021-09-13" max="2022-06-06"></td>

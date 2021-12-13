@@ -10,9 +10,9 @@ session_start();
     $type_reclamations = $type_reclamationC->afficherType_reclamation();
 
     if(isset($_POST['type_reclamation']) && isset($_POST['search'])){
-        $list1 = $type_reclamationC->afficherAbsences($_POST['type_reclamation'],$_POST['Id1']);
-        $list2 = $type_reclamationC->afficherNotes($_POST['type_reclamation'],$_POST['Id1']);
-        $list3 = $type_reclamationC->afficherAutres($_POST['type_reclamation'],$_POST['Id1']);
+        $list1 = $type_reclamationC->afficherAbsences($_POST['type_reclamation'],$x["ID_utilisateur"]);
+        $list2 = $type_reclamationC->afficherNotes($_POST['type_reclamation'],$x["ID_utilisateur"]);
+        $list3 = $type_reclamationC->afficherAutres($_POST['type_reclamation'],$x["ID_utilisateur"]);
     }
     ?>
 
@@ -130,9 +130,6 @@ session_start();
 						<tbody>
 							<tr>
                             <div class="col-75">
-                            <label for="Id1">Entrez votre identifinat :</label>
-
-                            <input type="text" id="Id1" name="Id1" >
                            
                 <select name="type_reclamation" id="type_reclamation">
                 <?php
