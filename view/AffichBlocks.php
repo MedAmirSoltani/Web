@@ -72,9 +72,41 @@ $listeBlockss = $blockC->afficherblocks();
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="about.php">Forum</a> </li>
-                              <li><a href="front3etudiant.php">Subject</a></li>
-                              <li><a href="contact.php">classe</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <li><a href="club.php">club</a></li>
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>

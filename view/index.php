@@ -139,19 +139,19 @@ if (empty($_SESSION['a'])) {
                                           <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                        
                                        <?php } else if (strcmp($conn['role'], "Etudiant") == 0) { ?>
                                           <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="club.php"><i class="ft-mail"></i> Clubs</a>
                                           <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                          
 
                                        <?php } else { ?>
                                           <a class="dropdown-item" href="updateprofiladmin.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profiladmin.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="front3admin.php"><i class="ft-check-square"></i> Subjects</a>
-                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                          
 
                                        <?php } ?>
 

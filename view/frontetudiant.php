@@ -1,9 +1,9 @@
 <?php
 session_start();
-    require '../Controller/matiereC.php';
+require '../Controller/matiereC.php';
 
-    $matiereC = new matiereC();
-    $matiere = $matiereC->affichermatiere();
+$matiereC = new matiereC();
+$matiere = $matiereC->affichermatiere();
 ?>
 <html lang="en">
 
@@ -51,7 +51,7 @@ session_start();
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -60,19 +60,53 @@ session_start();
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li > <a href="index.php">Home</a> </li>
-                              <li> <a href="about.php">Forum</a> </li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
                               <li><a href="front3etudiant.php">Subject</a></li>
-                              <li><a href="contact.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
-                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>   
-                        </ul>
+                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
+                           </ul>
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -91,64 +125,64 @@ session_start();
    </div>
    <!-- Contact -->
    <div class="Contact">
-      
-         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
-                  
-                          
-							
-								
 
-                
+      <div class="row">
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <form>
+               <div class="row">
 
-							 
-									<?php 
-                           $i=0;
-                     
-											foreach ($matiere as $matiere) {
-                                                
-                                    $i++;  
-									?>
-    
-<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
-<div class="card-header bg-gradient-x-purple-red text-white">
-<div class="row">
-<div class="col">
-<img src="../Assets/Images/amir.PNG">
-</div>
-<div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre'] ; ?></h2>  
-                     <a href="front2etudiant.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
-                     
-              <h4 style="color:white;"><strong> coef:</strong>  <?php echo   $matiere['coff'] ; ?>  </h4> 
-              <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong>   <?php echo $matiere['hour'] ; ?>  </h4> 
-</div>
-</div>
-</div>
-</div>  
 
-				
-                       
-                
-  
-							
-						<br> <br>	 
-							
-							
-									<?php
-											}
-                              
-									?>
-						</table>
-                    
-                  </div>
-               </form>
-            </div>
-        
+
+
+
+
+
+
+                  <?php
+                  $i = 0;
+
+                  foreach ($matiere as $matiere) {
+
+                     $i++;
+                  ?>
+
+                     <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
+                        <div class="card-header bg-gradient-x-purple-red text-white">
+                           <div class="row">
+                              <div class="col">
+                                 <img src="../Assets/Images/amir.PNG">
+                              </div>
+                              <div class="col">
+                                 <h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre']; ?></h2>
+                                 <a href="front2etudiant.php?idmatiere=<?php echo $matiere['idmatiere']; ?>  " onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button" value="courses" /> </a><br>
+
+                                 <h4 style="color:white;"><strong> coef:</strong> <?php echo   $matiere['coff']; ?> </h4>
+                                 <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong> <?php echo $matiere['hour']; ?> </h4>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+
+
+
+
+                     <br> <br>
+
+
+                  <?php
+                  }
+
+                  ?>
+                  </table>
+
+               </div>
+            </form>
          </div>
+
       </div>
+   </div>
    </div>
    <!-- end Contact -->
    <!-- footer -->
@@ -179,7 +213,7 @@ session_start();
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>

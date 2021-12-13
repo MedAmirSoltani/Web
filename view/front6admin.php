@@ -1,23 +1,20 @@
-
 <?php
 
 require_once     '../Controller/courC.php';
-require_once '../Model/cour.php' ;
+require_once '../Model/cour.php';
 
 require_once     '../Controller/matiereC.php';
 
 
-if ( isset($_POST['ncour']) && isset($_POST['file'] )&& isset($_POST['idmatiere'] )) 
-{
-        $cour = new cour(NULL, $_POST['ncour'], $_POST['file'], $_POST['idmatiere'] );
-        $courC = new courC();
-        $courC->ajoutercour($cour);
-      $id=$_POST['idmatiere'];
-        header("Location:front2admin.php?idmatiere=$id");
-      }
-else {
-$matiereC = new matiereC();
-$resultats = $matiereC -> affichermatiere();
+if (isset($_POST['ncour']) && isset($_POST['file']) && isset($_POST['idmatiere'])) {
+   $cour = new cour(NULL, $_POST['ncour'], $_POST['file'], $_POST['idmatiere']);
+   $courC = new courC();
+   $courC->ajoutercour($cour);
+   $id = $_POST['idmatiere'];
+   header("Location:front2admin.php?idmatiere=$id");
+} else {
+   $matiereC = new matiereC();
+   $resultats = $matiereC->affichermatiere();
 }
 
 
@@ -61,7 +58,7 @@ $resultats = $matiereC -> affichermatiere();
    <!-- end loader -->
    <!-- header -->
 
-      <header>
+   <header>
       <!-- header inner -->
       <div class="header">
          <div class="container">
@@ -69,7 +66,7 @@ $resultats = $matiereC -> affichermatiere();
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -78,10 +75,44 @@ $resultats = $matiereC -> affichermatiere();
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="#">FORUM</a> </li>
-                              <li ><a href="#">Class</a></li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
+                             
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
@@ -111,64 +142,64 @@ $resultats = $matiereC -> affichermatiere();
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-           
-               
-                  <form action="" method="POST" onsubmit="return verif();">  
-                   <div class="row">
-							<table class="table" border="1" align="center" >
-							
-								<tr>
-									<td>
-										<label for="ncour">cour:
-										</label>
-									</td>
-									<td><input type="text" name="ncour" id="ncour" maxlength="20" required></td>
-								</tr>
-                
-                <td>
-                
-										<label for="file">file:
-										</label>
-									</td>
-									<td><input type="file" name="file" id="file" maxlength="20"></td>
-								</tr>
-								<tr>
-									<td>
 
 
-           
-                
-                <label for="idmatiere">idmatiere:
-                </label>
-              </td>
-              <td><select name="idmatiere" id="idmatiere" required>
-                  <option value="">--Please choose an option--</option>
-                    <?php foreach ($resultats as $value) {
-                      ?>
-    <option value="<?php echo($value["idmatiere"])?>"> <?php echo($value["titre"])?></option>
+               <form action="" method="POST" onsubmit="return verif();">
+                  <div class="row">
+                     <table class="table" border="1" align="center">
 
-  <?php }?>
-</td>
-</select>
-            </tr>
-            <tr>
-              <td>
-                    
-										<input type="submit" value="Envoyer"> 
-									
-									<td>
-										<input type="reset" value="Annuler" >
-									</td>
-								</tr>
-                <div id="badelha">
-                  
-                  </div>
-							</table>
-					
+                        <tr>
+                           <td>
+                              <label for="ncour">cour:
+                              </label>
+                           </td>
+                           <td><input type="text" name="ncour" id="ncour" maxlength="20" required></td>
+                        </tr>
+
+                        <td>
+
+                           <label for="file">file:
+                           </label>
+                        </td>
+                        <td><input type="file" name="file" id="file" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                           <td>
+
+
+
+
+                              <label for="idmatiere">idmatiere:
+                              </label>
+                           </td>
+                           <td><select name="idmatiere" id="idmatiere" required>
+                                 <option value="">--Please choose an option--</option>
+                                 <?php foreach ($resultats as $value) {
+                                 ?>
+                                    <option value="<?php echo ($value["idmatiere"]) ?>"> <?php echo ($value["titre"]) ?></option>
+
+                                 <?php } ?>
+                           </td>
+                           </select>
+                        </tr>
+                        <tr>
+                           <td>
+
+                              <input type="submit" value="Envoyer">
+
+                           <td>
+                              <input type="reset" value="Annuler">
+                           </td>
+                        </tr>
+                        <div id="badelha">
+
+                        </div>
+                     </table>
+
                   </div>
                </form>
             </div>
-        
+
          </div>
       </div>
    </div>
@@ -191,7 +222,7 @@ $resultats = $matiereC -> affichermatiere();
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                  <h3>contact us</h3>
+                     <h3>contact us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
                   <button class="Subscribe">send</button>
@@ -201,7 +232,7 @@ $resultats = $matiereC -> affichermatiere();
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>

@@ -1,11 +1,11 @@
 <?php
-    require '../Controller/courC.php';
+require '../Controller/courC.php';
 
-    $courC = new courC();
-   $cour = $courC->getcourbymatiere($_GET['idmatiere']);//nafficher les cours eli appartient lel matiere hadhika
-   if (isset($_POST['search']) ) {
-    $list = $courC->afficherbyname($_POST['search']);
-  }
+$courC = new courC();
+$cour = $courC->getcourbymatiere($_GET['idmatiere']); //nafficher les cours eli appartient lel matiere hadhika
+if (isset($_POST['search'])) {
+   $list = $courC->afficherbyname($_POST['search']);
+}
 ?>
 <html lang="en">
 
@@ -25,7 +25,7 @@
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" href="../Assets/CSS/style3.css">
-      <link rel="stylesheet" href="../Assets/CSS/amir.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -54,27 +54,61 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="#">FORUM</a> </li>
-                              <li ><a href="#">Class</a></li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
+                              
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -92,54 +126,54 @@
       </div>
    </div>
    <!-- Contact -->
-   
+
    <div class="Contact">
 
-         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
- 
+      <div class="row">
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
 
             <a href="front.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
             <a href="front6.php"> <img src="../Assets/Images/plus.PNG" style="height:10%; width:2%; margin-left:90%; "> </a>
-               <form>
-            
+            <form>
+
                <div class="row">
-      
-									<?php 
-             
-											foreach ($cour as $key) {
-                                
-									?>
-							
-							
-							  <tr>
-                       <div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
-<div class="card-header bg-gradient-x-purple-red text-white">
-<div class="row">
-<div class="col">
-<img src="../Assets/Images/amir.PNG">
-</div>
-<div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $key['ncour'] ; ?></h2>  
-<h4 style="color:white;"><strong> cour :</strong>  <?php echo   $key['ncour'] ; ?>  </h4> 
-                     <a href="<?php echo $key['file'] ; ?> "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
-</div>
-</div>
-</div>
-</div>  
-							
-							
-									<?php
-											}
-                                 
-									?>
-						</table>
-                  </div>
-               </form>
-            </div>
-        
+
+                  <?php
+
+                  foreach ($cour as $key) {
+
+                  ?>
+
+
+                     <tr>
+                        <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
+                           <div class="card-header bg-gradient-x-purple-red text-white">
+                              <div class="row">
+                                 <div class="col">
+                                    <img src="../Assets/Images/amir.PNG">
+                                 </div>
+                                 <div class="col">
+                                    <h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $key['ncour']; ?></h2>
+                                    <h4 style="color:white;"><strong> cour :</strong> <?php echo   $key['ncour']; ?> </h4>
+                                    <a href="<?php echo $key['file']; ?> " onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button" value="courses" /> </a><br>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+
+                     <?php
+                  }
+
+                     ?>
+                     </table>
+               </div>
+            </form>
          </div>
+
       </div>
+   </div>
    </div>
    <!-- end Contact -->
    <!-- footer -->
@@ -170,7 +204,7 @@
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>

@@ -102,7 +102,7 @@ $etudiants = $etudiantC->afficheretudiant();
 
                               </li>
                               <li><a href="affichBlocks.php">Absence</a></li>
-                              <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">
 

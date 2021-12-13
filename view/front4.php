@@ -1,8 +1,8 @@
 <?php
-    require '../Controller/noteC.php';
+require '../Controller/noteC.php';
 
-    $noteC = new noteC();
-    $note = $noteC->getnotebymatiere($_GET['idmatiere']);
+$noteC = new noteC();
+$note = $noteC->getnotebymatiere($_GET['idmatiere']);
 ?>
 <html lang="en">
 
@@ -51,7 +51,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
@@ -60,10 +60,44 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="#">FORUM</a> </li>
-                              <li ><a href="#">Class</a></li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
+                             
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
@@ -93,79 +127,82 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <a href="front.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
-   
-                  <table class="content-table" style="width:100%; height:30%">  <div class="row">
+               <a href="front.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
 
-							<tr>
-							
-								<th>nom</th>
-                <th>prenom</th>
-                <th>note</th>
-                <th>update/add grade</th>
-							  </tr>
-									<?php 
-                           $i=0;
-											foreach ($note as $key) {
-                                   $i++;
-                                    {
-									?>
-							
-							
-							  <tr>
-								
-								<td><?php echo $key['nom'] ; ?></td>
-                <td><?php echo $key['prenom'] ; ?></td>
-                <td><?php echo $key['notes'] ; ?></td>
-             
-							
-								<td><a href="front5.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
-							  </tr>
-							
-							<div style="color:white;text-align:center; ">
+               <table class="content-table" style="width:100%; height:30%">
+                  <div class="row">
 
-									<?php
-											}} echo ("<a><strong>students number</strong> = $i  </a>" ); 
-									?></div>
-						</table>
-                  <table class="content-table"  style="width:100%; height:30%" >
+                     <tr>
+
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>note</th>
+                        <th>update/add grade</th>
+                     </tr>
+                     <?php
+                     $i = 0;
+                     foreach ($note as $key) {
+                        $i++; {
+                     ?>
+
+
+                           <tr>
+
+                              <td><?php echo $key['nom']; ?></td>
+                              <td><?php echo $key['prenom']; ?></td>
+                              <td><?php echo $key['notes']; ?></td>
+
+
+                              <td><a href="front5.php?idnote=<?php echo $key['idnote']; ?>">modifier</a></td>
+                           </tr>
+
+                           <div style="color:white;text-align:center; ">
+
+                        <?php
+                        }
+                     }
+                     echo ("<a><strong>students number</strong> = $i  </a>");
+                        ?></div>
+               </table>
+               <table class="content-table" style="width:100%; height:30%">
                   <h2 style="color:white; text-align:center;">students with no grades</h2>
-							<tr>
-							
-								<th>nom</th>
-                <th>prenom</th>
-                <th>note</th>
-                <th>update/add grade</th>
-							  </tr>
-									<?php 
-                        
-											foreach ($note as $key) {
-                                    if($key['notes']==NULL)
-                                    {
-									?>
-							
-							
-							  <tr>
-								
-								<td><?php echo $key['nom'] ; ?></td>
-                <td><?php echo $key['prenom'] ; ?></td>
-                <td><?php echo $key['notes'] ; ?></td>
-             
-							
-                <td><a href="front5.php?idnote=<?php echo $key['idnote'] ; ?>">modifier</a></td>
-							  </tr>
-							
-							
-									<?php
-											}}
-									?>
-						</table></div>
-          
-						</form>
+                  <tr>
+
+                     <th>nom</th>
+                     <th>prenom</th>
+                     <th>note</th>
+                     <th>update/add grade</th>
+                  </tr>
+                  <?php
+
+                  foreach ($note as $key) {
+                     if ($key['notes'] == NULL) {
+                  ?>
+
+
+                        <tr>
+
+                           <td><?php echo $key['nom']; ?></td>
+                           <td><?php echo $key['prenom']; ?></td>
+                           <td><?php echo $key['notes']; ?></td>
+
+
+                           <td><a href="front5.php?idnote=<?php echo $key['idnote']; ?>">modifier</a></td>
+                        </tr>
+
+
+                  <?php
+                     }
+                  }
+                  ?>
+               </table>
             </div>
-        
+
+            </form>
          </div>
+
       </div>
+   </div>
    </div>
    <!-- end Contact -->
    <!-- footer -->
@@ -196,7 +233,7 @@
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>
