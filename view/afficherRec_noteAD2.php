@@ -1,11 +1,17 @@
 <?php
 session_start();
-include_once     '../Controller/utilisateurC.php';
-include_once '../Model/utilisateur.php';
-$userC = new utilisateurC();
-$x = $userC->getutilisateurbyID($_SESSION['a']);
+    require '../Controller/Rec_noteC.php';
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
+    $etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
+    $rec_noteC = new Rec_noteC();
+    $et=$etudiantC->getetudiantbyID($_POST["Id_etudiant"]);
+    $rec_notes = $rec_noteC->afficherRec_note($et["name"]);
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -16,20 +22,15 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>memorial books</title>
+   <title>hogwarts</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   <!--jquerry-->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   <!-- background css -->
-   <link rel="stylesheet" href="../Assets/CSS/background.css">
-   <!-- login css -->
-   <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="../Assets/CSS/style.css">
+   <link rel="stylesheet" href="../Assets/CSS/style3.css">
+   <link rel="stylesheet" href="../Assets/CSS/amir.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -43,13 +44,12 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
 </head>
 <!-- body -->
 
-<body class="main-layout home_page">
+<body class="main-layout contact-page">
    <!-- loader  -->
    <div class="loader_bg">
       <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
    </div>
    <!-- end loader -->
-   <!-- header -->
    <header>
       <!-- header inner -->
       <div class="header">
@@ -86,7 +86,7 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
-                              <li><a href="afficherRec_noteAD.php">Reclamation</a></li>
+                              <li><a href="afficherLesReclamations2.php">Reclamation</a></li>
                               <li><a href="affichBlocks.php">Absence</a></li>
                               <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
@@ -103,62 +103,106 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
             </div>
          </div>
       </div>
-
+      </div>
       <!-- end header inner -->
    </header>
    <!-- end header -->
-   <form action="updateprofiladmin.php" enctype="multipart/form-data">
-      <section class="slider_section">
-         <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <img src="../Assets/Images/fond.png" alt="First slide">
-                  <div class="container">
-                     <div class="carousel-caption relative">
-                        <h1 class="titre">Your Profil</h1>
-                        <br><br>
-                        <?php if (empty($x['profilpicture'])) {
-                           echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:20%; height:290px;float:left;margin:0 10px 0 -200px; border-radius:10%; display:block;"/>';
-                        }
-
-                        ?>
-                        <img onclick="pictureclick()" <?php if (empty($x['profilpicture'])) {
-                                                         echo 'style="display:none;"';
-                                                      } ?> id="profildisplay" style="width:20%; height:290px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>">
-                        <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:20%;float:left;margin:190 10px 0 0px; display:none; " />
-                        <br>
-                        <span class="left" style="float:left;margin:280px 10px 0 -170px; ">
-                           <p style="color:white;font-family: inherit;font-size: 35px;"><?php echo $x['name'] ?></p>
-                        </span>
-                        <button class="send-btn" style="margin:350px 580px 0 -300px;" name="update">update profile</button>
-                        <div style="margin:-400px 10px 0 800px;color:white;">
-                           <h2 style="color:white;"> <strong>Job:</strong> <?php echo $x['role'] ?> </h2>
-                        </div>
-                        <br>
-                        <br>
-                        <div style="margin:0px 10px 0 850px; ">
-                           <h2 style="color:white;"><strong>ID: </strong> <?php echo $x['ID_utilisateur'] ?> </h2>
-                        </div>
-                        <a href="deconnexion.php"> <input type="button" value="Deconnexion" style="margin:150px 10px 0 450px; width: 185px;background: #f06008;border: none;color: #fff;height: 65px;font-size: 18px;font-weight: 300;border-radius: 100px;line-height: 72px;text-transform: uppercase;" id="deconnexion" /> </a>
-                     </div>
-                  </div>
+   <div class="about-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="abouttitle">
+                  <h2>Reclamation Note</h2>
                </div>
-
-
             </div>
-      </section>
-   </form>
+         </div>
+      </div>
+   </div>
+   <!-- Contact -->
+   <div class="Contact">
+
+      <div class="row">
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <form>
+               <div class="row">
+                  <?php
+                  foreach ($rec_notes as $Salles) {
+                  ?>
+
+                     <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
+                        <div class="card-header bg-gradient-x-purple-red text-white">
+                           <div class="row">
+                              <div class="col">
+                                 <img src="../Assets/Images/amir.PNG">
+                              </div>
+                              <div class="col">
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 40px; color:white;">Tables :<?php echo $Salles['Nbrtables']; ?></h2>
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:#741523;">Chairs: <?php echo $Salles['Nbrchaises']; ?></h2>
+                                 <?php if ($x["admin_bool"] == 1) { ?>
+                                    <a href="SupprimerSalles.php?ids=<?php echo $Salles['Id']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="front8admin.php?idb=<?php echo $Salles['Id']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php } ?>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <br> <br>
+                  <?php
+                  }
+                  ?>
+                  </table>
+
+               </div>
+            </form>
+         </div>
+
+      </div>
+   </div>
+   </div>
+   <!-- end Contact -->
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row pdn-top-30">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Follow">
+                     <h3>Follow Us</h3>
+                  </div>
+                  <ul class="location_icon">
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
+                  </ul>
+               </div>
+               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                  <div class="Follow">
+                     <h3>contact us</h3>
+                  </div>
+                  <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
+                  <button class="Subscribe">Send</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
+         <div class="container">
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
    <!-- Javascript files-->
    <script src="../Assets/js/jquery.min.js"></script>
    <script src="../Assets/js/popper.min.js"></script>
    <script src="../Assets/js/bootstrap.bundle.min.js"></script>
    <script src="../Assets/js/jquery-3.0.0.min.js"></script>
    <script src="../Assets/js/plugin.js"></script>
-   <script src="../Assets/js/click.js"></script>
    <!-- sidebar -->
    <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="../Assets/js/custom.js"></script>
-
 </body>
 
 </html>

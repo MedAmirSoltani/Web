@@ -9,12 +9,13 @@ $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
-$registre_appelC = new Registre_appelC();
+
 
 
 if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']) && isset($_POST['Heure']) && isset($_POST['Etat'])) {
   $registre_appel = new Registre_appel($_POST['IdRegistre'], $_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
   $et=$etudiantC->getetudiantbyName($_POST["Etudiant"]);
+  $registre_appelC = new Registre_appelC();
   $registre_appelC->ajouterRegistre_appel($registre_appel,$et["ID"]);
   header('Location:afficherRegistre_appel.php');
 }

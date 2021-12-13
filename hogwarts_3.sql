@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 13 déc. 2021 à 05:12
+-- Généré le : lun. 13 déc. 2021 à 16:44
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.24
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -232,7 +233,8 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`ID`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `classe`) VALUES
-(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', '50');
+(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', '50'),
+(69113176, 'mohamedrayen.dhraief@esprit.tn', 'Riridhraief123', 'Rayen', 'Dhraief', '2021-12-12', 'Etudiant', '', '2A11');
 
 -- --------------------------------------------------------
 
@@ -397,7 +399,9 @@ CREATE TABLE `rec_note` (
 --
 
 INSERT INTO `rec_note` (`Id_note`, `Id_etudiant`, `Module`, `Description`, `type_reclamation`) VALUES
-(2, 64280570, 'Projet Technologies web', 'fgdfgdgd', 1);
+(2, 64280570, 'Projet Technologies web', 'fgdfgdgd', 1),
+(3, 64280570, 'Base de Donnees', 'tttttttt', 1),
+(4, 69113176, 'Mathematique', 'yaaaaaaaaa', 1);
 
 -- --------------------------------------------------------
 
@@ -420,7 +424,8 @@ CREATE TABLE `registre_appel` (
 --
 
 INSERT INTO `registre_appel` (`IdRegistre`, `Id_etudiant`, `Etudiant`, `Module`, `Date`, `Heure`, `Etat`) VALUES
-(1, 64280570, 'fsd', 'Mathematique', '2021-12-12', '09:11:00', 'present');
+(1, 64280570, 'fsd', 'Mathematique', '2021-12-12', '09:11:00', 'present'),
+(2, 69113176, 'Rayen', 'Mathematique', '2021-11-30', '17:28:00', 'absent');
 
 -- --------------------------------------------------------
 
@@ -513,7 +518,8 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`ID_utilisateur`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `admin_bool`, `code`) VALUES
 (123456, 'Admin@hogwarts.tn', 'Admoun', 'Admoun', 'Admoun', '2000-09-09', 'Admin', '1638014122102.jpg', 1, 0),
 (751805, 'Prof@esprit.tn', 'Prof123456', 'PROF', 'PROF', '2000-01-01', 'Prof', 'Guilty-Gear-Strive-I-No-710x400.jpg', 0, 0),
-(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', 0, 0);
+(64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', 0, 0),
+(69113176, 'mohamedrayen.dhraief@esprit.tn', 'Riridhraief123', 'Rayen', 'Dhraief', '2021-12-12', 'Etudiant', '', 0, 0);
 
 --
 -- Index pour les tables déchargées
@@ -765,13 +771,13 @@ ALTER TABLE `rec_autre`
 -- AUTO_INCREMENT pour la table `rec_note`
 --
 ALTER TABLE `rec_note`
-  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `registre_appel`
 --
 ALTER TABLE `registre_appel`
-  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `reply`
@@ -890,6 +896,7 @@ ALTER TABLE `reply`
 --
 ALTER TABLE `salles`
   ADD CONSTRAINT `salles_ibfk_1` FOREIGN KEY (`id_block`) REFERENCES `blocks` (`Id`) ON DELETE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

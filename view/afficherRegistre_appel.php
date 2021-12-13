@@ -200,6 +200,9 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
                         <th scope="col"><label for="Etudiant">
                             <font color="white">Etudiant : </font>
                           </label></th>
+                          <th scope="col"><label for="Module">
+                            <font color="white">Module : </font>
+                          </label></th>
                         <th scope="col"><a href="afficherRegistre_appel.php?column=Date&order=<?php echo $asc_or_desc; ?>">Date<i class="fas fa-sort<?php echo $column == 'Date' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th scope="col"><a href="afficherRegistre_appel.php?column=Heure&order=<?php echo $asc_or_desc; ?>">Heure<i class="fas fa-sort<?php echo $column == 'Heure' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th scope="col"><label for="Etat">
@@ -216,6 +219,7 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
                           <tr>
                             <td<?php echo $column == 'IdRegistre' ? $add_class : ''; ?>><?php echo $row['IdRegistre']; ?></td>
                               <td<?php echo $column == 'Etudiant' ? $add_class : ''; ?>><?php echo $row['Etudiant']; ?></td>
+                              <td<?php echo $column == 'Module' ? $add_class : ''; ?>><?php echo $row['Module']; ?></td>
                                 <td<?php echo $column == 'Date' ? $add_class : ''; ?>><?php echo $row['Date']; ?></td>
                                   <td<?php echo $column == 'Heure' ? $add_class : ''; ?>><?php echo $row['Heure']; ?></td>
                                     <td<?php echo $column == 'Etat' ? $add_class : ''; ?>><?php echo $row['Etat']; ?></td>
