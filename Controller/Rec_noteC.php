@@ -36,20 +36,21 @@
             }
         }
 
-        function ajouterRec_note($rec_note,$id)
+        function ajouterRec_note($rec_note,$id,$idu)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
                 INSERT INTO rec_note 
-                (Module,Description,type_reclamation)
+                (Module,Description,type_reclamation,Id_etudiant)
                 VALUES
-                (:Module,:Description,:type_reclamation)
+                (:Module,:Description,:type_reclamation,:Id_etudiant)
                 ');
                 $querry->execute([
                     'Module'=>$rec_note->getModule(),
                     'Description'=>$rec_note->getDescription(),
-                    'type_reclamation'=>$id
+                    'type_reclamation'=>$id,
+                    'Id_etudiant'=>$idu
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();
@@ -92,5 +93,3 @@
             }
         }
     }
-
-?>

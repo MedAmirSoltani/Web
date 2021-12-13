@@ -37,19 +37,20 @@
             }
         }
 
-        function ajouterRec_autre($rec_autre,$id)
+        function ajouterRec_autre($rec_autre,$id,$idu)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
                 INSERT INTO rec_autre 
-                (Description,type_reclamation)
+                (Description,type_reclamation,Id_etudiant)
                 VALUES
-                (:Description,:type_reclamation)
+                (:Description,:type_reclamation,:Id_etudiant)
                 ');
                 $querry->execute([
                     'Description'=>$rec_autre->getDescription(),
-                    'type_reclamation'=>$id
+                    'type_reclamation'=>$id,
+                    'Id_etudiant'=>$idu
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();

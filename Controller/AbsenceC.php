@@ -37,22 +37,23 @@
             }
         }
 
-        function ajouterAbsence($absence,$id)
+        function ajouterAbsence($absence,$id,$idu)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
                 INSERT INTO absence 
-                (Module,Date_absence,Heure_absence,Description,type_reclamation)
+                (Module,Date_absence,Heure_absence,Description,type_reclamation,Id_etudiant)
                 VALUES
-                (:Module,:Date_absence,:Heure_absence,:Description,:type_reclamation)
+                (:Module,:Date_absence,:Heure_absence,:Description,:type_reclamation,:Id_etudiant)
                 ');
                 $querry->execute([
                     'Module'=>$absence->getModule(),
                     'Date_absence'=>$absence->getDate_absence(),
                     'Heure_absence'=>$absence->getHeure_absence(),
                     'Description'=>$absence->getDescription(),
-                    'type_reclamation'=>$id
+                    'type_reclamation'=>$id,
+                    'Id_etudiant'=>$idu
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();

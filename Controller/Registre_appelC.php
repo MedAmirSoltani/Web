@@ -37,22 +37,23 @@
             }
         }
 
-        function ajouterRegistre_appel($registre_appel)
+        function ajouterRegistre_appel($registre_appel,$idu)
         {
             $config = config::getConnexion();
             try {
                 $querry = $config->prepare('
                 INSERT INTO registre_appel 
-                (IdRegistre,Etudiant,Date,Heure,Etat)
+                (IdRegistre,Etudiant,Date,Heure,Etat,Id_etudiant)
                 VALUES
-                (:IdRegistre,:Etudiant,:Date,:Heure,:Etat)
+                (:IdRegistre,:Etudiant,:Date,:Heure,:Etat,:Id_etudiant)
                 ');
                 $querry->execute([
                     'IdRegistre'=>$registre_appel->getIdRegistre(),
                     'Etudiant'=>$registre_appel->getEtudiant(),
                     'Date'=>$registre_appel->getDate(),
                     'Heure'=>$registre_appel->getHeure(),
-                    'Etat'=>$registre_appel->getEtat()
+                    'Etat'=>$registre_appel->getEtat(),
+                    'Id_etudiant'=>$idu
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();
