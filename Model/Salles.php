@@ -1,68 +1,44 @@
 <?php
 
-class Salles{
-    private $id=null;
-    private $nom=null;
-    private $nbrprj=null;
-    private $nmbrtabl=null;
-      private $nbrchais=null;
-    private $id_blc=null;
-    function __construct($id, $nom, $nbrprj, $nmbrtabl,$nbrchais,$id_blc){
-        $this->id=$id;
-        $this->nom=$nom;
-        $this->nbrprj=$nbrprj;
-        $this->nmbrtabl=$nmbrtabl;
-            $this->nbrchais=$nbrchais;
-             $this->id_blc=$id_blc;
+class Salles
+{
+    private $id = null;
+    private $nom = null;
+    private $nbrprj = null;
+    private $nmbrtabl = null;
+    private $nbrchais = null;
+    private $id_blc = null;
+    function __construct($id, $nom, $nbrprj, $nmbrtabl, $nbrchais, $id_blc)
+    {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->nbrprj = $nbrprj;
+        $this->nmbrtabl = $nmbrtabl;
+        $this->nbrchais = $nbrchais;
+        $this->id_blc = $id_blc;
     }
-    function getid(){
+    function getid()
+    {
         return $this->id;
     }
-    function getnom(){
+    function getnom()
+    {
         return $this->nom;
     }
-    function getNbrprj(){
+    function getNbrprj()
+    {
         return $this->nbrprj;
     }
-    function getnbrtables(){
+    function getnbrtables()
+    {
         return $this->nmbrtabl;
     }
-    function getnbrchais(){
+    function getnbrchais()
+    {
         return $this->nbrchais;
     }
-        function getidblc(){
+    function getidblc()
+    {
         return $this->id_blc;
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

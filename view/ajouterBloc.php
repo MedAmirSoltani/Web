@@ -1,21 +1,53 @@
 <?php
 session_start();
+require_once     '../Controller/matiereC.php';
+require_once '../Model/matiere.php';
+include_once '../Controller/utilisateurC.php';
 include_once '../Assets/ASFO/utilis/Config.php';
+include_once '../Model/Block.php';
 include_once '../Controller/BlockC.php';
-include_once     '../Controller/utilisateurC.php';
-include_once '../Model/utilisateur.php';
 
 $userC1 = new utilisateurC();
-
-$blockC = new BlockC();
-$listeBlockss = $blockC->afficherblocks();
 $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
-?>
 
+$error = "";
+
+// create adherent
+$block = null;
+
+// create an instance of the controller
+$blockC = new BlockC();
+if (
+  isset($_POST["id"]) &&
+  isset($_POST["nom"]) &&
+  isset($_POST["nbrsalles"]) &&
+  isset($_POST["typesalles"])
+) {
+  if (
+
+    !empty($_POST['nom']) &&
+    !empty($_POST["nbrsalles"]) &&
+    !empty($_POST["typesalles"])
+  ) {
+    $block = new Block(
+      $_POST['id'],
+      $_POST['nom'],
+      $_POST['nbrsalles'],
+      $_POST['typesalles']
+    );
+    $blockC->ajouterblock($block);
+    header('Location:ListeBlocks.php');
+  } else
+    $error = "Missing information";
+}
+
+
+?>
 <html class="loading" lang="en" data-textdirection="ltr">
 
 <head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -44,7 +76,6 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
   <!-- fixed-top-->
-
   <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
     <div class="navbar-wrapper">
       <div class="navbar-container content">
@@ -103,7 +134,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
   <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
-        <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG" />
+        <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.png" />
             <h3 class="brand-text">Hogwarts</h3>
           </a></li>
         <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
@@ -113,20 +144,13 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
         </li>
-        <li class="nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
+        <li class="active"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
         </li>
         <li class="nav-item"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
         </li>
-        <li onclick="affich()" class="nav-item"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Forum<i class="la la-plus"></i></span></a>
-
-        <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
+        <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
         </li>
-        <li class=" nav-item" id="forumar"><a href="AdminViewBlogHomeArchive.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
-        </li>
-
-        </li>
-
-        <li class=" nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
+        <li class=" nav-item"><a href="buttons.html"><i class="ft-box"></i><span class="menu-title" data-i18n="">Buttons</span></a>
         </li>
         <li class=" nav-item"><a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
         </li>
@@ -134,7 +158,8 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
         </li>
         <li class=" nav-item"><a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
         </li>
-
+        <li class=" nav-item"><a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>
+        </li>
       </ul>
     </div>
     <div class="navigation-background"></div>
@@ -160,16 +185,13 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
           </div>
         </div>
       </div>
-
-
-
       <div class="content-body">
         <!-- Basic Tables start -->
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">SUBJECTS</h4>
+                <h4 class="card-title">add subject</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
@@ -183,55 +205,54 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
               <div class="card-content collapse show">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <a href="ajouterBloc.php">Ajouter Block</a>
-                    <br>
-                    <table class="table" border='2'>
-                      <tr>
-                        <th>idblock</th>
-                        <th>Nom</th>
-                        <th>Salles</th>
-                        <th>Nombre Salles</th>
-                        <th>typesalles</th>
-                        <th>hour</th>
 
-                      </tr>
-                      <?php
-                      $i = 0;
-                      foreach ($listeBlockss as $block) {
-                        $i++;
-                      ?>
-
+                    <form action="" method="POST" onsubmit="return verif();">
+                      <table class="table" border="1" align="center">
 
                         <tr>
-                          <td><?php echo $block['Id']; ?></td>
-                          <td><?php echo $block['Nom']; ?></td>
-                          <td><a href="affichsallesAd.php?idb=<?php echo $block['Id']; ?>">afficher Salles</a></td>
-                          <td><?php echo $block['Nbrsalles']; ?></td>
-                          <td><?php echo $block['Typesalles']; ?></td>
+                        <tr>
+                          <th>Nom</th>
+                          <th><input type="text" name="nom" value="" /></th>
+                          <th><input type="hidden" name="id" value="" /></th>
+                        </tr>
 
-                          <td><a href="ajouterarchivematiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="modifiermatiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">modifier</a></td>
+                        <tr>
+                          <th>Nombre de Salles</th>
+                          <th><input type="number" name="nbrsalles" value="" /></th>
+                        </tr>
+
+                        </tr>
+                        <tr>
+                          <th> Types de salles</th>
+                          <th><input type="number" name="typesalles" value="" required /></th>
                         </tr>
 
 
-                      <?php
-                      }
-                      echo (" You have $i Blocks");
-                      ?>
-                    </table>
+
+                      </table>
+                      <br>
+                      <center>
+                        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
+                      </center>
+
+
+                      </td>
+                      <td>
+                        <input type="reset" value="Annuler">
+                      </td>
+                      </tr>
+                      <div id="badelha">
+
+                      </div>
+                      </table>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Basic Tables end -->
-
-
-
-      </div>
-      <!-- Basic Tables end -->
-      <script defer src="../assets/ASFO/js/admin.js"></script>
+        <script src="../Assets/js/javasu.js"></script>
 
 </body>
 

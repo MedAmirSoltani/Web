@@ -42,16 +42,18 @@ class SallesC
 	}
 	function ajouterSalles($Salles)
 	{
-		$sql = "INSERT INTO Salles (Id, Nom, NbrSalles, TypeSalles) 
-			VALUES (:id,:nom,:nbrSalles,:typeSalles)";
+		$sql = "INSERT INTO Salles (Id, Nom,Nbrprojecteurs,Nbrtables,Nbrchaises,id_block) 
+			VALUES (:id,:nom,:Nbrprojecteurs,:Nbrtables,:Nbrchaises,:id_block)";
 		$db = config::getConnexion();
 		try {
 			$query = $db->prepare($sql);
 			$query->execute([
 				'id' => $Salles->getId(),
 				'nom' => $Salles->getNom(),
-				'nbrSalles' => $Salles->getNbrSalles(),
-				'typeSalles' => $Salles->getTypeSalles()
+				'Nbrprojecteurs' => $Salles->getNbrprj(),
+				'Nbrtables' => $Salles->getnbrtables(),
+				'Nbrchaises' => $Salles->getnbrchais(),
+				'id_block' => $Salles->getidblc()
 			]);
 		} catch (Exception $e) {
 			die('Erreur: ' . $e->getMessage());

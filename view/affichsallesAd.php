@@ -187,7 +187,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
               <div class="card-content collapse show">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <a href="ajoutermatiere.php">Ajouter Block</a>
+                    <a href="ajouterSalle.php?idb=<?php echo $_GET["idb"]; ?>">Ajouter Salle</a>
                     <br>
                     <table class="table" border='2'>
                       <tr>
