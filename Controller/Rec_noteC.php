@@ -19,6 +19,20 @@ class Rec_noteC
             $th->getMessage();
         }
     }
+    function afficherRec_notebyid()
+    {
+        $requete = "select * from rec_note ";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute();
+            $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
     function getRec_notebyID($id)
     {
         $requete = "select * from rec_note where Id_note=:id";
@@ -31,6 +45,23 @@ class Rec_noteC
                 ]
             );
             $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+    function getRec_notesbyID($id)
+    {
+        $requete = "select * from rec_note where Id_note=:id ";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'id' => $id
+                ]
+            );
+            $result = $querry->fetchAll();
             return $result;
         } catch (PDOException $th) {
             $th->getMessage();
@@ -57,7 +88,7 @@ class Rec_noteC
             $th->getMessage();
         }
     }
-    function modifierRec_note($rec_note)
+    function modifierRec_note($rec_note,$id)
     {
         $config = config::getConnexion();
         try {
@@ -69,7 +100,7 @@ class Rec_noteC
                 where Id_note=:Id_note
                 ');
             $querry->execute([
-                'Id_note' => $rec_note->getId_note(),
+                 'Id_note'=>$id,
                 'Module' => $rec_note->getModule(),
                 'Description' => $rec_note->getDescription(),
             ]);
