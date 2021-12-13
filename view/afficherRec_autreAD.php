@@ -1,14 +1,14 @@
 <?php
 session_start();
-    require '../Controller/Rec_autreC.php';
-    include_once     '../Controller/utilisateurC.php';
+require '../Controller/Rec_autreC.php';
+include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
-    $rec_autreC = new Rec_autreC();
-    $rec_autres = $rec_autreC->afficherRec_autre();
+$rec_autreC = new Rec_autreC();
+$rec_autres = $rec_autreC->afficherRec_autre();
 ?>
 
 <html lang="en">
@@ -78,13 +78,13 @@ $etudiants = $etudiantC->afficheretudiant();
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
                                        <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
-                                       <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
                                     </div>
                                  </div>
 
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
-                              <li><a href="affichBlocks.php">classe</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
@@ -96,13 +96,13 @@ $etudiants = $etudiantC->afficheretudiant();
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
                                        <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
-                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Reclamation Autre</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
                                     </div>
                                  </div>
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                              <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">
 
@@ -144,7 +144,7 @@ $etudiants = $etudiantC->afficheretudiant();
                   foreach ($rec_autres as $rec_autre) {
                      $idu = $rec_autre["Id_etudiant"];
                      $et = $etudiantC->getetudiantbyID($idu);
-                     
+
                   ?>
 
                      <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
@@ -155,14 +155,14 @@ $etudiants = $etudiantC->afficheretudiant();
                               </div>
                               <div class="col">
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">
-                                 Nom Etudiant : <?php echo $et["name"]; ?></h2>
+                                    Nom Etudiant : <?php echo $et["name"]; ?></h2>
 
-                                    <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $rec_autre['Id_etudiant']; ?></h2>
-                                    <a href="afficherRec_autreAD2.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
-                                    <?php if ($x["admin_bool"] == 1) { ?>
-                                       <a href="supprimerRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                       <a href="modifierRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
-                                    <?php } ?>
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $rec_autre['Id_etudiant']; ?></h2>
+                                 <a href="afficherRec_autreAD2.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
+                                 <?php if ($x["admin_bool"] == 1) { ?>
+                                    <a href="supprimerRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="modifierRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php } ?>
                               </div>
                            </div>
                         </div>

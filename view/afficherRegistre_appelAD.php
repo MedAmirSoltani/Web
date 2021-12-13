@@ -76,13 +76,13 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
                                        <div class="dropdown-divider"></div>
                                        <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
                                        <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
-                                       <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="ft-power"></i>Archive</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="GeneralViewBlogHomeArchive.php"><i class="ft-power"></i>Archive</a>
                                     </div>
                                  </div>
 
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
-                              <li><a href="affichBlocks.php">classe</a></li>
+                              <li><a href="affichBlocks.php">class</a></li>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
@@ -100,7 +100,7 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                              <li><a href="afficherRegistre_appelAD2.php">Admin Pannel</a></li>
+                              <li><a href="afficherutilisateur.php">Panel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">
 
@@ -140,7 +140,7 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
 
                   <?php
                   foreach ($registre_appels as $registre_appel) {
-                     
+
                   ?>
 
                      <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
@@ -151,14 +151,14 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
                               </div>
                               <div class="col">
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">
-                                 Nom Etudiant : <?php echo $registre_appel["Etudiant"]; ?></h2>
+                                    Nom Etudiant : <?php echo $registre_appel["Etudiant"]; ?></h2>
 
-                                    <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $registre_appel['Id_etudiant']; ?></h2>
-                                    <a href="afficherRegistre_appelAD2.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
-                                    <?php if ($x["admin_bool"] == 1) { ?>
-                                       <a href="supprimerRegistre_appel.php?IdRegistre =<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                       <a href="modifierRegistre_appel.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
-                                    <?php } ?>
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $registre_appel['Id_etudiant']; ?></h2>
+                                 <a href="afficherRegistre_appelAD2.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
+                                 <?php if ($x["admin_bool"] == 1) { ?>
+                                    <a href="supprimerRegistre_appel.php?IdRegistre =<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="modifierRegistre_appel.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php } ?>
                               </div>
                            </div>
                         </div>
