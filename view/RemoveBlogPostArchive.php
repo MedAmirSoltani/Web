@@ -9,4 +9,3 @@ $BlogC->RemoveBlogArchive($_GET['Idpostar']);
 
 
 header('Location:AdminViewBlogHomeArchive.php');
-?>

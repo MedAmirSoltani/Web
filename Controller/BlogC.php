@@ -114,7 +114,7 @@ class BlogC
 
         $config = config::getConnexion();
         try {
-            // $this->uploadFile();
+            
             $querry = $config->prepare('
             INSERT INTO post 
             (Title,Picture,Description,Date,ID_utilisateur)
@@ -252,7 +252,7 @@ class BlogC
         }
     }
 
-    function AddBlogArchive($Blog, $idp)
+    function AddBlogArchive($Blog, $idp,$idu)
     {
 
         $config = config::getConnexion();
@@ -260,9 +260,9 @@ class BlogC
 
             $querry = $config->prepare('
             INSERT INTO Archivepost 
-            (Idpostar,Title,Picture,Description,Date)
+            (Idpostar,Title,Picture,Description,Date,ID_utilisateur)
             VALUES
-            (:Idpostar,:Title,:Picture,:Description,:Date)
+            (:Idpostar,:Title,:Picture,:Description,:Date,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idpostar' => $idp,
@@ -270,6 +270,7 @@ class BlogC
                 'Picture' => $Blog->getPicture(),
                 'Date' => $Blog->getDate(),
                 'Description' => $Blog->getDescription(),
+                'ID_utilisateur'=>$idu
 
 
 
@@ -296,7 +297,7 @@ class BlogC
         header("Refresh:0");
     }
 
-    function RestoreBlog($Blog, $idp)
+    function RestoreBlog($Blog, $idp,$idu)
     {
 
         $config = config::getConnexion();
@@ -304,9 +305,9 @@ class BlogC
 
             $querry = $config->prepare('
             INSERT INTO post 
-            (Idpost,Title,Picture,Description,Date)
+            (Idpost,Title,Picture,Description,Date,ID_utilisateur)
             VALUES
-            (:Idpost,:Title,:Picture,:Description,:Date)
+            (:Idpost,:Title,:Picture,:Description,:Date,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idpost' => $idp,
@@ -314,6 +315,7 @@ class BlogC
                 'Picture' => $Blog->getPicture(),
                 'Date' => $Blog->getDate(),
                 'Description' => $Blog->getDescription(),
+                'ID_utilisateur'=>$idu
 
 
 

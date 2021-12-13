@@ -114,7 +114,7 @@ class CommentC
         }
         header("Refresh:0");
     }
-    function AddCommentArchive($Comment, $idp, $idcr)
+    function AddCommentArchive($Comment, $idp, $idcr,$idu)
     {
 
         $config = config::getConnexion();
@@ -122,15 +122,16 @@ class CommentC
 
             $querry = $config->prepare('
             INSERT INTO archivecomment 
-            (Idpostar,Comment_text,Date_Comment,Idcommantar)
+            (Idpostar,Comment_text,Date_Comment,Idcommantar,ID_utilisateur)
             VALUES
-            (:Idpostar,:Comment_text,:Date_Comment,:Idcommantar)
+            (:Idpostar,:Comment_text,:Date_Comment,:Idcommantar,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idcommantar' => $idcr,
                 'Idpostar' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
                 'Date_Comment' => $Comment->getDate_Comment(),
+                'ID_utilisateur'=>$idu
             ]);
         } catch (PDOException $th) {
             $th->getMessage();
@@ -194,7 +195,7 @@ class CommentC
         }
         header("Refresh:0");
     }
-    function RestoreComment($Comment, $idp, $idcr)
+    function RestoreComment($Comment, $idp, $idcr,$idu)
     {
 
         $config = config::getConnexion();
@@ -202,15 +203,16 @@ class CommentC
 
             $querry = $config->prepare('
             INSERT INTO comment 
-            (Idpost,Comment_text,Date_Comment,Idcomment)
+            (Idpost,Comment_text,Date_Comment,Idcomment,ID_utilisateur)
             VALUES
-            (:Idpost,:Comment_text,:Date_Comment,:Idcomment)
+            (:Idpost,:Comment_text,:Date_Comment,:Idcomment,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idcomment' => $idcr,
                 'Idpost' => $idp,
                 'Comment_text' => $Comment->getComment_text(),
                 'Date_Comment' => $Comment->getDate_Comment(),
+                'ID_utilisateur'=>$idu
             ]);
         } catch (PDOException $th) {
             $th->getMessage();

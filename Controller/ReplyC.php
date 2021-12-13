@@ -116,7 +116,7 @@ class ReplyC
         header("Refresh:0");
     }
 
-    function AddReplyArchive($Reply, $idcr, $idr)
+    function AddReplyArchive($Reply, $idcr, $idr,$idu)
     {
 
         $config = config::getConnexion();
@@ -124,15 +124,16 @@ class ReplyC
 
             $querry = $config->prepare('
             INSERT INTO archivereply 
-            (Idcommentar,Reply_text,Date_Reply,Idreply)
+            (Idcommentar,Reply_text,Date_Reply,Idreply,ID_utilisateur)
             VALUES
-            (:Idcommentar,:Reply_text,:Date_Reply,:Idreply)
+            (:Idcommentar,:Reply_text,:Date_Reply,:Idreply,:ID_utilisateur)
             ');
             $querry->execute([
                 'Idreply' => $idr,
                 'Idcommentar' => $idcr,
                 'Reply_text' => $Reply->getReply_text(),
                 'Date_Reply' => $Reply->getDate_Reply(),
+                'ID_utilisateur'=>$idu
 
             ]);
         } catch (PDOException $th) {
