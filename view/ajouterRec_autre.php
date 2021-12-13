@@ -1,24 +1,22 @@
 <?php
-session_start();
-    require '../Controller/matiereC.php';
-    include_once     '../Controller/utilisateurC.php';
-        include_once '../Model/utilisateur.php' ;
-      
-    $matiereC=new matiereC();
-    
 
-      // $_POST['idmatiere']
-    //$resultat=$userC->getutilisateurbyID($_POST["ID_utilisateur"]);   
-         /*   $_SESSION['a']=$resultat["ID_utilisateur"];
-            $x=$userC->getutilisateurbyID($_SESSION['a']);*/
-            $conn=$_SESSION['mat'];
-            $id=$conn['idmatiere'];
-            $matiere = $matiereC->affichermatiere();
+    require_once '../Controller/Rec_autreC.php';
+    require_once '../Model/Rec_autre.php' ;
+
+    $id=$_GET['Id_reclamation'];
+
+    if (isset($_POST['Description'] )) 
+    {
+            $rec_autre = new Rec_autre($_POST['Description']);
+            $rec_autreC = new Rec_autreC();
+            $rec_autreC->ajouterRec_autre($rec_autre,$id);
+    }
 
 
-            
-  
+
 ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,15 +27,14 @@ session_start();
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>hogwarts</title>
+   <title>memorial books</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
-   <link rel="stylesheet" href="../Assets/CSS/style3.css">
-   <link rel="stylesheet" href="../Assets/CSS/amir.css">
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
    <!-- Responsive-->
    <link rel="stylesheet" href="../Assets/CSS/responsive.css">
    <!-- fevicon -->
@@ -53,10 +50,9 @@ session_start();
 
 <body class="main-layout contact-page">
    <!-- loader  -->
-   <div class="loader_bg">
-      <div class="loader"><img src="../Assets/Images/loading.gif" alt="#" /></div>
-   </div>
+   
    <!-- end loader -->
+   <!-- header -->
    <header>
       <!-- header inner -->
       <div class="header">
@@ -65,20 +61,30 @@ session_start();
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.html"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
-             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li> <a href="index.php">Home</a> </li>
-                              <li> <a href="#">FORUM</a> </li>
-                              <li ><a href="#">Class</a></li>
+                              <li> <a href="index.php">Home</a> </li>
+                              <li> <a href="about.php">About us</a> </li>
+                              <li class="active"><div class="card-body">
+                                 <div class="btn-group mr-1 mb-1">
+                <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
+             <div class="dropdown-menu">
+                    <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
+                </div>
+               </div>
+          </div></li>
+          <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
-                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -96,7 +102,9 @@ session_start();
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-                  <h2>SUBJECTs</h2>
+               <br>
+                   <br>
+                  <h2>RECLAMATION</h2>
                </div>
             </div>
          </div>
@@ -104,63 +112,56 @@ session_start();
    </div>
    <!-- Contact -->
    <div class="Contact">
-      
+      <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
-                  
-                          
-							
-								
-
-                
-
-							 
-									<?php 
-                           
-                     
-											foreach ($matiere as $matiere) {
-                                    if($matiere['idmatiere']==$id){
-                                     
-									?>
-    
-<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
-<div class="card-header bg-gradient-x-purple-red text-white">
-<div class="row">
-<div class="col">
-<img src="../Assets/Images/amir.PNG">
-</div>
-<div class="col">
-<h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre'] ; ?></h2>  
-                     <a href="front2.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>  "onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button"  value="courses" /> </a><br>
-                     <a href="front4.php?idmatiere=<?php echo $matiere['idmatiere'] ; ?>"onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button"  value="students list" /></a> <br>
-                     
-              <h4 style="color:white;"><strong> coef:</strong>  <?php echo   $matiere['coff'] ; ?>  </h4> 
-              <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong>   <?php echo $matiere['hour'] ; ?>  </h4> 
-</div>
-</div>
-</div>
-</div>  
-
-				
-                       
-                
-  
-							
-						<br> <br>	 
-							
-							
-									<?php
-                                 	}	}
-                              
-									?>
-						</table>
+            <form action='' method="POST">
+               <div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">choisir une reclamation</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+			</div>
+			<div class="card-content collapse show">
+				<div class="table-responsive">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+                                <th scope="col"><label for="Description"><font color="white">Description:</font></label></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+       <td>
+                    <textarea name="Description" id="Description" cols="30" rows="5"></textarea>
+                    </td>
+                    </tr>	
+						</tbody>
+                        
+					</table>
                     
-                  </div>
-               </form>
+                  <section id="sizes-2">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <!-- simple sizes -->
+                        <div class="form-group">
+                            <button type="submit" name="command"name="command" class="btn mr-1 mb-1 btn-success btn-lg" value="Envoyer">Envoyer</button>
+                            <button type="reset" name="command" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                        </div>
+                       
+                    </div>
+                </div>
+</section>
+						
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+        </form>
             </div>
-        
          </div>
       </div>
    </div>
@@ -183,17 +184,17 @@ session_start();
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>contact us</h3>
+                     <h3>Newsletter</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
-                  <button class="Subscribe">Send</button>
+                  <button class="Subscribe">Subscribe</button>
                </div>
             </div>
          </div>
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
          </div>
       </div>
    </footer>
@@ -207,6 +208,8 @@ session_start();
    <!-- sidebar -->
    <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="../Assets/js/custom.js"></script>
+   <script type="text/javascript" src="../Assets/js/Date.js"></script>
+   <script type="text/javascript" src="../Assets/js/radio.js"></script>
 </body>
 
 </html>
