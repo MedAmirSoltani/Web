@@ -86,8 +86,23 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
-                              <li><a href="afficherRec_noteAD.php">Reclamation</a></li>
-                              <li><a href="affichBlocks.php">Absence</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">

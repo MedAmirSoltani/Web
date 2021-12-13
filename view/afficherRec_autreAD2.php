@@ -1,14 +1,14 @@
 <?php
 session_start();
-require '../Controller/Rec_noteC.php';
-include_once     '../Controller/utilisateurC.php';
+    require '../Controller/Rec_autreC.php';
+    include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
-$rec_noteC = new Rec_noteC();
-$rec_notes = $rec_noteC->afficherRec_note();
+    $rec_autreC = new Rec_autreC();
+    $rec_autres = $rec_autreC->afficherRec_autre();
 ?>
 
 <html lang="en">
@@ -140,7 +140,7 @@ $rec_notes = $rec_noteC->afficherRec_note();
             <form>
                <div class="row">
                   <?php
-                  foreach ($rec_notes as $rec_note) {
+                  foreach ($rec_autres as $rec_autre) {
                   ?>
 
                      <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
@@ -150,11 +150,10 @@ $rec_notes = $rec_noteC->afficherRec_note();
                                  <img src="../Assets/Images/reclamation.jpg">
                               </div>
                               <div class="col">
-                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 40px; color:white;">Module : <?php echo $rec_note['Module']; ?></h2>
-                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:#741523;">Description: <?php echo $rec_note['Description']; ?></h2>
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:#741523;">Description: <?php echo $rec_autre['Description']; ?></h2>
                                  <?php if ($x["admin_bool"] == 1) { ?>
-                                    <a href="supprimerRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                    <a href="modifierRec_note.php?Id_note=<?php echo $rec_note['Id_note']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                    <a href="supprimerRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="modifierRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
                                  <?php } ?>
 
                               </div>
