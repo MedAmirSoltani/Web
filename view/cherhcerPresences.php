@@ -1,6 +1,10 @@
 <?php
+ session_start();
     require '../Controller/Registre_appelC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     $registre_appelC = new Registre_appelC();
 
     $registre_appels = $registre_appelC->afficherRegistre_appel();

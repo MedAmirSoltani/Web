@@ -1,6 +1,10 @@
 <?php
+session_start();
     require '../Controller/Rec_noteC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     $rec_noteC = new Rec_noteC();
     $rec_notes = $rec_noteC->afficherRec_note();
 ?>

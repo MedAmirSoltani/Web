@@ -86,8 +86,17 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                               <li><a href="front3etudiant.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
-                              <li><a href="club.php">Reclamation</a></li>
-                              <li><a href="club.php">Reclamation</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="ajouterType_reclamation.php"><i class="ft-user"></i>Faire une Reclamation</a>
+                                       <a class="dropdown-item" href="chercherReclamation.php"><i class="ft-user"></i>Consulter une Reclamation</a>
+                                    </div>
+                                 </div>
+
+                              </li>
+                              <li><a href="cherhcerPresences.php">Absence</a></li>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                               <div class="arrow-up">
 

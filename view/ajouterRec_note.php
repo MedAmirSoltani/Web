@@ -1,9 +1,12 @@
 <?php
-
+   session_start();
     require_once '../Controller/Rec_noteC.php';
     require_once '../Model/Rec_note.php' ;
     $id=$_GET['Id_reclamation'];
-    
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     if ( isset($_POST['Module'] ) && isset($_POST['Description'] )) 
     {
             $rec_note = new Rec_note($_POST['Module'] ,$_POST['Description']);

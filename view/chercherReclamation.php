@@ -1,6 +1,10 @@
 <?php
+session_start();
     require_once '../Controller/Type_reclamationC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     $type_reclamationC = new type_reclamationC();
 
     $type_reclamations = $type_reclamationC->afficherType_reclamation();

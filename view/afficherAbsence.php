@@ -1,6 +1,10 @@
 <?php
+session_start();
     require '../Controller/AbsenceC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     $absenceC = new AbsenceC();
     $absences = $absenceC->afficherAbsence();
 ?>

@@ -1,9 +1,12 @@
 <?php
-
+  session_start();
     require_once '../Controller/Registre_appelC.php';
     require_once '../Model/Registre_appel.php' ;
 
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
 
     if (isset($_POST['IdRegistre'] ) &&isset($_POST['Etudiant'] )&&isset($_POST['Module'] )&&isset($_POST['Date'] )&&isset($_POST['Heure'] )&&isset($_POST['Etat'] )) 
     {

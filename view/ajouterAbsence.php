@@ -1,7 +1,11 @@
 <?php
-
+  session_start();
     require_once '../Controller/AbsenceC.php';
     require_once '../Model/Absence.php' ;
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
     $id=$_GET['Id_reclamation'];
 
     if (isset($_POST['Module'] ) && isset($_POST['Date_absence'] )

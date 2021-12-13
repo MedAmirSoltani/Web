@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once '../Controller/Type_reclamationC.php';
     require_once '../Model/Type_reclamation.php' ;
     require_once '../Controller/Rec_noteC.php';
@@ -7,7 +8,10 @@
     require_once '../Model/Absence.php' ;
     require_once '../Controller/Rec_autreC.php';
     require_once '../Model/Rec_autre.php' ;
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+   $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
 
     if (isset($_POST['Id_note'] ) &&isset($_POST['Module'] ) && isset($_POST['Description'] )) 
     {
