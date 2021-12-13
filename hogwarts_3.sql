@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : lun. 13 déc. 2021 à 02:20
--- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 7.4.24
+-- Host: 127.0.0.1
+-- Generation Time: Dec 13, 2021 at 02:43 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,18 +18,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `hogwarts_3`
+-- Database: `hogwarts_3`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `absence`
+-- Table structure for table `absence`
 --
 
 CREATE TABLE `absence` (
   `Id_absence` int(255) NOT NULL,
-  `Id_etudiant` varchar(255) NOT NULL,
+  `Id_etudiant` int(255) NOT NULL,
   `Module` varchar(255) NOT NULL,
   `Date_absence` date NOT NULL,
   `Heure_absence` time NOT NULL,
@@ -38,17 +38,17 @@ CREATE TABLE `absence` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `absence`
+-- Dumping data for table `absence`
 --
 
 INSERT INTO `absence` (`Id_absence`, `Id_etudiant`, `Module`, `Date_absence`, `Heure_absence`, `Description`, `type_reclamation`) VALUES
-(121, '201JMT3448', 'Base de Donnees', '2021-12-07', '09:38:00', 'Rayen', 2),
-(122, '201JMT3668', 'Projet Technologies web', '2021-11-29', '11:39:00', 'Amir', 2);
+(121, 201, 'Base de Donnees', '2021-12-07', '09:38:00', 'Rayen', 2),
+(122, 201, 'Projet Technologies web', '2021-11-29', '11:39:00', 'Amir', 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archive`
+-- Table structure for table `archive`
 --
 
 CREATE TABLE `archive` (
@@ -65,7 +65,7 @@ CREATE TABLE `archive` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archivecomment`
+-- Table structure for table `archivecomment`
 --
 
 CREATE TABLE `archivecomment` (
@@ -78,7 +78,7 @@ CREATE TABLE `archivecomment` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archivematiere`
+-- Table structure for table `archivematiere`
 --
 
 CREATE TABLE `archivematiere` (
@@ -91,7 +91,7 @@ CREATE TABLE `archivematiere` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archivepost`
+-- Table structure for table `archivepost`
 --
 
 CREATE TABLE `archivepost` (
@@ -105,7 +105,7 @@ CREATE TABLE `archivepost` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archivereply`
+-- Table structure for table `archivereply`
 --
 
 CREATE TABLE `archivereply` (
@@ -118,7 +118,7 @@ CREATE TABLE `archivereply` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `blocks`
+-- Table structure for table `blocks`
 --
 
 CREATE TABLE `blocks` (
@@ -129,20 +129,19 @@ CREATE TABLE `blocks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `blocks`
+-- Dumping data for table `blocks`
 --
 
 INSERT INTO `blocks` (`Id`, `Nom`, `Nbrsalles`, `Typesalles`) VALUES
-(12338, 'opar', 25, '6'),
 (12339, 'rima dhkeya', 24, '22'),
-(12340, 'aa', 3, '4'),
 (12341, 'malek', 22, '22'),
-(12342, 'Kll', 20, '10');
+(12342, 'Kll', 20, '10'),
+(12343, 'Lezmek tfasekh sea eli mawjoudin fi tab salle khater el cle primaire hedhi cle etranger fi tabl sale', 20, '1337');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `club`
+-- Table structure for table `club`
 --
 
 CREATE TABLE `club` (
@@ -152,7 +151,7 @@ CREATE TABLE `club` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `club`
+-- Dumping data for table `club`
 --
 
 INSERT INTO `club` (`idclub`, `nomclub`, `logo`) VALUES
@@ -162,7 +161,7 @@ INSERT INTO `club` (`idclub`, `nomclub`, `logo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -174,19 +173,20 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`Idcomment`, `Comment_text`, `Date_Comment`, `Idpost`, `ID_utilisateur`) VALUES
 (4, 'well well', '2021-12-12', 2, 123456),
 (5, 'MALA JAW WOW MAN', '2021-12-12', 2, 64280570),
 (6, 'etudiant ya3mel fi commenaire LESSSS GOOOOO', '2021-12-12', 4, 64280570),
-(7, 'COMMENT PROF', '2021-12-12', 5, 751805);
+(7, 'COMMENT PROF', '2021-12-12', 5, 751805),
+(8, 'waaaaa', '2021-12-12', 6, 123456);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cour`
+-- Table structure for table `cour`
 --
 
 CREATE TABLE `cour` (
@@ -197,7 +197,7 @@ CREATE TABLE `cour` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `cour`
+-- Dumping data for table `cour`
 --
 
 INSERT INTO `cour` (`idcour`, `ncour`, `file`, `idmatiere`) VALUES
@@ -213,7 +213,7 @@ INSERT INTO `cour` (`idcour`, `ncour`, `file`, `idmatiere`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etudiant`
+-- Table structure for table `etudiant`
 --
 
 CREATE TABLE `etudiant` (
@@ -229,7 +229,7 @@ CREATE TABLE `etudiant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `etudiant`
+-- Dumping data for table `etudiant`
 --
 
 INSERT INTO `etudiant` (`ID`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `classe`) VALUES
@@ -238,7 +238,7 @@ INSERT INTO `etudiant` (`ID`, `email`, `password`, `name`, `first_name`, `date_o
 -- --------------------------------------------------------
 
 --
--- Structure de la table `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -249,7 +249,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`idevent`, `nomevent`, `date`, `idclub`) VALUES
@@ -259,7 +259,7 @@ INSERT INTO `event` (`idevent`, `nomevent`, `date`, `idclub`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `matiere`
+-- Table structure for table `matiere`
 --
 
 CREATE TABLE `matiere` (
@@ -270,7 +270,7 @@ CREATE TABLE `matiere` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `matiere`
+-- Dumping data for table `matiere`
 --
 
 INSERT INTO `matiere` (`idmatiere`, `titre`, `coff`, `hour`) VALUES
@@ -281,7 +281,7 @@ INSERT INTO `matiere` (`idmatiere`, `titre`, `coff`, `hour`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `note`
+-- Table structure for table `note`
 --
 
 CREATE TABLE `note` (
@@ -293,7 +293,7 @@ CREATE TABLE `note` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `note`
+-- Dumping data for table `note`
 --
 
 INSERT INTO `note` (`idnote`, `nom`, `prenom`, `notes`, `idmatiere`) VALUES
@@ -309,7 +309,7 @@ INSERT INTO `note` (`idnote`, `nom`, `prenom`, `notes`, `idmatiere`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
@@ -324,19 +324,20 @@ CREATE TABLE `post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `post`
+-- Dumping data for table `post`
 --
 
 INSERT INTO `post` (`Idpost`, `Title`, `Picture`, `Date`, `Description`, `Ncomments`, `Nvotes`, `ID_utilisateur`) VALUES
 (2, 'TEST', '1638139567708.png', '2021-12-12', 'WELLISITWORKINGLADS', 3, 0, 123456),
 (3, 'POST', '248017401_262365422493030_6822324499029606033_n.jpg', '2021-12-12', 'GOIRGRGRHGRHGORG', 0, 0, 123456),
-(4, 'ETUDIANT', '1631804923136.gif', '2021-12-12', 'WOWETUDIANMAMAMIA', 1, 0, 64280570),
-(5, 'PROF', '1635194283208.png', '2021-12-12', 'PROFPROFPROF', 1, 1, 751805);
+(4, 'ETUDIANT', '1631804923136.gif', '2021-12-12', 'WOWETUDIANMAMAMIA', 1, 1, 64280570),
+(5, 'PROF', '1635194283208.png', '2021-12-12', 'PROFPROFPROF', 1, 1, 751805),
+(6, 'AMIRGAY', '11426760_462304253925016_3791291957869282694_n.jpg', '2021-12-12', 'SAHEBANISGAYYYY', 1, 0, 123456);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prof`
+-- Table structure for table `prof`
 --
 
 CREATE TABLE `prof` (
@@ -352,7 +353,7 @@ CREATE TABLE `prof` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `prof`
+-- Dumping data for table `prof`
 --
 
 INSERT INTO `prof` (`ID_prof`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `idmatiere`) VALUES
@@ -361,62 +362,62 @@ INSERT INTO `prof` (`ID_prof`, `email`, `password`, `name`, `first_name`, `date_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rec_autre`
+-- Table structure for table `rec_autre`
 --
 
 CREATE TABLE `rec_autre` (
   `Id_autre` int(255) NOT NULL,
-  `Id_etudiant` varchar(255) NOT NULL,
+  `Id_etudiant` int(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
   `type_reclamation` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `rec_autre`
+-- Dumping data for table `rec_autre`
 --
 
 INSERT INTO `rec_autre` (`Id_autre`, `Id_etudiant`, `Description`, `type_reclamation`) VALUES
-(2, '201JMT3448', 'Rayen', 3);
+(2, 201, 'Rayen', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rec_note`
+-- Table structure for table `rec_note`
 --
 
 CREATE TABLE `rec_note` (
   `Id_note` int(255) NOT NULL,
-  `Id_etudiant` varchar(255) NOT NULL,
+  `Id_etudiant` int(255) NOT NULL,
   `Module` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
   `type_reclamation` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `rec_note`
+-- Dumping data for table `rec_note`
 --
 
 INSERT INTO `rec_note` (`Id_note`, `Id_etudiant`, `Module`, `Description`, `type_reclamation`) VALUES
-(11, '201JMT3448', 'Projet Technologies web', 'Rayen', 1),
-(12, '201JMT3668', 'Mathematique', 'Amir', 1),
-(13, '201JFT3558', 'Mathematique', 'Djapa', 1),
-(14, '201JMT3339', 'Base de Donnees', 'ADAM', 1),
-(15, '201JMT3888', 'Projet Technologies web', 'SEL3A', 1),
-(16, '201JMT3448', 'Mathematique', 'RAYEN2', 1),
-(121, '', '', '', 1),
-(122, '', '', '', 1),
-(123, '', '', '', 1),
-(124, '', '', '', 1);
+(11, 201, 'Projet Technologies web', 'Rayen', 1),
+(12, 201, 'Mathematique', 'Amir', 1),
+(13, 201, 'Mathematique', 'Djapa', 1),
+(14, 201, 'Base de Donnees', 'ADAM', 1),
+(15, 201, 'Projet Technologies web', 'SEL3A', 1),
+(16, 201, 'Mathematique', 'RAYEN2', 1),
+(121, 0, '', '', 1),
+(122, 0, '', '', 1),
+(123, 0, '', '', 1),
+(124, 0, '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `registre_appel`
+-- Table structure for table `registre_appel`
 --
 
 CREATE TABLE `registre_appel` (
   `IdRegistre` int(255) NOT NULL,
-  `Id_etudiant` varchar(255) NOT NULL,
+  `Id_etudiant` int(255) NOT NULL,
   `Etudiant` varchar(255) NOT NULL,
   `Module` varchar(255) NOT NULL,
   `Date` date NOT NULL,
@@ -425,20 +426,20 @@ CREATE TABLE `registre_appel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `registre_appel`
+-- Dumping data for table `registre_appel`
 --
 
 INSERT INTO `registre_appel` (`IdRegistre`, `Id_etudiant`, `Etudiant`, `Module`, `Date`, `Heure`, `Etat`) VALUES
-(1, '201JMT3448', 'Mohamed Rayen Dhraief', 'Projet Technologies web', '2021-11-28', '15:13:00', 'présent'),
-(3, '201JFT3558', 'Yesmine Guesmi', 'Mathematique', '2021-11-12', '14:21:00', 'absent'),
-(4, '201JMT3668', 'Amir Soltani', 'Mathematique', '2021-11-04', '15:54:00', 'présent'),
-(5, '201JMT3339', 'Adam Rafraf', 'Mathematique', '2021-12-06', '13:42:32', 'absent'),
-(6, '201JMT3888', 'Ala Mazouz', 'Base de Donnees', '2021-12-03', '09:42:32', 'absent');
+(1, 201, 'Mohamed Rayen Dhraief', 'Projet Technologies web', '2021-11-28', '15:13:00', 'présent'),
+(3, 201, 'Yesmine Guesmi', 'Mathematique', '2021-11-12', '14:21:00', 'absent'),
+(4, 201, 'Amir Soltani', 'Mathematique', '2021-11-04', '15:54:00', 'présent'),
+(5, 201, 'Adam Rafraf', 'Mathematique', '2021-12-06', '13:42:32', 'absent'),
+(6, 201, 'Ala Mazouz', 'Base de Donnees', '2021-12-03', '09:42:32', 'absent');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reply`
+-- Table structure for table `reply`
 --
 
 CREATE TABLE `reply` (
@@ -450,7 +451,7 @@ CREATE TABLE `reply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `reply`
+-- Dumping data for table `reply`
 --
 
 INSERT INTO `reply` (`Idreply`, `Reply_text`, `Date_reply`, `idcomment`, `ID_utilisateur`) VALUES
@@ -461,7 +462,7 @@ INSERT INTO `reply` (`Idreply`, `Reply_text`, `Date_reply`, `idcomment`, `ID_uti
 -- --------------------------------------------------------
 
 --
--- Structure de la table `salles`
+-- Table structure for table `salles`
 --
 
 CREATE TABLE `salles` (
@@ -474,19 +475,16 @@ CREATE TABLE `salles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `salles`
+-- Dumping data for table `salles`
 --
 
 INSERT INTO `salles` (`Id`, `nom`, `Nbrprojecteurs`, `Nbrtables`, `Nbrchaises`, `id_block`) VALUES
-(11, 'az', 3, 2, 2, 12338),
-(14, 'rima', 2, 1, 2, 12338),
-(16, 'Rima', 12, 13, 36, 12339),
-(20, 'Bifhgfd', 2, 2, 2, 12338);
+(21, 'Lezmek tfasekh sea eli mawjoudin fi tab salle khater el cle primaire hedhi cle etranger fi tabl sale', 1337, 420, 69, 12339);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_reclamation`
+-- Table structure for table `type_reclamation`
 --
 
 CREATE TABLE `type_reclamation` (
@@ -495,7 +493,7 @@ CREATE TABLE `type_reclamation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `type_reclamation`
+-- Dumping data for table `type_reclamation`
 --
 
 INSERT INTO `type_reclamation` (`Id_reclamation`, `Type_reclamation`) VALUES
@@ -506,7 +504,7 @@ INSERT INTO `type_reclamation` (`Id_reclamation`, `Type_reclamation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -523,7 +521,7 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `utilisateur`
+-- Dumping data for table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`ID_utilisateur`, `email`, `password`, `name`, `first_name`, `date_of_birth`, `role`, `profilpicture`, `admin_bool`, `code`) VALUES
@@ -532,56 +530,58 @@ INSERT INTO `utilisateur` (`ID_utilisateur`, `email`, `password`, `name`, `first
 (64280570, 'yesmine.guesmi@esprit.tn', 'Djapa18072001', 'fsd', 'fsd', '2001-01-01', 'Etudiant', 'aa.png', 0, 0);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `absence`
+-- Indexes for table `absence`
 --
 ALTER TABLE `absence`
   ADD PRIMARY KEY (`Id_absence`),
-  ADD KEY `fk_absence_type_reclamation` (`type_reclamation`);
+  ADD KEY `fk_absence_type_reclamation` (`type_reclamation`),
+  ADD KEY `pjgyvygyt` (`Id_etudiant`),
+  ADD KEY `type_reclamation` (`type_reclamation`);
 
 --
--- Index pour la table `archivecomment`
+-- Indexes for table `archivecomment`
 --
 ALTER TABLE `archivecomment`
   ADD PRIMARY KEY (`Idcommantar`),
   ADD KEY `Idpostarfk` (`Idpostar`);
 
 --
--- Index pour la table `archivematiere`
+-- Indexes for table `archivematiere`
 --
 ALTER TABLE `archivematiere`
   ADD PRIMARY KEY (`idmatiere`);
 
 --
--- Index pour la table `archivepost`
+-- Indexes for table `archivepost`
 --
 ALTER TABLE `archivepost`
   ADD PRIMARY KEY (`Idpostar`);
 
 --
--- Index pour la table `archivereply`
+-- Indexes for table `archivereply`
 --
 ALTER TABLE `archivereply`
   ADD PRIMARY KEY (`Idreply`),
   ADD KEY `Idcommentarfk` (`idcommentar`);
 
 --
--- Index pour la table `blocks`
+-- Indexes for table `blocks`
 --
 ALTER TABLE `blocks`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `club`
+-- Indexes for table `club`
 --
 ALTER TABLE `club`
   ADD PRIMARY KEY (`idclub`);
 
 --
--- Index pour la table `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`Idcomment`),
@@ -589,48 +589,48 @@ ALTER TABLE `comment`
   ADD KEY `uticomment` (`ID_utilisateur`);
 
 --
--- Index pour la table `cour`
+-- Indexes for table `cour`
 --
 ALTER TABLE `cour`
   ADD PRIMARY KEY (`idcour`),
   ADD KEY `matiere_cour` (`idmatiere`);
 
 --
--- Index pour la table `etudiant`
+-- Indexes for table `etudiant`
 --
 ALTER TABLE `etudiant`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID` (`ID`);
 
 --
--- Index pour la table `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`idevent`),
   ADD KEY `eventclub` (`idclub`);
 
 --
--- Index pour la table `matiere`
+-- Indexes for table `matiere`
 --
 ALTER TABLE `matiere`
   ADD PRIMARY KEY (`idmatiere`);
 
 --
--- Index pour la table `note`
+-- Indexes for table `note`
 --
 ALTER TABLE `note`
   ADD PRIMARY KEY (`idnote`),
   ADD KEY `matiere_note` (`idmatiere`);
 
 --
--- Index pour la table `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`Idpost`),
   ADD KEY `idpost` (`ID_utilisateur`);
 
 --
--- Index pour la table `prof`
+-- Indexes for table `prof`
 --
 ALTER TABLE `prof`
   ADD PRIMARY KEY (`ID_prof`),
@@ -638,27 +638,30 @@ ALTER TABLE `prof`
   ADD KEY `idmatiere` (`idmatiere`);
 
 --
--- Index pour la table `rec_autre`
+-- Indexes for table `rec_autre`
 --
 ALTER TABLE `rec_autre`
   ADD PRIMARY KEY (`Id_autre`),
-  ADD KEY `fk_autre_type_reclamation` (`type_reclamation`);
+  ADD KEY `waara` (`type_reclamation`),
+  ADD KEY `hjkkbg` (`Id_etudiant`);
 
 --
--- Index pour la table `rec_note`
+-- Indexes for table `rec_note`
 --
 ALTER TABLE `rec_note`
   ADD PRIMARY KEY (`Id_note`),
-  ADD KEY `fk_note_type_reclamation` (`type_reclamation`);
+  ADD KEY `idkmen` (`type_reclamation`),
+  ADD KEY `iddd` (`Id_etudiant`);
 
 --
--- Index pour la table `registre_appel`
+-- Indexes for table `registre_appel`
 --
 ALTER TABLE `registre_appel`
-  ADD PRIMARY KEY (`IdRegistre`);
+  ADD PRIMARY KEY (`IdRegistre`),
+  ADD KEY `idkman` (`Id_etudiant`);
 
 --
--- Index pour la table `reply`
+-- Indexes for table `reply`
 --
 ALTER TABLE `reply`
   ADD PRIMARY KEY (`Idreply`),
@@ -666,232 +669,241 @@ ALTER TABLE `reply`
   ADD KEY `utireply` (`ID_utilisateur`);
 
 --
--- Index pour la table `salles`
+-- Indexes for table `salles`
 --
 ALTER TABLE `salles`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `id_block` (`id_block`);
 
 --
--- Index pour la table `type_reclamation`
+-- Indexes for table `type_reclamation`
 --
 ALTER TABLE `type_reclamation`
   ADD PRIMARY KEY (`Id_reclamation`);
 
 --
--- Index pour la table `utilisateur`
+-- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`ID_utilisateur`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `absence`
+-- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
   MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
--- AUTO_INCREMENT pour la table `archivecomment`
+-- AUTO_INCREMENT for table `archivecomment`
 --
 ALTER TABLE `archivecomment`
   MODIFY `Idcommantar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `archivematiere`
+-- AUTO_INCREMENT for table `archivematiere`
 --
 ALTER TABLE `archivematiere`
   MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT pour la table `archivepost`
+-- AUTO_INCREMENT for table `archivepost`
 --
 ALTER TABLE `archivepost`
   MODIFY `Idpostar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `archivereply`
+-- AUTO_INCREMENT for table `archivereply`
 --
 ALTER TABLE `archivereply`
   MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT pour la table `blocks`
+-- AUTO_INCREMENT for table `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12343;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12344;
 
 --
--- AUTO_INCREMENT pour la table `club`
+-- AUTO_INCREMENT for table `club`
 --
 ALTER TABLE `club`
   MODIFY `idclub` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT pour la table `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `cour`
+-- AUTO_INCREMENT for table `cour`
 --
 ALTER TABLE `cour`
   MODIFY `idcour` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
--- AUTO_INCREMENT pour la table `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `idevent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT pour la table `matiere`
+-- AUTO_INCREMENT for table `matiere`
 --
 ALTER TABLE `matiere`
   MODIFY `idmatiere` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT pour la table `note`
+-- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
   MODIFY `idnote` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT pour la table `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT pour la table `rec_autre`
+-- AUTO_INCREMENT for table `rec_autre`
 --
 ALTER TABLE `rec_autre`
   MODIFY `Id_autre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `rec_note`
+-- AUTO_INCREMENT for table `rec_note`
 --
 ALTER TABLE `rec_note`
   MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
--- AUTO_INCREMENT pour la table `registre_appel`
+-- AUTO_INCREMENT for table `registre_appel`
 --
 ALTER TABLE `registre_appel`
   MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT pour la table `reply`
+-- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
   MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- AUTO_INCREMENT pour la table `salles`
+-- AUTO_INCREMENT for table `salles`
 --
 ALTER TABLE `salles`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT pour la table `type_reclamation`
+-- AUTO_INCREMENT for table `type_reclamation`
 --
 ALTER TABLE `type_reclamation`
-  MODIFY `Id_reclamation` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `Id_reclamation` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `absence`
+-- Constraints for table `absence`
 --
 ALTER TABLE `absence`
-  ADD CONSTRAINT `fk_absence_type_reclamation` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `iuhiug` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pjgyvygyt` FOREIGN KEY (`Id_etudiant`) REFERENCES `etudiant` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `archivecomment`
+-- Constraints for table `archivecomment`
 --
 ALTER TABLE `archivecomment`
   ADD CONSTRAINT `Idpostarfk` FOREIGN KEY (`Idpostar`) REFERENCES `archivepost` (`Idpostar`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `archivereply`
+-- Constraints for table `archivereply`
 --
 ALTER TABLE `archivereply`
   ADD CONSTRAINT `Idcommentarfk` FOREIGN KEY (`idcommentar`) REFERENCES `archivecomment` (`Idcommantar`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `PostComment` FOREIGN KEY (`Idpost`) REFERENCES `post` (`Idpost`) ON DELETE CASCADE,
   ADD CONSTRAINT `uticomment` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `cour`
+-- Constraints for table `cour`
 --
 ALTER TABLE `cour`
   ADD CONSTRAINT `matiere_cour` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `etudiant`
+-- Constraints for table `etudiant`
 --
 ALTER TABLE `etudiant`
   ADD CONSTRAINT `utilisateur_etudiant` FOREIGN KEY (`ID`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `event`
+-- Constraints for table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `eventclub` FOREIGN KEY (`idclub`) REFERENCES `club` (`idclub`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `note`
+-- Constraints for table `note`
 --
 ALTER TABLE `note`
   ADD CONSTRAINT `matiere_note` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `post`
+-- Constraints for table `post`
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `idpost` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `prof`
+-- Constraints for table `prof`
 --
 ALTER TABLE `prof`
   ADD CONSTRAINT `matiere_prof` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`),
   ADD CONSTRAINT `utilisateur_prof` FOREIGN KEY (`ID_prof`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `rec_autre`
+-- Constraints for table `rec_autre`
 --
 ALTER TABLE `rec_autre`
-  ADD CONSTRAINT `fk_autre_type_reclamation` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hjkkbg` FOREIGN KEY (`Id_etudiant`) REFERENCES `etudiant` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `waara` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `rec_note`
+-- Constraints for table `rec_note`
 --
 ALTER TABLE `rec_note`
-  ADD CONSTRAINT `fk_note_type_reclamation` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `iddd` FOREIGN KEY (`Id_etudiant`) REFERENCES `etudiant` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `idkmen` FOREIGN KEY (`type_reclamation`) REFERENCES `type_reclamation` (`Id_reclamation`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `reply`
+-- Constraints for table `registre_appel`
+--
+ALTER TABLE `registre_appel`
+  ADD CONSTRAINT `idkman` FOREIGN KEY (`Id_etudiant`) REFERENCES `etudiant` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `reply`
 --
 ALTER TABLE `reply`
   ADD CONSTRAINT `reply-comment` FOREIGN KEY (`idcomment`) REFERENCES `comment` (`Idcomment`) ON DELETE CASCADE,
   ADD CONSTRAINT `utireply` FOREIGN KEY (`ID_utilisateur`) REFERENCES `utilisateur` (`ID_utilisateur`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `salles`
+-- Constraints for table `salles`
 --
 ALTER TABLE `salles`
-  ADD CONSTRAINT `salles_ibfk_1` FOREIGN KEY (`id_block`) REFERENCES `blocks` (`Id`);
+  ADD CONSTRAINT `salles_ibfk_1` FOREIGN KEY (`id_block`) REFERENCES `blocks` (`Id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
