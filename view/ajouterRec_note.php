@@ -1,18 +1,17 @@
 <?php
-   session_start();
-    require_once '../Controller/Rec_noteC.php';
-    require_once '../Model/Rec_note.php' ;
-    $id=$_GET['Id_reclamation'];
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php';
-   $userC = new utilisateurC();
-    $x = $userC->getutilisateurbyID($_SESSION['a']);
-    if ( isset($_POST['Module'] ) && isset($_POST['Description'] )) 
-    {
-            $rec_note = new Rec_note($_POST['Module'] ,$_POST['Description']);
-            $rec_noteC = new Rec_noteC();
-            $rec_noteC->ajouterRec_note($rec_note,$id);
-    }
+session_start();
+require_once '../Controller/Rec_noteC.php';
+require_once '../Model/Rec_note.php';
+$id = $_GET['Id_reclamation'];
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+if (isset($_POST['Module']) && isset($_POST['Description'])) {
+   $rec_note = new Rec_note($_POST['Module'], $_POST['Description']);
+   $rec_noteC = new Rec_noteC();
+   $rec_noteC->ajouterRec_note($rec_note, $id, $x["ID_utilisateur"]);
+}
 
 
 
@@ -52,7 +51,7 @@
 
 <body class="main-layout contact-page">
    <!-- loader  -->
-   
+
    <!-- end loader -->
    <!-- header -->
    <header>
@@ -74,17 +73,19 @@
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">About us</a> </li>
-                              <li class="active"><div class="card-body">
-                                 <div class="btn-group mr-1 mb-1">
-                <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
-             <div class="dropdown-menu">
-                    <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
-                </div>
-               </div>
-          </div></li>
-          <li> <a href="cherhcerPresences.php">Absence</a> </li>
+                              <li class="active">
+                                 <div class="card-body">
+                                    <div class="btn-group mr-1 mb-1">
+                                       <button type="button" class="btn btn-secondary btn-min-width dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Reclamation</button>
+                                       <div class="dropdown-menu">
+                                          <a class="dropdown-item" href="ajouterType_reclamation.php">Faire une Reclamation</a>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="chercherReclamation.php">Consulter une Reclamation</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
@@ -104,8 +105,8 @@
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-               <br>
-                   <br>
+                  <br>
+                  <br>
                   <h2>RECLAMATION</h2>
                </div>
             </div>
@@ -117,56 +118,61 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <form action='' method="POST">
-               <div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">choisir une reclamation</h4>
-				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-			</div>
-			<div class="card-content collapse show">
-				<div class="table-responsive">
-					<table class="table">
-						<thead class="thead-dark">
-							<tr>
-                                <th scope="col"><label for="Module"><font color="white">Module:</font></label></th>
-                                <th scope="col"><label for="Description"><font color="white">Description:</font></label></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-                            <td><select type="text" name="Module" id="Module">
-                            <option value="">--Veuillez choisir--</option>
-                            <option value="Projet Technologies web">Projet Technologies web</option>
-                            <option value="Mathematique">Mathematique</option>
-                            <option value="Base de Donnees">Base de Donnees</option></select></td>
-       <td>
-                    <textarea name="Description" id="Description" cols="30" rows="5"></textarea>
-                    </td>
-                    </tr>	
-						</tbody>
-                       
+               <form action='' method="POST">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="card">
+                           <div class="card-header">
+                              <h4 class="card-title">choisir une reclamation</h4>
+                              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                           </div>
+                           <div class="card-content collapse show">
+                              <div class="table-responsive">
+                                 <table class="table">
+                                    <thead class="thead-dark">
+                                       <tr>
+                                          <th scope="col"><label for="Module">
+                                                <font color="white">Module:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Description">
+                                                <font color="white">Description:</font>
+                                             </label></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td><select type="text" name="Module" id="Module">
+                                                <option value="">--Veuillez choisir--</option>
+                                                <option value="Projet Technologies web">Projet Technologies web</option>
+                                                <option value="Mathematique">Mathematique</option>
+                                                <option value="Base de Donnees">Base de Donnees</option>
+                                             </select></td>
+                                          <td>
+                                             <textarea name="Description" id="Description" cols="30" rows="5"></textarea>
+                                          </td>
+                                       </tr>
+                                    </tbody>
 
-					</table>
-               <section id="sizes-2">
-                <div class="card-content collapse show">
-                    <div class="card-body">
-                        <!-- simple sizes -->
-                        <div class="form-group">
-                            <button type="submit" name="command"name="command" class="btn mr-1 mb-1 btn-success btn-lg" value="Envoyer">Envoyer</button>
-                            <button type="reset" name="command" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+
+                                 </table>
+                                 <section id="sizes-2">
+                                    <div class="card-content collapse show">
+                                       <div class="card-body">
+                                          <!-- simple sizes -->
+                                          <div class="form-group">
+                                             <button type="submit" name="command" name="command" class="btn mr-1 mb-1 btn-success btn-lg" value="Envoyer">Envoyer</button>
+                                             <button type="reset" name="command" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                                          </div>
+
+                                       </div>
+                                    </div>
+                                 </section>
+                              </div>
+                           </div>
                         </div>
-                       
-                    </div>
-                </div>
-</section>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-        </form>
+                     </div>
+                  </div>
+               </form>
             </div>
          </div>
       </div>
