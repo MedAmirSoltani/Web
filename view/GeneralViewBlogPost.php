@@ -167,7 +167,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">Posted on <?php echo $test["Date"]; ?></div>
                         <!-- Post categories-->
-                        
+
 
                     </header>
                     <!-- Preview image figure-->
@@ -220,33 +220,34 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                                                     <div class="fw-bold"><?php echo $replyer["name"]; ?></div>
                                                     <?php echo  $reply["Reply_text"] ?>
                                                     <br>
-                                                    <?php  if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] == $reply["ID_utilisateur"]) { ?>
-                                                    <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
+                                                    <?php if (($x["admin_bool"]) == 1 || $x["ID_utilisateur"] == $reply["ID_utilisateur"]) { ?>
+                                                        <a class="btn btn-danger btn-min-width mr-1 mb-1" href="RemoveBlogReply.php?Idreply=<?php echo $reply['Idreply']; ?>">Delete<i class="ft-command"></i></a>
                                                 </div>
                                             </div>
-                                        <?php }} ?>
-                                        <!-- Child comment 2-->
+                                    <?php }
+                                                } ?>
+                                    <!-- Child comment 2-->
 
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold"><?php echo $x["name"]; ?></div>
-
-
-
-                                                <form action="" method="POST" class="mb-4" onsubmit="Verify()">
-                                                    <input type="text" name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!" />
-                                                    <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
-                                                    <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
-                                                    <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
-
-
-                                                </form>
+                                    <div class="d-flex mt-4">
+                                        <div class="flex-shrink-0"><img class="rounded-circle" style="width:50; height:50px;" src="../Assets/uploads/<?php echo $x['profilpicture'] ?>" alt="..." /></div>
+                                        <div class="ms-3">
+                                            <div class="fw-bold"><?php echo $x["name"]; ?></div>
 
 
 
-                                            </div>
+                                            <form action="" method="POST" class="mb-4" onsubmit="Verify()">
+                                                <input type="text" name="Reply_text" id="Comment" class="form-control" rows="3" placeholder="Join the discussion and leave a reply!" />
+                                                <input type="text" name="Idcomment" id="idcomment" value="<?php echo $comment["Idcomment"]; ?>" class="text-input" hidden>
+                                                <input type="date" name="Date_reply" id="Date" class="text-input" hidden>
+                                                <input type="submit" value="Reply" class="btn btn-dark btn-min-width mr-1">
+
+
+                                            </form>
+
+
+
                                         </div>
+                                    </div>
 
                                     </div>
                                 </div>
@@ -266,7 +267,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="card mb-4">
                     <div class="card-header">Side Widget</div>
                     <div class="card-body">You can put anything you want inside of these side widgets. They are easy to

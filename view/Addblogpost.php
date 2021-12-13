@@ -100,8 +100,26 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
                     </li>
                     <li><a href="front3admin.php">Subject</a></li>
-                    <li><a href="contact.php">classe</a></li>
-                    <li><a href="afficherutilisateur.php">Admin Pannel</a></li>
+                    <li><a href="affichBlocks.php">class</a></li>
+                    <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+
+
+
+
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <div class="arrow_box_right">
+
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                          <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                          <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                        </div>
+                      </div>
+
+                    </li>
+                    <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                    <li><a href="afficherutilisateur.php">Panel</a></li>
+
                     <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                     <div class="arrow-up">
 
@@ -153,5 +171,14 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
 </body>
 <script src="../assets/ASFO/js/AddBlog1.js"></script>
+<script src="../Assets/js/jquery.min.js"></script>
+<script src="../Assets/js/popper.min.js"></script>
+<script src="../Assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Assets/js/jquery-3.0.0.min.js"></script>
+<script src="../Assets/js/plugin.js"></script>
+<script src="../Assets/js/click.js"></script>
+<!-- sidebar -->
+<script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../Assets/js/custom.js"></script>
 
 </html>
