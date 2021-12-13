@@ -8,7 +8,8 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
     $absenceC = new AbsenceC();
-    $absences = $absenceC->afficherAbsence();
+    $id = $_GET["Id_absence"];
+    $absences = $absenceC->getAbsencesbyID($id);
 ?>
 
 <html lang="en">

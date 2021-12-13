@@ -7,13 +7,15 @@
    $userC = new utilisateurC();
     $x = $userC->getutilisateurbyID($_SESSION['a']);
     $registre_appelC = new Registre_appelC();
-    
+    $etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
 
-    if (isset($_POST['IdRegistre'] ) && isset($_POST['Etudiant'] )&& isset($_POST['Module'] )&& isset($_POST['Date'] )&& isset($_POST['Heure'] )&& isset($_POST['Etat'] )) 
+    if (isset($_POST['Etudiant'] )&& isset($_POST['Module'] )&& isset($_POST['Date'] )&& isset($_POST['Heure'] )&& isset($_POST['Etat'] )) 
     {
-        echo $_POST['Etudiant'] ;
-            $registre_appel = new Registre_appel($_POST['IdRegistre'] , $_POST['Etudiant'],$_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
-            $registre_appelC->modifierRegistre_appel($registre_appel);
+        
+            $registre_appel = new Registre_appel($_POST['Etudiant'],$_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
+            $et=$etudiantC->getetudiantbyName($_POST["Etudiant"]);
+            $registre_appelC->modifierRegistre_appel($registre_appel,$_GET['IdRegistre'],$et["ID"]);
             header('Location:afficherRegistre_appel.php');
     }else
     {
@@ -208,10 +210,9 @@
        
        <td><select type="text" value="<?php echo $a['Etudiant'];?>" name="Etudiant" id="Etudiant" >
                     <option value=""><?php echo $a['Etudiant'];?></option>
-                            <option value="Mohamed Rayen Dhraief">Mohamed Rayen Dhraief</option>
-                            <option value="Amir Soltani">Amir Soltani</option>
-                            <option value="Yesmine Guesmi">Yesmine Guesmi</option>
-                            <option value="Adam Rafraf">Adam Rafraf</option></select></td>
+                    <?php foreach ($etudiants as $etudiant) { ?>
+                                      <option value="<?php echo $etudiant["name"]; ?>"><?php echo $etudiant["name"]; ?></option>
+                                    <?php } ?></select></td>
                  
                     <td><input type="date" value="<?php echo $a['Date'];?>" name="Date" id="userdate" onchange="TDate()"  
                     min="2021-09-13"  max="2022-06-06" ></td>

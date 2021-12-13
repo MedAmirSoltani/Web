@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 13 déc. 2021 à 16:44
+-- Généré le : lun. 13 déc. 2021 à 19:57
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 7.4.24
 
@@ -43,7 +43,7 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`Id_absence`, `Id_etudiant`, `Module`, `Date_absence`, `Heure_absence`, `Description`, `type_reclamation`) VALUES
-(1, 64280570, 'Mathematique', '2021-12-06', '14:09:00', 'aaaaaaaaaaa', 2);
+(2, 69113176, 'Base de Donnees', '2021-12-11', '12:26:00', 'updated', 2);
 
 -- --------------------------------------------------------
 
@@ -378,7 +378,7 @@ CREATE TABLE `rec_autre` (
 --
 
 INSERT INTO `rec_autre` (`Id_autre`, `Id_etudiant`, `Description`, `type_reclamation`) VALUES
-(1, 64280570, 'awawawaw', 3);
+(1, 64280570, 'uuuuuuuuuuui', 3);
 
 -- --------------------------------------------------------
 
@@ -399,8 +399,7 @@ CREATE TABLE `rec_note` (
 --
 
 INSERT INTO `rec_note` (`Id_note`, `Id_etudiant`, `Module`, `Description`, `type_reclamation`) VALUES
-(2, 64280570, 'Projet Technologies web', 'fgdfgdgd', 1),
-(3, 64280570, 'Base de Donnees', 'tttttttt', 1),
+(3, 64280570, 'Mathematique', 'opoooooooo', 1),
 (4, 69113176, 'Mathematique', 'yaaaaaaaaa', 1);
 
 -- --------------------------------------------------------
@@ -424,8 +423,7 @@ CREATE TABLE `registre_appel` (
 --
 
 INSERT INTO `registre_appel` (`IdRegistre`, `Id_etudiant`, `Etudiant`, `Module`, `Date`, `Heure`, `Etat`) VALUES
-(1, 64280570, 'fsd', 'Mathematique', '2021-12-12', '09:11:00', 'present'),
-(2, 69113176, 'Rayen', 'Mathematique', '2021-11-30', '17:28:00', 'absent');
+(3, 64280570, 'Rayen', 'Mathematique', '2021-12-10', '11:40:00', '');
 
 -- --------------------------------------------------------
 
@@ -687,7 +685,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `archivecomment`
@@ -777,7 +775,7 @@ ALTER TABLE `rec_note`
 -- AUTO_INCREMENT pour la table `registre_appel`
 --
 ALTER TABLE `registre_appel`
-  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `reply`

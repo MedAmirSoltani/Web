@@ -7,7 +7,6 @@ $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $registre_appelC = new Registre_appelC();
 $registre_appels = $registre_appelC->afficherRegistre_appel();
-
 ?>
 
 <html lang="en">
@@ -155,10 +154,10 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
                                  Nom Etudiant : <?php echo $registre_appel["Etudiant"]; ?></h2>
 
                                     <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:white;">Identifiant Etudiant :<?php echo $registre_appel['Id_etudiant']; ?></h2>
-                                    <a href="afficherRegistre_appelAD2.php?IdRegistre =<?php echo $registre_appel['IdRegistre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
+                                    <a href="afficherRegistre_appelAD2.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Montrer Reclamation" /> </a><br>
                                     <?php if ($x["admin_bool"] == 1) { ?>
-                                       <a href="supprimerRegistre_appel.php?IdRegistre =<?php echo $registre_appel['IdRegistre ']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                       <a href="modifierRegistre_appel.php?IdRegistre =<?php echo $registre_appel['IdRegistre ']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                       <a href="supprimerRegistre_appel.php?IdRegistre =<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                       <a href="modifierRegistre_appel.php?IdRegistre=<?php echo $registre_appel['IdRegistre']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
                                     <?php } ?>
                               </div>
                            </div>

@@ -9,7 +9,6 @@ $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
 $rec_noteC = new Rec_noteC();
 $id = $_GET["Id_note"];
-echo $id;
 $rec_notes = $rec_noteC->getRec_notesbyID($id);
 ?>
 

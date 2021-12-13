@@ -36,6 +36,23 @@
                  $th->getMessage();
             }
         }
+        function getRec_autresbyID($id)
+        {
+            $requete = "select * from rec_autre where Id_autre=:id ";
+            $config = config::getConnexion();
+            try {
+                $querry = $config->prepare($requete);
+                $querry->execute(
+                    [
+                        'id' => $id
+                    ]
+                );
+                $result = $querry->fetchAll();
+                return $result;
+            } catch (PDOException $th) {
+                $th->getMessage();
+            }
+        }
 
         function ajouterRec_autre($rec_autre,$id,$idu)
         {
@@ -56,7 +73,7 @@
                  $th->getMessage();
             }
         }
-        function modifierRec_autre($rec_autre)
+        function modifierRec_autre($rec_autre,$id)
         {
             $config = config::getConnexion();
             try {
@@ -67,7 +84,7 @@
                 where Id_autre=:Id_autre
                 ');
                 $querry->execute([
-                    'Id_autre'=>$rec_autre->getId_autre(),
+                    'Id_autre'=>$id,
                     'Description'=>$rec_autre->getDescription()
                 ]);
             } catch (PDOException $th) {

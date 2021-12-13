@@ -8,7 +8,8 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
     $rec_autreC = new Rec_autreC();
-    $rec_autres = $rec_autreC->afficherRec_autre();
+    $id = $_GET["Id_autre"];
+    $rec_autres = $rec_autreC->getRec_autresbyID($id);
 ?>
 
 <html lang="en">

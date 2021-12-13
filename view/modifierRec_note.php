@@ -10,10 +10,9 @@ $rec_noteC = new Rec_noteC();
 
 
 if (isset($_POST['Module']) && isset($_POST['Description'])) {
-  echo $_POST['Module'];
   $rec_note = new Rec_note($_POST['Module'], $_POST['Description']);
   $rec_noteC->modifierRec_note($rec_note,$_GET['Id_note']);
-  header('Location:afficherRec_note.php');
+  header('Location:afficherLesReclamations.php');
 } else {
   $a = $rec_noteC->getRec_notebyID($_GET['Id_note']);
 }

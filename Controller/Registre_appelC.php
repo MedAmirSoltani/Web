@@ -36,6 +36,23 @@
                  $th->getMessage();
             }
         }
+        function getRegistre_appelsbyID($id)
+       {
+        $requete = "select * from registre_appel where IdRegistre=:id ";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'id' => $id
+                ]
+            );
+            $result = $querry->fetchAll();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+      }
 
         function ajouterRegistre_appel($registre_appel,$idu)
         {
@@ -43,12 +60,11 @@
             try {
                 $querry = $config->prepare('
                 INSERT INTO registre_appel 
-                (IdRegistre,Etudiant,Module,Date,Heure,Etat,Id_etudiant)
+                (Etudiant,Module,Date,Heure,Etat,Id_etudiant)
                 VALUES
-                (:IdRegistre,:Etudiant,:Module,:Date,:Heure,:Etat,:Id_etudiant)
+                (:Etudiant,:Module,:Date,:Heure,:Etat,:Id_etudiant)
                 ');
                 $querry->execute([
-                    'IdRegistre'=>$registre_appel->getIdRegistre(),
                     'Etudiant'=>$registre_appel->getEtudiant(),
                     'Module'=>$registre_appel->getModule(),
                     'Date'=>$registre_appel->getDate(),
@@ -60,7 +76,7 @@
                  $th->getMessage();
             }
         }
-        function modifierRegistre_appel($registre_appel)
+        function modifierRegistre_appel($registre_appel,$id)
         {
             $config = config::getConnexion();
             try {
@@ -73,7 +89,7 @@
                 where IdRegistre=:IdRegistre
                 ');
                 $querry->execute([
-                    'IdRegistre'=>$registre_appel->getIdRegistre(),
+                    'IdRegistre'=>$id,
                     'Etudiant'=>$registre_appel->getEtudiant(),
                     'Date'=>$registre_appel->getDate(),
                     'Heure'=>$registre_appel->getHeure(),

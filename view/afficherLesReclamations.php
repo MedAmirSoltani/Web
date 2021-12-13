@@ -5,18 +5,30 @@ session_start();
     include_once '../Model/utilisateur.php';
    $userC = new utilisateurC();
     $x = $userC->getutilisateurbyID($_SESSION['a']);
+    $etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
     $rec_noteC = new Rec_noteC();
     $rec_notes = $rec_noteC->afficherRec_note();
 ?>
 <?php
     require '../Controller/AbsenceC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+    $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
+    $etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
     $absenceC = new AbsenceC();
     $absences = $absenceC->afficherAbsence();
 ?>
 <?php
     require '../Controller/Rec_autreC.php';
-
+    include_once     '../Controller/utilisateurC.php';
+    include_once '../Model/utilisateur.php';
+    $userC = new utilisateurC();
+    $x = $userC->getutilisateurbyID($_SESSION['a']);
+    $etudiantC = new etudiantC();
+$etudiants = $etudiantC->afficheretudiant();
     $rec_autreC = new Rec_autreC();
     $rec_autres = $rec_autreC->afficherRec_autre();
 ?>
@@ -188,6 +200,8 @@ session_start();
 						   <tr>
 								<th scope="col"><label for="Id_note"> <font color="White">Id note</font>
 								</label></th>
+                <th scope="col"><label for="Id_etudiant"><font color="White">Nom Etudiant : </font></label></th>
+                                <th scope="col"><label for="Description"><font color="White">Description </font></label></th>
 								<th scope="col"><label for="Module"><font color="White">Module </font></label></th>
                                 <th scope="col"><label for="Description"><font color="White">Description </font></label></th>
 							</tr>
@@ -195,9 +209,12 @@ session_start();
 						<tbody>
                   <?php 
                 foreach ($rec_notes as $rec_note) {
+                  $idu = $rec_note["Id_etudiant"];
+                     $et = $etudiantC->getetudiantbyID($idu);
         ?>
 							<tr>
                      <td><?php echo $rec_note['Id_note'] ; ?></td>
+                     <td><?php echo $et["name"]; ?></td>
                      <td><?php echo $rec_note['Module'] ; ?></td>
                      <td><?php echo $rec_note['Description'] ; ?></td>
                      <td><a href="supprimerRec_note.php?Id_note=<?php echo $rec_note['Id_note'] ; ?>"><img src="../Assets/Images/sup.jpg" witdh='25px' height='25px'></a></td>
@@ -241,6 +258,7 @@ session_start();
 						<tr>
 								<th scope="col"><label for="Id_reclamation"> <font color="White">Id reclamation</font>
 								</label></th>
+                <th scope="col"><label for="Id_etudiant"><font color="White">Nom Etudiant </font></label></th>
 								<th scope="col"><label for="Module"><font color="White">Module </font></label></th>
                         <th scope="col"><label for="Date_absence"><font color="White">Date d'absence </font></label></th>
                         <th scope="col"><label for="Heure_absence"><font color="White">Heure d'absence </font></label></th>
@@ -250,9 +268,12 @@ session_start();
 						<tbody>
 						<?php 
                 foreach ($absences as $absence) {
+                  $idu = $absence["Id_etudiant"];
+                     $et = $etudiantC->getetudiantbyID($idu);
         ?>
 							<tr>
                      <td><?php echo $absence['Id_absence'] ; ?></td>
+                     <td><?php echo $et["name"]; ?></td>
                      <td><?php echo $absence['Module'] ; ?></td>
                     <td><?php echo $absence['Date_absence'] ; ?></td>
                     <td><?php echo $absence['Heure_absence'] ; ?></td>
@@ -298,15 +319,20 @@ session_start();
 							<tr>
 							<th scope="col"><label for="Id_autre"> <font color="White">Id autre</font>
 								</label></th>
+                <th scope="col"><label for="Id_etudiant"> <font color="White">Nom Etudiant</font>
+								</label></th>
                         <th scope="col"><label for="Description"><font color="White">Description </font></label></th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php 
                 foreach ($rec_autres as $rec_autre) {
+                  $idu = $rec_autre["Id_etudiant"];
+                  $et = $etudiantC->getetudiantbyID($idu);
         ?>
 							<tr>
                      <td><?php echo $rec_autre['Id_autre'] ; ?></td>
+                     <td><?php echo $et["name"]; ?></td>
                      <td><?php echo $rec_autre['Description'] ; ?></td>
                      <td><a href="supprimerRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre'] ; ?>"><img src="../Assets/Images/sup.jpg" witdh='25px' height='25px'></a></td>
                      <td><a href="modifierRec_autre.php?Id_autre=<?php echo $rec_autre['Id_autre'] ; ?>">modifier</a></td>	

@@ -9,14 +9,13 @@
     $absenceC = new AbsenceC();
     
 
-    if (isset($_POST['Id_absence'] ) && isset($_POST['Module'] ) && isset($_POST['Date_absence'] )
+    if (isset($_POST['Module'] ) && isset($_POST['Date_absence'] )
         && isset($_POST['Heure_absence'] ) && isset($_POST['Description'] )) 
     {
-        echo $_POST['Module'] ;
-            $absence = new Absence($_POST['Id_absence'] , $_POST['Module'] ,$_POST['Date_absence'],
+            $absence = new Absence($_POST['Module'] ,$_POST['Date_absence'],
                     $_POST['Heure_absence'],$_POST['Description']);
-            $absenceC->modifierAbsence($absence);
-            header('Location:afficherAbsence.php');
+            $absenceC->modifierAbsence($absence,$_GET['Id_absence']);
+            header('Location:afficherLesReclamations.php');
     }else
     {
         $a = $absenceC->getAbsencebyID($_GET['Id_absence']) ;
@@ -212,7 +211,7 @@
                      <td><input type="time" value="<?php echo $a['Heure_absence'];?>" id="Heure_absence" name="Heure_absence"
        min="09:00" max="18:00" required></td>
        <td>
-                    <textarea name="Description" value="<?php echo $a['Description'];?>" id="Description" cols="30" rows="5"></textarea>
+                    <textarea name="Description" id="Description" cols="30" rows="5"><?php echo $a['Description'];?></textarea>
                     </td>
                  
                     </tr>	

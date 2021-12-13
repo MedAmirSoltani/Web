@@ -9,12 +9,11 @@
     $rec_autreC = new Rec_autreC();
     
 
-    if (isset($_POST['Id_autre'] ) && isset($_POST['Description'] )) 
+    if (isset($_POST['Description'] )) 
     {
-        echo $_POST['Description'] ;
-            $rec_autre = new Rec_autre($_POST['Id_autre'] ,$_POST['Description']);
-            $rec_autreC->modifierRec_autre($rec_autre);
-            header('Location:afficherRec_autre.php');
+            $rec_autre = new Rec_autre($_POST['Description']);
+            $rec_autreC->modifierRec_autre($rec_autre,$_GET['Id_autre']);
+            header('Location:afficherLesReclamations.php');
     }else
     {
         $a = $rec_autreC->getRec_autrebyID($_GET['Id_autre']) ;
@@ -197,7 +196,7 @@
 							<tr>
                             <td><input type="text" name="Id_autre" id="Id_autre" maxlength="20" value="<?php echo $a['Id_autre'];?>"  readonly></td>
        <td>
-                    <textarea name="Description" value="<?php echo $a['Description'];?>" id="Description" cols="30" rows="5"></textarea>
+                    <textarea name="Description"  id="Description" cols="30" rows="5"><?php echo $a['Description'];?></textarea>
                     </td>
                  
                     </tr>	

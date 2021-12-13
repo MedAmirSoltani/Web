@@ -36,6 +36,23 @@
                  $th->getMessage();
             }
         }
+        function getAbsencesbyID($id)
+        {
+            $requete = "select * from absence where Id_absence=:id ";
+            $config = config::getConnexion();
+            try {
+                $querry = $config->prepare($requete);
+                $querry->execute(
+                    [
+                        'id' => $id
+                    ]
+                );
+                $result = $querry->fetchAll();
+                return $result;
+            } catch (PDOException $th) {
+                $th->getMessage();
+            }
+        }
 
         function ajouterAbsence($absence,$id,$idu)
         {
@@ -59,7 +76,7 @@
                  $th->getMessage();
             }
         }
-        function modifierAbsence($absence)
+        function modifierAbsence($absence,$id)
         {
             $config = config::getConnexion();
             try {
@@ -73,7 +90,7 @@
                 where Id_absence=:Id_absence
                 ');
                 $querry->execute([
-                    'Id_absence'=>$absence->getId_absence(),
+                    'Id_absence'=>$id,
                     'Module'=>$absence->getModule(),
                     'Date_absence'=>$absence->getDate_absence(),
                     'Heure_absence'=>$absence->getHeure_absence(),
