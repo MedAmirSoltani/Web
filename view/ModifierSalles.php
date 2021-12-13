@@ -2,6 +2,8 @@
 include_once '../Assets/ASFO/utilis/Config.php';
     include_once '../Model/Block.php';
     include_once '../Controller/BlockC.php';
+    include '../Controller/SallesC.php';
+    include_once '../Model/Salles.php';
 
     $error = "";
 
@@ -12,6 +14,7 @@ include_once '../Assets/ASFO/utilis/Config.php';
     $SallesC = new SallesC();
     if (
         isset($_POST["id"]) &&
+        isset($_POST["nom"]) &&
 		isset($_POST["nbrprojecteurs"]) &&		
         isset($_POST["nbrtables"]) &&
 		isset($_POST["nbrchaises"])
@@ -24,9 +27,11 @@ include_once '../Assets/ASFO/utilis/Config.php';
         ) {
             $Salles = new Salles(
                 $_POST['id'],
+                $_POST['nom'],
 				$_POST['nbrprojecteurs'],
                 $_POST['nbrtables'], 
-				$_POST['nbrchaises']
+				$_POST['nbrchaises'],
+                $_POST["idb"]
             );
             $SallesC->modifierSalles($Salles, $_POST["id"]);
             header('Location:ListeSalles.php');
@@ -85,6 +90,11 @@ include_once '../Assets/ASFO/utilis/Config.php';
                     </td>
                     <td>
                         <input type="text" name="nbrchaises" value="<?php echo $Salles['nbrchaises']; ?>" id="adresse">
+                    </td>
+                </tr>         
+                <tr>
+                    <td>
+                        <input type="text" name="idb" value="<?php echo $Salles['id_block']; ?>" id="idb" hidden>
                     </td>
                 </tr>              
                 <tr>

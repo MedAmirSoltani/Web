@@ -116,7 +116,7 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
     </div>
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" active"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
+        <li class="nav-item"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
         </li>
         <li class=" nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
         </li>
@@ -131,13 +131,12 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
 
         </li>
 
-        <li class="nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
+        <li class="active"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
         </li>
         <li class=" nav-item"><a href="afficherLesReclamations.php"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Reclamation</span></a>
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
 
       </ul>
     </div>
@@ -208,8 +207,8 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
                           <td><?php echo $Salles['nom']; ?></td>
                           <td><?php echo $Salles['Nbrchaises']; ?></td>
                           <td><?php echo $Salles['Nbrprojecteurs']; ?></td>
-                          <td><a href="ajouterarchivematiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="modifiermatiere.php?idmatiere=<?php echo $matiere['idmatiere']; ?>">modifier</a></td>
+                          <td><a href="SupprimerSalles.php?ids=<?php echo $salles['Id'];?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+                          <td><a href="ModifySalle.php.php?ids=<?php echo $salles['Id']; ?>">modifier</a></td>
                         </tr>
 
 

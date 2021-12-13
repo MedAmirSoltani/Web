@@ -102,15 +102,18 @@ class BlockC
 	function supprimerSalles($id)
 	{
 
-		$sql = "DELETE FROM Salles WHERE Id=:id";
-		$db = config::getConnexion();
-		$req = $db->prepare($sql);
-		$req->bindValue(':id', $id);
-		try {
-			$req->execute();
-		} catch (Exception $e) {
-			die('Erreur:' . $e->getMessage());
-		}
+		$config = config::getConnexion();
+        try {
+            $querry = $config->prepare('
+            DELETE FROM salles WHERE Id=:id
+            ');
+            $querry->execute([
+                'id' => $id
+            ]);
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+        
 	}
 
 	function Ajoutrsall($res)

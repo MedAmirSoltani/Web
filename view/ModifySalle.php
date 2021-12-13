@@ -1,50 +1,43 @@
 <?php
-session_start();
-require_once     '../Controller/matiereC.php';
-require_once '../Model/matiere.php';
-include_once '../Controller/utilisateurC.php';
 include_once '../Assets/ASFO/utilis/Config.php';
 include_once '../Model/Block.php';
 include_once '../Controller/BlockC.php';
-
-$userC1 = new utilisateurC();
-$conn = $userC1->getutilisateurbyID($_SESSION['a']);
-
+include '../Controller/SallesC.php';
+include_once '../Model/Salles.php';
 
 $error = "";
 
 // create adherent
-$block = null;
-$idb=$_GET["idb"];
-// create an instance of the controller
+$Salles = null;
 
-$blockC = new BlockC();
-$res= $blockC->Getblock($idb);
+// create an instance of the controller
+$SallesC = new SallesC();
 if (
   isset($_POST["id"]) &&
   isset($_POST["nom"]) &&
-  isset($_POST["nbrsalles"]) &&
-  isset($_POST["typesalles"])
+  isset($_POST["nbrprojecteurs"]) &&
+  isset($_POST["nbrtables"]) &&
+  isset($_POST["nbrchaises"])
 ) {
   if (
-
-    !empty($_POST['nom']) &&
-    !empty($_POST["nbrsalles"]) &&
-    !empty($_POST["typesalles"])
+    !empty($_POST["id"]) &&
+    !empty($_POST["nbrprojecteurs"]) &&
+    !empty($_POST["nbrtables"]) &&
+    !empty($_POST["nbrchaises"])
   ) {
-    $block = new Block(
+    $Salles = new Salles(
       $_POST['id'],
       $_POST['nom'],
-      $_POST['nbrsalles'],
-      $_POST['typesalles']
+      $_POST['nbrprojecteurs'],
+      $_POST['nbrtables'],
+      $_POST['nbrchaises'],
+      $_POST["idb"]
     );
-    $blockC->modifierblock($Block,$idb);
-    header('Location:ListeBlocks.php');
+    $SallesC->modifierSalles($Salles, $_GET["ids"]);
+    header('Location:ListeSalles.php');
   } else
-    $res= $blockC->Getblock($idb);
+    $error = "Missing information";
 }
-
-
 ?>
 <html class="loading" lang="en" data-textdirection="ltr">
 
@@ -166,7 +159,7 @@ if (
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
+
 
       </ul>
     </div>
