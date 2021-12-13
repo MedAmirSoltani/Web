@@ -1,7 +1,14 @@
 <?php
+session_start();
 
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
 include_once '../Assets/ASFO/utilis/Config.php';
 include '../Controller/SallesC.php';
+
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+
 
 $idb = $_GET["idb"];
 
@@ -114,6 +121,10 @@ $listeSalless = $SallesC->ShowSalles($idb);
                               <div class="col">
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 40px; color:white;">Tables :<?php echo $Salles['Nbrtables']; ?></h2>
                                  <h2 style="  margin-top: 8%; text-align:center; font-size: 30px; color:#741523;">Chairs: <?php echo $Salles['Nbrchaises']; ?></h2>
+                                 <?php if ($x["admin_bool"] == 1) { ?>
+                                    <a href="SupprimerSalles.php?ids=<?php echo $Salles['Id']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="front8admin.php?idb=<?php echo $Salles['Id']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php } ?>
 
                               </div>
                            </div>

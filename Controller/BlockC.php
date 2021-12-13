@@ -43,20 +43,24 @@ class BlockC
 			echo 'Erreur: ' . $e->getMessage();
 		}
 	}
-	function recupererblock($id)
-	{
-		$sql = "SELECT * from blocks where Id=$id";
-		$db = config::getConnexion();
-		try {
-			$query = $db->prepare($sql);
-			$query->execute();
-
-			$adherent = $query->fetch();
-			return $adherent;
-		} catch (Exception $e) {
-			die('Erreur: ' . $e->getMessage());
-		}
-	}
+	
+	function Getblock($idb)
+    {
+        $requete = "select * from blocks where Id=:idb";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'idb' => $idb
+                ]
+            );
+            $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
 
 	function modifierblock($block, $id)
 	{

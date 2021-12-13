@@ -124,7 +124,7 @@ $listeBlockss = $blockC->afficherblocks();
                                  <a href="affichSalles.php?idb=<?php echo $block['Id']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="Show classrooms" /> </a><br>
                                  <?php if ($x["admin_bool"] == 1) { ?>
                                     <a href="SupprimerBlock.php?idb=<?php echo $block['Id']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                    <a href="front8admin.php?idb=<?php echo $block['Id']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                    <a href="ModifyBloc.php?idb=<?php echo $block['Id']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
                                  <?php } ?>
                               </div>
                            </div>
