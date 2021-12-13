@@ -43,9 +43,9 @@
             try {
                 $querry = $config->prepare('
                 INSERT INTO registre_appel 
-                (IdRegistre,Etudiant,Date,Heure,Etat,Id_etudiant)
+                (IdRegistre,Etudiant,Module,Date,Heure,Etat,Id_etudiant)
                 VALUES
-                (:IdRegistre,:Etudiant,:Date,:Heure,:Etat,:Id_etudiant)
+                (:IdRegistre,:Etudiant,:Module,:Date,:Heure,:Etat,:Id_etudiant)
                 ');
                 $querry->execute([
                     'IdRegistre'=>$registre_appel->getIdRegistre(),
@@ -54,7 +54,7 @@
                     'Date'=>$registre_appel->getDate(),
                     'Heure'=>$registre_appel->getHeure(),
                     'Etat'=>$registre_appel->getEtat(),
-                    'Id_etudiant'=>$idu
+                    'Id_etudiant' => $idu
                 ]);
             } catch (PDOException $th) {
                  $th->getMessage();

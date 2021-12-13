@@ -236,6 +236,25 @@ class etudiantC extends utilisateurC
         }
     }
 
+    function getetudiantbyName($name)
+    {
+        $requete = "select * from etudiant where name=:name";
+        $config = config::getConnexion();
+        try {
+            $querry = $config->prepare($requete);
+            $querry->execute(
+                [
+                    'name' => $name
+                ]
+            );
+            $result = $querry->fetch();
+            return $result;
+        } catch (PDOException $th) {
+            $th->getMessage();
+        }
+    }
+
+
     function ajouteretudiant($etudiant)
     {
         $config = config::getConnexion();
@@ -412,4 +431,3 @@ class profC extends utilisateurC
         }
     }
 }
-?>

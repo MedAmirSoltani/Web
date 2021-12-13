@@ -1,20 +1,21 @@
 <?php
 session_start();
+
 require_once '../Controller/Registre_appelC.php';
 require_once '../Model/Registre_appel.php';
-
 include_once     '../Controller/utilisateurC.php';
 include_once '../Model/utilisateur.php';
 $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $etudiantC = new etudiantC();
 $etudiants = $etudiantC->afficheretudiant();
+$registre_appelC = new Registre_appelC();
 
 
 if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']) && isset($_POST['Heure']) && isset($_POST['Etat'])) {
   $registre_appel = new Registre_appel($_POST['IdRegistre'], $_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
-  $registre_appelC = new Registre_appelC();
-  $registre_appelC->ajouterRegistre_appel($registre_appel, $x["ID_utilisateur"]);
+  $et=$etudiantC->getetudiantbyName($_POST["Etudiant"]);
+  $registre_appelC->ajouterRegistre_appel($registre_appel,$et["ID"]);
   header('Location:afficherRegistre_appel.php');
 }
 
@@ -218,7 +219,7 @@ if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Mo
                             </thead>
                             <tbody>
                               <tr>
-                                <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20"></td>
+                                <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20" ></td>
                                 <td><select type="text" name="Module" id="Module">
                                     <option value="">--Veuillez choisir--</option>
                                     <option value="Projet Technologies web">Projet Technologies web</option>
@@ -237,7 +238,7 @@ if (isset($_POST['IdRegistre']) && isset($_POST['Etudiant']) && isset($_POST['Mo
                                 <td><input type="time" id="Heure" name="Heure" min="09:00" max="18:00" required></td>
                                 <td><select type="text" name="Etat" id="Etat">
                                     <option value="">--Veuillez choisir--</option>
-                                    <option value="présent">présent</option>
+                                    <option value="present">present</option>
                                     <option value="absent">absent</option>
                                   </select></td>
                               </tr>
