@@ -139,19 +139,19 @@ if (empty($_SESSION['a'])) {
                                           <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="front3admin.php"><i class="ft-check-square"></i> Subjects</a>
-                                        
+
                                        <?php } else if (strcmp($conn['role'], "Etudiant") == 0) { ?>
                                           <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="club.php"><i class="ft-mail"></i> Clubs</a>
                                           <a class="dropdown-item" href="front3admin.php"><i class="ft-check-square"></i> Subjects</a>
-                                          
+
 
                                        <?php } else { ?>
                                           <a class="dropdown-item" href="updateprofiladmin.php"><i class="ft-user"></i> Edit Profile</a>
                                           <a class="dropdown-item" href="profiladmin.php"><i class="ft-mail"></i> My Profil</a>
                                           <a class="dropdown-item" href="front3admin.php"><i class="ft-check-square"></i> Subjects</a>
-                                          
+
 
                                        <?php } ?>
 
@@ -221,9 +221,9 @@ if (empty($_SESSION['a'])) {
                      <h1>The Best University<br>That Every Students<br>Need to Learn in!</h1>
                      <p>Hogwarts is a university made by dispersed wizards: <br>a group of 6 engineers their main goal
                         is changing<br>the world with their new teaching strategies.</p>
-                     <div class="button_section"> <a class="main_bt" href="#">Read More</a> </div>
+                     <div class="button_section"> <a class="main_bt" href="about.php">Read More</a> </div>
                      <ul class="locat_icon">
-                        <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="icon/facebook.png"></a></li>
+                        <li> <a href="https://www.facebook.com/Hogwarts-105786591947374" target="blank"><img src="../Assets/icon/facebook.png"></a></li>
                         <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
                         <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
                      </ul>
@@ -237,7 +237,7 @@ if (empty($_SESSION['a'])) {
                      <h1>The Best University<br>That Every Students<br>Need to Learn in!</h1>
                      <p>Hogwarts is a university made by dispersed wizards: <br>a group of 6 engineers their main goal
                         is changing<br>the world with their new teaching strategies.</p>
-                     <div class="button_section"> <a class="main_bt" href="#">Read More</a> </div>
+                     <div class="button_section"> <a class="main_bt" href="about.php">Read More</a> </div>
                      <ul class="locat_icon">
                         <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="../Assets/icon/facebook.png"></a></li>
                         <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
@@ -255,7 +255,7 @@ if (empty($_SESSION['a'])) {
                         <p>Hogwarts is a university made by dispersed wizards: <br>a group of 6 engineers their main
                            goal
                            is changing<br>the world with their new teaching strategies.</p>
-                        <div class="button_section"> <a class="main_bt" href="#">Read More</a> </div>
+                        <div class="button_section"> <a class="main_bt" href="about.php">Read More</a> </div>
                         <ul class="locat_icon">
                            <li> <a href="https://www.facebook.com/Hogwarts-105786591947374"><img src="../Assets/icon/facebook.png"></a></li>
                            <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
