@@ -12,4 +12,4 @@ imagestring($img,5,5,5,$codes,$textcolor);
 header("Cache-Control: no-cache, must-revalidate");
 header('Content-type: image/png');
 imagepng($img);
-imagedestory($img);
+imagedestroy($img);
