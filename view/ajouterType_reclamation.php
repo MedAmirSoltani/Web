@@ -13,33 +13,6 @@ include_once '../Model/utilisateur.php';
 $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 
-if (isset($_POST['Id_note']) && isset($_POST['Module']) && isset($_POST['Description'])) {
-   $rec_note = new Rec_note($_POST['Id_note'], $_POST['Module'], $_POST['Description']);
-   $rec_noteC = new Rec_noteC();
-   $rec_noteC->ajouterRec_note($rec_note);
-}
-
-if (
-   isset($_POST['Id_absence']) && isset($_POST['Module']) && isset($_POST['Date_absence'])
-   && isset($_POST['Heure_absence']) && isset($_POST['Description']) && isset($_POST['type_reclamation'])
-) {
-   $absence = new Absence(
-      $_POST['Id_absence'],
-      $_POST['Module'],
-      $_POST['Date_absence'],
-      $_POST['Heure_absence'],
-      $_POST['Description'],
-      $_POST['type_reclamation']
-   );
-   $absenceC = new AbsenceC();
-   $absenceC->ajouterAbsence($absence);
-}
-
-if (isset($_POST['Id_autre']) && isset($_POST['Description'])) {
-   $rec_autre = new Rec_autre($_POST['Id_autre'], $_POST['Description']);
-   $rec_autreC = new Rec_autreC();
-   $rec_autreC->ajouterRec_autre($rec_autre);
-}
 
 
 ?>
@@ -54,7 +27,7 @@ if (isset($_POST['Id_autre']) && isset($_POST['Description'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>memorial books</title>
+   <title>Hogwarts</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
