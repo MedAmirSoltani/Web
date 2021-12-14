@@ -101,22 +101,24 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
                     </li>
                     <li><a href="front3admin.php">Subject</a></li>
                     <li><a href="affichBlocks.php">class</a></li>
-                    <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+                    <?php if (($x["role"]) != "Prof") { ?>
+                      <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
 
 
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <div class="arrow_box_right">
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <div class="arrow_box_right">
 
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
-                          <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
-                          <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                            <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                          </div>
                         </div>
-                      </div>
 
-                    </li>
+                      </li>
+                    <?php } ?>
                     <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                     <?php if (($x["admin_bool"]) == 1) { ?>
                       <li><a href="afficherutilisateur.php">Panel</a></li>

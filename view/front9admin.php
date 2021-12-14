@@ -91,6 +91,7 @@ if (isset($_POST['titre']) && isset($_POST['hour']) && isset($_POST['coff'])) {
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">class</a></li>
+                              <?php if (($x["role"]) != "Prof") { ?>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
@@ -107,6 +108,7 @@ if (isset($_POST['titre']) && isset($_POST['hour']) && isset($_POST['coff'])) {
                                  </div>
 
                               </li>
+                              <?php } ?>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <li><a href="afficherutilisateur.php">Panel</a></li>
 

@@ -90,6 +90,7 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                               </li>
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">class</a></li>
+                              <?php if (($x["role"]) != "Prof") { ?>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
@@ -106,6 +107,7 @@ $x = $userC->getutilisateurbyID($_SESSION['a']);
                                  </div>
 
                               </li>
+                              <?php } ?>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <?php if (($x["admin_bool"]) == 1) { ?>
                                  <li><a href="afficherutilisateur.php">Panel</a></li>
