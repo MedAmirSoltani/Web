@@ -14,9 +14,9 @@ $etudiants = $etudiantC->afficheretudiant();
 
 if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']) && isset($_POST['Heure']) && isset($_POST['Etat'])) {
   $registre_appel = new Registre_appel($_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
-  $et=$etudiantC->getetudiantbyName($_POST["Etudiant"]);
+  $et = $etudiantC->getetudiantbyName($_POST["Etudiant"]);
   $registre_appelC = new Registre_appelC();
-  $registre_appelC->ajouterRegistre_appel($registre_appel,$et["ID"]);
+  $registre_appelC->ajouterRegistre_appel($registre_appel, $et["ID"]);
   header('Location:afficherRegistre_appel.php');
 }
 
@@ -145,7 +145,7 @@ if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
+
 
       </ul>
     </div>
@@ -211,7 +211,7 @@ if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']
                             </thead>
                             <tbody>
                               <tr>
-                                <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20" ></td>
+                                <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20"></td>
                                 <td><select type="text" name="Module" id="Module">
                                     <option value="">--Veuillez choisir--</option>
                                     <option value="Projet Technologies web">Projet Technologies web</option>

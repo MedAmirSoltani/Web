@@ -68,7 +68,7 @@ if (isset($_POST['idmatiere']) && isset($_POST['titre']) && isset($_POST['hour']
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -110,8 +110,7 @@ if (isset($_POST['idmatiere']) && isset($_POST['titre']) && isset($_POST['hour']
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <li><a href="afficherutilisateur.php">Panel</a></li>
-                              <
-                              <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
+                              < <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
                      </div>

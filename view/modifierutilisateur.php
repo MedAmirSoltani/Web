@@ -1,58 +1,51 @@
 <?php
 session_start();
-    require_once     '../Controller/utilisateurC.php';
-    require_once '../Model/utilisateur.php' ;
-    require_once '../Controller/matiereC.php';
-    $utilisateurC = new utilisateurC();
-    $etudiantC = new etudiantC();
-    $profC = new profC();
-    $userC1=new utilisateurC();
-    $conn=$userC1->getutilisateurbyID($_SESSION['a']);
-    if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  )&& isset($_POST['classe']  )) 
-    {
-        echo $_POST['ID_utilisateur'] ;
-        $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"]);
-      $etudiant = new etudiant( $_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'],$_FILES["profilpicture"]["name"], $_POST['classe'] );
-       $utilisateurC->modifierutilisateur($utilisateur);
-          $etudiantC->modifieretudiant($etudiant);
-          $target_dir = "../Assets/uploads/";
-      $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
-      if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
-          echo "KHIDMET YA RJEL";
-      }
-            header('Location:afficherutilisateur.php');
-    }
-    else if (isset($_POST['ID_utilisateur'] ) && isset($_POST['email']  ) && isset($_POST['password']  ) && isset($_POST['name']  ) && isset($_POST['first_name']  ) && isset($_POST['date_of_birth']  ) && isset($_POST['role']  ) && isset($_POST['idmatiere']  )) 
-    {
-     
-        echo $_POST['ID_utilisateur'] ;
-            $utilisateur = new utilisateur($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'] ,$_FILES["profilpicture"]["name"]);
-            $utilisateurC->modifierutilisateur($utilisateur);
-          $prof = new prof($_POST['ID_utilisateur'] , $_POST['email'] , $_POST['password'] , $_POST['name'] , $_POST['first_name'] , $_POST['date_of_birth'] , $_POST['role'], $_FILES["profilpicture"]["name"],$_POST['idmatiere'] );
-            $profC->modifierprof($prof);
-            
-            $target_dir = "../Assets/uploads/";
-      $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
-      if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
-          echo "KHIDMET YA RJEL";
-      }
-            header('Location:afficherutilisateur.php');
-    }
-    else
-    {
-      $matiereC= new matiereC();
-      $resultats = $matiereC -> affichermatiere();
-        $a = $utilisateurC->getutilisateurbyID($_GET['ID_utilisateur']) ;
-        $b=$etudiantC->getetudiantbyID($_GET['ID_utilisateur']) ;
-        $c=$profC->getprofbyID($_GET['ID_utilisateur']) ;
-        
-        
-       
-        $id=$c['idmatiere'];
-        $d=$matiereC->getmatierebyID ($id);
-        
-        
-    }
+require_once     '../Controller/utilisateurC.php';
+require_once '../Model/utilisateur.php';
+require_once '../Controller/matiereC.php';
+$utilisateurC = new utilisateurC();
+$etudiantC = new etudiantC();
+$profC = new profC();
+$userC1 = new utilisateurC();
+$conn = $userC1->getutilisateurbyID($_SESSION['a']);
+if (isset($_POST['ID_utilisateur']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['first_name']) && isset($_POST['date_of_birth']) && isset($_POST['role']) && isset($_POST['classe'])) {
+  echo $_POST['ID_utilisateur'];
+  $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"]);
+  $etudiant = new etudiant($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['classe']);
+  $utilisateurC->modifierutilisateur($utilisateur);
+  $etudiantC->modifieretudiant($etudiant);
+  $target_dir = "../Assets/uploads/";
+  $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
+  if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
+    echo "KHIDMET YA RJEL";
+  }
+  header('Location:afficherutilisateur.php');
+} else if (isset($_POST['ID_utilisateur']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['first_name']) && isset($_POST['date_of_birth']) && isset($_POST['role']) && isset($_POST['idmatiere'])) {
+
+  echo $_POST['ID_utilisateur'];
+  $utilisateur = new utilisateur($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"]);
+  $utilisateurC->modifierutilisateur($utilisateur);
+  $prof = new prof($_POST['ID_utilisateur'], $_POST['email'], $_POST['password'], $_POST['name'], $_POST['first_name'], $_POST['date_of_birth'], $_POST['role'], $_FILES["profilpicture"]["name"], $_POST['idmatiere']);
+  $profC->modifierprof($prof);
+
+  $target_dir = "../Assets/uploads/";
+  $target_file = $target_dir . basename($_FILES["profilpicture"]["name"]);
+  if (move_uploaded_file($_FILES["profilpicture"]["tmp_name"], $target_file)) {
+    echo "KHIDMET YA RJEL";
+  }
+  header('Location:afficherutilisateur.php');
+} else {
+  $matiereC = new matiereC();
+  $resultats = $matiereC->affichermatiere();
+  $a = $utilisateurC->getutilisateurbyID($_GET['ID_utilisateur']);
+  $b = $etudiantC->getetudiantbyID($_GET['ID_utilisateur']);
+  $c = $profC->getprofbyID($_GET['ID_utilisateur']);
+
+
+
+  $id = $c['idmatiere'];
+  $d = $matiereC->getmatierebyID($id);
+}
 
 
 
@@ -60,35 +53,37 @@ session_start();
 
 <html>
 <html class="loading" lang="en" data-textdirection="ltr">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
-    <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
-    <meta name="author" content="ThemeSelect">
-    <title>hogwarts</title>
-    <link rel="apple-touch-icon" href="../Assets/theme-assets/images/ico/apple-icon-120.png">
-  
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
-    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
-    <!-- BEGIN VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/vendors.css">
-    <!-- END VENDOR CSS-->
-    <!-- BEGIN CHAMELEON  CSS-->
-    <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/app-lite.css">
-    <!-- END CHAMELEON  CSS-->
-    <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/colors/palette-gradient.css">
-    <!-- END Page Level CSS-->
-    <!-- BEGIN Custom CSS-->
-    <!-- END Custom CSS-->
-  </head>
-  <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-    <!-- fixed-top-->
-    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+  <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+  <meta name="author" content="ThemeSelect">
+  <title>hogwarts</title>
+  <link rel="apple-touch-icon" href="../Assets/theme-assets/images/ico/apple-icon-120.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/vendors.css">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN CHAMELEON  CSS-->
+  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/app-lite.css">
+  <!-- END CHAMELEON  CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/colors/palette-gradient.css">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <!-- END Custom CSS-->
+</head>
+
+<body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+
+  <!-- fixed-top-->
+  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
     <div class="navbar-wrapper">
       <div class="navbar-container content">
         <div class="collapse navbar-collapse show" id="navbar-mobile">
@@ -110,28 +105,29 @@ session_start();
               </ul>
             </li>
           </ul>
-         
+
           <ul class="nav navbar-nav float-right">
-          
-          <?php if (empty($conn['profilpicture']))
-                                                  {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
-                                                   }
-                                                
-                                                 ?>
-                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
-                                                 
-                                      
+
+            <?php if (empty($conn['profilpicture'])) {
+              echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
+            }
+
+            ?>
+            <img <?php if (empty($conn['profilpicture'])) {
+                    echo 'style="display:none;"';
+                  } ?> id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">
+
+
           </ul>
           <ul class="nav navbar-nav float-right">
-           
-           
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
-                </div>
+
+
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
               </div>
+            </div>
             </li>
           </ul>
         </div>
@@ -139,10 +135,10 @@ session_start();
     </div>
   </nav>
 
-    <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
-    <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="../Assets/theme-assets/images/backgrounds/02.jpg">
+  <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="../Assets/theme-assets/images/backgrounds/02.jpg">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
         <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG" />
@@ -175,151 +171,154 @@ session_start();
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
+
 
       </ul>
     </div>
     <div class="navigation-background"></div>
   </div>
 
-    <div class="app-content content">
-      <div class="content-wrapper">
-        <div class="content-wrapper-before"></div>
-        <div class="content-header row">
-          <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Users</h3>
-          </div>
-          <div class="content-header-right col-md-8 col-12">
-            <div class="breadcrumbs-top float-md-right">
-              <div class="breadcrumb-wrapper mr-1">
-                <ol class="breadcrumb">
+  <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Users</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+          <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+              <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="profiladmin.php">Home</a>
-                  </li>
-            
-                  </li>
-                </ol>
-              </div>
+                </li>
+
+                </li>
+              </ol>
             </div>
           </div>
         </div>
-        <div class="content-body"><!-- Basic Tables start -->
-<div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">etudiants</h4>
-				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-				<div class="heading-elements">
-					<ul class="list-inline mb-0">
-						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-						<li><a data-action="close"><i class="ft-x"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="card-content collapse show">
-				<div class="card-body">
-					<div class="table-responsive">
-					<form action="" method="POST" enctype="multipart/form-data">
-						<table class="table" border="1" align="center">
-						
+      </div>
+      <div class="content-body">
+        <!-- Basic Tables start -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">etudiants</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                  <ul class="list-inline mb-0">
+                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-content collapse show">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                      <table class="table" border="1" align="center">
+
                         <label for="ID_utilisateur">
                         </label>
-                    
-                    <input type="number" name="ID_utilisateur" id="ID_utilisateur" maxlength="20" value="<?php echo $a['ID_utilisateur'];?>"  hidden>
-                   
-                    <tr>
-                    <td>
-                        <label for="profilpicture">profil picture:
-                        </label>
-                    </td>
-                    <td>
-                   <img onclick="pictureclick()" id="profildisplay" width=200  src="../Assets/uploads/<?php echo $a['profilpicture'];?>">
-                    <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:50%;float:left;margin:0 10px 0 -200px; display:none; "  >
-                                                 <img  onclick="pictureclick()" id="profildisplay" style="width:10%;margin:0 90px 0 0px; border-radius:10%; display:block;"/>
-                   
-                   </td></tr>        
-				<tr>
-                    <td>
-                        <label for="email">email:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['email'];?>" name="email" id="email" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="password">password:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['password'];?>" name="password" id="password" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="name">name:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['name'];?>" name="name" id="name" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="first_name">first name:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['first_name'];?>" name="first_name" id="first_name" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="date_of_birth">date of birth:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['date_of_birth'];?>" name="date_of_birth" id="date_of_birth" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="role">role:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $a['role'];?>" name="role" id="role" maxlength="20" readonly></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="classe">classe:
-                        </label>
-                    </td>
-                    <td><input type="text" value="<?php echo $b['classe'];?>" name="classe" id="classe" maxlength="20" hidden></td>
-                </tr>
-               
-               
+
+                        <input type="number" name="ID_utilisateur" id="ID_utilisateur" maxlength="20" value="<?php echo $a['ID_utilisateur']; ?>" hidden>
+
+                        <tr>
+                          <td>
+                            <label for="profilpicture">profil picture:
+                            </label>
+                          </td>
+                          <td>
+                            <img onclick="pictureclick()" id="profildisplay" width=200 src="../Assets/uploads/<?php echo $a['profilpicture']; ?>">
+                            <input type="file" accept="image/*" name="profilpicture" onchange="displayImage(this)" id="profilpicture" style="width:50%;float:left;margin:0 10px 0 -200px; display:none; ">
+                            <img onclick="pictureclick()" id="profildisplay" style="width:10%;margin:0 90px 0 0px; border-radius:10%; display:block;" />
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="email">email:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['email']; ?>" name="email" id="email" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="password">password:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['password']; ?>" name="password" id="password" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="name">name:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['name']; ?>" name="name" id="name" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="first_name">first name:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['first_name']; ?>" name="first_name" id="first_name" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="date_of_birth">date of birth:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['date_of_birth']; ?>" name="date_of_birth" id="date_of_birth" maxlength="20"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="role">role:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $a['role']; ?>" name="role" id="role" maxlength="20" readonly></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="classe">classe:
+                            </label>
+                          </td>
+                          <td><input type="text" value="<?php echo $b['classe']; ?>" name="classe" id="classe" maxlength="20" hidden></td>
+                        </tr>
 
 
-                <tr>
-									<td>
-                <label for="idmatiere">idmatiere:
-                </label>
-          
-              
-              <td><input type="text" name="idmatiere" id="idmatiere" maxlength="20" value="<?php echo $d['titre'];?>" readonly>
-</td>
 
 
-</tr>
-      <div id="badelha"></div>
-    </td>
-    
-                </tr>
-                
-                <tr>
-                    <td>
-                        <input type="submit" value="Modifier"> 
-                    </td>
-                    <td>
-                        <input type="reset" value="Annuler" >
-                    </td>
-                </tr>
-            </table>
-        </form>
-  </body>
-  <script src="../Assets/js/loadi.js"></script>
-  <script src="../Assets/js/click.js"></script>
+                        <tr>
+                          <td>
+                            <label for="idmatiere">idmatiere:
+                            </label>
+
+
+                          <td><input type="text" name="idmatiere" id="idmatiere" maxlength="20" value="<?php echo $d['titre']; ?>" readonly>
+                          </td>
+
+
+                        </tr>
+                        <div id="badelha"></div>
+                        </td>
+
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <input type="submit" value="Modifier">
+                          </td>
+                          <td>
+                            <input type="reset" value="Annuler">
+                          </td>
+                        </tr>
+                      </table>
+                    </form>
+</body>
+<script src="../Assets/js/loadi.js"></script>
+<script src="../Assets/js/click.js"></script>
+
 </html>

@@ -79,7 +79,7 @@ if (isset($_POST['search'])) {
                                  </div>
 
                               </li>
-                              <li><a href="front3etudiant.php">Subject</a></li>
+                              <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>

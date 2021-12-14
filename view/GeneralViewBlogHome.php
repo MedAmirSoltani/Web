@@ -123,7 +123,7 @@ $Blogs = $BlogC->ShowBlogHome($affich, $search);
                                     <div class="limit-box">
                                         <nav class="main-menu">
                                             <ul class="menu-area-main">
-                                            <li> <a href="index.php">Home</a> </li>
+                                                <li> <a href="index.php">Home</a> </li>
                                                 <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
 
 

@@ -1,55 +1,52 @@
 <?php
 
-    include_once '../Model/utilisateur.php';
-    require_once "../assets/ASFO/utilis/Config.php";
-    session_start();
+include_once '../Model/utilisateur.php';
+require_once "../assets/ASFO/utilis/Config.php";
+session_start();
 
-        if (isset($_POST['reset-request-submit'])){
-            $email=$_POST['email'];
-            $sql="SELECT * FROM utilisateur WHERE email='" . $email . "'";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-                $count=$query->rowCount();
-                if($count==1){
-                    $x=$query->fetch();
-                    $_SESSION['email'] = $email;
-                    $_SESSION['name'] = $x['name'];
-                    $name=$x['name'];
-                    $code=mt_rand(1000,9999);
-                    $sql="UPDATE utilisateur SET code= '" . $code . "' WHERE email='" . $email . "'";
-                    $db = config::getConnexion();
-                    $query1=$db->prepare($sql);
-                    $query1->execute();
-                   /* $sub = "Your subject";
+if (isset($_POST['reset-request-submit'])) {
+   $email = $_POST['email'];
+   $sql = "SELECT * FROM utilisateur WHERE email='" . $email . "'";
+   $db = config::getConnexion();
+   try {
+      $query = $db->prepare($sql);
+      $query->execute();
+      $count = $query->rowCount();
+      if ($count == 1) {
+         $x = $query->fetch();
+         $_SESSION['email'] = $email;
+         $_SESSION['name'] = $x['name'];
+         $name = $x['name'];
+         $code = mt_rand(1000, 9999);
+         $sql = "UPDATE utilisateur SET code= '" . $code . "' WHERE email='" . $email . "'";
+         $db = config::getConnexion();
+         $query1 = $db->prepare($sql);
+         $query1->execute();
+         /* $sub = "Your subject";
 //the message
 $msg = "Your message";
 //recipient email here
 $rec = "example@gmail.com";
 //send email
 mail($rec,$sub,$msg);*/
-                    $email1="TheUniversity@hogwarts.tn";    
-                    $dest = $email;
-                    $sujet = "Réinitialisation du mot de passe";
-                    $corp =" Bonjour $name voici votre code de verification $code " ;
-                    $headers = 'From: ' .$email1 . "\r\n".'Reply-To: ' . $email1. "\r\n".'X-Mailer: PHP/' . phpversion();
-                    
-                    if (mail($dest, $sujet, $corp, $headers)) {
-                        echo "Email envoyé avec succès à $dest ...";
-                        header("Location: verifpassword.php");
-                    } 
-                    else {
-                         echo "Échec de l'envoi de l'email...";
-                    }
-                    
-                }
-		    }
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-            }
-        }
-         
+         $email1 = "TheUniversity@hogwarts.tn";
+         $dest = $email;
+         $sujet = "Réinitialisation du mot de passe";
+         $corp = " Bonjour $name voici votre code de verification $code ";
+         $headers = 'From: ' . $email1 . "\r\n" . 'Reply-To: ' . $email1 . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+         if (mail($dest, $sujet, $corp, $headers)) {
+            echo "Email envoyé avec succès à $dest ...";
+            header("Location: verifpassword.php");
+         } else {
+            echo "Échec de l'envoi de l'email...";
+         }
+      }
+   } catch (Exception $e) {
+      die('Erreur: ' . $e->getMessage());
+   }
+}
+
 ?>
 <html lang="en">
 
@@ -101,7 +98,7 @@ mail($rec,$sub,$msg);*/
                      </div>
                   </div>
                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -115,9 +112,9 @@ mail($rec,$sub,$msg);*/
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -139,32 +136,32 @@ mail($rec,$sub,$msg);*/
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <p style="text-align: center;font-size: 21px; color:#878585;">An email will be sent to you with the instruction on how to reset your password.</p>   
-            <br><br><br> 
-            <form id="formulaire" action="" method="POST" >
-                  <div  class="row">
-                     
-                                    
-                                  
-                                                <input  class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="text" name="email" id="email" placeholder="Enter your email here">
-                                   
-                                 <br><br><br>
-                                  
-                                 
-                                
-                                    <script>
-                         var bleep=new Audio();
-                         bleep.src="ab.mp3";
-                      </script>
+               <p style="text-align: center;font-size: 21px; color:#878585;">An email will be sent to you with the instruction on how to reset your password.</p>
+               <br><br><br>
+               <form id="formulaire" action="" method="POST">
+                  <div class="row">
+
+
+
+                     <input class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="text" name="email" id="email" placeholder="Enter your email here">
+
+                     <br><br><br>
+
+
+
+                     <script>
+                        var bleep = new Audio();
+                        bleep.src = "ab.mp3";
+                     </script>
 
 
 
                   </div>
-               
+
             </div>
             <button type="submit" name="reset-request-submit" onmousedown="bleep.play()" class="send-btn">Send</button>
-        </form> 
-        </div>
+            </form>
+         </div>
       </div>
    </div>
    <!-- end Contact -->

@@ -1,65 +1,66 @@
 <?php
 include_once '../Assets/ASFO/utilis/Config.php';
-    include_once '../Model/Block.php';
-    include_once '../Controller/BlockC.php';
-    include '../Controller/SallesC.php';
-    include_once '../Model/Salles.php';
+include_once '../Model/Block.php';
+include_once '../Controller/BlockC.php';
+include '../Controller/SallesC.php';
+include_once '../Model/Salles.php';
 
-    $error = "";
+$error = "";
 
-    // create adherent
-    $Salles = null;
+// create adherent
+$Salles = null;
 
-    // create an instance of the controller
-    $SallesC = new SallesC();
+// create an instance of the controller
+$SallesC = new SallesC();
+if (
+    isset($_POST["id"]) &&
+    isset($_POST["nom"]) &&
+    isset($_POST["nbrprojecteurs"]) &&
+    isset($_POST["nbrtables"]) &&
+    isset($_POST["nbrchaises"])
+) {
     if (
-        isset($_POST["id"]) &&
-        isset($_POST["nom"]) &&
-		isset($_POST["nbrprojecteurs"]) &&		
-        isset($_POST["nbrtables"]) &&
-		isset($_POST["nbrchaises"])
+        !empty($_POST["id"]) &&
+        !empty($_POST["nbrprojecteurs"]) &&
+        !empty($_POST["nbrtables"]) &&
+        !empty($_POST["nbrchaises"])
     ) {
-        if (
-            !empty($_POST["id"]) && 
-			!empty($_POST["nbrprojecteurs"]) &&
-            !empty($_POST["nbrtables"]) && 
-			!empty($_POST["nbrchaises"]) 
-        ) {
-            $Salles = new Salles(
-                $_POST['id'],
-                $_POST['nom'],
-				$_POST['nbrprojecteurs'],
-                $_POST['nbrtables'], 
-				$_POST['nbrchaises'],
-                $_POST["idb"]
-            );
-            $SallesC->modifierSalles($Salles, $_POST["id"]);
-            header('Location:ListeSalles.php');
-        }
-        else
-            $error = "Missing information";
-    }    
+        $Salles = new Salles(
+            $_POST['id'],
+            $_POST['nom'],
+            $_POST['nbrprojecteurs'],
+            $_POST['nbrtables'],
+            $_POST['nbrchaises'],
+            $_POST["idb"]
+        );
+        $SallesC->modifierSalles($Salles, $_POST["id"]);
+        header('Location:ListeSalles.php');
+    } else
+        $error = "Missing information";
+}
 ?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Display</title>
 </head>
-    <body>
-        <button><a href="ListeSalles.php">Retour à la liste des Salles</a></button>
-        <hr>
-        
-        <div id="error">
-            <?php echo $error; ?>
-        </div>
-			
-		<?php
-			if (isset($_POST['id'])){
-				$Salles = $SallesC->recupererSalles($_POST['id']);
-				
-		?>
-        
+
+<body>
+    <button><a href="ListeSalles.php">Retour à la liste des Salles</a></button>
+    <hr>
+
+    <div id="error">
+        <?php echo $error; ?>
+    </div>
+
+    <?php
+    if (isset($_POST['id'])) {
+        $Salles = $SallesC->recupererSalles($_POST['id']);
+
+    ?>
+
         <form action="" method="POST">
             <table border="1" align="center">
                 <tr>
@@ -69,7 +70,7 @@ include_once '../Assets/ASFO/utilis/Config.php';
                     </td>
                     <td><input type="text" name="id" id="id" value="<?php echo $Salles['Id']; ?>" maxlength="20"></td>
                 </tr>
-				<tr>
+                <tr>
                     <td>
                         <label for="nbrprojecteurs">nbrprojecteurs:
                         </label>
@@ -91,25 +92,26 @@ include_once '../Assets/ASFO/utilis/Config.php';
                     <td>
                         <input type="text" name="nbrchaises" value="<?php echo $Salles['nbrchaises']; ?>" id="adresse">
                     </td>
-                </tr>         
+                </tr>
                 <tr>
                     <td>
                         <input type="text" name="idb" value="<?php echo $Salles['id_block']; ?>" id="idb" hidden>
                     </td>
-                </tr>              
+                </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Modifier"> 
+                        <input type="submit" value="Modifier">
                     </td>
                     <td>
-                        <input type="reset" value="Annuler" >
+                        <input type="reset" value="Annuler">
                     </td>
                 </tr>
             </table>
         </form>
-		<?php
-		}
-		?>
-    </body>
+    <?php
+    }
+    ?>
+</body>
+
 </html>

@@ -69,7 +69,7 @@ if (isset($_POST['idnote'])  && isset($_POST['nom']) && isset($_POST['prenom']) 
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">

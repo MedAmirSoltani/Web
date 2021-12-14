@@ -1,13 +1,13 @@
 <?php
 session_start();
-    require '../Controller/clubC.php';
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php' ;
-    $userC=new utilisateurC();
-$x=$userC->getutilisateurbyID($_SESSION['a']);
+require '../Controller/clubC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 
-    $clubC = new clubC();
-    $club = $clubC->afficherclub();
+$clubC = new clubC();
+$club = $clubC->afficherclub();
 ?>
 <html lang="en">
 
@@ -55,18 +55,18 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                     <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                        <div class="logo"> <a href="index.php"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
                      </div>
                   </div>
                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                           <li > <a href="index.php">Home</a> </li>
+                              <li> <a href="index.php">Home</a> </li>
                               <li> <a href="about.php">Forum</a> </li>
-                              <li><a href="front3etudiant.php">Subject</a></li>
+                              <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="contact.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
@@ -74,9 +74,9 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -95,61 +95,61 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
    </div>
    <!-- Contact -->
    <div class="Contact">
-      
-         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-               <form>
-                  <div class="row">
-                  
-                          
-							
-								
 
-                
+      <div class="row">
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <form>
+               <div class="row">
 
-							 
-									<?php 
-                         
-                         
-							foreach ($club as $club) {
-									?>
-    
-<div  class="card text-center"style=" width: 29%; margin: 10px 35px 10px;">
-<div class="card-header bg-gradient-x-purple-red text-white">
-<div class="row">
-<div class="col">
-<td><img style="border-radius:70%; "  width=210 src="../Assets/uploads/<?php echo $club['logo']; ?>"></td>
-</div>
-<div class="col">
-<h2 style="  margin-top: 8%; text-align:center; font-size: 80px; color:white;"><?php echo $club['nomclub'] ; ?></h2>  
-                     <a href="event.php?idclub=<?php echo $club['idclub'] ; ?>  "onmousedown="bleep.play()"><input style="width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button"  value="show events" /> </a><br>
-            
-             </div>
-</div>
-</div>
-</div>  
 
-				
-                       
-                
-  
-							
-						<br> <br>	 
-							
-							
-									<?php
-											}
-                              
-									?>
-                                   
-						</table>
-                    
-                  </div>
-               </form>
-            </div>
-        
+
+
+
+
+
+
+                  <?php
+
+
+                  foreach ($club as $club) {
+                  ?>
+
+                     <div class="card text-center" style=" width: 29%; margin: 10px 35px 10px;">
+                        <div class="card-header bg-gradient-x-purple-red text-white">
+                           <div class="row">
+                              <div class="col">
+                                 <td><img style="border-radius:70%; " width=210 src="../Assets/uploads/<?php echo $club['logo']; ?>"></td>
+                              </div>
+                              <div class="col">
+                                 <h2 style="  margin-top: 8%; text-align:center; font-size: 80px; color:white;"><?php echo $club['nomclub']; ?></h2>
+                                 <a href="event.php?idclub=<?php echo $club['idclub']; ?>  " onmousedown="bleep.play()"><input style="width:70%; height:20%; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-top: 10%;" type="button" value="show events" /> </a><br>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+
+
+
+
+                     <br> <br>
+
+
+                  <?php
+                  }
+
+                  ?>
+
+                  </table>
+
+               </div>
+            </form>
          </div>
+
       </div>
+   </div>
    </div>
    <!-- end Contact -->
    <!-- footer -->
@@ -180,7 +180,7 @@ $x=$userC->getutilisateurbyID($_SESSION['a']);
       </div>
       <div class="copyright">
          <div class="container">
-         <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
+            <p>Copyright 2022 All Right Reserved By Hogwarts university</p>
          </div>
       </div>
    </footer>

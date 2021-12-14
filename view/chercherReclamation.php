@@ -1,20 +1,20 @@
 <?php
 session_start();
-    require_once '../Controller/Type_reclamationC.php';
-    include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php';
-   $userC = new utilisateurC();
-    $x = $userC->getutilisateurbyID($_SESSION['a']);
-    $type_reclamationC = new type_reclamationC();
+require_once '../Controller/Type_reclamationC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+$type_reclamationC = new type_reclamationC();
 
-    $type_reclamations = $type_reclamationC->afficherType_reclamation();
+$type_reclamations = $type_reclamationC->afficherType_reclamation();
 
-    if(isset($_POST['type_reclamation']) && isset($_POST['search'])){
-        $list1 = $type_reclamationC->afficherAbsences($_POST['type_reclamation'],$x["ID_utilisateur"]);
-        $list2 = $type_reclamationC->afficherNotes($_POST['type_reclamation'],$x["ID_utilisateur"]);
-        $list3 = $type_reclamationC->afficherAutres($_POST['type_reclamation'],$x["ID_utilisateur"]);
-    }
-    ?>
+if (isset($_POST['type_reclamation']) && isset($_POST['search'])) {
+   $list1 = $type_reclamationC->afficherAbsences($_POST['type_reclamation'], $x["ID_utilisateur"]);
+   $list2 = $type_reclamationC->afficherNotes($_POST['type_reclamation'], $x["ID_utilisateur"]);
+   $list3 = $type_reclamationC->afficherAutres($_POST['type_reclamation'], $x["ID_utilisateur"]);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@ session_start();
 
 <body class="main-layout contact-page">
    <!-- loader  -->
-   
+
    <!-- end loader -->
    <!-- header -->
    <header>
@@ -81,7 +81,7 @@ session_start();
                                  </div>
 
                               </li>
-                              <li><a href="front3etudiant.php">Subject</a></li>
+                              <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
                               <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
@@ -94,7 +94,7 @@ session_start();
                                  </div>
 
                               </li>
-          <li> <a href="cherhcerPresences.php">Absence</a> </li>
+                              <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                            </ul>
@@ -114,8 +114,8 @@ session_start();
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="abouttitle">
-               <br>
-                   <br>
+                  <br>
+                  <br>
                   <h2>RECLAMATION</h2>
                </div>
             </div>
@@ -127,132 +127,140 @@ session_start();
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <form action='' method="POST">
-               <div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">choisir une Type reclamation : </h4>
-				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-			</div>
-			<div class="card-content collapse show">
-				<div class="table-responsive">
-					<table class="table">
-						
-						<tbody>
-							<tr>
-                            <div class="col-75">
-                           
-                <select name="type_reclamation" id="type_reclamation">
-                <?php
-                   foreach($type_reclamations as $type_reclamation) {
-                       ?>
-                       <option
-                           value="<?= $type_reclamation['Id_reclamation'] ?>"
-                           <?php if(isset($_POST['search']) && $type_reclamation['Id_reclamation'] == $_POST['type_reclamation']) { ?>
-                               selected
-                               <?php } ?>
-                         >
-                               <?= $type_reclamation['Type_reclamation'] ?>
-                           </option>
-                           <?php
-                   }
-                   ?>
-                   </select>
-                </div>
-                  <section id="sizes-2">
-                <div class="card-content collapse show">
-                    <div class="card-body">
-                        <!-- simple sizes -->
-                        <div class="form-group">
-                            <button type="submit" name="search" class="btn mr-1 mb-1 btn-success btn-lg" value="search">Envoyer</button>
-                            <button type="reset" name="search" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+               <form action='' method="POST">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="card">
+                           <div class="card-header">
+                              <h4 class="card-title">choisir une Type reclamation : </h4>
+                              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                           </div>
+                           <div class="card-content collapse show">
+                              <div class="table-responsive">
+                                 <table class="table">
+
+                                    <tbody>
+                                       <tr>
+                                          <div class="col-75">
+
+                                             <select name="type_reclamation" id="type_reclamation">
+                                                <?php
+                                                foreach ($type_reclamations as $type_reclamation) {
+                                                ?>
+                                                   <option value="<?= $type_reclamation['Id_reclamation'] ?>" <?php if (isset($_POST['search']) && $type_reclamation['Id_reclamation'] == $_POST['type_reclamation']) { ?> selected <?php } ?>>
+                                                      <?= $type_reclamation['Type_reclamation'] ?>
+                                                   </option>
+                                                <?php
+                                                }
+                                                ?>
+                                             </select>
+                                          </div>
+                                          <section id="sizes-2">
+                                             <div class="card-content collapse show">
+                                                <div class="card-body">
+                                                   <!-- simple sizes -->
+                                                   <div class="form-group">
+                                                      <button type="submit" name="search" class="btn mr-1 mb-1 btn-success btn-lg" value="search">Envoyer</button>
+                                                      <button type="reset" name="search" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                                                   </div>
+
+                                                </div>
+                                             </div>
+                                          </section>
+                                          </td>
+
+                                       </tr>
+
+                                    </tbody>
+                                    <?php if (isset($_POST['search'])) { ?>
+
+                                       <?php
+                                       foreach ($list1 as $absence) {
+                                       ?>
+                                          <tr>
+                                             <thead class="thead-dark">
+                                                <tr>
+                                                   <th scope="col"><label for="Module">
+                                                         <font color="white">Module</font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Date_absence">
+                                                         <font color="white">Date_absence </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Heure_absence">
+                                                         <font color="white">Heure_absence </font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Description">
+                                                         <font color="white">Description </font>
+                                                      </label></th>
+                                                </tr>
+                                             </thead>
+                                          </tr>
+                                          <tr>
+                                             <td><?php echo $absence['Module']; ?></td>
+                                             <td><?php echo $absence['Date_absence']; ?></td>
+                                             <td><?php echo $absence['Heure_absence']; ?></td>
+                                             <td><?php echo $absence['Description']; ?></td>
+                                          </tr>
+
+                                       <?php
+                                       }
+                                       ?>
+
+                                       <?php
+                                       foreach ($list2 as $rec_note) {
+                                       ?>
+                                          <tr>
+                                             <thead class="thead-dark">
+                                                <tr>
+                                                   <th scope="col"><label for="Id_etudiant">
+                                                         <font color="white">Votre identifiant</font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Module">
+                                                         <font color="white">Module</font>
+                                                      </label></th>
+                                                   <th scope="col"><label for="Description">
+                                                         <font color="white">Description </font>
+                                                      </label></th>
+                                                </tr>
+                                             </thead>
+                                          </tr>
+                                          <tr>
+                                             <td><?php echo $rec_note['Id_etudiant']; ?></td>
+                                             <td><?php echo $rec_note['Module']; ?></td>
+                                             <td><?php echo $rec_note['Description']; ?></td>
+                                          </tr>
+                                       <?php
+                                       }
+                                       ?>
+                                       <?php
+                                       foreach ($list3 as $rec_autre) {
+                                       ?>
+                                          <tr>
+                                             <thead class="thead-dark">
+                                                <tr>
+                                                   <th scope="col"><label for="Description">
+                                                         <font color="white">Description </font>
+                                                      </label></th>
+                                                </tr>
+                                             </thead>
+                                          </tr>
+                                          <tr>
+                                             <td><?php echo $rec_autre['Description']; ?></td>
+                                          </tr>
+                                       <?php
+                                       }
+                                       ?>
+                                    <?php
+                                    }
+                                    ?>
+
+                                 </table>
+                              </div>
+                           </div>
                         </div>
-                       
-                    </div>
-                </div>
-</section>
-						</td>
-									
-							</tr>
-							
-						</tbody>
-                        <?php if (isset($_POST['search'])){?>
-  
-                             <?php
-                              foreach($list1 as $absence) {
-                                  ?>
-                                  <tr>
-                                  <thead class="thead-dark">
-							<tr>
-								<th scope="col"><label for="Module"> <font color="white">Module</font>
-								</label></th>
-								<th scope="col"><label for="Date_absence"><font color="white">Date_absence </font></label></th>
-                                <th scope="col"><label for="Heure_absence"><font color="white">Heure_absence </font></label></th>
-                                <th scope="col"><label for="Description"><font color="white">Description </font></label></th>
-							</tr>
-						</thead>
-  </tr>
-                                  <tr>
-    <td><?php echo $absence['Module'] ; ?></td>
-    <td><?php echo $absence['Date_absence'] ; ?></td>
-    <td><?php echo $absence['Heure_absence'] ; ?></td>
-    <td><?php echo $absence['Description'] ; ?></td>
-  </tr>
-     
-                              <?php
-                              }
-                              ?>
-                              
-                             <?php
-                              foreach($list2 as $rec_note) {
-                                  ?>
-                                  <tr>
-                                    <thead class="thead-dark">
-							<tr>
-                     <th scope="col"><label for="Id_etudiant"> <font color="white">Votre identifiant</font>
-								</label></th>
-								<th scope="col"><label for="Module"> <font color="white">Module</font>
-								</label></th>
-                                <th scope="col"><label for="Description"><font color="white">Description </font></label></th>
-							</tr>
-						</thead>
-                                      </tr>
-                                  <tr>
-                                  <td><?php echo $rec_note['Id_etudiant'] ; ?></td>
-                                  <td><?php echo $rec_note['Module'] ; ?></td>
-                                  <td><?php echo $rec_note['Description'] ; ?></td>
-                                </tr>
-                              <?php
-                              }
-                              ?>
-                           <?php
-                              foreach($list3 as $rec_autre) {
-                                  ?>
-                                    <tr>
-                                    <thead class="thead-dark">
-							<tr>
-                                <th scope="col"><label for="Description"><font color="white">Description </font></label></th>
-							</tr>
-						</thead>
-                                     </tr>
-                                  <tr>
-                                  <td><?php echo $rec_autre['Description'] ; ?></td>
-                                </tr>
-                              <?php
-                              }
-                              ?>
-                            <?php
-                }
-    ?>    
-					
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-        </form>
+                     </div>
+                  </div>
+               </form>
             </div>
          </div>
       </div>

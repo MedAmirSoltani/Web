@@ -53,11 +53,3 @@ if (isset($_GET['ID_utilisateur'] ))
      header("Location:supprimerarchive.php?ID_utilisateur=$id");
    }
 }
-
-
-
-
-
-
-
-?>

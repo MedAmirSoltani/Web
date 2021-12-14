@@ -1,27 +1,31 @@
 <?php
 
 require_once "../assets/ASFO/utilis/Config.php";
-    session_start();
+session_start();
 
-    if (isset($_POST['password'])){
-        $email=$_SESSION['email'] ;
-        $password=$_POST['password'];
-        if($_POST['confpassword']==$password){
-            $sql="UPDATE utilisateur SET password= '" . $password . "' WHERE email='" . $email . "'";
-            $db = config::getConnexion();
-            try{
-                $query=$db->prepare($sql);
-                $query->execute();
-                header("Location: index.php");
-            }
-            catch (Exception $e){
-                die('Erreur: '.$e->getMessage());
-            }
-        }
-        else {
-                echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-                echo 'Verifier votre mot de passe ';}
-    } 
+if (isset($_POST['password'])) {
+   $email = $_SESSION['email'];
+   $password = $_POST['password'];
+   if ($_POST['confpassword'] == $password) {
+      $sql = "UPDATE utilisateur SET password= '" . $password . "' WHERE email='" . $email . "'";
+      $db = config::getConnexion();
+      try {
+         $query = $db->prepare($sql);
+         $query->execute();
+         header("Location: index.php");
+      } catch (Exception $e) {
+         die('Erreur: ' . $e->getMessage());
+      }
+   } else {
+      echo "<br>";
+      echo "<br>";
+      echo "<br>";
+      echo "<br>";
+      echo "<br>";
+      echo "<br>";
+      echo 'Verifier votre mot de passe ';
+   }
+}
 ?>
 
 
@@ -76,7 +80,7 @@ require_once "../assets/ASFO/utilis/Config.php";
                      </div>
                   </div>
                </div>
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -90,9 +94,9 @@ require_once "../assets/ASFO/utilis/Config.php";
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
@@ -114,32 +118,32 @@ require_once "../assets/ASFO/utilis/Config.php";
       <div class="container">
          <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <p style="text-align: center;font-size: 21px; color:#878585;">Write your new password.</p>   
-            <br><br><br> 
-            <form id="formulaire" action="" method="POST" >
-                  <div  class="row">
-                     
-                                    
-                                  
-                                                <input  class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px; margin-bottom:13px" type="password" name="password" id="password" placeholder="write your new password"> 
-                                                <input  class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="password" name="confpassword" id="confpassword" placeholder="confirm the password">
-                                 <br><br><br>
-                                  
-                                 
-                                
-                                    <script>
-                         var bleep=new Audio();
-                         bleep.src="ab.mp3";
-                      </script>
+               <p style="text-align: center;font-size: 21px; color:#878585;">Write your new password.</p>
+               <br><br><br>
+               <form id="formulaire" action="" method="POST">
+                  <div class="row">
+
+
+
+                     <input class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px; margin-bottom:13px" type="password" name="password" id="password" placeholder="write your new password">
+                     <input class="form-control" style="text-align:center; width:30%; margin:0 0px 0 400px;" type="password" name="confpassword" id="confpassword" placeholder="confirm the password">
+                     <br><br><br>
+
+
+
+                     <script>
+                        var bleep = new Audio();
+                        bleep.src = "ab.mp3";
+                     </script>
 
 
 
                   </div>
-               
+
             </div>
             <button type="submit" name="reset-request-submit" onmousedown="bleep.play()" class="send-btn">Send</button>
-        </form> 
-        </div>
+            </form>
+         </div>
       </div>
    </div>
    <!-- end Contact -->

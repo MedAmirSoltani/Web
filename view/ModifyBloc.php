@@ -15,11 +15,11 @@ $error = "";
 
 // create adherent
 $block = null;
-$idb=$_GET["idb"];
+$idb = $_GET["idb"];
 // create an instance of the controller
 
 $blockC = new BlockC();
-$res= $blockC->Getblock($idb);
+$res = $blockC->Getblock($idb);
 if (
   isset($_POST["id"]) &&
   isset($_POST["nom"]) &&
@@ -38,10 +38,10 @@ if (
       $_POST['nbrsalles'],
       $_POST['typesalles']
     );
-    $blockC->modifierblock($Block,$idb);
+    $blockC->modifierblock($Block, $idb);
     header('Location:ListeBlocks.php');
   } else
-    $res= $blockC->Getblock($idb);
+    $res = $blockC->Getblock($idb);
 }
 
 
@@ -166,7 +166,7 @@ if (
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
+
 
       </ul>
     </div>

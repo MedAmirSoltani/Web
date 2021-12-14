@@ -14,6 +14,3 @@
      $archiveC->ajouterarchive($matiere);
  header("Location:supprimermatiere1.php?idmatiere=$idmatiere");
  }
-
-
-?>

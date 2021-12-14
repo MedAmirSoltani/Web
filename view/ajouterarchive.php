@@ -15,6 +15,3 @@
      
  header("Location:supprimerutilisateur.php?ID_utilisateur=$ID_utilisateur");
  }
-
-
-?>
