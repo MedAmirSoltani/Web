@@ -7,11 +7,15 @@ $userC = new utilisateurC();
 $x = $userC->getutilisateurbyID($_SESSION['a']);
 $registre_appelC = new Registre_appelC();
 $registre_appels = $registre_appelC->afficherRegistre_appel();
-if (($x["admin_bool"]) != 1) { 
+if (($x["admin_bool"]) != 1) {
 
    header('location:cherhcerPresences.php');
-
 }
+if (($x["role"]) == 'Prof') {
+
+   header('location:ajouterRegistre_appel.php');
+}
+
 ?>
 
 <html lang="en">
@@ -104,10 +108,10 @@ if (($x["admin_bool"]) != 1) {
                                  </div>
 
                               </li>
-                             
-                              
+
+
                               <li><a href="cherhcerPresences.php">Absence</a></li>
-                              <?php  if (($x["admin_bool"]) == 1) { ?>
+                              <?php if (($x["admin_bool"]) == 1) { ?>
                                  <li><a href="afficherutilisateur.php">Panel</a></li>
                               <?php } ?>
                               <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
