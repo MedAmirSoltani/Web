@@ -1,6 +1,10 @@
 <?php
 require '../Controller/noteC.php';
-
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+session_start();
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 $noteC = new noteC();
 $note = $noteC->getnotebymatiere($_GET['idmatiere']);
 ?>
@@ -80,34 +84,34 @@ $note = $noteC->getnotebymatiere($_GET['idmatiere']);
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">class</a></li>
                               <?php if (($x["role"]) != "Prof") { ?>
-                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+                                 <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
 
 
 
-                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="arrow_box_right">
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                       <div class="arrow_box_right">
 
-                                       <div class="dropdown-divider"></div>
-                                       <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
-                                       <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
-                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                          <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                          <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                       </div>
                                     </div>
-                                 </div>
 
-                              </li>
+                                 </li>
                               <?php } ?>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
                               <li><a href="afficherutilisateur.php">Panel</a></li>
-                              
+
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
