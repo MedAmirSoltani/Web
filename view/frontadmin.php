@@ -1,6 +1,11 @@
 <?php
+session_start();
 require '../Controller/matiereC.php';
 
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 $matiereC = new matiereC();
 $matiere = $matiereC->affichermatiere();
 ?>
@@ -95,8 +100,10 @@ $matiere = $matiereC->affichermatiere();
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                              <li><a href="afficherutilisateur.php">Panel</a></li>
-                              
+                              <?php if (($x["admin_bool"]) == 1) { ?>
+                                 <li><a href="afficherutilisateur.php">Panel</a></li>
+                              <?php } ?>
+
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
@@ -123,7 +130,9 @@ $matiere = $matiereC->affichermatiere();
    </div>
    <!-- Contact -->
    <div class="Contact">
-      <a href="front9admin.php"> <img src="../Assets/Images/plus.PNG" style="height:2%; width:2%; margin-left:2%; "> </a>
+      <?php if (($x["admin_bool"]) == 1) { ?>
+         <a href="front9admin.php"> <img src="../Assets/Images/plus.PNG" style="height:2%; width:2%; margin-left:2%; "> </a>
+      <?php } ?>
       <div class="row">
          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <form>
@@ -152,13 +161,19 @@ $matiere = $matiereC->affichermatiere();
                               </div>
                               <div class="col">
                                  <h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $matiere['titre']; ?></h2>
+
+
                                  <a href="front2admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>  " onmousedown="bleep.play()"><input style="cursor:pointer; background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button" value="courses" /> </a><br>
-                                 <a href="front4admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; background: #1b2f83;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="students list" /></a> <br>
+                                 <?php if (($x["admin_bool"]) == 1 || $x["role"] == "Prof") { ?>
+                                    <a href="front4admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>" onmousedown="bleep.play()"><input style="cursor:pointer; background: #1b2f83;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="students list" /></a> <br>
+                                 <?php } ?>
 
                                  <h4 style="color:white;"><strong> coef:</strong> <?php echo   $matiere['coff']; ?> </h4>
                                  <h4 style="margin-top: -10px; color:white;"><strong> hours:</strong> <?php echo $matiere['hour']; ?> </h4>
-                                 <a href="ajouterarchivematiere1.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                 <a href="front8admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php if (($x["admin_bool"]) == 1) { ?>
+                                    <a href="ajouterarchivematiere1.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                    <a href="front8admin.php?idmatiere=<?php echo $matiere['idmatiere']; ?>"><input style=" cursor:pointer; background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                 <?php } ?>
                               </div>
                            </div>
                         </div>

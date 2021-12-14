@@ -1,3 +1,13 @@
+<?php
+session_start();
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +101,9 @@
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
+                              <?php if (($x["admin_bool"]) == 1) { ?>
                               <li><a href="afficherutilisateur.php">Panel</a></li>
+                              <?php } ?>
 
 
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>

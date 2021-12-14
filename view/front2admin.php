@@ -1,6 +1,11 @@
 <?php
+session_start();
 require '../Controller/courC.php';
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
 
+$userC = new utilisateurC();
+$x = $userC->getutilisateurbyID($_SESSION['a']);
 $courC = new courC();
 $cour = $courC->getcourbymatiere($_GET['idmatiere']); //nafficher les cours eli appartient lel matiere hadhika
 if (isset($_POST['search'])) {
@@ -99,8 +104,10 @@ if (isset($_POST['search'])) {
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                              <li><a href="afficherutilisateur.php">Panel</a></li>
-                              
+                              <?php if (($x["admin_bool"]) == 1) { ?>
+                                 <li><a href="afficherutilisateur.php">Panel</a></li>
+                              <?php } ?>
+
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
                         </nav>
@@ -134,8 +141,11 @@ if (isset($_POST['search'])) {
 
 
             <a href="frontadmin.php"> <img src="../Assets/Images/return.PNG" style="height:10%; width:2%;  " alt=""> </a>
-            <a href="front6admin.php"> <img src="../Assets/Images/plus.PNG" style="height:10%; width:2%; margin-left:90%; "> </a>
+            <?php if (($x["admin_bool"]) == 1 || $x["role"] == "Prof") { ?>
+               <a href="front6admin.php"> <img src="../Assets/Images/plus.PNG" style="height:10%; width:2%; margin-left:90%; "> </a>
+            <?php } ?>
             <form>
+
 
                <div class="row">
 
@@ -157,8 +167,10 @@ if (isset($_POST['search'])) {
                                     <h2 style="text-align:center; font-size: 60px; color:white;"><?php echo $key['ncour']; ?></h2>
                                     <h4 style="color:white;"><strong> cour :</strong> <?php echo   $key['ncour']; ?> </h4>
                                     <a href="<?php echo $key['file']; ?> " onmousedown="bleep.play()"><input style="background: #1b2f83;border: none; border-radius: 30px; color: white; margin-bottom: 0.5em;" type="button" value="courses" /> </a><br>
-                                    <a href="supprimercour2.php?idcour=<?php echo $key['idcour']; ?>&idmatiere=<?php echo $key['idmatiere']; ?>"><input style="background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
-                                    <a href="front10admin.php?idcour=<?php echo $key['idcour']; ?>"><input style="background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                    <?php if (($x["admin_bool"]) == 1 || $x["role"] == "Prof") { ?>
+                                       <a href="supprimercour2.php?idcour=<?php echo $key['idcour']; ?>&idmatiere=<?php echo $key['idmatiere']; ?>"><input style="background: #FF0000;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="delete" /></a>
+                                       <a href="front10admin.php?idcour=<?php echo $key['idcour']; ?>"><input style="background: #00ff00;border: none; border-radius: 30px; color: white;margin-bottom: 0.8em;" type="button" value="update" /></a>
+                                    <?php } ?>
                                  </div>
                               </div>
                            </div>
