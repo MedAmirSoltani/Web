@@ -207,8 +207,8 @@ $conn = $userC1->getutilisateurbyID($_SESSION['a']);
                           <td><?php echo $Salles['nom']; ?></td>
                           <td><?php echo $Salles['Nbrchaises']; ?></td>
                           <td><?php echo $Salles['Nbrprojecteurs']; ?></td>
-                          <td><a href="SupprimerSalles.php?ids=<?php echo $salles['Id'];?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
-                          <td><a href="ModifySalle.php.php?ids=<?php echo $salles['Id']; ?>">modifier</a></td>
+                          <td><a href="SupprimerSalles.php?ids=<?php echo $Salles['Id'];?>"><img src="../Assets/Images/supp.png" witdh='25px' height='25px'></a></td>
+                          <td><a href="ModifySalle.php?ids=<?php echo $Salles['Id']; ?>">modifier</a></td>
                         </tr>
 
 

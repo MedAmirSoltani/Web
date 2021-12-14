@@ -12,6 +12,7 @@ $Salles = null;
 
 // create an instance of the controller
 $SallesC = new SallesC();
+$res = $SallesC->recupererSalles($_GET["ids"]);
 if (
   isset($_POST["id"]) &&
   isset($_POST["nom"]) &&
@@ -34,7 +35,7 @@ if (
       $_POST["idb"]
     );
     $SallesC->modifierSalles($Salles, $_GET["ids"]);
-    header('Location:ListeSalles.php');
+    header('Location:index.php');
   } else
     $error = "Missing information";
 }
@@ -222,18 +223,22 @@ if (
                           <tr>
                           <tr>
                             <th>Nom</th>
-                            <th><input type="text" name="nom" value="<?php echo $res['Nom']; ?>" /></th>
+                            <th><input type="text" name="nom" value="<?php echo $res['nom']; ?>" /></th>
                           </tr>
 
                           <tr>
                             <th>Nombre de Salles</th>
-                            <th><input type="number" name="nbrsalles" value="<?php echo $res['Nbrsalles']; ?>" /></th>
+                            <th><input type="number" name="nbrprojecteurs" value="<?php echo $res['Nbrprojecteurs']; ?>" /></th>
                           </tr>
 
                           </tr>
                           <tr>
                             <th> Types de salles</th>
-                            <th><input type="number" name="typesalles" value="<?php echo $res['Typesalles']; ?>" required /></th>
+                            <th><input type="number" name="nbrtables" value="<?php echo $res['Nbrtables']; ?>" required /></th>
+                          </tr>
+                          <tr>
+                            <th> Types de salles</th>
+                            <th><input type="number" name="nbrchaises" value="<?php echo $res['Nbrchaises']; ?>" required /></th>
                           </tr>
 
 

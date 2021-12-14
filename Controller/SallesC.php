@@ -61,16 +61,15 @@ class SallesC
 	}
 	function recupererSalles($id)
 	{
-		$sql = "SELECT * from Salles where Id=$id";
-		$db = config::getConnexion();
+		$requete = "select * from salles Where Id=:id ";
+		$config = config::getConnexion();
 		try {
-			$query = $db->prepare($sql);
-			$query->execute();
-
-			$adherent = $query->fetch();
-			return $adherent;
-		} catch (Exception $e) {
-			die('Erreur: ' . $e->getMessage());
+			$querry = $config->prepare($requete);
+			$querry->execute(['id' => $id]);
+			$result = $querry->fetch();
+			return $result;
+		} catch (PDOException $th) {
+			$th->getMessage();
 		}
 	}
 
