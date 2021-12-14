@@ -13,181 +13,139 @@ $etudiants = $etudiantC->afficheretudiant();
 
 
 if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']) && isset($_POST['Heure']) && isset($_POST['Etat'])) {
-  $registre_appel = new Registre_appel($_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
-  $et = $etudiantC->getetudiantbyName($_POST["Etudiant"]);
-  $registre_appelC = new Registre_appelC();
-  $registre_appelC->ajouterRegistre_appel($registre_appel, $et["ID"]);
-  header('Location:afficherRegistre_appel.php');
+   $registre_appel = new Registre_appel($_POST['Etudiant'], $_POST['Module'], $_POST['Date'], $_POST['Heure'], $_POST['Etat']);
+   $et = $etudiantC->getetudiantbyName($_POST["Etudiant"]);
+   $registre_appelC = new Registre_appelC();
+   $registre_appelC->ajouterRegistre_appel($registre_appel, $et["ID"]);
+   header('Location:afficherRegistre_appel.php');
 }
-
 
 
 ?>
 
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
-  <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
-  <meta name="author" content="ThemeSelect">
-  <title>Hogwarts</title>
-  <link rel="apple-touch-icon" href="../Assets/theme-assets/images/ico/apple-icon-120.png">
-
-  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
-  <!-- BEGIN VENDOR CSS-->
-  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/vendors.css">
-  <!-- END VENDOR CSS-->
-  <!-- BEGIN CHAMELEON  CSS-->
-  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/app-lite.css">
-  <!-- END CHAMELEON  CSS-->
-  <!-- BEGIN Page Level CSS-->
-  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/menu/menu-types/vertical-menu.css">
-  <link rel="stylesheet" type="text/css" href="../Assets/theme-assets/css/core/colors/palette-gradient.css">
-  <!-- END Page Level CSS-->
-  <!-- BEGIN Custom CSS-->
-  <!-- END Custom CSS-->
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>memorial books</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="../Assets/CSS/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="../Assets/CSS/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="../Assets/Images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="../Assets/CSS/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
+   <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <!-- body -->
 
-<body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+<body class="main-layout contact-page">
+   <!-- loader  -->
 
-  <!-- fixed-top-->
-  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
-    <div class="navbar-wrapper">
-      <div class="navbar-container content">
-        <div class="collapse navbar-collapse show" id="navbar-mobile">
-          <ul class="nav navbar-nav mr-auto float-left">
-            <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
-            <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
-            <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#"><i class="ficon ft-search"></i></a>
-              <ul class="dropdown-menu">
-                <li class="arrow_box">
-                  <form>
-                    <div class="input-group search-box">
-                      <div class="position-relative has-icon-right full-width">
-                        <input class="form-control" id="search" type="text" placeholder="Search here...">
-                        <div class="form-control-position navbar-search-close"><i class="ft-x"> </i></div>
-                      </div>
-                    </div>
-                  </form>
-                </li>
-              </ul>
-            </li>
-          </ul>
+   <!-- end loader -->
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo"> <a href="index.html"><img src="../Assets/Images/logo.png" alt="#"></a> </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <div class="menu-area">
+                     <div class="limit-box">
+                        <nav class="main-menu">
+                           <ul class="menu-area-main">
+                              <li> <a href="index.php">Home</a> </li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Forum</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="Addblogpost.php"><i class="ft-user"></i>Add Post</a>
+                                       <a class="dropdown-item" href="GeneralViewBlogHome.php"><i class="ft-user"></i>Blog Home</a>
+                                    </div>
+                                 </div>
 
-          <ul class="nav navbar-nav float-right">
+                              </li>
+                              <li><a href="front3admin.php">Subject</a></li>
+                              <li><a href="affichBlocks.php">classe</a></li>
+                              <li><a href="club.php">club</a></li>
+                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="ajouterType_reclamation.php"><i class="ft-user"></i>Faire une Reclamation</a>
+                                       <a class="dropdown-item" href="chercherReclamation.php"><i class="ft-user"></i>Consulter une Reclamation</a>
+                                    </div>
+                                 </div>
 
-            <?php if (empty($conn['profilpicture'])) {
-              echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:100%; height:50px;border-radius:10%; display:block;"/>';
-            }
-
-            ?>
-            <img <?php if (empty($conn['profilpicture'])) {
-                    echo 'style="display:none;"';
-                  } ?> id="profildisplay" style="width:25%; height:35px; float:left;margin:0 10px 0 250px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">
-
-
-          </ul>
-          <ul class="nav navbar-nav float-right">
-
-
-            <div class="dropdown-menu dropdown-menu-right">
-              <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="../Assets/theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
-              </div>
+                              </li>
+                              <li> <a href="cherhcerPresences.php">Absence</a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
             </div>
-            </li>
-          </ul>
-        </div>
+         </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <!-- end header inner -->
-  </header>
-  <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="../Assets/theme-assets/images/backgrounds/02.jpg">
-    <div class="navbar-header">
-      <ul class="nav navbar-nav flex-row">
-        <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="../Assets/Images/logo.PNG" />
-            <h3 class="brand-text">Hogwarts</h3>
-          </a></li>
-        </a></li>
-        <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
-      </ul>
-    </div>
-    <div class="main-menu-content">
-      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" active"><a href="afficherutilisateur.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Users</span></a>
-        </li>
-        <li class=" nav-item"><a href="affichermatiere.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Subjects</span></a>
-        </li>
-        <li class="nav-item"><a href="afficherclub.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Clubs</span></a>
-        </li>
-        <li onclick="affich()" class="nav-item"><a><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Forum<i class="la la-plus"></i></span></a>
-
-        <li class=" nav-item" id="forum"><a href="AdminViewBlogHome.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog</span></a>
-        </li>
-        <li class=" nav-item" id="forumar"><a href="AdminViewBlogHomeArchive.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Blog Archive</span></a>
-        </li>
-
-        </li>
-
-        <li class="nav-item"><a href="affichBlocksAd.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Bloc</span></a>
-        </li>
-        <li class=" nav-item"><a href="afficherLesReclamations.php"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Reclamation</span></a>
-        </li>
-        <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
-        </li>
-
-
-      </ul>
-    </div>
-    <div class="navigation-background"></div>
-  </div>
-  <div class="app-content content">
-    <div class="content-wrapper">
-      <div class="content-wrapper-before"></div>
-      <div class="content-header row">
-        <div class="content-header-left col-md-4 col-12 mb-2">
-
-        </div>
-        <div class="content-header-right col-md-8 col-12">
-          <div class="breadcrumbs-top float-md-right">
-            <div class="breadcrumb-wrapper mr-1">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="profiladmin.php">Home</a>
-                </li>
-
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
       </div>
-      <!-- Contact -->
-      <div class="Contact">
-        <div class="container">
-          <div class="row">
+      <!-- end header inner -->
+   </header>
+   <!-- end header -->
+   <div class="about-bg">
+      <div class="container">
+         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <form action='' method="POST">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">ajouter Absence</h4>
-                        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                      </div>
-                      <div class="card-content collapse show">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <thead class="thead-dark">
+               <div class="abouttitle">
+                  <br>
+                  <br>
+                  <h2>RECLAMATION</h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Contact -->
+   <div class="Contact">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <form action='' method="POST">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="card">
+                           <div class="card-header">
+                              <h4 class="card-title">choisir une reclamation</h4>
+                              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                           </div>
+                           <div class="card-content collapse show">
+                              <div class="table-responsive">
+                                 <table class="table">
+                                 <thead class="thead-dark">
                               <tr>
                                 <th scope="col"><label for="IdRegistre">
                                     <font color="white">Id Registre:</font>
@@ -236,44 +194,75 @@ if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']
                               </tr>
                             </tbody>
 
+                                 </table>
+                                 <section id="sizes-2">
+                                    <div class="card-content collapse show">
+                                       <div class="card-body">
+                                          <!-- simple sizes -->
+                                          <div class="form-group">
+                                             <button type="submit" name="command" name="command" class="btn mr-1 mb-1 btn-success btn-lg" value="Envoyer">Envoyer</button>
+                                             <button type="reset" name="command" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
+                                          </div>
 
-                          </table>
-                          <section id="sizes-2">
-                            <div class="card-content collapse show">
-                              <div class="card-body">
-                                <!-- simple sizes -->
-                                <div class="form-group">
-                                  <button type="submit" name="command" name="command" class="btn mr-1 mb-1 btn-success btn-lg" value="Envoyer">Envoyer</button>
-                                  <button type="reset" name="command" class="btn mr-1 mb-1 btn-danger btn-lg" value="Annuler">Annuler</button>
-                                </div>
+                                       </div>
+                                    </div>
+                                 </section>
 
                               </div>
-                            </div>
-                          </section>
+                           </div>
                         </div>
-                      </div>
-                    </div>
+                     </div>
                   </div>
-                </div>
-              </form>
+               </form>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-      <!-- end Contact -->
-
-      <!-- Javascript files-->
-      <script src="../Assets/js/jquery.min.js"></script>
-      <script src="../Assets/js/popper.min.js"></script>
-      <script src="../Assets/js/bootstrap.bundle.min.js"></script>
-      <script src="../Assets/js/jquery-3.0.0.min.js"></script>
-      <script src="../Assets/js/plugin.js"></script>
-      <!-- sidebar -->
-      <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="../Assets/js/custom.js"></script>
-      <script type="text/javascript" src="../Assets/js/Date.js"></script>
-      <script type="text/javascript" src="../Assets/js/radio.js"></script>
-      <script src="../Assets/js/javasu.js"></script>
+   </div>
+   <!-- end Contact -->
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row pdn-top-30">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Follow">
+                     <h3>Follow Us</h3>
+                  </div>
+                  <ul class="location_icon">
+                     <li> <a href="#"><img src="../Assets/icon/facebook.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/Twitter.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/linkedin.png"></a></li>
+                     <li> <a href="#"><img src="../Assets/icon/instagram.png"></a></li>
+                  </ul>
+               </div>
+               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                  <div class="Follow">
+                     <h3>Newsletter</h3>
+                  </div>
+                  <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
+                  <button class="Subscribe">Subscribe</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
+         <div class="container">
+            <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="../Assets/js/jquery.min.js"></script>
+   <script src="../Assets/js/popper.min.js"></script>
+   <script src="../Assets/js/bootstrap.bundle.min.js"></script>
+   <script src="../Assets/js/jquery-3.0.0.min.js"></script>
+   <script src="../Assets/js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="../Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="../Assets/js/custom.js"></script>
+   <script type="text/javascript" src="../Assets/js/Date.js"></script>
+   <script type="text/javascript" src="../Assets/js/radio.js"></script>
 </body>
 
 </html>
