@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 09:49 PM
+-- Generation Time: Dec 14, 2021 at 06:55 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -43,7 +43,8 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`Id_absence`, `Id_etudiant`, `Module`, `Date_absence`, `Heure_absence`, `Description`, `type_reclamation`) VALUES
-(2, 69113176, '', '2021-12-11', '12:26:00', 'updated2', 2);
+(3, 64280570, 'Mathematique', '2021-12-15', '09:11:00', 'ABSENCE', 2),
+(4, 64280570, 'Base de Donnees', '2021-12-14', '10:12:00', 'ghtrgfhtrgjhtrjtr', 2);
 
 -- --------------------------------------------------------
 
@@ -76,6 +77,14 @@ CREATE TABLE `archivecomment` (
   `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `archivecomment`
+--
+
+INSERT INTO `archivecomment` (`Idcommantar`, `Comment_text`, `Date_Comment`, `Idpostar`, `ID_utilisateur`) VALUES
+(18, 'Comment ', '2021-12-14', 10, 64280570),
+(19, 'Comment', '2021-12-14', 12, 64280570);
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +113,18 @@ CREATE TABLE `archivepost` (
   `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `archivepost`
+--
+
+INSERT INTO `archivepost` (`Idpostar`, `Title`, `Picture`, `Date`, `Description`, `ID_utilisateur`) VALUES
+(7, 'TESTRAYEN', 'peter.png', '2021-12-13', 'RAYENETUDIANTHHH', 69113176),
+(8, 'MAth', 'hackermeme.jpg', '2021-12-14', 'Math exercice 2 was hard', 64280570),
+(9, 'Math', 'file-20210901-13-19lgusq.png', '2021-12-14', 'last math exam was hard need help', 64280570),
+(10, 'Math', 'file-20210901-13-19lgusq.png', '2021-12-14', 'last math exam was hard need help', 64280570),
+(12, 'Math', 'file-20210901-13-19lgusq.png', '2021-12-14', 'last math exam was hard need help', 64280570),
+(13, 'Web', 'file-20210901-13-19lgusq.png', '2021-12-14', 'last web exam was hard need help', 64280570);
+
 -- --------------------------------------------------------
 
 --
@@ -117,6 +138,13 @@ CREATE TABLE `archivereply` (
   `idcommentar` int(11) NOT NULL,
   `ID_utilisateur` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `archivereply`
+--
+
+INSERT INTO `archivereply` (`Idreply`, `Reply_text`, `Date_reply`, `idcommentar`, `ID_utilisateur`) VALUES
+(82, 'Reply', '2021-12-14', 18, 64280570);
 
 -- --------------------------------------------------------
 
@@ -136,10 +164,11 @@ CREATE TABLE `blocks` (
 --
 
 INSERT INTO `blocks` (`Id`, `Nom`, `Nbrsalles`, `Typesalles`) VALUES
-(12339, 'rima dhkeya', 24, '22'),
-(12341, 'malek', 22, '22'),
-(12342, 'Kll', 20, '10'),
-(12343, 'Lezmek tfasekh sea eli mawjoudin fi tab salle khater el cle primaire hedhi cle etranger fi tabl sale', 20, '1337');
+(12346, 'BLOC G', 42, '10'),
+(12347, 'BLOC C', 23, '45'),
+(12348, 'BLOC A', 67, '89'),
+(12349, 'BLOC D', 88, '90'),
+(12350, 'BLOC E ', 94, '23');
 
 -- --------------------------------------------------------
 
@@ -336,7 +365,7 @@ INSERT INTO `post` (`Idpost`, `Title`, `Picture`, `Date`, `Description`, `Ncomme
 (4, 'ETUDIANT', '1631804923136.gif', '2021-12-12', 'WOWETUDIANMAMAMIA', 0, 0, 64280570),
 (5, 'PROF', '1635194283208.png', '2021-12-12', 'PROFPROFPROF', 1, 1, 751805),
 (6, 'AMIRGAY', '11426760_462304253925016_3791291957869282694_n.jpg', '2021-12-12', 'SAHEBANISGAYYYY', 1, 0, 123456),
-(7, 'TESTRAYEN', 'peter.png', '2021-12-13', 'RAYENETUDIANTHHH', 0, 0, 69113176);
+(11, 'Web', 'hackermeme.jpg', '2021-12-14', 'Memory forencics wasn\'t that  hard', 0, 0, 64280570);
 
 -- --------------------------------------------------------
 
@@ -381,7 +410,8 @@ CREATE TABLE `rec_autre` (
 --
 
 INSERT INTO `rec_autre` (`Id_autre`, `Id_etudiant`, `Description`, `type_reclamation`) VALUES
-(1, 64280570, 'uuuuuuuuuuuiupdated', 3);
+(1, 64280570, 'uuuuuuuuuuuiupdated', 3),
+(2, 64280570, 'AUTREEEE', 3);
 
 -- --------------------------------------------------------
 
@@ -403,7 +433,10 @@ CREATE TABLE `rec_note` (
 
 INSERT INTO `rec_note` (`Id_note`, `Id_etudiant`, `Module`, `Description`, `type_reclamation`) VALUES
 (3, 64280570, 'Base de Donnees', 'opooooooooUPDATED', 1),
-(4, 69113176, 'Mathematique', 'yaaaaaaaaa', 1);
+(4, 69113176, 'Mathematique', 'yaaaaaaaaa', 1),
+(6, 64280570, 'Base de Donnees', 'KIKIKIKIKI', 1),
+(7, 64280570, 'Projet Technologies web', 'HAHAHAHAHAHAAH', 1),
+(8, 64280570, 'Mathematique', 'i have a problem ', 1);
 
 -- --------------------------------------------------------
 
@@ -426,7 +459,8 @@ CREATE TABLE `registre_appel` (
 --
 
 INSERT INTO `registre_appel` (`IdRegistre`, `Id_etudiant`, `Etudiant`, `Module`, `Date`, `Heure`, `Etat`) VALUES
-(4, 69113176, 'Rayen', 'Projet Technologies web', '2021-12-13', '09:04:00', 'present');
+(4, 69113176, 'Rayen', 'Projet Technologies web', '2021-12-13', '09:04:00', 'present'),
+(5, 69113176, 'Rayen', 'Mathematique', '2021-12-14', '09:28:00', 'present');
 
 -- --------------------------------------------------------
 
@@ -471,7 +505,7 @@ CREATE TABLE `salles` (
 --
 
 INSERT INTO `salles` (`Id`, `nom`, `Nbrprojecteurs`, `Nbrtables`, `Nbrchaises`, `id_block`) VALUES
-(21, 'Lezmek tfasekh sea eli mawjoudin fi tab salle khater el cle primaire hedhi cle etranger fi tabl sale', 1337, 420, 69, 12339);
+(24, 'RIMA Dhkeya', 23, 34, 54, 12346);
 
 -- --------------------------------------------------------
 
@@ -688,13 +722,13 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_absence` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `archivecomment`
 --
 ALTER TABLE `archivecomment`
-  MODIFY `Idcommantar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Idcommantar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `archivematiere`
@@ -706,19 +740,19 @@ ALTER TABLE `archivematiere`
 -- AUTO_INCREMENT for table `archivepost`
 --
 ALTER TABLE `archivepost`
-  MODIFY `Idpostar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Idpostar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `archivereply`
 --
 ALTER TABLE `archivereply`
-  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12344;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12351;
 
 --
 -- AUTO_INCREMENT for table `club`
@@ -730,13 +764,13 @@ ALTER TABLE `club`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `cour`
 --
 ALTER TABLE `cour`
-  MODIFY `idcour` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `idcour` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -760,37 +794,37 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Idpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rec_autre`
 --
 ALTER TABLE `rec_autre`
-  MODIFY `Id_autre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_autre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rec_note`
 --
 ALTER TABLE `rec_note`
-  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_note` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `registre_appel`
 --
 ALTER TABLE `registre_appel`
-  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdRegistre` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `Idreply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `salles`
 --
 ALTER TABLE `salles`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `type_reclamation`
