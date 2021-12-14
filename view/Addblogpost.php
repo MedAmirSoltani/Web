@@ -118,7 +118,9 @@ if (isset($_POST['Title']) && isset($_FILES["Picture"]) && isset($_POST['Date'])
 
                     </li>
                     <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                    <li><a href="afficherutilisateur.php">Panel</a></li>
+                    <?php if (($x["admin_bool"]) == 1) { ?>
+                      <li><a href="afficherutilisateur.php">Panel</a></li>
+                    <?php } ?>
 
                     <li class="mean-last"> <a id="login" href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
                     <div class="arrow-up">
