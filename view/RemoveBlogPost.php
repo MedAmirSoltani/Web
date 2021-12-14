@@ -5,6 +5,11 @@ require_once "../Controller/CommentC.php";
 require_once "../Controller/ReplyC.php";
 require_once "../Model/Comment.php";
 require_once "../Model/Reply.php";
+include_once     '../Controller/utilisateurC.php';
+include_once '../Model/utilisateur.php';
+
+
+session_start();
 
 ////////////////////////////////////////////////////////////////////////:
 $BlogC = new BlogC();
@@ -14,15 +19,15 @@ $ReplyC = new ReplyC();
 $idp = $_GET["Idpost"];
 $blog = $BlogC->GetPostbyID($idp);
 $Blog = new post($blog['Title'], $blog['Picture'], $blog['Date'], $blog['Description']);
-$BlogC->AddBlogArchive($Blog, $idp,$blog['ID_utilisateur']);
+$BlogC->AddBlogArchive($Blog, $idp, $blog['ID_utilisateur']);
 $comments = $CommentC->ShowComment($blog["Idpost"]);
 foreach ($comments as $comment) {
     $Comment = new Comment($comment["Idpost"], $comment['Comment_text'], $comment['Date_Comment']);
-    $CommentC->AddCommentArchive($Comment, $comment["Idpost"], $comment["Idcomment"],$comment['ID_utilisateur']);
+    $CommentC->AddCommentArchive($Comment, $comment["Idpost"], $comment["Idcomment"], $comment['ID_utilisateur']);
     $replys = $ReplyC->ShowReply($comment["Idcomment"]);
     foreach ($replys as $reply) {
         $Reply = new Reply($reply["idcomment"], $reply['Reply_text'], $reply['Date_reply']);
-        $ReplyC->AddReplyArchive($Reply, $reply["idcomment"], $reply["Idreply"],$reply["ID_utilisateur"]);
+        $ReplyC->AddReplyArchive($Reply, $reply["idcomment"], $reply["Idreply"], $reply["ID_utilisateur"]);
     }
 }
 ////////////////////////////////////////:////////////////////////////////////////:
@@ -30,4 +35,5 @@ foreach ($comments as $comment) {
 
 
 $BlogC->RemoveBlog($idp);
-header('Location:AdminViewBlogHome.php');
+
+header('Location:GeneralViewBlogHome.php');

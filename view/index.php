@@ -327,7 +327,7 @@ if (empty($_SESSION['a'])) {
                </div>
                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                   <div class="Follow">
-                     <h3>Newsletter</h3>
+                     <h3>Contact Us</h3>
                   </div>
                   <input class="Newsletter" placeholder="Enter your email" type="Enter your email">
                   <button class="Subscribe">Subscribe</button>

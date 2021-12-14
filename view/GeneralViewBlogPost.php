@@ -147,7 +147,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
         <form action="" method="post">
             <button type="submit" id="upvote"></button>
             <br>
-            <input value="<?php echo $test["Nvotes"]; ?>" name="Nvote" id="nbvote" hidden>
+            <input value="<?php echo $test["Nvotes"]; ?>" name="Nvote" id="nbvote" readonly>
             <br>
             <button type="submit" id="downvote"></button>
         </form>
@@ -177,8 +177,7 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                     <section class="mb-5">
 
                         <h2 class="fw-bolder mb-4 mt-5"><?php echo $test['Description']; ?></h2>
-                        <p class="fs-5 mb-4"><?php echo $test['Description']; ?></p>
-                        <p class="fs-5 mb-4"><?php echo $test['Description']; ?></p>
+
                     </section>
                 </article>
                 <!-- Comments section-->
@@ -269,9 +268,9 @@ $comments = $CommentC->ShowComment($_SESSION['idp']);
                 </div>
 
                 <div class="card mb-4">
-                    <div class="card-header">Side Widget</div>
-                    <div class="card-body">You can put anything you want inside of these side widgets. They are easy to
-                        use, and feature the Bootstrap 5 card component!</div>
+                    <div class="card-header">Post</div>
+                    <div class="card-body">You can learn anything you want inside of these posts . They are easy to
+                        use,and made for you students to help each other</div>
                 </div>
             </div>
         </div>
