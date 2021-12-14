@@ -189,7 +189,7 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
             <div class="card-content collapse show">
               <form action='' method="POST">
                 <div class="table-responsive">
-                  <a href="ajouterRegistre_appel.php">Ajouter Absence </a>
+                  <a href="ajouterRegistre_appelAD.php">Ajouter Absence </a>
                   <br>
                   <table class="table">
                     <thead class="thead-dark">
