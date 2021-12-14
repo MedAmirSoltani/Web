@@ -91,16 +91,24 @@ if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']
                               <li><a href="front3admin.php">Subject</a></li>
                               <li><a href="affichBlocks.php">classe</a></li>
                               <li><a href="club.php">club</a></li>
-                              <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
-                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="arrow_box_right">
-                                       <div class="dropdown-divider"></div>
-                                       <a class="dropdown-item" href="ajouterType_reclamation.php"><i class="ft-user"></i>Faire une Reclamation</a>
-                                       <a class="dropdown-item" href="chercherReclamation.php"><i class="ft-user"></i>Consulter une Reclamation</a>
-                                    </div>
-                                 </div>
+                              <?php if (($x["role"]) != "Prof") { ?>
+                                 <li class="dropdown dropdown-user nav-item"> <a href="#" data-toggle="dropdown">Reclamation</a>
 
-                              </li>
+
+
+
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                       <div class="arrow_box_right">
+
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="afficherRec_noteAD.php"><i class="ft-user"></i>Reclamation Note</a>
+                                          <a class="dropdown-item" href="afficherRec_AbsenceAD.php"><i class="ft-user"></i>Reclamation Absence</a>
+                                          <div class="dropdown-divider"></div><a class="dropdown-item" href="afficherRec_autreAD.php"><i class="ft-power"></i>Autre Reclamation</a>
+                                       </div>
+                                    </div>
+
+                                 </li>
+                              <?php } ?>
                               <li> <a href="cherhcerPresences.php">Absence</a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
                               <li class="mean-last"> <a href="#"><img src="../Assets/Images/top-icon.png" alt="#" /></a> </li>
@@ -145,54 +153,54 @@ if (isset($_POST['Etudiant']) && isset($_POST['Module']) && isset($_POST['Date']
                            <div class="card-content collapse show">
                               <div class="table-responsive">
                                  <table class="table">
-                                 <thead class="thead-dark">
-                              <tr>
-                                <th scope="col"><label for="IdRegistre">
-                                    <font color="white">Id Registre:</font>
-                                  </label></th>
-                                <th scope="col"><label for="Module">
-                                    <font color="white">Module:</font>
-                                  </label></th>
-                                <th scope="col"><label for="Etudiant">
-                                    <font color="white">Etudiant:</font>
-                                  </label></th>
-                                <th scope="col"><label for="Date">
-                                    <font color="white">Date d'Absence:</font>
-                                  </label></th>
-                                <th scope="col"><label for="Heure">
-                                    <font color="white">Heure d'Absence:</font>
-                                  </label></th>
-                                <th scope="col"><label for="Etat">
-                                    <font color="white">Etat:</font>
-                                  </label></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20"></td>
-                                <td><select type="text" name="Module" id="Module">
-                                    <option value="">--Veuillez choisir--</option>
-                                    <option value="Projet Technologies web">Projet Technologies web</option>
-                                    <option value="Mathematique">Mathematique</option>
-                                    <option value="Base de Donnees">Base de Donnees</option>
-                                  </select></td>
+                                    <thead class="thead-dark">
+                                       <tr>
+                                          <th scope="col"><label for="IdRegistre">
+                                                <font color="white">Id Registre:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Module">
+                                                <font color="white">Module:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Etudiant">
+                                                <font color="white">Etudiant:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Date">
+                                                <font color="white">Date d'Absence:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Heure">
+                                                <font color="white">Heure d'Absence:</font>
+                                             </label></th>
+                                          <th scope="col"><label for="Etat">
+                                                <font color="white">Etat:</font>
+                                             </label></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td><input type="text" name="IdRegistre" id="IdRegistre" maxlength="20"></td>
+                                          <td><select type="text" name="Module" id="Module">
+                                                <option value="">--Veuillez choisir--</option>
+                                                <option value="Projet Technologies web">Projet Technologies web</option>
+                                                <option value="Mathematique">Mathematique</option>
+                                                <option value="Base de Donnees">Base de Donnees</option>
+                                             </select></td>
 
-                                <td><select type="text" name="Etudiant" id="Etudiant">
-                                    <option value="">--Veuillez choisir--</option>
-                                    <?php foreach ($etudiants as $etudiant) { ?>
-                                      <option value="<?php echo $etudiant["name"]; ?>"><?php echo $etudiant["name"]; ?></option>
-                                    <?php } ?>
-                                  </select></td>
+                                          <td><select type="text" name="Etudiant" id="Etudiant">
+                                                <option value="">--Veuillez choisir--</option>
+                                                <?php foreach ($etudiants as $etudiant) { ?>
+                                                   <option value="<?php echo $etudiant["name"]; ?>"><?php echo $etudiant["name"]; ?></option>
+                                                <?php } ?>
+                                             </select></td>
 
-                                <td><input type="date" name="Date" id="userdate" onchange="TDate()" required min="2021-09-13" max="2022-06-06"></td>
-                                <td><input type="time" id="Heure" name="Heure" min="09:00" max="18:00" required></td>
-                                <td><select type="text" name="Etat" id="Etat">
-                                    <option value="">--Veuillez choisir--</option>
-                                    <option value="present">present</option>
-                                    <option value="absent">absent</option>
-                                  </select></td>
-                              </tr>
-                            </tbody>
+                                          <td><input type="date" name="Date" id="userdate" onchange="TDate()" required min="2021-09-13" max="2022-06-06"></td>
+                                          <td><input type="time" id="Heure" name="Heure" min="09:00" max="18:00" required></td>
+                                          <td><select type="text" name="Etat" id="Etat">
+                                                <option value="">--Veuillez choisir--</option>
+                                                <option value="present">present</option>
+                                                <option value="absent">absent</option>
+                                             </select></td>
+                                       </tr>
+                                    </tbody>
 
                                  </table>
                                  <section id="sizes-2">
