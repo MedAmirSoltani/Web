@@ -2,68 +2,54 @@
 session_start();
 require_once '../Controller/matiereC.php';
 include_once     '../Controller/utilisateurC.php';
-    include_once '../Model/utilisateur.php' ;
-  
-    $userC=new utilisateurC();
-    $userC1=new utilisateurC();
-   
-$matiere=new matiereC();
-if(isset($_POST["reset-request-submit"]))
-{
+include_once '../Model/utilisateur.php';
+
+$userC = new utilisateurC();
+$userC1 = new utilisateurC();
+
+$matiere = new matiereC();
+if (isset($_POST["reset-request-submit"])) {
    header('Location:reset-password.php');
 }
-      if(empty($_SESSION['a']))
-      {
-    if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"]) )
-    {
-    
-      if(!empty($_POST["email"]) && !empty($_POST["password"]))
-      {
+if (empty($_SESSION['a'])) {
+   if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["login"])) {
 
-         $message=$userC->connexionUser($_POST["email"],$_POST["password"]);
-         if($message!='email or password uncorrect')
-         { 
-           // src="uploads/<?php echo $utilisateur['profilpicture'] ;
-            $resultat=$userC->getutilisateurbyemail($_POST["email"]);
-            $lol=$resultat["profilpicture"];
-            $_SESSION['a']=$resultat["ID_utilisateur"];
-            $x=$userC->getutilisateurbyID($_SESSION['a']);
-            if($x['admin_bool']==0)
-            {
-            if (strcmp($x['role'], "Etudiant") != 0) {
-               $resultat=$userC->getprofbyemail($_POST["email"]);
-               
-               $r=$matiere->getmatierebyID($resultat['idmatiere']);
-               $_SESSION['mat']=$r;
-               $_SESSION['c']=$r["titre"];
-               header('Location:profilprof.php');
-           }
-           else{
-            $resultat=$userC->getetudiantbyemail($_POST["email"]);
-            $_SESSION['c']=$resultat["classe"];
-            header('Location:profiluser.php');
-           }
+      if (!empty($_POST["email"]) && !empty($_POST["password"])) {
+
+         $message = $userC->connexionUser($_POST["email"], $_POST["password"]);
+         if ($message != 'email or password uncorrect') {
+            // src="uploads/<?php echo $utilisateur['profilpicture'] ;
+            $resultat = $userC->getutilisateurbyemail($_POST["email"]);
+            $lol = $resultat["profilpicture"];
+            $_SESSION['a'] = $resultat["ID_utilisateur"];
+            $x = $userC->getutilisateurbyID($_SESSION['a']);
+            if ($x['admin_bool'] == 0) {
+               if (strcmp($x['role'], "Etudiant") != 0) {
+                  $resultat = $userC->getprofbyemail($_POST["email"]);
+
+                  $r = $matiere->getmatierebyID($resultat['idmatiere']);
+                  $_SESSION['mat'] = $r;
+                  $_SESSION['c'] = $r["titre"];
+                  header('Location:profilprof.php');
+               } else {
+                  $resultat = $userC->getetudiantbyemail($_POST["email"]);
+                  $_SESSION['c'] = $resultat["classe"];
+                  header('Location:profiluser.php');
+               }
+            } else
+               header('Location:profiladmin.php');
+         } else {
+            $message = 'email or password uncorrect';
          }
-         else
-         header('Location:profiladmin.php');
-           
-         
-         }
-         else{
-            $message='email or password uncorrect';
-         }
+      } else {
+         $message = "";
+         $message = "missing information";
       }
-      else{
-      $message="";
-      $message="missing information"; 
-      }
-    }
-    
    }
-   else{
-$conn=$userC1->getutilisateurbyID($_SESSION['a']);
-   }
-   
+} else {
+   $conn = $userC1->getutilisateurbyID($_SESSION['a']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,8 +66,8 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-      <!-- login css -->
-      <link rel="stylesheet" href="../Assets/CSS/login.css">
+   <!-- login css -->
+   <link rel="stylesheet" href="../Assets/CSS/login.css">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="../Assets/CSS/bootstrap.min.css">
    <!-- style css -->
@@ -126,99 +112,98 @@ $conn=$userC1->getutilisateurbyID($_SESSION['a']);
                               <li> <a href="index.php">Home</a> </li>
                               <li class="active"> <a href="about.php">About us</a> </li>
                               <li><a href="contact.php">Contact us</a></li>
-                              <li class="mean-last"> <a href="#"><img src="../Assets/Images/search_icon.png" alt="#" /></a> </li>
-                              
-                              <li class="dropdown dropdown-user nav-item"><a  href="#" data-toggle="dropdown">
-                              <?php if(!empty($conn['name'])): ?>
-                                    <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right">
-                                   <a class="dropdown-item" >
-                                      <span class="avatar avatar-online">
-                                      <?php if (empty($conn['profilpicture']))
-                                                  {
-                                                    echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:25%; height:35px;float:left;margin:0 10px 0 0px; border-radius:10%; display:block;"/>';
-                                                    
-                                                   }
-                                                
-                                                 ?>
-                                                  <img <?php if (empty($conn['profilpicture'])){ echo 'style="display:none;"'; } ?>  id="profildisplay" style="width:25%; height:35px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">  
-                                                 <span class="user-name text-bold-700 ml-1"><?php echo $conn['name']?></span>
-                                       </span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <?php if(strcmp($conn['role'], "Prof") == 0){ ?>
-                                       <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
-                                       <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-<?php } else if(strcmp($conn['role'], "Etudiant") == 0) { ?>
-   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
-   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
-   <a class="dropdown-item" href="club.php"><i class="ft-mail"></i> Clubs</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-                                         
-<?php }  else {?>
-   <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
-   <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
-                                       <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
-                                       <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
-                                         
-<?php } ?>
 
 
-                                  
-                                   
-                                    
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
-                                </div>
-                            </div>
-                        </li>
-                                    <?php else: ?>
-     <!-- HTML here -->
-     <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                            <form action="" method="POST" onsubmit="return verifcnx();">
+                              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown">
+                                    <?php if (!empty($conn['name'])) : ?>
+                                       <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="arrow_box_right">
+                                       <a class="dropdown-item">
+                                          <span class="avatar avatar-online">
+                                             <?php if (empty($conn['profilpicture'])) {
+                                                echo '<img src="../Assets/uploads/unknown.png" onclick="pictureclick()" id="profildisplay" style="width:25%; height:35px;float:left;margin:0 10px 0 0px; border-radius:10%; display:block;"/>';
+                                             }
+
+                                             ?>
+                                             <img <?php if (empty($conn['profilpicture'])) {
+                                                      echo 'style="display:none;"';
+                                                   } ?> id="profildisplay" style="width:25%; height:35px; float:left;margin:190 10px 0 0px; border-radius:50%; display:block;" src="../Assets/uploads/<?php echo $conn['profilpicture'] ?>">
+                                             <span class="user-name text-bold-700 ml-1"><?php echo $conn['name'] ?></span>
+                                          </span>
+                                       </a>
+                                       <div class="dropdown-divider"></div>
+                                       <?php if (strcmp($conn['role'], "Prof") == 0) { ?>
+                                          <a class="dropdown-item" href="updateprofilprof.php"><i class="ft-user"></i> Edit Profile</a>
+                                          <a class="dropdown-item" href="profilprof.php"><i class="ft-mail"></i> My Profil</a>
+                                          <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+                                       <?php } else if (strcmp($conn['role'], "Etudiant") == 0) { ?>
+                                          <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+                                          <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                          <a class="dropdown-item" href="club.php"><i class="ft-mail"></i> Clubs</a>
+                                          <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+
+                                       <?php } else { ?>
+                                          <a class="dropdown-item" href="updateprofil.php"><i class="ft-user"></i> Edit Profile</a>
+                                          <a class="dropdown-item" href="profiluser.php"><i class="ft-mail"></i> My Profil</a>
+                                          <a class="dropdown-item" href="front3.php"><i class="ft-check-square"></i> Subjects</a>
+                                          <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Forum</a>
+
+                                       <?php } ?>
+
+
+
+
+
+                                       <div class="dropdown-divider"></div><a class="dropdown-item" href="deconnexion.php"><i class="ft-power"></i> Logout</a>
+                                    </div>
+                                 </div>
+                              </li>
+                           <?php else : ?>
+                              <!-- HTML here -->
+                              <span class="avatar avatar-online"><img src="../Assets/Images/top-icon.png" alt="avatar"><i></i></span></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                 <form action="" method="POST" onsubmit="return verifcnx();">
                                     <div class="dropdown-divider"></div>
                                     <div class="field">
-                                    
-                                 <input class="form-control" type="text" name="email" id="email" placeholder="email" >
-                              </div>
-                              <div class="field">
-                              <input class="form-control" type="password" name="password" id="password" placeholder="password">
-                              </div>
-                              
-                              <a  style="text-align:center;" class="dropdown-item" href="reset-password.php"> <input type="submit" name="reset-request-submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="forgot password"></a>
-                             <a  style="text-align:center;" class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
-                               <div id="lol"> </div>
-                              <script>
-                                     function verifcnx(){
-                                       var email = document.getElementById("email").value;
-                                       var password = document.getElementById("password").value;
-                                     if (password ==false || email==false) 
-                                     {
-                                       document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
-                                       document.getElementById("erreur").style.display = "none";
-                                       return false;
-                                       preventdefault();
-                                      }
-                                     }
+
+                                       <input class="form-control" type="text" name="email" id="email" placeholder="email">
+                                    </div>
+                                    <div class="field">
+                                       <input class="form-control" type="password" name="password" id="password" placeholder="password">
+                                    </div>
+
+                                    <a style="text-align:center;" class="dropdown-item" href="reset-password.php"> <input type="submit" name="reset-request-submit" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="forgot password"></a>
+                                    <a style="text-align:center;" class="dropdown-item" style="font-size: 15px;" href="signin.php"><i class="ft-user"></i> new?</a>
+                                    <div id="lol"> </div>
+                                    <script>
+                                       function verifcnx() {
+                                          var email = document.getElementById("email").value;
+                                          var password = document.getElementById("password").value;
+                                          if (password == false || email == false) {
+                                             document.getElementById("lol").innerHTML = ' <p style="color: red; font-size: 20px; font-family: sans-serif; margin:90px 50px 0 250px;" id="erreur1">write your email/password</p>';
+                                             document.getElementById("erreur").style.display = "none";
+                                             return false;
+                                             preventdefault();
+                                          }
+                                       }
                                     </script>
-                              <div class="dropdown-divider"></div>
-                             
-                              <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" name="login" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
-                              </form>    
+                                    <div class="dropdown-divider"></div>
+
+                                    <a style="text-align:center;" class="dropdown-item" href="#"> <input type="submit" name="login" style="text-transform: uppercase;color:#b32137;" class="dropdown-item" value="login"></a>
+                                 </form>
                               <?php endif; ?>
-                           </div>
-                           </div>
-                        </ul>
-                        </nav>
+                              </div>
                      </div>
+                     </ul>
+                     </nav>
                   </div>
                </div>
             </div>
          </div>
+      </div>
       </div>
       </div>
       <!-- end header inner -->
