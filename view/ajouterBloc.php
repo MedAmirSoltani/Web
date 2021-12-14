@@ -37,7 +37,7 @@ if (
       $_POST['typesalles']
     );
     $blockC->ajouterblock($block);
-    header('Location:ListeBlocks.php');
+    header('Location:affichBlocksAd.php');
   } else
     $error = "Missing information";
 }

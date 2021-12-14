@@ -12,6 +12,10 @@ $registre_appels = $registre_appelC->afficherRegistre_appel();
 if (isset($_POST['search'])) {
    $list1 = $registre_appelC->afficherPresences($x["ID_utilisateur"]);
 }
+if (($x["admin_bool"]) == 1) {
+
+   header('location:afficherRegistre_appelAD.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +67,7 @@ if (isset($_POST['search'])) {
                      </div>
                   </div>
                </div>
-               <d <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
@@ -99,9 +103,9 @@ if (isset($_POST['search'])) {
                         </nav>
                      </div>
                   </div>
+               </div>
             </div>
          </div>
-      </div>
       </div>
       </div>
       <!-- end header inner -->
