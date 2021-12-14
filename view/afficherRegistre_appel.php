@@ -142,7 +142,7 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
         </li>
         <li class="nav-item"><a href="afficherRegistre_appel.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Absence</span></a>
         </li>
-       
+
 
       </ul>
     </div>
@@ -200,13 +200,19 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
                         <th scope="col"><label for="Etudiant">
                             <font color="white">Etudiant : </font>
                           </label></th>
-                          <th scope="col"><label for="Module">
+                        <th scope="col"><label for="Module">
                             <font color="white">Module : </font>
                           </label></th>
                         <th scope="col"><a href="afficherRegistre_appel.php?column=Date&order=<?php echo $asc_or_desc; ?>">Date<i class="fas fa-sort<?php echo $column == 'Date' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th scope="col"><a href="afficherRegistre_appel.php?column=Heure&order=<?php echo $asc_or_desc; ?>">Heure<i class="fas fa-sort<?php echo $column == 'Heure' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th scope="col"><label for="Etat">
                             <font color="white">Etat : </font>
+                          </label></th>
+                          <th scope="col"><label for="Id_note">
+                            <font color="White"></font>
+                          </label></th>
+                          <th scope="col"><label for="Id_note">
+                            <font color="White"></font>
                           </label></th>
                       </tr>
                     </thead>
@@ -219,12 +225,12 @@ if ($result = $mysqli->query('SELECT * FROM registre_appel ORDER BY ' .  $column
                           <tr>
                             <td<?php echo $column == 'IdRegistre' ? $add_class : ''; ?>><?php echo $row['IdRegistre']; ?></td>
                               <td<?php echo $column == 'Etudiant' ? $add_class : ''; ?>><?php echo $row['Etudiant']; ?></td>
-                              <td<?php echo $column == 'Module' ? $add_class : ''; ?>><?php echo $row['Module']; ?></td>
-                                <td<?php echo $column == 'Date' ? $add_class : ''; ?>><?php echo $row['Date']; ?></td>
-                                  <td<?php echo $column == 'Heure' ? $add_class : ''; ?>><?php echo $row['Heure']; ?></td>
-                                    <td<?php echo $column == 'Etat' ? $add_class : ''; ?>><?php echo $row['Etat']; ?></td>
-                                      <td><a href="supprimerRegistre_appel.php?IdRegistre=<?php echo $row['IdRegistre']; ?>"><img src="../Assets/Images/sup.jpg" witdh='25px' height='25px'></a></td>
-                                      <td><a href="modifierRegistre_appel.php?IdRegistre=<?php echo $row['IdRegistre']; ?>">modifier</a></td>
+                                <td<?php echo $column == 'Module' ? $add_class : ''; ?>><?php echo $row['Module']; ?></td>
+                                  <td<?php echo $column == 'Date' ? $add_class : ''; ?>><?php echo $row['Date']; ?></td>
+                                    <td<?php echo $column == 'Heure' ? $add_class : ''; ?>><?php echo $row['Heure']; ?></td>
+                                      <td<?php echo $column == 'Etat' ? $add_class : ''; ?>><?php echo $row['Etat']; ?></td>
+                                        <td><a href="supprimerRegistre_appel.php?IdRegistre=<?php echo $row['IdRegistre']; ?>"><img src="../Assets/Images/sup.jpg" witdh='25px' height='25px'></a></td>
+                                        <td><a href="modifierRegistre_appel.php?IdRegistre=<?php echo $row['IdRegistre']; ?>">modifier</a></td>
                           </tr>
                         <?php endwhile; ?>
 
