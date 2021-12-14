@@ -91,7 +91,7 @@
 
                               </li>
                               <li><a href="afficherRegistre_appelAD.php">Absence</a></li>
-                              <li><a href="afficherutilisateur.php">Panel</a></li>
+                              
                               <li><a href="club.php">club</a></li>
                               <li class="mean-last"> <a href="profiluser.php"><img src="../Assets/Images/top-icon.png" alt="profiluser.php" /></a> </li>
                            </ul>
